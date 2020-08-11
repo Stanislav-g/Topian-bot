@@ -32,38 +32,6 @@ async def reload(ctx, extensions):
     client.unload_extension(f'cogs.{extensions}')# отгружаем ког
     client.load_extension(f'cogs.{extensions}')# загружаем 
     await ctx.send('reloaded')
-
-@commands.Cog.listener()
-async def clear_error( ctx, error ):
-    if isinstance( error, commands.MissingRequiredArgument ):
-        await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
-
-    if isinstance( error, commands.MissingPermissions ):
-        await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
-
-@commands.Cog.listener()   
-async def ban_error( ctx, error ):
-    if isinstance( error, commands.MissingRequiredArgument ):
-        await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
-
-    if isinstance( error, commands.MissingPermissions ):
-        await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
-
-@commands.Cog.listener()  
-async def unban_error( ctx, error ):
-    if isinstance( error, commands.MissingRequiredArgument ):
-        await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
-
-    if isinstance( error, commands.MissingPermissions ):
-        await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
-@commands.Cog.listener()   
-async def kick_error( ctx, error ):
-    if isinstance( error, commands.MissingRequiredArgument ):
-        await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
-
-    if isinstance( error, commands.MissingPermissions ):
-        await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
-
         
         
 for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
