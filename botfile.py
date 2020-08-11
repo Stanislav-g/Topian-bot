@@ -25,7 +25,6 @@ async def load(ctx, extensions):
 async def unload(ctx, extensions):
     client.unload_extension(f'cogs.{extensions}')
     await ctx.send('unloaded'
-
     
 token= os.environ.get('BOT_TOKEN')
 client.run( token )
