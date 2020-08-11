@@ -116,9 +116,9 @@ class user(commands.Cog):
             message = await ctx.message.channel.fetch_message(id)
             await message.add_reaction(reaction)
         #tempban
-    @client.command()
+    @commands.command()
     @commands.has_permissions( administrator = True )
-    async def tempban(ctx, member : discord.Member, time:int, arg:str, *, reason=None):
+    async def tempban(self, ctx, member : discord.Member, time:int, arg:str, *, reason=None):
         await ctx.channel.purge( limit = 1 )
         if member == ctx.message.author:
             return await ctx.send("Ты не можешь забанить сам себя.")
@@ -147,9 +147,9 @@ class user(commands.Cog):
 
 
     #temp_add_role
-    @client.command()
+    @commands.command()
     @commands.has_permissions(administrator = True)
-    async def temp_add_role(ctx, amount : int, member: discord.Member = None, role: discord.Role = None):
+    async def temp_add_role(self, ctx, amount : int, member: discord.Member = None, role: discord.Role = None):
         await ctx.channel.purge( limit = 1 )
 
         try:
@@ -173,9 +173,9 @@ class user(commands.Cog):
 
             await ctx.send(embed = discord.Embed(description = f'**:exclamation: Не удалось выдать роль.**', color=0x0c0c0c))
 
-    @client.command()
+    @commands.command()
     @commands.has_permissions(administrator = True)
-    async def add_role(ctx, member: discord.Member = None, role: discord.Role = None):
+    async def add_role(self, ctx, member: discord.Member = None, role: discord.Role = None):
         await ctx.channel.purge( limit = 1 )
         
         try:
