@@ -17,11 +17,11 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-@commands.command()
-async def example(self,ctx):
-    await ctx.send("work")
+    @commands.command()
+    async def example(self,ctx):
+        await ctx.send("work")
 
 
 
 def setup(client):
-client.add_cog(user(client))
+    client.add_cog(user(client))
