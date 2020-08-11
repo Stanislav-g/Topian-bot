@@ -185,37 +185,35 @@ class user(commands.Cog):
 
 
         
-    @error.error
-    async def clear_error( ctx, error ):
-        if isinstance( error, commands.MissingRequiredArgument ):
-            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
+    @commands.Cog.listener()
+    async def on_command_error(self, ctx, error):
+        ignored = commands.UserInputError
 
-        if isinstance( error, commands.MissingPermissions ):
-            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
+        if isinstance(error, ignored):
+            return
 
-    @error.error    
-    async def ban_error( ctx, error ):
-        if isinstance( error, commands.MissingRequiredArgument ):
-            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
+        elif isinstance(error, commands.CommandNotFound):
+            embed = discord.Embed(
+                description = 'Ошибка: данная команда не существует!\nДля получения списка всевозможных доступных команд, напишите <префикс>help.',
+                color = 0x800080
+            )
+            embed.set_footer(
+                text = f'{self.client.user.name} | все права закодированы.',
+                icon_url = self.bot.user.avatar_url
+            )
+            return await ctx.send(embed=embed)
 
-        if isinstance( error, commands.MissingPermissions ):
-            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
+        elif isinstance(error, commands.MissingPermissions):
+            embed = discord.Embed(
+                description = 'Ошибка: у вас недостаточно прав для использования данной команды!',
+                color = 0x800080
+            )
+            embed.set_footer(
+                text = f'{self.client.user.name} | все права закодированы.',
+                icon_url = self.bot.user.avatar_url
+            )
 
-    @error.error    
-    async def unban_error( ctx, error ):
-        if isinstance( error, commands.MissingRequiredArgument ):
-            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
-
-        if isinstance( error, commands.MissingPermissions ):
-            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
-    @error.error    
-    async def kick_error( ctx, error ):
-        if isinstance( error, commands.MissingRequiredArgument ):
-            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
-
-        if isinstance( error, commands.MissingPermissions ):
-            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
-
+            return await ctx.send(embed=embed)
         
 def setup(client):
     client.add_cog(user(client))
