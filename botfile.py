@@ -26,9 +26,9 @@ async def unload(ctx, extensions):
     client.unload_extension(f'cogs.{extensions}')
     await ctx.send('unloaded'
 
-for filename in os.listdir('cogs'):
-    if filename.endswith('.py'):
-        client.load_extension(f'cogs.{filename[:-3]}') 
+for filename in os.listdir('./cogs')
+if filename.endswith('.py'):
+    client.load_extension(f'cogs.{filename[:-3]}') 
 
     
 token= os.environ.get('BOT_TOKEN')
