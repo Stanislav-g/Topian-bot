@@ -35,8 +35,7 @@ async def reload(ctx, extensions):
 
     
 for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
-    if filename.endswith('.py'): # если файл кончается на .py, то это наш ког
-        client.load_extension(f'cogs.{filename[:-3]}') 
+    client.load_extension(f'cogs.{filename[:-3]}') 
     
 token= os.environ.get('BOT_TOKEN')
 client.run( token )
