@@ -185,7 +185,7 @@ class user(commands.Cog):
 
 
         
-    @clear.error
+    @error.error
     async def clear_error( ctx, error ):
         if isinstance( error, commands.MissingRequiredArgument ):
             await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
@@ -193,7 +193,7 @@ class user(commands.Cog):
         if isinstance( error, commands.MissingPermissions ):
             await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
 
-    @ban.error    
+    @error.error    
     async def ban_error( ctx, error ):
         if isinstance( error, commands.MissingRequiredArgument ):
             await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
@@ -201,14 +201,14 @@ class user(commands.Cog):
         if isinstance( error, commands.MissingPermissions ):
             await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
 
-    @unban.error    
+    @error.error    
     async def unban_error( ctx, error ):
         if isinstance( error, commands.MissingRequiredArgument ):
             await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
 
         if isinstance( error, commands.MissingPermissions ):
             await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
-    @kick.error    
+    @error.error    
     async def kick_error( ctx, error ):
         if isinstance( error, commands.MissingRequiredArgument ):
             await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
