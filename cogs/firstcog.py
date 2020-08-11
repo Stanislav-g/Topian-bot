@@ -31,7 +31,7 @@ class user(commands.Cog):
         emb = discord.Embed( title = '**Moderation**', colour = discord.Color.red() )
         emb.add_field( name = 'Commands',value = '*clear* = clear (количество) или clear (пользователь)(количество)\n*ban* = ban @user\n *unban* = unban @user\n *kick* = kick @user\n *emoji* = emoji (message id) (emoji)\n*tempban* = tempban @user *s* or *m* or *h* or *d*\n*temp_add_role* = temp_add_role (time) @user @role\n *add_role* = add_role @user @role')
         await ctx.author.send( embed = emb )
-        embw = discord.Embed( title = '**Info**', colour = discord.Color.yellow() )
+        embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
         embw.add_field( name = 'Commands',value = 'test')
         await ctx.author.send( embed = embw )
 
