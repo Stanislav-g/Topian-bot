@@ -165,6 +165,25 @@ class user(commands.Cog):
         except:
 
             await ctx.send(embed = discord.Embed(description = f'**:exclamation: Не удалось выдать роль.**', color=0x0c0c0c))
+    #voice_create
+    @commands.command()
+    @commands.has_permissions(administrator = True)
+    async def voice_create(self, ctx, *, arg):
+        await ctx.channel.purge( limit = 1 )
+        guild = ctx.guild
+        channel = await guild.create_voice_channel(f'{arg}')
+        await ctx.send(embed = discord.Embed(description = f'**:microphone2: Голосовой канал "{arg}" успешно создан!**', color=0x0c0c0c))
+
+    #channel_create   
+    @commands.command()
+    @commands.has_permissions(administrator = True)
+    async def channel_create(self, ctx, *, arg): 
+        await ctx.channel.purge( limit = 1 )
+        guild = ctx.guild
+        channel = await guild.create_text_channel(f'{arg}')
+        await ctx.send(embed = discord.Embed(description = f'**:keyboard: Текстовый канал "{arg}" успешно создан!**', color=0x0c0c0c))
+
+
 
     @commands.command()
     @commands.has_permissions(administrator = True)
