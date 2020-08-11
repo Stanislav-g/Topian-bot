@@ -25,8 +25,8 @@ class user(commands.Cog):
     
     
     #info
-    @client.command( pass_context = True )
-    async def help( ctx ):
+    @commands.command()
+    async def help(self, ctx ):
         await ctx.channel.purge( limit = 1 )
         emb = discord.Embed( title = '**Moderation**', colour = discord.Color.red() )
         emb.add_field( name = 'Commands',value = '*clear* = clear (количество) или clear (пользователь)(количество) *ban* = ban @user*unban* = unban @user *kick* = kick @user')
@@ -53,10 +53,10 @@ class user(commands.Cog):
                         if number >= amount:
                             break
     #kick
-    @client.command( pass_context = True )
+    @commands.command( pass_context = True )
     @commands.has_permissions( administrator = True )
 
-    async def kick( ctx, member: discord.Member, *, reason = None):
+    async def kick(self, ctx, member: discord.Member, *, reason = None):
         emb = discord.Embed( title = 'Kick', colour = discord.Color.red() )
         await ctx.channel.purge( limit = 1 )
 
@@ -68,10 +68,10 @@ class user(commands.Cog):
         await ctx.send( f'kick user { member.mention}')
 
     #ban
-    @client.command( pass_context = True )
+    @commands.command( pass_context = True )
     @commands.has_permissions( administrator = True )
 
-    async def ban( ctx, member: discord.Member, *, reason = None):
+    async def ban(self, ctx, member: discord.Member, *, reason = None):
         emb = discord.Embed( title = 'Ban', colour = discord.Color.red() )
         await ctx.channel.purge( limit = 1 )
 
@@ -82,9 +82,9 @@ class user(commands.Cog):
         await ctx.send( f'Ban user { member.mention}')
 
     #unban
-    @client.command( pass_context = True )
+    @commands.command( pass_context = True )
     @commands.has_permissions( administrator = True )
-    async def unban( ctx, *, member ):
+    async def unban(self, ctx, *, member ):
         emb.set_author( name = member.name, icon_url = member.avatar_url)
         emb = discord.Embed( title = 'unban', colour = discord.Color.red() )
         await ctx.channel.purge( limit = 1)
