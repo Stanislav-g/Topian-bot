@@ -19,7 +19,7 @@ class user(commands.Cog):
 
 @commands.command()
 async def example(self,ctx):
-    await ctx.send(“work”)
+    await ctx.send("work")
 
 
 
