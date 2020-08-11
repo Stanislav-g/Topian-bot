@@ -138,7 +138,36 @@ class user(commands.Cog):
 
 
 
+    @commands.command()
+    @commands.has_permissions(administrator = True)
+    async def changing_name(ctx, member: discord.Member = None, nickname: str = None):
+        await ctx.channel.purge( limit = 1 )
+        await ctx.send('Info')
+        try:
+            if member is None:
+                await ctx.send(embed = discord.Embed(description = "Обязательно укажите **пользователя**!"))
+            elif nickname is None:
+                await ctx.send(embed = discord.Embed(description = "Обязательно укажите ник!"))
+            else:
+                await member.edit(nick = nickname)
+                await ctx.send(embed = discord.Embed(description = f"У пользователя **{member.name}** был изменен ник на **{nickname}**"))
+        except:
+            await ctx.send(embed = discord.Embed(description = f"Я не могу изменить ник пользователя **{member.name}**!"))
 
+    #suggest
+    @commands.command( pass_context = True, aliases = [ "Предложить", "предложить", "предложка", "Предложка", "Suggest" ])
+    @commands.has_permissions( administrator = True )
+    async def suggest( ctx , * , agr ):
+        
+        embed = discord.Embed(title=f"{ctx.author.name} Предложил :", description= f" {agr} \n\n")
+
+        embed.set_thumbnail(url=ctx.guild.icon_url)
+
+        message = await ctx.send(embed=embed)
+        await message.add_reaction('✅')
+        await message.add_reaction('❎')
+
+    
     #temp_add_role
     @commands.command()
     @commands.has_permissions(administrator = True)
