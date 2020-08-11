@@ -24,7 +24,19 @@ async def load(ctx, extensions):
 @client.command()
 async def unload(ctx, extensions):
     client.unload_extension(f'cogs.{extensions}')
-    await ctx.send('unloaded'
+    await ctx.send('unloaded')
+    
+    
+@client.command()
+async def reload(ctx, extensions):
+    client.unload_extension(f'cogs.{extensions}')# отгружаем ког
+    client.load_extension(f'cogs.{extensions}')# загружаем 
+    await ctx.send('reloaded')
+
+    
+for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
+    if filename.endswith('.py'): # если файл кончается на .py, то это наш ког
+        client.load_extension(f'cogs.{filename[:-3]}') 
     
 token= os.environ.get('BOT_TOKEN')
 client.run( token )
