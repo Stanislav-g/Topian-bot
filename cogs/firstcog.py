@@ -32,7 +32,7 @@ class user(commands.Cog):
         emb.add_field( name = 'Commands',value = '*clear* = clear (количество) или clear (пользователь)(количество)\n*ban* = ban @user\n *unban* = unban @user\n *kick* = kick @user\n *emoji* = emoji (message id) (emoji)\n*tempban* = tempban @user *s* or *m* or *h* or *d*\n*temp_add_role* = temp_add_role (time) @user @role\n *add_role* = add_role @user @role')
         await ctx.author.send( embed = emb )
         embw = discord.Embed( title = '**Info**', colour = discord.Color.red() )
-        embw.add_field( name = 'Commands',value = '')
+        embw.add_field( name = 'Commands',value = 'test')
         await ctx.author.send( embed = embw )
 
 
@@ -184,7 +184,37 @@ class user(commands.Cog):
             await ctx.send(embed = discord.Embed(description = f' Не удалось выдать роль.', color=0x0c0c0c))
 
 
-        
+    @commands.Cog.listener()
+    async def clear_error( ctx, error ):
+        if isinstance( error, commands.MissingRequiredArgument ):
+            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
+
+        if isinstance( error, commands.MissingPermissions ):
+            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
+
+    @ban.error    
+    async def ban_error( ctx, error ):
+        if isinstance( error, commands.MissingRequiredArgument ):
+            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
+
+        if isinstance( error, commands.MissingPermissions ):
+            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
+
+    @commands.Cog.listener()    
+    async def unban_error( ctx, error ):
+        if isinstance( error, commands.MissingRequiredArgument ):
+            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
+
+        if isinstance( error, commands.MissingPermissions ):
+            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
+    @commands.Cog.listener()  
+    async def kick_error( ctx, error ):
+        if isinstance( error, commands.MissingRequiredArgument ):
+            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
+
+        if isinstance( error, commands.MissingPermissions ):
+            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
+   
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
         ignored = commands.UserInputError
