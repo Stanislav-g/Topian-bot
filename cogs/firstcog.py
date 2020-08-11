@@ -29,7 +29,7 @@ class user(commands.Cog):
     async def help(self, ctx ):
         await ctx.channel.purge( limit = 1 )
         emb = discord.Embed( title = '**Moderation**', colour = discord.Color.red() )
-        emb.add_field( name = 'Commands',value = '*clear* = clear (количество) или clear (пользователь)(количество)\n*ban* = ban @user\n *unban* = unban @user\n *kick* = kick @user\n *emoji* = emoji (message id) (emoji)\n*tempban* = tempban @user *s* or *m* or *h* or *d*\n*temp_add_role* = temp_add_role (time) @user @role\n *add_role* = add_role @user @role')
+        emb.add_field( name = 'Commands',value = '*clear* = clear (количество) или clear (пользователь)(количество)\n*ban* = ban @user\n *unban* = unban @user\n *kick* = kick @user\n *emoji* = emoji (message id) (emoji)\n*tempban* = tempban @user *s* or *m* or *h* or *d*\n*temp_add_role* = temp_add_role (time) @user @role\n *add_role* = add_role @user @role\n*channel_create* = channel_create (name)\n*voice_create* = voice_create (name)\n*suggest* = suggest (text)\n*changing_name* = changing_name @user ')
         await ctx.author.send( embed = emb )
         embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
         embw.add_field( name = 'Commands',value = 'test')
@@ -140,7 +140,7 @@ class user(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def changing_name(ctx, member: discord.Member = None, nickname: str = None):
+    async def changing_name(self, ctx, member: discord.Member = None, nickname: str = None):
         await ctx.channel.purge( limit = 1 )
         await ctx.send('Info')
         try:
@@ -157,7 +157,7 @@ class user(commands.Cog):
     #suggest
     @commands.command( pass_context = True, aliases = [ "Предложить", "предложить", "предложка", "Предложка", "Suggest" ])
     @commands.has_permissions( administrator = True )
-    async def suggest( ctx , * , agr ):
+    async def suggest(self, ctx , * , agr ):
         
         embed = discord.Embed(title=f"{ctx.author.name} Предложил :", description= f" {agr} \n\n")
 
