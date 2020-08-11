@@ -29,7 +29,14 @@ class user(commands.Cog):
     async def help(self, ctx ):
         await ctx.channel.purge( limit = 1 )
         emb = discord.Embed( title = '**Moderation**', colour = discord.Color.red() )
-        emb.add_field( name = 'Commands',value = '*clear* = clear (количество) или clear (пользователь)(количество) *ban* = ban @user*unban* = unban @user *kick* = kick @user')
+        emb.add_field( name = 'Commands',value = '*clear* = clear (количество) или clear (пользователь)(количество)\n
+        *ban* = ban @user\n
+        *unban* = unban @user\n
+        *kick* = kick @user\n
+        *emoji* = emoji (message id) (emoji)\n
+        *tempban* = tempban @user *s* or *m* or *h* or *d*\n
+        *temp_add_role* = temp_add_role (time) @user @role\n
+        *add_role* = add_role @user @role')
         await ctx.author.send( embed = emb )
         embw = discord.Embed( title = '**Info**', colour = discord.Color.red() )
         embw.add_field( name = 'Commands',value = '')
@@ -100,6 +107,122 @@ class user(commands.Cog):
             await ctx.send( f'Unbanned user {user.mention }' )
 
             return
+    
+        #emoji       
+    @commands.command()
+    @commands.has_permissions( administrator = True )
+    async def emoji(self, ctx,id:int,reaction:str):
+            await ctx.message.delete()
+            message = await ctx.message.channel.fetch_message(id)
+            await message.add_reaction(reaction)
+        #tempban
+    @client.command()
+    @commands.has_permissions( administrator = True )
+    async def tempban(ctx, member : discord.Member, time:int, arg:str, *, reason=None):
+        await ctx.channel.purge( limit = 1 )
+        if member == ctx.message.author:
+            return await ctx.send("Ты не можешь забанить сам себя.")
+        msgg =  f'Пользователь : {member}, забанен по причине : {reason}.'
+        msgdm = f'Вы были забанены на сервере {ctx.guild.name}, по причине : {reason}.'
+        if reason == None:
+            msgdm = f'Вы были забанены на сервере : {ctx.guild.name}.'
+        if reason == None:
+            msgg =  f'Пользователь : {member}, забанен.'
+        await ctx.send(msgg)  
+        await member.send(msgdm)
+        await ctx.guild.ban(member, reason=reason)
+        if arg == "s":
+            await asyncio.sleep(time)          
+        elif arg == "m":
+            await asyncio.sleep(time * 60)
+        elif arg == "h":
+            await asyncio.sleep(time * 60 * 60)
+        elif arg == "d":
+            await asyncio.sleep(time * 60 * 60 * 24)
+        await member.unban()
+        await ctx.send(f'Пользователь : {member}, разбанен.')
+        await member.send(f'Вы были разбанены на сервере : {ctx.guild.name}')
 
+
+
+
+    #temp_add_role
+    @client.command()
+    @commands.has_permissions(administrator = True)
+    async def temp_add_role(ctx, amount : int, member: discord.Member = None, role: discord.Role = None):
+        await ctx.channel.purge( limit = 1 )
+
+        try:
+
+            if member is None:
+
+                await ctx.send(embed = discord.Embed(description = '**:grey_exclamation: Обязательно укажите: пользователя!**'))
+
+            elif role is None:
+
+                await ctx.send(embed = discord.Embed(description = '**:grey_exclamation: Обязательно укажите: роль!**'))
+
+            else:
+
+                await discord.Member.add_roles(member, role)
+                await ctx.send(embed = discord.Embed(description = f'**Роль успешна выдана на {amount} секунд!**'))
+                await asyncio.sleep(amount)
+                await discord.Member.remove_roles(member, role)
+
+        except:
+
+            await ctx.send(embed = discord.Embed(description = f'**:exclamation: Не удалось выдать роль.**', color=0x0c0c0c))
+
+    @client.command()
+    @commands.has_permissions(administrator = True)
+    async def add_role(ctx, member: discord.Member = None, role: discord.Role = None):
+        await ctx.channel.purge( limit = 1 )
+        
+        try:
+            if member is None:
+                await ctx.send(embed = discord.Embed(description = '**:grey_exclamation: Обязательно укажите: пользователя!**'))
+            elif role is None:
+                await ctx.send(embed = discord.Embed(description = '**:grey_exclamation: Обязательно укажите: роль!**'))
+            else:
+                await discord.Member.add_roles(member, role)
+                await ctx.send(embed = discord.Embed(description = f'**Роль успешна выдана**'))
+
+        except:
+            await ctx.send(embed = discord.Embed(description = f' Не удалось выдать роль.', color=0x0c0c0c))
+
+
+        
+    @clear.error
+    async def clear_error( ctx, error ):
+        if isinstance( error, commands.MissingRequiredArgument ):
+            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
+
+        if isinstance( error, commands.MissingPermissions ):
+            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
+
+    @ban.error    
+    async def ban_error( ctx, error ):
+        if isinstance( error, commands.MissingRequiredArgument ):
+            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
+
+        if isinstance( error, commands.MissingPermissions ):
+            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
+
+    @unban.error    
+    async def unban_error( ctx, error ):
+        if isinstance( error, commands.MissingRequiredArgument ):
+            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
+
+        if isinstance( error, commands.MissingPermissions ):
+            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
+    @kick.error    
+    async def kick_error( ctx, error ):
+        if isinstance( error, commands.MissingRequiredArgument ):
+            await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
+
+        if isinstance( error, commands.MissingPermissions ):
+            await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
+
+        
 def setup(client):
     client.add_cog(user(client))
