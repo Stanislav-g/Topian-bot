@@ -1,0 +1,7 @@
+﻿discord.py
+aiohttp
+websockets
+chardet
+youtube_dl
+requests
+
