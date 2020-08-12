@@ -134,7 +134,7 @@ class user(commands.Cog):
                 embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
                 embw.add_field( name = 'Emoji',value = '**emoji** = emoji (message id) (emoji)')
                 await ctx.send( embed = embw )
-            if reaction == None:
+            elif reaction == None:
                 embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
                 embw.add_field( name = 'Emoji',value = '**emoji** = emoji (message id) (emoji)')
                 await ctx.send( embed = embw )
@@ -150,16 +150,16 @@ class user(commands.Cog):
             embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
             await ctx.send( embed = embw )
             
-        if time == None:
+        elif time == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
             await ctx.send( embed = embw )
             
-        if arg == None:
+        elif arg == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
             await ctx.send( embed = embw )
-        if reason == None:
+        elif reason == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
             await ctx.send( embed = embw )
@@ -212,7 +212,7 @@ class user(commands.Cog):
     #suggest
     @commands.command( pass_context = True, aliases = [ "Предложить", "предложить", "предложка", "Предложка", "Suggest" ])
     @commands.has_permissions( administrator = True )
-    async def suggest(self, ctx , * , agr = None):
+    async def suggest(self, ctx , * , arg = None):
         if arg == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Suggest',value = '**suggest** = suggest (text)')
@@ -230,19 +230,19 @@ class user(commands.Cog):
     #temp_add_role
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def temp_add_role(self, ctx, amount : int, member: discord.Member = None, role: discord.Role = None):
+    async def temp_add_role(self, ctx, amount : int = None, member: discord.Member = None, role: discord.Role = None):
         await ctx.channel.purge( limit = 1 )
         if amount == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Tempban',value = '*temp_add_role** = temp_add_role (time) @user @role')
             await ctx.send( embed = embw )
             
-        if member == None:
+        elif member == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Tempban',value = '**temp_add_role** = temp_add_role (time) @user @role')
             await ctx.send( embed = embw )
 
-        if role == None:
+        elif role == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Tempban',value = '**temp_add_role** = temp_add_role (time) @user @role')
             await ctx.send( embed = embw )
