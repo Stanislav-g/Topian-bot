@@ -22,7 +22,7 @@ class user(commands.Cog):
     @commands.command( pass_context = True )
     async def botinfo(self, ctx ):
         await ctx.channel.purge( limit = 1 )
-        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  подробнее о командах  =help\n По вопросам обращатся на сервер https://discord.gg/NfTf9JD", color = 000000)
+        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  подробнее о командах  =help\n По вопросам обращатся на сервер https://discord.gg/NfTf9JD", color = 0x00FF00)
         emt.add_field(name=f'**Меня создал:**', value="Stanislav", inline=True)  # Создает строку
         emt.add_field(name=f'**Помощь в создании:**', value="Topian Team", inline=True)  # Создает строку
         emt.add_field(name=f'**Лицензия:**', value="TSBot", inline=True)  # Создает строку
@@ -61,7 +61,7 @@ class user(commands.Cog):
         allvoice = len(ctx.guild.voice_channels)
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
-        embed = discord.Embed(title=f"{ctx.guild.name}", color=0xff0000, timestamp=ctx.message.created_at)
+        embed = discord.Embed(title=f"{ctx.guild.name}", color=0x00FF00, timestamp=ctx.message.created_at)
         embed.description=(
             f":timer: Сервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
             f":flag_white: Регион **{ctx.guild.region}\n\nГлава сервера **{ctx.guild.owner}**\n\n"
@@ -96,7 +96,7 @@ class user(commands.Cog):
                                                                                           f"ID: {Member.id}\n\n"
                                                                                           f"Высшая роль: {Member.top_role}\n\n"
                                                                                           f"Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", 
-                                                                                          color=0xff0000, timestamp=ctx.message.created_at)
+                                                                                          color=0x00FF00, timestamp=ctx.message.created_at)
 
         emb.set_thumbnail(url= Member.avatar_url)
         emb.set_footer(icon_url= Member.avatar_url)
@@ -108,7 +108,7 @@ class user(commands.Cog):
     @commands.command()
     async def avatar(self, ctx, member : discord.Member = None):
         user = ctx.message.author if (member == None) else member
-        embed = discord.Embed(title=f'Аватар пользователя {user}', color= 0x0c0c0c)
+        embed = discord.Embed(title=f'Аватар пользователя {user}', color= 0x00FF00)
         embed.set_image(url=user.avatar_url)
         await ctx.send(embed=embed)
 
