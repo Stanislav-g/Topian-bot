@@ -43,7 +43,7 @@ class user(commands.Cog):
 
     #yandex
     @commands.command()
-    async def yandex(ctx, *, question):  # пояндексить
+    async def yandex(ctx, *, question = None):  # пояндексить
         # сам сайт
         if question == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -57,7 +57,7 @@ class user(commands.Cog):
 
     #wiki
     @commands.command() 
-    async def wiki( ctx,*, amount: str):
+    async def wiki( ctx,*, amount: str = None):
 
         if amount == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -71,7 +71,7 @@ class user(commands.Cog):
   
     #google
     @commands.command()
-    async def google(ctx, *, question):  # погуглить
+    async def google(ctx, *, question = None):  # погуглить
         # сам сайт
         if question == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
