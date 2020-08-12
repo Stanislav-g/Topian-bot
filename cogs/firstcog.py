@@ -128,7 +128,7 @@ class user(commands.Cog):
         #emoji       
     @commands.command()
     @commands.has_permissions( administrator = True )
-    async def emoji(self, ctx, id:int,reaction:str = None):
+    async def emoji(self, ctx, id:int = None, reaction:str = None):
             await ctx.message.delete()
             if id == None:
                 embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -143,7 +143,7 @@ class user(commands.Cog):
         #tempban
     @commands.command()
     @commands.has_permissions( administrator = True )
-    async def tempban(self, ctx, member : discord.Member, time:int, arg:str, *, reason=None):
+    async def tempban(self, ctx, member : discord.Member = None, time:int = None, arg:str = None, *, reason = None):
         await ctx.channel.purge( limit = 1 )
         if member == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -193,7 +193,7 @@ class user(commands.Cog):
     @commands.has_permissions(administrator = True)
     async def changing_name(self, ctx, member: discord.Member = None, nickname: str = None):
         await ctx.channel.purge( limit = 1 )
-        await ctx.send('Info')
+        
         try:
             if member is None:
                 embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
