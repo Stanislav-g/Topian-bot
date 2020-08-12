@@ -317,7 +317,7 @@ class user(commands.Cog):
         except:
             await ctx.send(embed = discord.Embed(description = f' Не удалось выдать роль.', color=0x0c0c0c))
 
-    @client.event
+    @commands.Cog.listener
     async def auto_emoji(self, ctx, id: int, reaction:str = None, arg = None):
         channel = id
         emj = str('👍')
