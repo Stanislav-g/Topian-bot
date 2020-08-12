@@ -45,7 +45,10 @@ class user(commands.Cog):
     @commands.has_permissions(manage_messages = True)
     async def __clear(self, ctx, member: typing.Optional[discord.Member], amount : int):
                 await ctx.message.delete()
-
+                if amount == None:
+                    embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+                    embw.add_field( name = 'clear',value = '**clear** = clear (количество) или clear (пользователь)(количество)')
+                    await ctx.author.send( embed = embw )
                 if member == None:
                     await ctx.channel.purge(limit = amount)
                 elif member != None and member in ctx.guild.members:
@@ -62,6 +65,11 @@ class user(commands.Cog):
     @commands.has_permissions( administrator = True )
 
     async def kick(self, ctx, member: discord.Member, *, reason = None):
+        if member == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'Kick',value = '**kick** = kick @user')
+            await ctx.author.send( embed = embw )
+            
         emb = discord.Embed( title = 'Kick', colour = discord.Color.red() )
         await ctx.channel.purge( limit = 1 )
 
