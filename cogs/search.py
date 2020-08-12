@@ -17,7 +17,6 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    
     #search
     @commands.command()
     async def search(ctx, *, question = None): 
