@@ -43,15 +43,16 @@ class user(commands.Cog):
         
     @commands.command(aliases = ['clear', 'c'])
     @commands.has_permissions(manage_messages = True)
-    async def __clear(self, ctx, member: typing.Optional[discord.Member] = None, amount : int = None ):
+    async def __clear(self, ctx, member: typing.Optional[discord.Member], amount : int):
                 await ctx.message.delete()
-               
-                 if member == None:
+
+                if member == None:
                     await ctx.channel.purge(limit = amount)
-                 if amount == None:
+                if amount == None:
                     embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                    embw.add_field( name = 'clear',value = '**clear** = clear (количество) или clear (пользователь)(количество)')
+                    embw.add_field( name = 'Commands',value = 'test')
                     await ctx.author.send( embed = embw )
+
                 elif member != None and member in ctx.guild.members:
                     number = 0
                     def predicate(message):
