@@ -317,7 +317,22 @@ class user(commands.Cog):
         except:
             await ctx.send(embed = discord.Embed(description = f' Не удалось выдать роль.', color=0x0c0c0c))
 
-
+    @client.event
+    async def auto_emoji(self, ctx, id: int, reaction:str = None, arg = None):
+        channel = id
+        emj = str('👍')
+        await channel.message.add_reaction(emj)
+        emji = str('👎')
+        await channel.message.add_reaction(emji)
+        if arg == "s":
+                await asyncio.sleep(time)          
+            elif arg == "m":
+                await asyncio.sleep(time * 60)
+            elif arg == "h":
+                await asyncio.sleep(time * 60 * 60)
+            elif arg == "d":
+                await asyncio.sleep(time * 60 * 60 * 24)
+        
      
 def setup(client):
     client.add_cog(user(client))
