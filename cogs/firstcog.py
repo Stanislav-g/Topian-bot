@@ -147,19 +147,19 @@ class user(commands.Cog):
             embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
             await ctx.send( embed = embw )
             
-            elif time == None:
-                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
-                await ctx.send( embed = embw )
-
-            elif arg == None:
-                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
-                await ctx.send( embed = embw )
-            elif reason == None:
-                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
-                await ctx.send( embed = embw )
+        if time == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
+            await ctx.send( embed = embw )
+            
+        if arg == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
+            await ctx.send( embed = embw )
+        if reason == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
+            await ctx.send( embed = embw )
         else:
             if member == ctx.message.author:
                 return await ctx.send("Ты не можешь забанить сам себя.")
