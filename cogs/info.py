@@ -18,10 +18,10 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    
+        
 
     #ip_info
-   @commands.command()
+    @commands.command()
     async def ip_info(self, ctx, arg ):
         await ctx.channel.purge(limit = 1)
         response = requests.get( f'http://ipinfo.io/{ arg }/json' )
