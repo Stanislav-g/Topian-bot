@@ -11,11 +11,14 @@ from random import randint, choice, choices
 import io
 import sqlite3
 import random as r
+import typing 
 
 class user(commands.Cog):
 
     def __init__(self, client):
         self.client = client
+
+    
 
     #ip_info
    @commands.command()
@@ -113,4 +116,4 @@ class user(commands.Cog):
         await ctx.send(embed=emt)
     
 def setup(client):
-client.add_cog(user(client))
+    client.add_cog(user(client))
