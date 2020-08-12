@@ -22,10 +22,10 @@ class user(commands.Cog):
     async def help(self, ctx ):
         await ctx.channel.purge( limit = 1 )
         emb = discord.Embed( title = '**Moderation**', colour = discord.Color.red() )
-        emb.add_field( name = 'Commands',value = '*clear* = clear (количество) или clear (пользователь)(количество)\n*ban* = ban @user\n *unban* = unban @user\n *kick* = kick @user\n *emoji* = emoji (message id) (emoji)\n*tempban* = tempban @user *s* or *m* or *h* or *d*\n*temp_add_role* = temp_add_role (time) @user @role\n *add_role* = add_role @user @role\n*channel_create* = channel_create (name)\n*voice_create* = voice_create (name)\n*suggest* = suggest (text)\n*changing_name* = changing_name @user ')
+        emb.add_field( name = 'Commands',value = '**=clear** - clear (количество) или clear (пользователь)(количество)\n**=ban** - ban @user\n **=unban** - unban @user\n **=kick** - kick @user\n **=emoji** - emoji (message id) (emoji)\n**-tempban** - tempban @user *s* or *m* or *h* or *d*\n**=temp_add_role** - temp_add_role (time) @user @role\n **=add_role** - add_role @user @role\n**=channel_create** - channel_create (name)\n**=voice_create** - voice_create (name)\n**=suggest** - suggest (text)\n**=changing_name** - changing_name @user ')
         await ctx.author.send( embed = emb )
         embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-        embw.add_field( name = 'Commands',value = 'test')
+        embw.add_field( name = 'Commands',value = '**=userinfo** - userinfo @user\n**=botinfo**\n**=serverinfo**\n**=avatar** - avatar или avatar @user ')
         await ctx.author.send( embed = embw )
 
        
