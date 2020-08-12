@@ -46,7 +46,7 @@ class user(commands.Cog):
     async def __clear(self, ctx, member: typing.Optional[discord.Member], amount : int = None ):
                 await ctx.message.delete()
                
-                 if not Member:
+                 if Member == None:
                     await ctx.channel.purge(limit = amount)
                  if amount == None:
                     embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
