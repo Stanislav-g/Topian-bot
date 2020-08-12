@@ -128,13 +128,16 @@ class user(commands.Cog):
         #emoji       
     @commands.command()
     @commands.has_permissions( administrator = True )
-    async def emoji(self, ctx,id:int,reaction:str = None):
+    async def emoji(self, ctx, id:int,reaction:str = None):
             await ctx.message.delete()
+            if id == None:
+                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+                embw.add_field( name = 'Emoji',value = '**emoji** = emoji (message id) (emoji)')
+                await ctx.send( embed = embw )
             if reaction == None:
                 embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
                 embw.add_field( name = 'Emoji',value = '**emoji** = emoji (message id) (emoji)')
                 await ctx.send( embed = embw )
-
             message = await ctx.message.channel.fetch_message(id)
             await message.add_reaction(reaction)
         #tempban
