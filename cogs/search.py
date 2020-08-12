@@ -53,7 +53,7 @@ class user(commands.Cog):
  
 
     #wiki
-   @commands.command() #!!wiki  !!вики
+    @commands.command() 
     async def wiki( ctx,*, amount: str):
 
         if amount == None:
