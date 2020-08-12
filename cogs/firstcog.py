@@ -325,13 +325,13 @@ class user(commands.Cog):
         emji = str('👎')
         await channel.message.add_reaction(emji)
         if arg == "s":
-                await asyncio.sleep(time)          
-            elif arg == "m":
-                await asyncio.sleep(time * 60)
-            elif arg == "h":
-                await asyncio.sleep(time * 60 * 60)
-            elif arg == "d":
-                await asyncio.sleep(time * 60 * 60 * 24)
+            await asyncio.sleep(time)          
+        elif arg == "m":
+            await asyncio.sleep(time * 60)
+        elif arg == "h":
+            await asyncio.sleep(time * 60 * 60)
+        elif arg == "d":
+            await asyncio.sleep(time * 60 * 60 * 24)
         
      
 def setup(client):
