@@ -234,15 +234,15 @@ class user(commands.Cog):
             embw.add_field( name = 'Tempban',value = '*temp_add_role** = temp_add_role (time) @user @role')
             await ctx.send( embed = embw )
             
-            elif member == None:
-                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                embw.add_field( name = 'Tempban',value = '**temp_add_role** = temp_add_role (time) @user @role')
-                await ctx.send( embed = embw )
+        if member == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'Tempban',value = '**temp_add_role** = temp_add_role (time) @user @role')
+            await ctx.send( embed = embw )
 
-            elif role == None:
-                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                embw.add_field( name = 'Tempban',value = '**temp_add_role** = temp_add_role (time) @user @role')
-                await ctx.send( embed = embw )
+        if role == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'Tempban',value = '**temp_add_role** = temp_add_role (time) @user @role')
+            await ctx.send( embed = embw )
            
         else:
             try:
