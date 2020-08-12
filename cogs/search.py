@@ -25,8 +25,9 @@ class user(commands.Cog):
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Search',value = '**=search** - search (text)')
             await ctx.send( embed = embw )
-        url = 'https://www.bing.com/search?q=' + str(question).replace(' ', '+')
-        await ctx.send(f'Кое кто не умеет пользоваться поисковиками , я сделал это за него.\n{url}')
+        else:
+            url = 'https://www.bing.com/search?q=' + str(question).replace(' ', '+')
+            await ctx.send(f'Кое кто не умеет пользоваться поисковиками , я сделал это за него.\n{url}')
 
     #youtube_search
     @commands.command()
@@ -36,8 +37,9 @@ class user(commands.Cog):
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'YouTube',value = '**=youtube_search** - youtube_search (text)')
             await ctx.send( embed = embw )
-        url = 'https://www.youtube.com/results?search_query=' + str(question).replace(' ', '+')
-        await ctx.send(f'Так как кое кто не умеет ютубить , я сделал это за него.\n{url}')
+        else:
+            url = 'https://www.youtube.com/results?search_query=' + str(question).replace(' ', '+')
+            await ctx.send(f'Так как кое кто не умеет ютубить , я сделал это за него.\n{url}')
 
     #yandex
     @commands.command()
@@ -47,8 +49,9 @@ class user(commands.Cog):
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Yandex',value = '**=yandex** - yandex (text)')
             await ctx.send( embed = embw )
-        url = 'https://yandex.ua/search/?lr=142&text=' + str(question).replace(' ', '%20')
-        await ctx.send(f'Так как кое кто не умеет яндексить , я сделал это за него.\n{url}')
+        else:
+            url = 'https://yandex.ua/search/?lr=142&text=' + str(question).replace(' ', '%20')
+            await ctx.send(f'Так как кое кто не умеет яндексить , я сделал это за него.\n{url}')
 
  
 
@@ -60,8 +63,9 @@ class user(commands.Cog):
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'WIKI',value = '**=wiki** - wiki (text)')
             await ctx.send( embed = embw )
-        a = '_'.join(amount.split())
-        await ctx.send(f'https://ru.wikipedia.org/wiki/{a}')
+        else:
+            a = '_'.join(amount.split())
+            await ctx.send(f'https://ru.wikipedia.org/wiki/{a}')
 
 
   
@@ -73,8 +77,9 @@ class user(commands.Cog):
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Google',value = '**=google** - google (text)')
             await ctx.send( embed = embw )
-        url = 'https://google.gik-team.com/?q=' + str(question).replace(' ', '+')
-        await ctx.send(f'Так как кое кто не умеет гуглить , я сделал это за него.\n{url}')
+        else:
+            url = 'https://google.gik-team.com/?q=' + str(question).replace(' ', '+')
+            await ctx.send(f'Так как кое кто не умеет гуглить , я сделал это за него.\n{url}')
 
 
 
