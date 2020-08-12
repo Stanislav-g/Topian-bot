@@ -43,7 +43,7 @@ class user(commands.Cog):
         
     @commands.command(aliases = ['clear', 'c'])
     @commands.has_permissions(manage_messages = True)
-    async def __clear(self, ctx, member: typing.Optional[discord.Member], amount : int):
+    async def __clear(self, ctx, member: typing.Optional[discord.Member], amount: int ):
                 await ctx.message.delete()
 
                 if member == None:
