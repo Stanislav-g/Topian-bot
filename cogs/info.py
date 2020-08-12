@@ -105,15 +105,15 @@ class user(commands.Cog):
     @commands.command( pass_context = True )
     async def botinfo(self, ctx ):
         await ctx.channel.purge( limit = 1 )
-        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **NITAGAS bot**.\n  подробнее о командах  -help\n По вопросам обращатся на сервер https://discord.gg/NfTf9JD", color = 000000)
-        emt.add_field(name=f'**Меня создал:**', value="Stanislav", inline=True)  # Создает строку
-        emt.add_field(name=f'**Помощь в создании:**', value="", inline=True)  # Создает строку
-        emt.add_field(name=f'**Лицензия:**', value="Nitagas", inline=True)  # Создает строку
-        emt.add_field(name=f'**Я написан на:**', value="Discord.py", inline=True)  # Создает строку
-        emt.add_field(name=f'**Версия:**', value="1.0", inline=True)  # Создает строку
-        emt.add_field(name=f'**Патч:**', value="1.0", inline=True)  # Создает строку
-        emt.set_footer(text=f"© Copyright 2020 Stanislav | Все права защищены")  # создаение футера
-        await ctx.send(embed=emt)
+        emd = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **NITAGAS bot**.\n  подробнее о командах  -help\n По вопросам обращатся на сервер https://discord.gg/NfTf9JD", color = 000000)
+        emd.add_field(name=f'**Меня создал:**', value="Stanislav", inline=True)  # Создает строку
+        emd.add_field(name=f'**Помощь в создании:**', value="", inline=True)  # Создает строку
+        emd.add_field(name=f'**Лицензия:**', value="Nitagas", inline=True)  # Создает строку
+        emd.add_field(name=f'**Я написан на:**', value="Discord.py", inline=True)  # Создает строку
+        emd.add_field(name=f'**Версия:**', value="1.0", inline=True)  # Создает строку
+        emd.add_field(name=f'**Патч:**', value="1.0", inline=True)  # Создает строку
+        emd.set_footer(text=f"© Copyright 2020 Stanislav | Все права защищены")  # создаение футера
+        await ctx.send( embed=emd )
     
 def setup(client):
     client.add_cog(user(client))
