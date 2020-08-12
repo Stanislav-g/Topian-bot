@@ -105,7 +105,7 @@ class user(commands.Cog):
     @commands.command()
     async def botinfo(self, ctx ):
         await ctx.channel.purge( limit = 1 )
-        emd = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте ** bot**."\n, color = 000000)
+        emd = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **NITAGAS bot**.\n  подробнее о командах  -help\n По вопросам обращатся на сервер https://discord.gg/NfTf9JD", color = 000000)
         emd.add_field(name=f'**Меня создал:**', value="Stanislav", inline=True)  # Создает строку
         emd.add_field(name=f'**Помощь в создании:**', value="", inline=True)  # Создает строку
         emd.add_field(name=f'**Лицензия:**', value="Nitagas", inline=True)  # Создает строку
