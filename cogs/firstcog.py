@@ -53,15 +53,15 @@ class user(commands.Cog):
                     if member == None:
                         await ctx.channel.purge(limit = amount)
                 
-                elif member != None and member in ctx.guild.members:
-                    number = 0
-                    def predicate(message):
-                        return message.author == member
-                    async for elem in ctx.channel.history().filter(predicate):
-                        await elem.delete()
-                        number += 1
-                        if number >= amount:
-                            break
+                    elif member != None and member in ctx.guild.members:
+                        number = 0
+                        def predicate(message):
+                            return message.author == member
+                        async for elem in ctx.channel.history().filter(predicate):
+                            await elem.delete()
+                            number += 1
+                            if number >= amount:
+                                break
     #kick
     @commands.command( pass_context = True )
     @commands.has_permissions( administrator = True )
