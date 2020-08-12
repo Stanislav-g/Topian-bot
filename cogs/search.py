@@ -19,7 +19,7 @@ class user(commands.Cog):
 
     #search
     @commands.command()
-    async def search(ctx, *, question = None): 
+    async def search(self, ctx, *, question = None): 
         # сам сайт
         if question == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -31,7 +31,7 @@ class user(commands.Cog):
 
     #youtube_search
     @commands.command()
-    async def youtube_search(ctx, *, question = None): 
+    async def youtube_search(self, ctx, *, question = None): 
         # сам сайт
         if question == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -43,7 +43,7 @@ class user(commands.Cog):
 
     #yandex
     @commands.command()
-    async def yandex(ctx, *, question = None):  # пояндексить
+    async def yandex(self, ctx, *, question = None):  # пояндексить
         # сам сайт
         if question == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -57,7 +57,7 @@ class user(commands.Cog):
 
     #wiki
     @commands.command() 
-    async def wiki( ctx,*, amount: str = None):
+    async def wiki(self, ctx,*, amount: str = None):
 
         if amount == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -71,7 +71,7 @@ class user(commands.Cog):
   
     #google
     @commands.command()
-    async def google(ctx, *, question = None):  # погуглить
+    async def google(self, ctx, * , question = None):  # погуглить
         # сам сайт
         if question == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
