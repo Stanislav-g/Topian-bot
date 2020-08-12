@@ -27,6 +27,9 @@ class user(commands.Cog):
         embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
         embw.add_field( name = 'Commands',value = '**=userinfo** - userinfo @user\n**=botinfo**\n**=serverinfo**\n**=avatar** - avatar или avatar @user ')
         await ctx.author.send( embed = embw )
+        embw = discord.Embed( title = '**Info**', colour= 0x808080)
+        embw.add_field( name = 'Search',value = '**=search** - search (запрос)\n**=youtube_search** - youtube_search (запрос)\n**=yandex** - yandex (запрос)\n**=wiki** - wiki (запрос)\n**=google** - google (запрос) ')
+        await ctx.author.send( embed = embw )
 
        
 def setup(client):
