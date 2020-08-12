@@ -319,7 +319,7 @@ class user(commands.Cog):
 
     @commands.command()
     async def auto_emoji(self, ctx, cha):
-        channel = ctx.author.get_channel( cha )
+        channel = cha
         while True:
             emj = str('👍')
             await channel.message.add_reaction(emj)
