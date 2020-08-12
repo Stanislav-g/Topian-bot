@@ -47,8 +47,8 @@ class user(commands.Cog):
                 await ctx.message.delete()
                 if amount == None:
                     embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                    embw.add_field( name = 'Commands',value = 'test')
-                    await ctx.author.send( embed = embw )
+                    embw.add_field( name = 'Commands',value = '**clear** = clear (количество) или clear (пользователь)(количество)')
+                    await ctx.send( embed = embw )
                 else:
                     if member == None:
                         await ctx.channel.purge(limit = amount)
@@ -71,16 +71,16 @@ class user(commands.Cog):
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Kick',value = '**kick** = kick @user')
             await ctx.author.send( embed = embw )
-            
-        emb = discord.Embed( title = 'Kick', colour = discord.Color.red() )
-        await ctx.channel.purge( limit = 1 )
+        else:    
+            emb = discord.Embed( title = 'Kick', colour = discord.Color.red() )
+            await ctx.channel.purge( limit = 1 )
 
-        await member.kick( reason = reason )
+            await member.kick( reason = reason )
 
-        emb.set_author( name = member.name, icon_url = member.avatar_url)
-        emb.add_field( name = 'Kick user',value = 'Kick user : {}'.format( member.mention ) )
-        await ctx.send( embed = emb )
-        await ctx.send( f'kick user { member.mention}')
+            emb.set_author( name = member.name, icon_url = member.avatar_url)
+            emb.add_field( name = 'Kick user',value = 'Kick user : {}'.format( member.mention ) )
+            await ctx.send( embed = emb )
+            await ctx.send( f'kick user { member.mention}')
 
     #ban
     @commands.command( pass_context = True )
