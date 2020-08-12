@@ -47,7 +47,7 @@ class user(commands.Cog):
                 await ctx.message.delete()
                 if amount == None:
                     embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                    embw.add_field( name = 'Commands',value = '**clear** = clear (количество) или clear (пользователь)(количество)')
+                    embw.add_field( name = 'Clear',value = '**clear** = clear (количество) или clear (пользователь)(количество)')
                     await ctx.send( embed = embw )
                 else:
                     if member == None:
@@ -70,7 +70,7 @@ class user(commands.Cog):
         if member == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Kick',value = '**kick** = kick @user')
-            await ctx.author.send( embed = embw )
+            await ctx.send( embed = embw )
         else:    
             emb = discord.Embed( title = 'Kick', colour = discord.Color.red() )
             await ctx.channel.purge( limit = 1 )
@@ -85,42 +85,56 @@ class user(commands.Cog):
     #ban
     @commands.command( pass_context = True )
     @commands.has_permissions( administrator = True )
+    async def ban(self, ctx, member: discord.Member = None, *, reason = None):
+        if member == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'Ban',value = '**ban** = ban @user')
+            await ctx.send( embed = embw )
+        else:    
+            emb = discord.Embed( title = 'Ban', colour = discord.Color.red() )
+            await ctx.channel.purge( limit = 1 )
 
-    async def ban(self, ctx, member: discord.Member, *, reason = None):
-        emb = discord.Embed( title = 'Ban', colour = discord.Color.red() )
-        await ctx.channel.purge( limit = 1 )
-
-        await member.ban( reason = reason )
-        emb.set_author( name = member.name, icon_url = member.avatar_url)
-        emb.add_field( name = 'Ban user',value = 'Banned user : {}'.format( member.mention ) )
-        await ctx.send( embed = emb )
-        await ctx.send( f'Ban user { member.mention}')
+            await member.ban( reason = reason )
+            emb.set_author( name = member.name, icon_url = member.avatar_url)
+            emb.add_field( name = 'Ban user',value = 'Banned user : {}'.format( member.mention ) )
+            await ctx.send( embed = emb )
+            await ctx.send( f'Ban user { member.mention}')
 
     #unban
     @commands.command( pass_context = True )
     @commands.has_permissions( administrator = True )
-    async def unban(self, ctx, *, member ):
-        emb.set_author( name = member.name, icon_url = member.avatar_url)
-        emb = discord.Embed( title = 'unban', colour = discord.Color.red() )
-        await ctx.channel.purge( limit = 1)
-        banned_users = await ctx.guild.bans()
-        emb.add_field( name = 'unban user',value = 'Unbaned user : {}'.format( member.mention ) )
-        await ctx.send( embed = emb )
+    async def unban(self, ctx, *, member = None):
+        if member == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'Ban',value = '**ban** = ban @user')
+            await ctx.send( embed = embw )
+        else:    
+            emb.set_author( name = member.name, icon_url = member.avatar_url)
+            emb = discord.Embed( title = 'unban', colour = discord.Color.red() )
+            await ctx.channel.purge( limit = 1)
+            banned_users = await ctx.guild.bans()
+            emb.add_field( name = 'unban user',value = 'Unbaned user : {}'.format( member.mention ) )
+            await ctx.send( embed = emb )
 
-        for ban_entry in banned_users:
-            user = ban_entry.user
+            for ban_entry in banned_users:
+                user = ban_entry.user
 
-            await ctx.guild.unban ( user)
+                await ctx.guild.unban ( user)
 
-            await ctx.send( f'Unbanned user {user.mention }' )
+                await ctx.send( f'Unbanned user {user.mention }' )
 
-            return
+                return
     
         #emoji       
     @commands.command()
     @commands.has_permissions( administrator = True )
-    async def emoji(self, ctx,id:int,reaction:str):
+    async def emoji(self, ctx,id:int,reaction:str = None):
             await ctx.message.delete()
+            if reaction == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'Emoji',value = '**ban** = ban @user')
+            await ctx.send( embed = embw )
+            
             message = await ctx.message.channel.fetch_message(id)
             await message.add_reaction(reaction)
         #tempban
@@ -128,28 +142,47 @@ class user(commands.Cog):
     @commands.has_permissions( administrator = True )
     async def tempban(self, ctx, member : discord.Member, time:int, arg:str, *, reason=None):
         await ctx.channel.purge( limit = 1 )
-        if member == ctx.message.author:
-            return await ctx.send("Ты не можешь забанить сам себя.")
-        msgg =  f'Пользователь : {member}, забанен по причине : {reason}.'
-        msgdm = f'Вы были забанены на сервере {ctx.guild.name}, по причине : {reason}.'
-        if reason == None:
-            msgdm = f'Вы были забанены на сервере : {ctx.guild.name}.'
-        if reason == None:
-            msgg =  f'Пользователь : {member}, забанен.'
-        await ctx.send(msgg)  
-        await member.send(msgdm)
-        await ctx.guild.ban(member, reason=reason)
-        if arg == "s":
-            await asyncio.sleep(time)          
-        elif arg == "m":
-            await asyncio.sleep(time * 60)
-        elif arg == "h":
-            await asyncio.sleep(time * 60 * 60)
-        elif arg == "d":
-            await asyncio.sleep(time * 60 * 60 * 24)
-        await member.unban()
-        await ctx.send(f'Пользователь : {member}, разбанен.')
-        await member.send(f'Вы были разбанены на сервере : {ctx.guild.name}')
+        if member == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'Tempban',value = '**ban** = ban @user')
+            await ctx.send( embed = embw )
+            
+            elif time == None:
+                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+                embw.add_field( name = 'Ban',value = '**ban** = ban @user')
+                await ctx.send( embed = embw )
+
+            elif arg == None:
+                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+                embw.add_field( name = 'Ban',value = '**ban** = ban @user')
+                await ctx.send( embed = embw )
+            elif reason == None:
+                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+                embw.add_field( name = 'Ban',value = '**ban** = ban @user')
+                await ctx.send( embed = embw )
+        else:
+            if member == ctx.message.author:
+                return await ctx.send("Ты не можешь забанить сам себя.")
+            msgg =  f'Пользователь : {member}, забанен по причине : {reason}.'
+            msgdm = f'Вы были забанены на сервере {ctx.guild.name}, по причине : {reason}.'
+            if reason == None:
+                msgdm = f'Вы были забанены на сервере : {ctx.guild.name}.'
+            if reason == None:
+                msgg =  f'Пользователь : {member}, забанен.'
+            await ctx.send(msgg)  
+            await member.send(msgdm)
+            await ctx.guild.ban(member, reason=reason)
+            if arg == "s":
+                await asyncio.sleep(time)          
+            elif arg == "m":
+                await asyncio.sleep(time * 60)
+            elif arg == "h":
+                await asyncio.sleep(time * 60 * 60)
+            elif arg == "d":
+                await asyncio.sleep(time * 60 * 60 * 24)
+            await member.unban()
+            await ctx.send(f'Пользователь : {member}, разбанен.')
+            await member.send(f'Вы были разбанены на сервере : {ctx.guild.name}')
 
 
 
