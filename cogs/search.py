@@ -54,7 +54,7 @@ class user(commands.Cog):
  
 
     #wiki
-   @commands.command(pass_context = True,aliases=['вики']) #!!wiki  !!вики
+   @commands.command() #!!wiki  !!вики
     async def wiki( ctx,*, amount: str):
 
         if amount == None:
