@@ -18,8 +18,8 @@ class user(commands.Cog):
         self.client = client
 
     @commands.command()
-    async def color(self, ctx, n):
-        if n == 1:
+    async def color(self, ctx, amount: int):
+        if amount == 1:
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 1 \n🟧 - 2\n 🟨 - 3\n 🟩 - 4")
