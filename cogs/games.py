@@ -21,10 +21,8 @@ class user(commands.Cog):
     @commands.command()
     async def color(self, ctx):
         global ev_player
-        global ev
         a = random.choice(['1','2'])
-        if a == '1':
-                    
+        if a == '1':       
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 1 \n🟧 - 2\n🟨 - 3\n🟩 - 4")
@@ -82,7 +80,7 @@ class user(commands.Cog):
             await asyncio.sleep(1)
             await ctx.send(f"1")
             await asyncio.sleep(1)
-            if ev == '2':
+            if ev_player == '2':
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
@@ -90,11 +88,11 @@ class user(commands.Cog):
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
-        global ev
+        global ev_player
         if str(payload.emoji) == '🟥': # Emoji для реакций
-            ev = '2'
+            ev_player = '2'
         else:
-            ev = '0'
+            ev_player = '0'
             
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
