@@ -65,6 +65,16 @@ class user(commands.Cog):
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
+                
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        
+        global start_ev
+        if str(payload.emoji) == '🟥': # Emoji для реакций
+            start_ev = '2'
+        else:
+            start_ev = '0'            
+            
         if a == '2':
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
@@ -94,7 +104,16 @@ class user(commands.Cog):
             if ev_player == '2':
                 await ctx.send(f"Ты угадал правильно!")
             else:
-                await ctx.send(f"Ты не угадал")            
+                await ctx.send(f"Ты не угадал") 
+                
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        
+        global ev_player
+        if str(payload.emoji) == '🟨': # Emoji для реакций
+            ev_player = '2'
+        else:
+            ev_player = '0' 
             
         if a == '3':       
             await ctx.send(f"Приготовься, до старта 5 секунд!")
@@ -126,6 +145,16 @@ class user(commands.Cog):
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
+                
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        
+        global th
+        if str(payload.emoji) == '🟩': # Emoji для реакций
+            th = '2'
+        else:
+            th = '0'
+            
         if a == '4':
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
@@ -157,33 +186,6 @@ class user(commands.Cog):
             else:
                 await ctx.send(f"Ты не угадал")
                     
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
-        global start_ev
-        if str(payload.emoji) == '🟥': # Emoji для реакций
-            start_ev = '2'
-        else:
-            start_ev = '0'
-            
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
-        global ev_player
-        if str(payload.emoji) == '🟨': # Emoji для реакций
-            ev_player = '2'
-        else:
-            ev_player = '0'    
-            
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
-        global th
-        if str(payload.emoji) == '🟩': # Emoji для реакций
-            th = '2'
-        else:
-            th = '0'
-            
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
