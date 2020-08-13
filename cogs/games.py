@@ -146,4 +146,4 @@ class user(commands.Cog):
    
         
 def setup(client):
-client.add_cog(user(client))
+    client.add_cog(user(client))
