@@ -99,8 +99,16 @@ class user(commands.Cog):
             else:
                 await ctx.send(f"Ты не угадал")
         
-                
      
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        
+        global start_ev
+        if str(payload.emoji) == '🟥': # Emoji для реакций
+            start_ev = '2'
+        else:
+            start_ev = '0'
+            
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
@@ -110,15 +118,6 @@ class user(commands.Cog):
         else:
             ev_player = '0'
             
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
-        global start_ev
-        if str(payload.emoji) == '🟥': # Emoji для реакций
-            start_ev = '2'
-        else:
-            start_ev = '0'
-    
     @commands.command()
     async def rps(self, ctx, *, mess):
         robot = ['Камень', 'Ножницы', 'Бумага']
