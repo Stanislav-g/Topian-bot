@@ -22,8 +22,8 @@ class user(commands.Cog):
     async def color(self, ctx):
         global ev_player
         global ev
-        amount = random.choice(['1','2'])
-        if amount == 1:
+        a = random.choice(['1','2'])
+        if a == '1':
                     
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
@@ -55,7 +55,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
-        if amount == 2:
+        if a == '2':
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 2647 \n🟧 - 2643\n🟨 - 6234\n🟩 - 7462")
