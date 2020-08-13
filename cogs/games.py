@@ -40,6 +40,7 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩')
+            await asyncio.sleep(5)
             if ev_player == '2':
                 await ctx.send(f"12345")
                     
