@@ -133,7 +133,7 @@ class user(commands.Cog):
     @commands.command()
     async def guild_emojis(self, ctx, member : discord.Member = None):
         if member == None:
-            await ctx.send(f"Гильдии: {guild.emojis}\n\n") 
+            await ctx.send(f"Гильдии: {ctx.guild.emojis}\n\n") 
         
         
 def setup(client):
