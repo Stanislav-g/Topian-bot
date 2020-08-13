@@ -38,9 +38,10 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩') 
-            async def on_reaction_add(emoji, user):
-                if emoji == '🟨':
-                    await ctx.send(f"fin")
+        
+            async def on_raw_reaction_add(self, payload):
+                if str(payload.emoji) == '🟨': # Emoji для реакций
+                    await channel.send("Hello")
                    
     #rps
     @commands.command()
