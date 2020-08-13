@@ -94,69 +94,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
-        if a == '2':
-            await ctx.send(f"Приготовься, до старта 5 секунд!")
-            await asyncio.sleep(5)
-            await ctx.send(f"🟥 - 432\n🟧 - 33432\n🟨 - 097432\n🟩 - 0345632")
-            await asyncio.sleep(1)
-            await ctx.send(f"3")
-            await asyncio.sleep(1)
-            await ctx.send(f"2")
-            await asyncio.sleep(1)
-            await ctx.send(f"1")
-            await asyncio.sleep(1)
-            await ctx.channel.purge(limit = 4)
-            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 097432?", description= f" 🟥 🟧 🟨 🟩 \n\n")
-            message = await ctx.send(embed=embed)
-            await message.add_reaction('🟥')
-            await message.add_reaction('🟧')
-            await message.add_reaction('🟨')
-            await message.add_reaction('🟩')
-            await ctx.send(f"У тебя есть 15 секунд что-бы сделать выбор")
-            await asyncio.sleep(12)
-            await ctx.send(f"3")
-            await asyncio.sleep(1)
-            await ctx.send(f"2")
-            await asyncio.sleep(1)
-            await ctx.send(f"1")
-            await asyncio.sleep(1)
-            if ev_player == '2':
-                await ctx.send(f"Ты угадал правильно!")
-            else:
-                await ctx.send(f"Ты не угадал") 
-                
-                 
-        if a == '3':       
-            await ctx.send(f"Приготовься, до старта 5 секунд!")
-            await asyncio.sleep(5)
-            await ctx.send(f"🟥 - 14555 \n🟧 - 24545\n🟨 - 34555\n🟩 - 34545")
-            await asyncio.sleep(1)
-            await ctx.send(f"3")
-            await asyncio.sleep(1)
-            await ctx.send(f"2")
-            await asyncio.sleep(1)
-            await ctx.send(f"1")
-            await asyncio.sleep(1)
-            await ctx.channel.purge(limit = 4)
-            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 34545?", description= f" 🟥 🟧 🟨 🟩 \n\n")
-            message = await ctx.send(embed=embed)
-            await message.add_reaction('🟥')
-            await message.add_reaction('🟧')
-            await message.add_reaction('🟨')
-            await message.add_reaction('🟩')
-            await ctx.send(f"У тебя есть 15 секунд что-бы сделать выбор")
-            await asyncio.sleep(12)
-            await ctx.send(f"3")
-            await asyncio.sleep(1)
-            await ctx.send(f"2")
-            await asyncio.sleep(1)
-            await ctx.send(f"1")
-            await asyncio.sleep(1) 
-            if th == '2':
-                await ctx.send(f"Ты угадал правильно!")
-            else:
-                await ctx.send(f"Ты не угадал")
-                
+        
      
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
@@ -165,7 +103,8 @@ class user(commands.Cog):
         if str(payload.emoji) == '🟧': # Emoji для реакций
             fo = '2'
         else:
-            fo = '0'       
+            fo = '0'
+            
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
