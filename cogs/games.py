@@ -80,7 +80,7 @@ class user(commands.Cog):
             await asyncio.sleep(1)
             await ctx.send(f"1")
             await asyncio.sleep(1)
-            if ev_player == '2':
+            if start_ev == '2':
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
@@ -88,11 +88,11 @@ class user(commands.Cog):
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
-        global ev_player
+        global start_ev
         if str(payload.emoji) == '🟥': # Emoji для реакций
-            ev_player = '2'
+            start_ev = '2'
         else:
-            ev_player = '0'
+            start_ev = '0'
             
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
