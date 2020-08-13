@@ -27,7 +27,7 @@ class user(commands.Cog):
     @commands.command()
     async def color(self, ctx):
         
-        a = random.choice(['1'])
+        a = random.choice(['1','2','3','4'])
         if a == '1':       
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
