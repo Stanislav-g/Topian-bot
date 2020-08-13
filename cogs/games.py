@@ -66,11 +66,11 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")
                 
 
-        if a == '4':
-            fo = ['']
+        if a == '4':  
+            ev_player = ['']
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
-            await ctx.send(f"🟥 - 432\n🟧 - 095432\n🟨 - 097432\n🟩 - 065432")
+            await ctx.send(f"🟥 - 55 \n🟧 - 14\n🟨 - 34\n🟩 - 35")
             await asyncio.sleep(1)
             await ctx.send(f"3")
             await asyncio.sleep(1)
@@ -79,7 +79,7 @@ class user(commands.Cog):
             await ctx.send(f"1")
             await asyncio.sleep(1)
             await ctx.channel.purge(limit = 4)
-            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 095432?", description= f" 🟥 🟧 🟨 🟩 \n\n")
+            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 14?", description= f" 🟥 🟧 🟨 🟩 \n\n")
             message = await ctx.send(embed=embed)
             await message.add_reaction('🟥')
             await message.add_reaction('🟧')
@@ -92,9 +92,9 @@ class user(commands.Cog):
             await ctx.send(f"2")
             await asyncio.sleep(1)
             await ctx.send(f"1")
-            await asyncio.sleep(1)
+            await asyncio.sleep(1) 
             await ctx.channel.purge(limit = 4)
-            if fo == '2':
+            if ev_player == '2':
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
@@ -104,11 +104,11 @@ class user(commands.Cog):
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
-        global fo
+        global ev_player
         if str(payload.emoji) == '🟧': # Emoji для реакций
-            fo = '2'
+            ev_player = '2'
         else:
-            fo = '0'
+            ev_player = '0'
             
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
