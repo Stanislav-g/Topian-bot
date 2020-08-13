@@ -64,7 +64,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")
                 
 
-        elif a == '4':
+        if a == '4':
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 432\n🟧 - 095432\n🟨 - 097432\n🟩 - 065432")
@@ -94,7 +94,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
-        elif a == '2':
+        if a == '2':
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 432\n🟧 - 33432\n🟨 - 097432\n🟩 - 0345632")
@@ -126,7 +126,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал") 
                 
                  
-        elif a == '3':       
+        if a == '3':       
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 14555 \n🟧 - 24545\n🟨 - 34555\n🟩 - 34545")
@@ -164,35 +164,16 @@ class user(commands.Cog):
         global start_ev
         if str(payload.emoji) == '🟥': # Emoji для реакций
             start_ev = '2'
-        else:
-            start_ev = '0'   
-            
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
         global fo
         if str(payload.emoji) == '🟧': # Emoji для реакций
-            fo = '2'
-        else:
-            fo = '0'  
-            
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
+            fo = '2'   
         global ev_player
         if str(payload.emoji) == '🟨': # Emoji для реакций
             ev_player = '2'
-        else:
-            ev_player = '0'
-            
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-
         global th
         if str(payload.emoji) == '🟩': # Emoji для реакций
-            th = '2'
-        else:
-            th = '0'            
+            th = '2'    
+              
     #rps
     @commands.command()
     async def rps(self, ctx, *, mess):
