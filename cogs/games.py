@@ -38,7 +38,7 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩') 
-            res = await message.wait_for_reaction('🟨')
+            res = await ctx.wait_for_reaction('🟨')
             if res:
                 await channel.send("Hello")
                    
