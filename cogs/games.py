@@ -32,7 +32,8 @@ class user(commands.Cog):
         
         a = random.choice(['1','4'])
         
-        if a == '1':       
+        if a == '1':  
+            start_ev = ['']
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 14 \n🟧 - 45\n🟨 - 34\n🟩 - 35")
@@ -66,6 +67,7 @@ class user(commands.Cog):
                 
 
         if a == '4':
+            fo = ['']
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 432\n🟧 - 095432\n🟨 - 097432\n🟩 - 065432")
