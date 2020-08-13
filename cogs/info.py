@@ -114,29 +114,45 @@ class user(commands.Cog):
         
     @commands.command()
     async def ping(self, ctx):
-        await ctx.send(f'{self.bot.ws.latency * 1000:.0f} ms')
+        await ctx.send(f'{self.client.ws.latency * 1000:.0f} ms')
         
     @commands.command()
     async def user_status(self, ctx, member : discord.Member = None):
         if member == None:
-            await ctx.send(f"Статус: {ctx.author.status}\n\n") 
+            await ctx.send(f"Статус: {ctx.author.status}\n\n")
+            await ctx.send(f"Статус: {ctx.author.mobile_status}\n\n")
+            await ctx.send(f"Статус: {ctx.author.desktop_status}\n\n")
+            await ctx.send(f"Статус: {ctx.author.web_status}\n\n")
         else:
             await ctx.send(f"Статус: {Member.status}\n\n")      
 
-        
+    @commands.command()
+    async def user_join(self, ctx, member : discord.Member = None):
+        if member == None:
+            await ctx.send(f"Участник зашёл на сервер: {Member.joined_at.strftime('%b %#d, %Y')}) 
+        else:
+            await ctx.send(f"Участник зашёл на сервер: {Member.joined_at.strftime('%b %#d, %Y')}) 
+            
+    @commands.command()
+    async def user_boost(self, ctx, member : discord.Member = None):
+        if member == None:
+            await ctx.send(f"Буст: {ctx.author.premium_since}\n\n") 
+        else:
+            await ctx.send(f"Буст: {Member.premium_since}\n\n")    
+            
     @commands.command()
     async def user_roles(self, ctx, member : discord.Member = None):
         if member == None:
-            await ctx.send(f"Статус: {ctx.author.roles}\n\n") 
+            await ctx.send(f"Роли: {ctx.author.roles}\n\n") 
         else:
-            await ctx.send(f"Статус: {Member.roles}\n\n")  
+            await ctx.send(f"Роли: {Member.roles}\n\n")  
         
     @commands.command()
-    async def user_status(self, ctx, member : discord.Member = None):
+    async def user_guild(self, ctx, member : discord.Member = None):
         if member == None:
-            await ctx.send(f"Статус: {ctx.author.guild}\n\n") 
+            await ctx.send(f"Гильдии: {ctx.author.guild}\n\n") 
         else:
-            await ctx.send(f"Статус: {Member.guild}\n\n")  
+            await ctx.send(f"Гильдии: {Member.guild}\n\n")  
         
 def setup(client):
     client.add_cog(user(client))
