@@ -126,12 +126,7 @@ class user(commands.Cog):
         else:
             await ctx.send(f"Статус: {Member.status}\n\n")      
 
-    @commands.command()
-    async def user_join(self, ctx, member : discord.Member = None):
-        if member == None:
-            await ctx.send(f"Участник зашёл на сервер: {Member.joined_at.strftime('%b %#d, %Y')}) 
-        else:
-            await ctx.send(f"Участник зашёл на сервер: {Member.joined_at.strftime('%b %#d, %Y')}) 
+    
             
     @commands.command()
     async def user_boost(self, ctx, member : discord.Member = None):
