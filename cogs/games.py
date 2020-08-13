@@ -16,24 +16,24 @@ class user(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-    global fi = [''] 
-    global se = [''] 
-    global th = [''] 
-    global fo = [''] 
-    global fif = [''] 
+    fi = [''] 
+    se = [''] 
+    th = [''] 
+    fo = [''] 
+    fif = [''] 
     
-    global start_ev = ['']    
-    global ev_player = [''] #игроки в розыгрыше
+    start_ev = ['']    
+    ev_player = [''] #игроки в розыгрыше
     @commands.command()
     async def color(self, ctx):
-        fi 
-        se 
-        th 
-        fo 
-        fif
+        global fi 
+        global se 
+        global th 
+        global fo 
+        global fif
 
-        start_ev  
-        ev_player
+        global start_ev  
+        global ev_player
         a = random.choice(['1','2','3','4'])
         if a == '1':       
             await ctx.send(f"Приготовься, до старта 5 секунд!")
