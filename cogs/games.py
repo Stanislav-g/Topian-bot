@@ -186,13 +186,13 @@ class user(commands.Cog):
             ev_player = '0'
             
     @commands.Cog.listener()
-        async def on_raw_reaction_add(self, payload):
+    async def on_raw_reaction_add(self, payload):
 
-            global th
-            if str(payload.emoji) == '🟩': # Emoji для реакций
-                th = '2'
-            else:
-                th = '0'            
+        global th
+        if str(payload.emoji) == '🟩': # Emoji для реакций
+            th = '2'
+        else:
+            th = '0'            
     #rps
     @commands.command()
     async def rps(self, ctx, *, mess):
