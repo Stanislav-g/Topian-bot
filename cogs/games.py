@@ -159,7 +159,7 @@ class user(commands.Cog):
                 
      
        
-    @Commands.Cog.listener()
+    @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
         global start_ev
@@ -167,7 +167,7 @@ class user(commands.Cog):
             start_ev = '2'
         else:
             start_ev = '0'
-    @Commands.Cog.listener()
+    @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
         global fo
@@ -175,7 +175,7 @@ class user(commands.Cog):
             fo = '2'
         else:
             fo = '0' 
-    @Commands.Cog.listener()
+    @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
         global ev_player
@@ -183,7 +183,7 @@ class user(commands.Cog):
             ev_player = '2'
         else:
             ev_player = '0'   
-    @Commands.Cog.listener()
+    @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
         global th
