@@ -21,7 +21,6 @@ class user(commands.Cog):
     th = [''] 
     fo = [''] 
     fif = [''] 
-    
     start_ev = ['']    
     ev_player = [''] #игроки в розыгрыше
     @commands.command()
@@ -31,10 +30,11 @@ class user(commands.Cog):
         global th 
         global fo 
         global fif
-
         global start_ev  
         global ev_player
+        
         a = random.choice(['1','2','3','4'])
+        
         if a == '1':       
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
@@ -67,7 +67,6 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")   
                     
         if a == '2':
-            start_ev = [''] 
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 2647 \n🟧 - 2643\n🟨 - 6234\n🟩 - 7462")
@@ -124,8 +123,7 @@ class user(commands.Cog):
             await ctx.send(f"2")
             await asyncio.sleep(1)
             await ctx.send(f"1")
-            await asyncio.sleep(1)
-            th = [''] 
+            await asyncio.sleep(1) 
             if th == '2':
                 await ctx.send(f"Ты угадал правильно!")
             else:
