@@ -50,8 +50,10 @@ class user(commands.Cog):
                 ev_player = ['']
                 if ev_player == '2': 
                     await ctx.send(f"Ты угадал правильно!")
-                else:
-                    await ctx.send(f"Ты не угадал")
+                    break
+            await asyncio.sleep(15)        
+            await ctx.send(f"Ты не угадал")    
+                    
         if a == '2':
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
