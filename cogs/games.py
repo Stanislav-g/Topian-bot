@@ -46,13 +46,18 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩')
-            while True:
-                ev_player = ['']
-                if ev_player == '2': 
-                    await ctx.send(f"Ты угадал правильно!")
-                    break
-            await asyncio.sleep(15)        
-            await ctx.send(f"Ты не угадал")    
+            await ctx.send(f"У тебя есть 15 секунд что-бы сделать выбор")
+            await asyncio.sleep(12)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1)
+            if start_ev == '2':
+                await ctx.send(f"Ты угадал правильно!")
+            else:
+                await ctx.send(f"Ты не угадал")   
                     
         if a == '2':
             await ctx.send(f"Приготовься, до старта 5 секунд!")
