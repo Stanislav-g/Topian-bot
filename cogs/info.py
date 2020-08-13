@@ -123,12 +123,6 @@ class user(commands.Cog):
         else:
             await ctx.send(f"Буст: {Member.premium_since}\n\n")    
             
-    @commands.command()
-    async def user_roles(self, ctx, member : discord.Member = None):
-        if member == None:
-            await ctx.send(f"Роли: {ctx.author.roles}\n\n") 
-        else:
-            await ctx.send(f"Роли: {Member.roles}\n\n")  
         
     @commands.command()
     async def guild_emojis(self, ctx, member : discord.Member = None):
