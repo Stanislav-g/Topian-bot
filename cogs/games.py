@@ -66,7 +66,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")
                 
 
-        if a == '4':  
+        elif a == '4':  
             ev_player = ['']
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
@@ -98,7 +98,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
-        if a == '3':  
+        elif a == '3':  
             th = ['']
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
@@ -139,7 +139,7 @@ class user(commands.Cog):
             th = '2'
         else:
             th = '0'
-            break
+           
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
@@ -148,7 +148,7 @@ class user(commands.Cog):
             start_ev = '2'
         else:
             start_ev = '0'
-            break
+         
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
@@ -157,7 +157,7 @@ class user(commands.Cog):
             ev_player = '2'
         else:
             ev_player = '0'
-            break
+           
     @commands.command()
     async def rps(self, ctx, *, mess):
         robot = ['Камень', 'Ножницы', 'Бумага']
