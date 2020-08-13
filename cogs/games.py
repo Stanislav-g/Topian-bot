@@ -22,7 +22,7 @@ class user(commands.Cog):
         if amount == 1:
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
-            await ctx.send(f"🟥 - 1 \n🟧 - 2\n 🟨 - 3\n 🟩 - 4")
+            await ctx.send(f"🟥 - 1 \n🟧 - 2\n🟨 - 3\n🟩 - 4")
             await asyncio.sleep(1)
             await ctx.send(f"3")
             await asyncio.sleep(1)
@@ -37,8 +37,9 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩')
-            if str(payload.emoji) == '🟨': # Emoji для реакций
-                await ctx.send(f"fin!") 
+            async def on_raw_reaction_add(payload):
+                if str(payload.emoji) == '🟨': # Emoji для реакций
+                    await ctx.send(f"fin!") 
     #rps
     @commands.command()
     async def rps(self, ctx, *, mess):
