@@ -99,7 +99,15 @@ class user(commands.Cog):
             else:
                 await ctx.send(f"Ты не угадал")
         
-     
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        
+        global th
+        if str(payload.emoji) == '⚪️': # Emoji для реакций
+            th = '2'
+        else:
+            th = '0'
+            
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
