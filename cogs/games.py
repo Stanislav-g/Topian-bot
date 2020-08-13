@@ -30,7 +30,7 @@ class user(commands.Cog):
         global start_ev  
         global ev_player
         
-        a = random.choice(['1'])
+        a = random.choice(['4'])
         
         if a == '1':       
             await ctx.send(f"Приготовься, до старта 5 секунд!")
