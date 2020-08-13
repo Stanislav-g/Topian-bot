@@ -30,7 +30,7 @@ class user(commands.Cog):
         global start_ev  
         global ev_player
         
-        a = random.choice(['4'])
+        a = random.choice(['1','4'])
         
         if a == '1':       
             await ctx.send(f"Приготовься, до старта 5 секунд!")
@@ -58,6 +58,7 @@ class user(commands.Cog):
             await asyncio.sleep(1)
             await ctx.send(f"1")
             await asyncio.sleep(1) 
+            await ctx.channel.purge(limit = 4)
             if start_ev == '2':
                 await ctx.send(f"Ты угадал правильно!")
             else:
@@ -90,11 +91,13 @@ class user(commands.Cog):
             await asyncio.sleep(1)
             await ctx.send(f"1")
             await asyncio.sleep(1)
+            await ctx.channel.purge(limit = 4)
             if fo == '2':
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
         
+                
      
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
