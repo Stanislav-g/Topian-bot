@@ -115,12 +115,12 @@ class user(commands.Cog):
     #coinflip
     @commands.command()
     async def coinflip(self, ctx ):
-        a = random.choice(['орел','решка','орел','решка','орел'])
+        a = random.choice(['орел','решка','орел','решка'])
         await ctx.send( a )
 
     #knb
     @commands.command()
-    async def knb(self, ctx, member: discord.Member ):
+    async def knb(self, ctx, member: discord.Member = None):
         a = random.choice([':moyai: камень',':scissors: ножницы',':scroll: бумага'])
         v = random.choice([':moyai: камень',':scissors: ножницы',':scroll: бумага'])
         if Member == None:
