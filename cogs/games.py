@@ -66,7 +66,32 @@ class user(commands.Cog):
             else:
                 emb.add_field(name = ':scissors:', value = 'Ничья!')
             await ctx.send(embed = emb)
+    #knb
+    @commands.command()
+    async def knb(self, ctx, member: discord.Member = None):
+        a = random.choice([':moyai: камень',':scissors: ножницы',':scroll: бумага'])
+        v = random.choice([':moyai: камень',':scissors: ножницы',':scroll: бумага'])
+        if Member == None:
+             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+             embw.add_field( name = 'knb',value = '**knb** = knb @user')
+             await ctx.send( embed = embw )
+        else:    
+            emb = discord.Embed( title = 'Камень, ножницы, бумага', colour = discord.Color.blue() )
 
+            await ctx.send( embed = emb )
+
+            emg = discord.Embed( title = f'{ member.name}', colour = discord.Color.red() )
+            await ctx.send( embed = emg )
+
+            emw = discord.Embed( title = a, colour = discord.Color.blue() )
+            await ctx.send( embed = emw )
+
+            emd = discord.Embed( title = f'{ ctx.author.name}', colour = discord.Color.red() )
+            await ctx.send( embed = emd )
+
+            emx = discord.Embed( title = v, colour = discord.Color.blue() )
+            await ctx.send( embed = emx )
+            
     @commands.command() # Попытки 5
     async def guess(self, ctx):
         await ctx.message.delete()
@@ -118,31 +143,7 @@ class user(commands.Cog):
         a = random.choice(['орел','решка','орел','решка'])
         await ctx.send( a )
 
-    #knb
-    @commands.command()
-    async def knb(self, ctx, member: discord.Member = None):
-        a = random.choice([':moyai: камень',':scissors: ножницы',':scroll: бумага'])
-        v = random.choice([':moyai: камень',':scissors: ножницы',':scroll: бумага'])
-        if Member == None:
-             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-             embw.add_field( name = 'knb',value = '**knb** = knb @user')
-             await ctx.send( embed = embw )
-        else:    
-            emb = discord.Embed( title = 'Камень, ножницы, бумага', colour = discord.Color.blue() )
-
-            await ctx.send( embed = emb )
-
-            emg = discord.Embed( title = f'{ member.name}', colour = discord.Color.red() )
-            await ctx.send( embed = emg )
-
-            emw = discord.Embed( title = a, colour = discord.Color.blue() )
-            await ctx.send( embed = emw )
-
-            emd = discord.Embed( title = f'{ ctx.author.name}', colour = discord.Color.red() )
-            await ctx.send( embed = emd )
-
-            emx = discord.Embed( title = v, colour = discord.Color.blue() )
-            await ctx.send( embed = emx )
+   
         
 def setup(client):
 client.add_cog(user(client))
