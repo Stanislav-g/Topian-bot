@@ -47,7 +47,7 @@ class user(commands.Cog):
     async def on_raw_reaction_add(self, payload):
         global ev_player
         if str(payload.emoji) == '🟨': # Emoji для реакций
-            ev_player = ev_player + '1'
+            ev_player = ev_player + 1
                          
     #rps
     @commands.command()
