@@ -158,7 +158,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")
                 
      
-@commands.Cog.listener()
+    @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
         global fo
