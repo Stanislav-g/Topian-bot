@@ -19,9 +19,12 @@ class user(commands.Cog):
         
     ev_player = [''] #игроки в розыгрыше
     @commands.command()
-    async def color(self, ctx, amount: int):
+    async def color(self, ctx):
         global ev_player
+        global ev
+        amount = random.choice(['1','2'])
         if amount == 1:
+                    
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 1 \n🟧 - 2\n🟨 - 3\n🟩 - 4")
@@ -40,10 +43,59 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩')
-            await asyncio.sleep(5)
+            await ctx.send(f"У тебя есть 15 секунд что-бы сделать выбор")
+            await asyncio.sleep(12)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1)
             if ev_player == '2':
-                await ctx.send(f"12345")
+                await ctx.send(f"Ты угадал правильно!")
+            else:
+                await ctx.send(f"Ты не угадал")
+        if amount == 2:
+            await ctx.send(f"Приготовься, до старта 5 секунд!")
+            await asyncio.sleep(5)
+            await ctx.send(f"🟥 - 2647 \n🟧 - 2643\n🟨 - 6234\n🟩 - 7462")
+            await asyncio.sleep(1)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1)
+            await ctx.channel.purge(limit = 4)
+            await ctx.send(f"что было под номером 3?")
+            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 2647?", description= f" 🟥 🟧 🟨 🟩 \n\n")
+            message = await ctx.send(embed=embed)
+            await message.add_reaction('🟥')
+            await message.add_reaction('🟧')
+            await message.add_reaction('🟨')
+            await message.add_reaction('🟩')
+            await ctx.send(f"У тебя есть 15 секунд что-бы сделать выбор")
+            await asyncio.sleep(12)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1)
+            if ev == '2':
+                await ctx.send(f"Ты угадал правильно!")
+            else:
+                await ctx.send(f"Ты не угадал")
                     
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        
+        global ev
+        if str(payload.emoji) == '🟥': # Emoji для реакций
+            ev = '2'
+        else:
+            ev = '0'
+            
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
