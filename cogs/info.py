@@ -115,19 +115,7 @@ class user(commands.Cog):
     @commands.command()
     async def ping(self, ctx):
         await ctx.send(f'{self.client.ws.latency * 1000:.0f} ms')
-        
-    @commands.command()
-    async def user_status(self, ctx, member : discord.Member = None):
-        if member == None:
-            await ctx.send(f"Статус: {ctx.author.status}\n\n")
-            await ctx.send(f"Статус: {ctx.author.mobile_status}\n\n")
-            await ctx.send(f"Статус: {ctx.author.desktop_status}\n\n")
-            await ctx.send(f"Статус: {ctx.author.web_status}\n\n")
-        else:
-            await ctx.send(f"Статус: {Member.status}\n\n")      
-
-    
-            
+              
     @commands.command()
     async def user_boost(self, ctx, member : discord.Member = None):
         if member == None:
@@ -143,11 +131,10 @@ class user(commands.Cog):
             await ctx.send(f"Роли: {Member.roles}\n\n")  
         
     @commands.command()
-    async def user_guild(self, ctx, member : discord.Member = None):
+    async def guild_emojis(self, ctx, member : discord.Member = None):
         if member == None:
-            await ctx.send(f"Гильдии: {ctx.author.guild}\n\n") 
-        else:
-            await ctx.send(f"Гильдии: {Member.guild}\n\n")  
+            await ctx.send(f"Гильдии: {guild.emojis}\n\n") 
+        
         
 def setup(client):
     client.add_cog(user(client))
