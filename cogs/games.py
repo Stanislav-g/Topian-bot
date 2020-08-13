@@ -38,7 +38,7 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩') 
-            async def on_raw_reaction_add(payload):
+            async def on_reaction_add(payload):
                 if str(payload.emoji) == '🟨': # Emoji для реакций
                     await ctx.send(f"fin")
                    
