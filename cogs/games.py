@@ -38,8 +38,8 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩') 
-            async def on_reaction_add(payload):
-                if str(payload.emoji) == '🟨': # Emoji для реакций
+            async def on_reaction_add(emoji, user):
+                if emoji == '🟨':
                     await ctx.send(f"fin")
                    
     #rps
