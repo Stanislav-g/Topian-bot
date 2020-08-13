@@ -39,16 +39,15 @@ class user(commands.Cog):
             await message.add_reaction('🟥')
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
-            await message.add_reaction('🟩') 
-            while True:
-                if ev_player == '1':
-                    await ctx.send(f"12345")
+            await message.add_reaction('🟩')
+            if ev_player == '2':
+                await ctx.send(f"12345")
                     
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         global ev_player
         if str(payload.emoji) == '🟨': # Emoji для реакций
-            ev_player = '1'
+            ev_player = ev_player + '1'
                          
     #rps
     @commands.command()
