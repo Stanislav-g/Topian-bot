@@ -111,7 +111,32 @@ class user(commands.Cog):
         embed = discord.Embed(title=f'Аватар пользователя {user}', color= 0x00FF00)
         embed.set_image(url=user.avatar_url)
         await ctx.send(embed=embed)
+        
+    @commands.command()
+    async def ping(self, ctx):
+        await ctx.send(f'{self.bot.ws.latency * 1000:.0f} ms')
+        
+    @commands.command()
+    async def user_status(self, ctx, member : discord.Member = None):
+        if member == None:
+            await ctx.send(f"Статус: {ctx.author.status}\n\n") 
+        else:
+            await ctx.send(f"Статус: {Member.status}\n\n")      
 
-    
+        
+    @commands.command()
+    async def user_roles(self, ctx, member : discord.Member = None):
+        if member == None:
+            await ctx.send(f"Статус: {ctx.author.roles}\n\n") 
+        else:
+            await ctx.send(f"Статус: {Member.roles}\n\n")  
+        
+    @commands.command()
+    async def user_status(self, ctx, member : discord.Member = None):
+        if member == None:
+            await ctx.send(f"Статус: {ctx.author.guild}\n\n") 
+        else:
+            await ctx.send(f"Статус: {Member.guild}\n\n")  
+        
 def setup(client):
     client.add_cog(user(client))
