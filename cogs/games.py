@@ -30,7 +30,7 @@ class user(commands.Cog):
         global start_ev  
         global ev_player
         
-        a = random.choice(['1','2','3','4'])
+        a = random.choice(['1'])
         
         if a == '1':       
             await ctx.send(f"Приготовься, до старта 5 секунд!")
@@ -158,22 +158,25 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")
                 
      
+       
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
-        
+
         global start_ev
         if str(payload.emoji) == '🟥': # Emoji для реакций
-            start_ev = '2'
+            if str(payload.emoji) == '🟥':
+                start_ev = '2'
+            else:
+                start_ev = '0'    
         global fo
-        if str(payload.emoji) == '🟧': # Emoji для реакций
-            fo = '2'   
+        if str(payload.emoji) == '🟧:': # Emoji для реакций
+            fo = '2'
         global ev_player
-        if str(payload.emoji) == '🟨': # Emoji для реакций
+        if str(payload.emoji) == '🟨:': # Emoji для реакций
             ev_player = '2'
         global th
         if str(payload.emoji) == '🟩': # Emoji для реакций
-            th = '2'    
-              
+            th = '2'             
     #rps
     @commands.command()
     async def rps(self, ctx, *, mess):
