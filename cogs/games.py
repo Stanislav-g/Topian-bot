@@ -27,7 +27,7 @@ class user(commands.Cog):
     @commands.command()
     async def color(self, ctx):
         global ev_player
-        a = random.choice(['1','2','3','4'])
+        a = random.choice(['1'])
         if a == '1':       
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
@@ -46,18 +46,12 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩')
-            await ctx.send(f"У тебя есть 15 секунд что-бы сделать выбор")
-            await asyncio.sleep(12)
-            await ctx.send(f"3")
-            await asyncio.sleep(1)
-            await ctx.send(f"2")
-            await asyncio.sleep(1)
-            await ctx.send(f"1")
-            await asyncio.sleep(1)
-            if ev_player == '2':
-                await ctx.send(f"Ты угадал правильно!")
-            else:
-                await ctx.send(f"Ты не угадал")
+            
+            while True:
+                if ev_player == '2':
+                    await ctx.send(f"Ты угадал правильно!")
+                else:
+                    await ctx.send(f"Ты не угадал")
         if a == '2':
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
