@@ -25,12 +25,14 @@ class user(commands.Cog):
         emb.add_field( name = 'Commands',value = '**=clear** - clear (количество) или clear (пользователь)(количество)\n**=ban** - ban @user\n **=unban** - unban @user\n **=kick** - kick @user\n **=emoji** - emoji (message id) (emoji)\n**-tempban** - tempban @user *s* or *m* or *h* or *d*\n**=temp_add_role** - temp_add_role (time) @user @role\n **=add_role** - add_role @user @role\n**=channel_create** - channel_create (name)\n**=voice_create** - voice_create (name)\n**=suggest** - suggest (text)\n**=changing_name** - changing_name @user ')
         await ctx.author.send( embed = emb )
         embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-        embw.add_field( name = 'Commands',value = '**=userinfo** - userinfo @user\n**=botinfo**\n**=serverinfo**\n**=avatar** - avatar или avatar @user ')
+        embw.add_field( name = 'Commands',value = '**=userinfo** - userinfo @user\n**=botinfo**\n**=serverinfo**\n**=avatar** - avatar или avatar @user\n**=ping** - ping\n**=user_boost** - user_ boost @user ')
         await ctx.author.send( embed = embw )
-        embw = discord.Embed( title = '**Info**', colour= 0x808080)
-        embw.add_field( name = 'Search',value = '**=search** - search (запрос)\n**=youtube_search** - youtube_search (запрос)\n**=yandex** - yandex (запрос)\n**=wiki** - wiki (запрос)\n**=google** - google (запрос) ')
+        embw = discord.Embed( title = '**Search**', colour= 0x808080)
+        embw.add_field( name = 'Commands',value = '**=search** - search (запрос)\n**=youtube_search** - youtube_search (запрос)\n**=yandex** - yandex (запрос)\n**=wiki** - wiki (запрос)\n**=google** - google (запрос) ')
         await ctx.author.send( embed = embw )
-
+        embw = discord.Embed( title = '**Games**', colour = discord.Color.green)
+        embw.add_field( name = 'Commands',value = '**=rps** - rps (камень, ножницы или бумага)\n**=guess** - guess\n**=coinflip** - coinflip\n**=knb** - knb @user')
+        await ctx.author.send( embed = embw )
        
 def setup(client):
     client.add_cog(user(client))
