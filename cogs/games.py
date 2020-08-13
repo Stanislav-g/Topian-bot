@@ -16,9 +16,11 @@ class user(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-
+        
+    ev_player = [''] #игроки в розыгрыше
     @commands.command()
     async def color(self, ctx, amount: int):
+        global ev_player
         if amount == 1:
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
@@ -38,10 +40,16 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩') 
-            res = await self.client.wait_for_reaction('🟨')
-            if res:
-                await ctx.send("Hello")
-                   
+            while True:
+                if ev_player == '1':
+                    await ctx.send(f"12345")
+                    
+    @client.event
+    async def on_raw_reaction_add(payload):
+        global ev_player
+        if str(payload.emoji) == '🟨': # Emoji для реакций
+            ev_player = '1'
+                         
     #rps
     @commands.command()
     async def rps(self, ctx, *, mess):
