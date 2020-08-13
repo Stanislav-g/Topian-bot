@@ -38,9 +38,9 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩') 
-            res = await ctx.wait_for_reaction('🟨')
+            res = await self.client.wait_for_reaction('🟨')
             if res:
-                await channel.send("Hello")
+                await ctx.send("Hello")
                    
     #rps
     @commands.command()
