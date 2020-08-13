@@ -167,30 +167,7 @@ class user(commands.Cog):
             start_ev = '2'
         else:
             start_ev = '0'
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
-        global fo
-        if str(payload.emoji) == '🟧': # Emoji для реакций
-            fo = '2'
-        else:
-            fo = '0' 
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
-        global ev_player
-        if str(payload.emoji) == '🟨': # Emoji для реакций
-            ev_player = '2'
-        else:
-            ev_player = '0'   
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
-        global th
-        if str(payload.emoji) == '🟩': # Emoji для реакций
-            th = '2'
-        else:
-            th = '0'               
+    
     @commands.command()
     async def rps(self, ctx, *, mess):
         robot = ['Камень', 'Ножницы', 'Бумага']
