@@ -46,9 +46,8 @@ class user(commands.Cog):
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
             await message.add_reaction('🟩')
-            
             while True:
-                if ev_player == '2':
+                if ev_player == '2': 
                     await ctx.send(f"Ты угадал правильно!")
                 else:
                     await ctx.send(f"Ты не угадал")
