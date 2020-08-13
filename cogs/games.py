@@ -163,18 +163,21 @@ class user(commands.Cog):
     async def on_raw_reaction_add(self, payload):
 
         global start_ev
+        global fo
+        global ev_player
+        global th
         if str(payload.emoji) == '🟥': # Emoji для реакций
             if str(payload.emoji) == '🟥':
                 start_ev = '2'
             else:
                 start_ev = '0'    
-        global fo
+        
         if str(payload.emoji) == '🟧:': # Emoji для реакций
             fo = '2'
-        global ev_player
+        
         if str(payload.emoji) == '🟨:': # Emoji для реакций
             ev_player = '2'
-        global th
+        
         if str(payload.emoji) == '🟩': # Emoji для реакций
             th = '2'             
     #rps
