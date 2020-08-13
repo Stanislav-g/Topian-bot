@@ -67,6 +67,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")   
                     
         if a == '2':
+            start_ev = [''] 
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 2647 \n🟧 - 2643\n🟨 - 6234\n🟩 - 7462")
