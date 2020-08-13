@@ -30,6 +30,7 @@ class user(commands.Cog):
             await asyncio.sleep(1)
             await ctx.send(f"1")
             await asyncio.sleep(1)
+            await ctx.channel.purge(limit = 4)
             await ctx.send(f"что было под номером 3?")
             embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 3?", description= f" 🟥 🟧 🟨 🟩 \n\n")
             message = await ctx.send(embed=embed)
