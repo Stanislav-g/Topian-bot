@@ -30,7 +30,7 @@ class user(commands.Cog):
         embw = discord.Embed( title = '**Search**', colour= 0x808080)
         embw.add_field( name = 'Commands',value = '**=search** - search (запрос)\n**=youtube_search** - youtube_search (запрос)\n**=yandex** - yandex (запрос)\n**=wiki** - wiki (запрос)\n**=google** - google (запрос) ')
         await ctx.author.send( embed = embw )
-        embw = discord.Embed( title = '**Games**', colour = discord.Color.green)
+        embw = discord.Embed( title = '**Games**', colour = discord.Color.green())
         embw.add_field( name = 'Commands',value = '**=rps** - rps (камень, ножницы или бумага)\n**=guess** - guess\n**=coinflip** - coinflip\n**=knb** - knb @user')
         await ctx.author.send( embed = embw )
        
