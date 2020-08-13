@@ -17,19 +17,29 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    #kill
     @commands.command()
-    async def kill(self, ctx, member: discord.Member ):
-        await ctx.send( f"{ctx.author.mention} Достает дробовик... \n https://tenor.com/view/eyebrow-raise-smile-prepared-ready-loaded-gif-15793001" )
-        await asyncio.sleep( 3 )
-        await ctx.send( f"{ctx.author.mention} Направляет дробовик на {member.mention}... \n https://tenor.com/view/aim-point-gun-prepared-locked-and-loaded-gif-15793489" )
-        await asyncio.sleep( 2 )
-        await ctx.send( f"{ctx.author.mention} Стреляет в {member.mention}... \n https://media.discordapp.net/attachments/690222948283580435/701494203607416943/tenor_3.gif" )
-        await asyncio.sleep( 2 )
-        await ctx.send( f"{member.mention} истекает кровью..." )
-        await asyncio.sleep( 3 )
-        await ctx.send( f"{member.mention} погиб..." )
-
+    async def color(self, ctx ):
+        n = random.choice(['1'])
+        if n == 1:
+            await ctx.send(f"Приготовься, до старта 5 секунд!")
+            await asyncio.sleep(5)
+            await ctx.send(f"🟥 - 1 \n🟧 - 2\n 🟨 - 3\n 🟩 - 4")
+            await asyncio.sleep(1)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1)
+            await ctx.send(f"что было под номером 3?")
+            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 3?", description= f" 🟥 🟧 🟨 🟩 \n\n")
+            message = await ctx.send(embed=embed)
+            await message.add_reaction('🟥')
+            await message.add_reaction('🟧')
+            await message.add_reaction('🟨')
+            await message.add_reaction('🟩')
+            if str(payload.emoji) == '🟨': # Emoji для реакций
+                await ctx.send(f"fin!") 
     #rps
     @commands.command()
     async def rps(self, ctx, *, mess):
