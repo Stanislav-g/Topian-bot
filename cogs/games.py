@@ -117,6 +117,7 @@ class user(commands.Cog):
             await asyncio.sleep(1)
             await ctx.send(f"1")
             await asyncio.sleep(1)
+            th = [''] 
             if th == '2':
                 await ctx.send(f"Ты угадал правильно!")
             else:
