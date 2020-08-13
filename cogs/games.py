@@ -139,7 +139,7 @@ class user(commands.Cog):
             th = '2'
         else:
             th = '0'
-            
+            break
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
@@ -148,7 +148,7 @@ class user(commands.Cog):
             start_ev = '2'
         else:
             start_ev = '0'
-            
+            break
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
@@ -157,7 +157,7 @@ class user(commands.Cog):
             ev_player = '2'
         else:
             ev_player = '0'
-            
+            break
     @commands.command()
     async def rps(self, ctx, *, mess):
         robot = ['Камень', 'Ножницы', 'Бумага']
