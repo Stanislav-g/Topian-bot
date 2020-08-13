@@ -44,8 +44,8 @@ class user(commands.Cog):
                 if ev_player == '1':
                     await ctx.send(f"12345")
                     
-    @client.event
-    async def on_raw_reaction_add(payload):
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
         global ev_player
         if str(payload.emoji) == '🟨': # Emoji для реакций
             ev_player = '1'
