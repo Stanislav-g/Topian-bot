@@ -24,16 +24,12 @@ class user(commands.Cog):
     start_ev = ['']    
     ev_player = [''] #игроки в розыгрыше
     @commands.command()
-    async def color(self, ctx):
-        global th 
+    async def color(self, ctx):     
         global fo 
-        global start_ev  
-        global ev_player
-        
         a = random.choice(['1','4','3'])
         
         if a == '1':  
-            
+            global start_ev 
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 14 \n🟧 - 45\n🟨 - 34\n🟩 - 35")
@@ -67,7 +63,7 @@ class user(commands.Cog):
                 
 
         elif a == '4':  
-            ev_player = ['']
+            global ev_player
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 55 \n🟧 - 14\n🟨 - 34\n🟩 - 35")
@@ -99,7 +95,7 @@ class user(commands.Cog):
             else:
                 await ctx.send(f"Ты не угадал")
         elif a == '3':  
-            
+            global th 
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 14 \n🟧 - 45\n🟨 - 34\n🟩 - 35")
