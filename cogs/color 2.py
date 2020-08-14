@@ -17,11 +17,15 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-@commands.command()
-async def example(self,ctx):
-    await ctx.send(“work”)
+    @commands.Cog.listener()
+        async def on_raw_reaction_add(self, payload):
 
+            global start_ev
+            if str(payload.emoji) == '🟥': # Emoji для реакций
+                start_ev = '2'
+            else:
+                start_ev = '0'     
 
 
 def setup(client):
-client.add_cog(user(client))
+    client.add_cog(user(client))
