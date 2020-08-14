@@ -18,13 +18,12 @@ class user(commands.Cog):
         self.client = client
 
     @commands.Cog.listener()
-        async def on_raw_reaction_add(self, payload):
-
-            global th
-            if str(payload.emoji) == '🟩': # Emoji для реакций
-                th = '2'
-            else:
-                th = '0'
+    async def on_raw_reaction_add(self, payload):
+        global th
+        if str(payload.emoji) == '🟩': # Emoji для реакций
+            th = '2'
+        else:
+            th = '0'
 
 
 
