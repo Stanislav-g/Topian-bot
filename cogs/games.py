@@ -131,23 +131,9 @@ class user(commands.Cog):
             else:
                 await ctx.send(f"Ты не угадал")   
                 
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
-        global th
-        if str(payload.emoji) == '🟩': # Emoji для реакций
-            th = '2'
-        else:
-            th = '0'
+    
            
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
-        global start_ev
-        if str(payload.emoji) == '🟥': # Emoji для реакций
-            start_ev = '2'
-        else:
-            start_ev = '0'
+    
          
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
@@ -193,6 +179,15 @@ class user(commands.Cog):
             else:
                 emb.add_field(name = ':scissors:', value = 'Ничья!')
             await ctx.send(embed = emb)
+            
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        
+        global start_ev
+        if str(payload.emoji) == '🟥': # Emoji для реакций
+            start_ev = '2'
+        else:
+            start_ev = '0'         
     #knb
     @commands.command()
     async def knb(self, ctx, member: discord.Member = None):
@@ -218,6 +213,15 @@ class user(commands.Cog):
 
             emx = discord.Embed( title = v, colour = discord.Color.blue() )
             await ctx.send( embed = emx )
+            
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        
+        global th
+        if str(payload.emoji) == '🟩': # Emoji для реакций
+            th = '2'
+        else:
+            th = '0'
             
     @commands.command() # Попытки 5
     async def guess(self, ctx):
