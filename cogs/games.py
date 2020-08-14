@@ -135,14 +135,7 @@ class user(commands.Cog):
            
     
          
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
-        global ev_player
-        if str(payload.emoji) == '🟧': # Emoji для реакций
-            ev_player = '2'
-        else:
-            ev_player = '0'
+    
            
     @commands.command()
     async def rps(self, ctx, *, mess):
@@ -180,14 +173,7 @@ class user(commands.Cog):
                 emb.add_field(name = ':scissors:', value = 'Ничья!')
             await ctx.send(embed = emb)
             
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
         
-        global start_ev
-        if str(payload.emoji) == '🟥': # Emoji для реакций
-            start_ev = '2'
-        else:
-            start_ev = '0'         
     #knb
     @commands.command()
     async def knb(self, ctx, member: discord.Member = None):
@@ -214,14 +200,7 @@ class user(commands.Cog):
             emx = discord.Embed( title = v, colour = discord.Color.blue() )
             await ctx.send( embed = emx )
             
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        
-        global th
-        if str(payload.emoji) == '🟩': # Emoji для реакций
-            th = '2'
-        else:
-            th = '0'
+    
             
     @commands.command() # Попытки 5
     async def guess(self, ctx):
