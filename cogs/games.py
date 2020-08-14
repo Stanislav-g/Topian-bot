@@ -67,7 +67,7 @@ class user(commands.Cog):
                 
 
         elif a == '4':  
-            
+            ev_player = ['']
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 55 \n🟧 - 14\n🟨 - 34\n🟩 - 35")
