@@ -34,7 +34,7 @@ class user(commands.Cog):
         embw.add_field( name = 'Commands',value = '**=rps** - rps (камень, ножницы или бумага)\n**=guess** - guess\n**=coinflip** - coinflip\n**=knb** - knb @user\n__________________________________________________________4')
         await ctx.author.send( embed = embw )
 
-    @client.event
+    @commands.command()
     async def help(self, ctx ):
         async for entry in guild.audit_logs(limit=100):
             await ctx.send('{0.user} did {0.action} to {0.target}'.format(entry))
