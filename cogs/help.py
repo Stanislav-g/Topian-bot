@@ -36,9 +36,9 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     class discord_AuditLogEntry( self, user, action, target, before, after ):
-        guild = ctx.message.guild
-        channel = client.get_channel( 740117977739034634 )
         async for entry in guild.audit_logs(limit= num):
+            guild = ctx.message.guild
+            channel = client.get_channel( 740117977739034634 )
             emb = discord.Embed( title = 'Logs', colour = discord.Color.red() )
             emb.add_field( name = 'logs',value = '{0.user} did {0.action} to **{0.target}** {0.before} to {0.after}'.format(entry))
             await channel.send( embed = emb )
