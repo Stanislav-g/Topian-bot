@@ -16,7 +16,7 @@ async def on_redy():
 
 #autorole
 @client.command()
-class discord.AuditLogEntry(*, users, data, guild)
+class discord.AuditLogEntry(*, users, data, guild):
     channel = client.get_channel( 740117977739034634 )
     await channel.send( embed = discord.Embed( description = f'Пользователь {member.mention}, присоеденился к нам!') )
     await ctx.send('test {} and {} and {}'.format(users, date, guild))
