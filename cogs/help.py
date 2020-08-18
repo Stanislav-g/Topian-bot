@@ -42,7 +42,7 @@ class user(commands.Cog):
                 await ctx.send('{0.user} did {0.action} to {0.target}'.format(entry))
         else:
             entries = await guild.audit_logs(limit=None, user=guild.me).flatten()
-            await channel.send('I made {} moderation actions.'.format(len(entries)))
+            await ctx.send('I made {} moderation actions.'.format(len(entries)))
             
         
 def setup(client):
