@@ -34,18 +34,15 @@ class user(commands.Cog):
         embw.add_field( name = 'Commands',value = '**=rps** - rps (камень, ножницы или бумага)\n**=guess** - guess\n**=coinflip** - coinflip\n**=knb** - knb @user\n__________________________________________________________4')
         await ctx.author.send( embed = embw )
 
-    @commands.command()
-    async def log(self, ctx, num : int = None, member: discord.Member = None ):
+    @commands.Cog.listener()
+    async def class discord.AuditLogEntry(self, ctx, num : int = None, member: discord.Member = None ):
         guild = ctx.message.guild
         if member == None:
             async for entry in guild.audit_logs(limit= num):
                 emb = discord.Embed( title = 'Logs', colour = discord.Color.red() )
                 emb.add_field( name = 'logs',value = '{0.user} did {0.action} to **{0.target}** {0.before} to {0.after}'.format(entry))
                 await ctx.send( embed = emb )
-        else:
-            entries = await guild.audit_logs(limit=None, user=guild.me).flatten()
-            await ctx.send('I made {} moderation actions.'.format(len(entries)))
-            
+        
         
 def setup(client):
     client.add_cog(user(client))
