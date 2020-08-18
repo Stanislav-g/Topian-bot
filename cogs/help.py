@@ -35,7 +35,8 @@ class user(commands.Cog):
         await ctx.author.send( embed = embw )
 
     @commands.command()
-    async def help(self, ctx ):
+    async def log(self, ctx ):
+        guild = ctx.member.guild
         async for entry in guild.audit_logs(limit=100):
             await ctx.send('{0.user} did {0.action} to {0.target}'.format(entry))
             
