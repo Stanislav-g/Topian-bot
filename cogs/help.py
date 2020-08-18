@@ -35,13 +35,13 @@ class user(commands.Cog):
         await ctx.author.send( embed = embw )
 
     @commands.Cog.listener()
-    async def class discord.AuditLogEntry(self, ctx, num : int = None, member: discord.Member = None ):
+    async def class discord.AuditLogEntry(self, user, action, target, before, after ):
         guild = ctx.message.guild
-        if member == None:
-            async for entry in guild.audit_logs(limit= num):
-                emb = discord.Embed( title = 'Logs', colour = discord.Color.red() )
-                emb.add_field( name = 'logs',value = '{0.user} did {0.action} to **{0.target}** {0.before} to {0.after}'.format(entry))
-                await ctx.send( embed = emb )
+        channel = client.get_channel( 740117977739034634 )
+        async for entry in guild.audit_logs(limit= num):
+            emb = discord.Embed( title = 'Logs', colour = discord.Color.red() )
+            emb.add_field( name = 'logs',value = '{0.user} did {0.action} to **{0.target}** {0.before} to {0.after}'.format(entry))
+            await channel.send( embed = emb )
         
         
 def setup(client):
