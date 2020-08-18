@@ -34,7 +34,7 @@ class user(commands.Cog):
         embw.add_field( name = 'Commands',value = '**=rps** - rps (камень, ножницы или бумага)\n**=guess** - guess\n**=coinflip** - coinflip\n**=knb** - knb @user\n__________________________________________________________4')
         await ctx.author.send( embed = embw )
 
-    @Commands.Cog.listener()
+    @commands.Cog.listener()
     async def class discord.AuditLogEntry(self, ctx, num : int = None, member: discord.Member = None ):
         guild = ctx.message.guild
         if member == None:
