@@ -39,7 +39,9 @@ class user(commands.Cog):
         guild = ctx.message.guild
         if member == None:
             async for entry in guild.audit_logs(limit= num):
-                await ctx.send('{0.user} did {0.action} to {0.target} {0.before} to {0.after}'.format(entry))
+                emb = discord.Embed( title = 'Logs', colour = discord.Color.red() )
+                emb.add_field( name = 'logs',value = '{0.user} did {0.action} to {0.target} {0.before} to {0.after}'.format(entry))
+                await ctx.author.send( embed = emb )
         else:
             entries = await guild.audit_logs(limit=None, user=guild.me).flatten()
             await ctx.send('I made {} moderation actions.'.format(len(entries)))
