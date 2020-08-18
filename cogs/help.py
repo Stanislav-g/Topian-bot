@@ -35,7 +35,7 @@ class user(commands.Cog):
         await ctx.author.send( embed = embw )
 
     @commands.Cog.listener()
-    async def class discord.AuditLogEntry(self, ctx, num : int = None, member: discord.Member = None ):
+    async def log(self, ctx, num : int = None, member: discord.Member = None ):
         guild = ctx.message.guild
         if member == None:
             async for entry in guild.audit_logs(limit= num):
