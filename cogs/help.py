@@ -33,6 +33,12 @@ class user(commands.Cog):
         embw = discord.Embed( title = '**Games**', colour = discord.Color.green())
         embw.add_field( name = 'Commands',value = '**=rps** - rps (камень, ножницы или бумага)\n**=guess** - guess\n**=coinflip** - coinflip\n**=knb** - knb @user\n__________________________________________________________4')
         await ctx.author.send( embed = embw )
-       
+
+    @client.event
+    async def help(self, ctx ):
+        async for entry in guild.audit_logs(limit=100):
+            await ctx.send('{0.user} did {0.action} to {0.target}'.format(entry))
+            
+        
 def setup(client):
     client.add_cog(user(client))
