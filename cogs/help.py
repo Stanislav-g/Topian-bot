@@ -40,7 +40,7 @@ class user(commands.Cog):
         if member == None:
             async for entry in guild.audit_logs(limit= num):
                 emb = discord.Embed( title = 'Logs', colour = discord.Color.red() )
-                emb.add_field( name = 'logs',value = '{0.user} did {0.action} to {0.target} {0.before} to {0.after}'.format(entry))
+                emb.add_field( name = 'logs',value = '{0.user} did {0.action} to **{0.target}** {0.before} to {0.after}'.format(entry))
                 await ctx.send( embed = emb )
         else:
             entries = await guild.audit_logs(limit=None, user=guild.me).flatten()
