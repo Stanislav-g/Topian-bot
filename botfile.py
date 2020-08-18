@@ -14,10 +14,7 @@ client.remove_command('help')
 async def on_redy():
     print( 'Bot connected')
     
-@client.event
-async for entry in guild.audit_logs(limit=100):
-    print('{0.user} did {0.action} to {0.target}'.format(entry))
-    
+
 @client.command()
 async def load(ctx, extensions):
     client.load_extensions(f'cogs.{extensions}')
