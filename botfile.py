@@ -13,17 +13,11 @@ client.remove_command('help')
 @client.event
 async def on_redy():
     print( 'Bot connected')
-
-#autorole
-@client.command()
-class AuditLogEntry(*, users, data, guild):
-    channel = client.get_channel( 740117977739034634 )
-    await channel.send( embed = discord.Embed( description = f'Пользователь {member.mention}, присоеденился к нам!') )
-    await ctx.send('test {} and {} and {}'.format(users, date, guild))
-    emb = discord.Embed( title = 'INFO', colour = discord.Color.red() )
-    emb.add_field( name = 'ИНФОРМАЦИЯ',value = 'Добро пожаловать на наш сервер, ознакомьтесь с правилами нашего сервера\nПропиши команду -help что-бы узнать мои комманды\nПолезные команды:\n-help\n$help\n\n**ОБЯЗАТЕЛЬНО ПРОЧИТАЙТЕ ПРАВИЛА НА СЕРВЕРЕ И НАЖМИТЕ НА РЕАКЦИЮ 📖**')
-    await member.send( embed = emb )
-
+    
+@client.event
+async for entry in guild.audit_logs(limit=100):
+    print('{0.user} did {0.action} to {0.target}'.format(entry))
+    
 @client.command()
 async def load(ctx, extensions):
     client.load_extensions(f'cogs.{extensions}')
