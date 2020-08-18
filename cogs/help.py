@@ -35,10 +35,14 @@ class user(commands.Cog):
         await ctx.author.send( embed = embw )
 
     @commands.command()
-    async def log(self, ctx ):
+    async def log(self, ctx, member: discord.Member = None, num = None ):
         guild = ctx.message.guild
-        async for entry in guild.audit_logs(limit=100):
-            await ctx.send('{0.user} did {0.action} to {0.target}'.format(entry))
+        if member == None:
+            async for entry in guild.audit_logs(limit= num):
+                await ctx.send('{0.user} did {0.action} to {0.target}'.format(entry))
+        else:
+            entries = await guild.audit_logs(limit=None, user=guild.me).flatten()
+            await channel.send('I made {} moderation actions.'.format(len(entries)))
             
         
 def setup(client):
