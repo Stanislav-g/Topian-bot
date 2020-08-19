@@ -320,8 +320,8 @@ class user(commands.Cog):
 
     @commands.command()
     async def role_members(self, ctx, rolee: discord.Role = None, role: discord.Role = None):
-        membersrole = rolee.members
-        await ctx.send( "users {}".format( membersrole.mention ) ) 
+        membersrole = rolee.members.mention
+        await ctx.send( "users {}".format( membersrole ) ) 
         await discord.Member.add_roles(membersrole, role)
         await ctx.send(embed = discord.Embed(description = f'**Роль успешна выдана**'))
      
