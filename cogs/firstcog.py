@@ -27,7 +27,10 @@ class user(commands.Cog):
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.CommandNotFound ):
             await ctx.send(embed = discord.Embed(description = f'**:exclamation: {ctx.author.name}, данной команды не существует.**', color=0x0c0c0c))
-
+    @commands.command
+    async def role_members(self, ctx, role: discord.Role = None):
+        membersrole = role.members
+        await ctx.send(f'users {}'.format( membersrole ))
         
     @commands.command(aliases = ['clear', 'c'])
     @commands.has_permissions(manage_messages = True)
