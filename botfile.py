@@ -14,19 +14,19 @@ client.remove_command('help')
 async def on_redy():
     print( 'Bot connected')
     
-    @client.event
-    async def on_raw_reaction_add(payload):
-        if payload.message_id == 745665708008013884: # ID Сообщения
-            guild = client.get_guild(payload.guild_id)
-            role = None
+@client.event
+async def on_raw_reaction_add(payload):
+    if payload.message_id == 745665708008013884: # ID Сообщения
+        guild = client.get_guild(payload.guild_id)
+        role = None
 
-            if str(payload.emoji) == '🎂': # Emoji для реакций
-                role = guild.get_role(745625103416688652) # ID Ролей для выдачи
+        if str(payload.emoji) == '🎂': # Emoji для реакций
+            role = guild.get_role(745625103416688652) # ID Ролей для выдачи
 
-            if role:
-                member = guild.get_member(payload.user_id)
-                if member:
-                    await member.add_roles(role)  
+        if role:
+            member = guild.get_member(payload.user_id)
+            if member:
+                await member.add_roles(role)  
                     
 @client.command()
 async def load(ctx, extensions):
