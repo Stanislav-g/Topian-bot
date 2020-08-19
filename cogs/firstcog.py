@@ -287,7 +287,7 @@ class user(commands.Cog):
     #voice_create
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def role_create(self, ctx, *, arg = None):
+    async def rolec(self, ctx, *, arg = None):
         await ctx.channel.purge( limit = 1 )
         if arg == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -295,7 +295,7 @@ class user(commands.Cog):
             await ctx.send( embed = embw )
         else:
             guild = ctx.guild
-            channel = await guild.create_role(f'{arg}')
+            role = await guild.create_role(f'{arg}')
             await ctx.send(embed = discord.Embed(description = f'**роль "{arg}" создана!**', color=0x0c0c0c))
 
     @commands.command()
