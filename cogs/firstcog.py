@@ -323,20 +323,7 @@ class user(commands.Cog):
         membersrole = rolee.members
         await ctx.send( "users {}".format( membersrole ) ) 
         
-    @commands.Cog.listener
-    async def on_raw_reaction_add(self, payload):
-        if payload.message_id == 745659403180572712: # ID Сообщения
-            guild = client.get_guild(payload.guild_id)
-            role = None
-
-            if str(payload.emoji) == '🎂': # Emoji для реакций
-                role = guild.get_role(745625103416688652) # ID Ролей для выдачи
-
-
-            if role:
-                member = guild.get_member(payload.user_id)
-                if member:
-                    await member.add_roles(role)        
+      
      
 def setup(client):
     client.add_cog(user(client))
