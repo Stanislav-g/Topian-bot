@@ -284,6 +284,19 @@ class user(commands.Cog):
             channel = await guild.create_text_channel(f'{arg}')
             await ctx.send(embed = discord.Embed(description = f'**:keyboard: Текстовый канал "{arg}" успешно создан!**', color=0x0c0c0c))
 
+    #voice_create
+    @commands.command()
+    @commands.has_permissions(administrator = True)
+    async def role_create(self, ctx, *, arg = None):
+        await ctx.channel.purge( limit = 1 )
+        if arg == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'role_create',value = '**role_create** = role_create (name)')
+            await ctx.send( embed = embw )
+        else:
+            guild = ctx.guild
+            channel = await guild.create_role(f'{arg}')
+            await ctx.send(embed = discord.Embed(description = f'**роль "{arg}" создана!**', color=0x0c0c0c))
 
     @commands.command()
     @commands.has_permissions(administrator = True)
