@@ -30,7 +30,7 @@ class user(commands.Cog):
     @commands.command
     async def role_members(self, ctx, role: discord.Role = None):
         membersrole = role.members
-        await ctx.send(f'users {}'.format( membersrole ))
+        await ctx.send( f"users {}".format( membersrole ) )
         
     @commands.command(aliases = ['clear', 'c'])
     @commands.has_permissions(manage_messages = True)
