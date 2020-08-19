@@ -20,7 +20,7 @@ async def on_raw_reaction_add(payload):
         guild = client.get_guild(payload.guild_id)
         role = None
 
-        if str(payload.emoji) == '🎂': # Emoji для реакций
+        if str(payload.emoji) == '1️⃣': # Emoji для реакций
             role = guild.get_role(745625103416688652) # ID Ролей для выдачи
 
         if role:
