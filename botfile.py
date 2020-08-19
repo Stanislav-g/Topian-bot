@@ -16,7 +16,7 @@ async def on_redy():
     
     @client.event
     async def on_raw_reaction_add(payload):
-        if payload.message_id == 745659403180572712: # ID Сообщения
+        if payload.message_id == 745665708008013884: # ID Сообщения
             guild = client.get_guild(payload.guild_id)
             role = None
 
