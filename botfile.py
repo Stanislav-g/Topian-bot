@@ -48,6 +48,7 @@ async def reload(ctx, extensions):
         
 for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
     client.load_extension(f'cogs.{filename[:-3]}') 
-    
+ 
+
 token= os.environ.get('BOT_TOKEN')
 client.run( token )
