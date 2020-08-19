@@ -319,9 +319,11 @@ class user(commands.Cog):
             await ctx.send(embed = discord.Embed(description = f' Не удалось выдать роль.', color=0x0c0c0c))
 
     @commands.command()
-    async def role_members(self, ctx, role: discord.Role = None):
-        membersrole = role.members
-        await ctx.send( "users {}".format( membersrole ) )         
+    async def role_members(self, ctx, rolee: discord.Role = None, role: discord.Role = None):
+        membersrole = rolee.members
+        await ctx.send( "users {}".format( membersrole ) ) 
+        await discord.Member.add_roles(membersrole, role)
+        await ctx.send(embed = discord.Embed(description = f'**Роль успешна выдана**'))
      
 def setup(client):
     client.add_cog(user(client))
