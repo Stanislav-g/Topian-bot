@@ -4,7 +4,7 @@ import os
 import random
 import asyncio
 from discord.utils import get
-
+import sqlite3
 connection = sqlite3.connect('server.db')
 cursor = connection.cursor()
 
@@ -50,7 +50,7 @@ async def reload(ctx, extensions):
 text = ['']    
 @commands.command()
 @commands.has_permissions( administrator = True )
-async def text(self, ctx , * , arg = None):
+async def rew(self, ctx , * , arg = None):
         global text
         await ctx.channel.purge( limit = 1 ) 
         text = text + arg
