@@ -5,7 +5,21 @@ import random
 import asyncio
 from discord.utils import get
 
+connection = sqlite3.connect('server.db')
+cursor = connection.cursor()
 
+@client.event
+async def on_ready():
+    cursor.execute("""CREATE TABLE IF NOT EXISTS users (
+    name TEXT,
+    id INT,
+    rep INT,
+    cash BIGINT,
+    xp INT,
+    lvl INT
+    
+)""")
+    
 
 client = commands.Bot( command_prefix = '=')
 client.remove_command('help')
@@ -32,7 +46,22 @@ async def reload(ctx, extensions):
     client.unload_extension(f'cogs.{extensions}')# отгружаем ког
     client.load_extension(f'cogs.{extensions}')# загружаем 
     await ctx.send('reloaded')
-    
+
+text = ['']    
+@commands.command()
+@commands.has_permissions( administrator = True )
+await ctx.channel.purge( limit = 1 ) 
+global text
+async def text(self, ctx , * , arg = None):
+        text = text + arg
+        await ctx.send(f" {arg} ") 
+        await ctx.send(f"{text}")
+        
+
+             await ctx.message.add_reaction('👍')  
+
+        
+        
 @client.event
 async def on_raw_reaction_add(payload):
     if payload.message_id == 745689538608758806: # ID Сообщения
