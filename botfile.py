@@ -56,9 +56,7 @@ async def text(self, ctx , * , arg = None):
         text = text + arg
         await ctx.send(f" {arg} ") 
         await ctx.send(f"{text}")
-        
-
-             await ctx.message.add_reaction('👍')  
+        await ctx.message.add_reaction('👍')  
 
         
         
