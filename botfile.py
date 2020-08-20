@@ -38,16 +38,7 @@ async def reload(ctx, extensions):
     client.load_extension(f'cogs.{extensions}')# загружаем 
     await ctx.send('reloaded')
 
-text = ['']    
-@commands.command()
-@commands.has_permissions( administrator = True )
-async def rew(self, ctx , * , arg = None):
-        global text
-        await ctx.channel.purge( limit = 1 ) 
-        text = text + arg
-        await ctx.send(f" {arg} ") 
-        await ctx.send(f"{text}")
-        await ctx.message.add_reaction('👍')  
+
 
         
         
