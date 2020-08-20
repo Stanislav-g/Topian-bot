@@ -4,8 +4,7 @@ import os
 import random
 import asyncio
 from discord.utils import get
-connection = sqlite3.connect('server.db')
-cursor = connection.cursor()
+
 
 
     
