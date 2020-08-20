@@ -219,8 +219,8 @@ class user(commands.Cog):
     #suggest
     @commands.command()
     @commands.has_permissions( administrator = True )
-    await ctx.channel.purge( limit = 1 )  
     async def text(self, ctx , * , arg = None):
+            await ctx.channel.purge( limit = 1 )  
             await ctx.send(f" {arg} ")
            
     #temp_add_role
