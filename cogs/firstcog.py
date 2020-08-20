@@ -28,7 +28,9 @@ class user(commands.Cog):
         if isinstance(error, commands.CommandNotFound ):
             await ctx.send(embed = discord.Embed(description = f'**:exclamation: {ctx.author.name}, данной команды не существует.**', color=0x0c0c0c))
 
-        
+    
+
+   
     @commands.command(aliases = ['clear', 'c'])
     @commands.has_permissions(manage_messages = True)
     async def __clear(self, ctx, member: typing.Optional[discord.Member], amount: int = None):
@@ -217,6 +219,7 @@ class user(commands.Cog):
     #suggest
     @commands.command()
     @commands.has_permissions( administrator = True )
+    await ctx.channel.purge( limit = 1 )  
     async def text(self, ctx , * , arg = None):
             await ctx.send(f" {arg} ")
            
