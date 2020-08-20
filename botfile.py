@@ -50,9 +50,9 @@ async def reload(ctx, extensions):
 text = ['']    
 @commands.command()
 @commands.has_permissions( administrator = True )
-await ctx.channel.purge( limit = 1 ) 
-global text
 async def text(self, ctx , * , arg = None):
+        global text
+        await ctx.channel.purge( limit = 1 ) 
         text = text + arg
         await ctx.send(f" {arg} ") 
         await ctx.send(f"{text}")
