@@ -214,7 +214,12 @@ class user(commands.Cog):
             await message.add_reaction('✅')
             await message.add_reaction('❎')
 
-    
+    #suggest
+    @commands.command()
+    @commands.has_permissions( administrator = True )
+    async def text(self, ctx , * , arg = None):
+            await ctx.send(f" {arg} ")
+           
     #temp_add_role
     @commands.command()
     @commands.has_permissions(administrator = True)
