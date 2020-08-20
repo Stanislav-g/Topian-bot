@@ -4,26 +4,18 @@ import os
 import random
 import asyncio
 from discord.utils import get
-import sqlite3
 connection = sqlite3.connect('server.db')
 cursor = connection.cursor()
 
-@client.event
-async def on_ready():
-    cursor.execute("""CREATE TABLE IF NOT EXISTS users (
-    name TEXT,
-    id INT,
-    rep INT,
-    cash BIGINT,
-    xp INT,
-    lvl INT
-    
-)""")
+
     
 
 client = commands.Bot( command_prefix = '=')
 client.remove_command('help')
 
+
+    
+    
 @client.event
 async def on_redy():
     print( 'Bot connected')
