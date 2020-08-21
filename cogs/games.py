@@ -18,7 +18,7 @@ class user(commands.Cog):
         self.client = client
     fi = [''] 
     se = [''] 
-    th = [''] 
+    three = [''] 
     fo = [''] 
     fif = [''] 
     start_ev = ['']    
@@ -27,7 +27,7 @@ class user(commands.Cog):
     async def color(self, ctx): 
         global fi
         global se
-        global th
+        global three
         global fo
         global fif
         global start_ev
@@ -99,14 +99,46 @@ class user(commands.Cog):
             else:
                 await ctx.send(f"Ты не угадал")
                 
-        
+        elif a == '3':  
+            
+            await ctx.send(f"Приготовься, до старта 5 секунд!")
+            await asyncio.sleep(5)
+            await ctx.send(f"🟥 - 14 \n🟧 - 45\n🟨 - 34\n🟩 - 35")
+            await asyncio.sleep(1)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1)
+            await ctx.channel.purge(limit = 4)
+            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 35?", description= f" 🟥 🟧 🟨 🟩 \n\n")
+            message = await ctx.send(embed=embed)
+            await message.add_reaction('🟥')
+            await message.add_reaction('🟧')
+            await message.add_reaction('🟨')
+            await message.add_reaction('🟩')
+            await ctx.send(f"У тебя есть 15 секунд что-бы сделать выбор")
+            await asyncio.sleep(12)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1) 
+            await ctx.channel.purge(limit = 4)
+            if three == '2':
+                await ctx.send(f"Ты угадал правильно!")
+            
+            else:
+                await ctx.send(f"Ты не угадал")           
         
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         
         global ev_player
         global start_ev
-        global th
+        global three
         global fo
         global fi
         
@@ -115,16 +147,13 @@ class user(commands.Cog):
         elif str(payload.emoji) == '🟥': # Emoji для реакций
             start_ev = '2'
         elif str(payload.emoji) == '🟩': # Emoji для реакций
-            th = '2'
-        elif str(payload.emoji) == '🟨': # Emoji для реакций
-            fo = '2'
-        elif str(payload.emoji) == '🟩': # Emoji для реакций
-            fi = '2'
+            three = '2'
+       
         
         else:
             ev_player = '0'  
             start_ev = '0'
-            th = '0'
+            three = '0'
             fi = '0'
             fo = '0'
          
