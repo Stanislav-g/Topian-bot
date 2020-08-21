@@ -27,7 +27,11 @@ class user(commands.Cog):
     async def color(self, ctx):     
         global fo 
         a = random.choice(['1','2','3','4','5'])
-        
+        ev_player = '0'  
+        start_ev = '0'
+        th = '0'
+        fi = '0'
+        fo = '0'
         if a == '1':  
             global start_ev 
             await ctx.send(f"Приготовься, до старта 5 секунд!")
@@ -211,6 +215,12 @@ class user(commands.Cog):
             fo = '2'
         elif str(payload.emoji) == '🟩': # Emoji для реакций
             fi = '2'
+        elif str(payload.emoji) == '🟩' and '🟨' or '🟥' or '🟧' or '🟩': # Emoji для реакций
+            ev_player = '0'  
+            start_ev = '0'
+            th = '0'
+            fi = '0'
+            fo = '0'
         else:
             ev_player = '0'  
             start_ev = '0'
