@@ -332,32 +332,7 @@ class user(commands.Cog):
         membersrole = rolee.members
         await ctx.send( "users {}".format( membersrole ) ) 
         
-@commands.Cog.listener()
-async def on_guild_update(self, before, after):
-	logch = self.bot.get_config(after).get('log.action')
-	channel = client.get_channel( 705461507953262793 )
-	if logch:
-		if before.name != after.name:
-			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Guild name was changed**')
-			embed.add_field(name='Before', value=before.name, inline=False)
-			embed.add_field(name='After', value=after.name, inline=False)
-			embed.set_author(name=after.name, icon_url=str(after.icon_url))
-			embed.set_footer(text=f"Guild ID: {after.id}")
-			try:
-				await logch.channel.send(embed=embed)
-			except Exception:
-				pass
-		
-		if before.region != after.region:
-			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s region was changed**')
-			embed.add_field(name='Before', value=region[str(before.region)], inline=False)
-			embed.add_field(name='After', value=region[str(after.region)], inline=False)
-			embed.set_author(name=after.name, icon_url=str(after.icon_url))
-			embed.set_footer(text=f"Guild ID: {after.id}")
-			try:
-				await logch.channel.send(embed=embed)
-			except Exception:
-				pass
+
 		
      
 def setup(client):
