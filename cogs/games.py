@@ -108,12 +108,7 @@ class user(commands.Cog):
             ev_player = '2'
         elif str(payload.emoji) == '🟥': # Emoji для реакций
             start_ev = '2'
-        elif str(payload.emoji) == '🟩': # Emoji для реакций
-            th = '2'
-        elif str(payload.emoji) == '🟨': # Emoji для реакций
-            fo = '2'
-        elif str(payload.emoji) == '🟩': # Emoji для реакций
-            fi = '2'
+        
         
         else:
             ev_player = '0'  
