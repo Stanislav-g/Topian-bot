@@ -25,7 +25,11 @@ class user(commands.Cog):
     ev_player = [''] #игроки в розыгрыше
     @commands.command()
     async def color(self, ctx): 
-        
+        global fi
+        global se
+        global th
+        global fo
+        global fif
         global start_ev
         global ev_player
         a = random.choice(['1','2','3','4','5'])
