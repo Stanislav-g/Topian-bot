@@ -32,12 +32,13 @@ async def rew(ctx , * , arg = None):
         
 @client.command()
 async def start_emoji(ctx):
-    message = (ctx.message.channel.id) 
+    channel = (ctx.message.channel.id) 
     while True:
-        emj = str('👍')
-        await message.add_reaction(emj)
-        emji = str('👎')
-        await message.add_reaction(emji)
+        if message in channel:
+            emj = str('👍')
+            await ctx.add_reaction(emj)
+            emji = str('👎')
+            await ctx.add_reaction(emji)
         
 @client.event
 async def on_guild_join( guild ):
