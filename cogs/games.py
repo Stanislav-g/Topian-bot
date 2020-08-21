@@ -56,7 +56,7 @@ class user(commands.Cog):
             await ctx.send(f"1")
             await asyncio.sleep(1) 
             await ctx.channel.purge(limit = 4)
-            if start_ev == '2':
+            if start_ev >= '2':
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
@@ -90,7 +90,7 @@ class user(commands.Cog):
             await ctx.send(f"1")
             await asyncio.sleep(1) 
             await ctx.channel.purge(limit = 4)
-            if ev_player == '2':
+            if ev_player >= '2':
                 await ctx.send(f"Ты угадал правильно!")
             else:
                 await ctx.send(f"Ты не угадал")
@@ -136,7 +136,7 @@ class user(commands.Cog):
         global start_ev
         if str(payload.emoji) == '🟧': # Emoji для реакций
             ev_player = '2'
-        if str(payload.emoji) == '🟥': # Emoji для реакций
+        elif str(payload.emoji) == '🟥': # Emoji для реакций
             start_ev = '2'
         else:
             ev_player = '0'  
