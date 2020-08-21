@@ -157,6 +157,22 @@ class user(commands.Cog):
             fi = '0'
             fo = '0'
          
+    @commands.Cog.listener()
+    async def on_raw_reaction_remove(self, payload):
+        
+        global ev_player
+        global start_ev
+        global three
+        global fo
+        global fi
+        
+        if str(payload.emoji) == '🟧': # Emoji для реакций
+            ev_player = '0'
+        elif str(payload.emoji) == '🟥': # Emoji для реакций
+            start_ev = '0'
+        elif str(payload.emoji) == '🟩': # Emoji для реакций
+            three = '0'
+       
     
            
     @commands.command()
