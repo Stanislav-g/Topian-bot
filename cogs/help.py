@@ -67,7 +67,7 @@ class user(commands.Cog):
 
     channell = ['']          
     @commands.Cog.listener
-    async def on_message ( message ):
+    async def on_message( message ):
         global channell
         textchannel = client.get_channel(id)
         if textchannel == channell:
