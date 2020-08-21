@@ -29,50 +29,31 @@ class user(commands.Cog):
             await ctx.send(embed = discord.Embed(description = f'**:exclamation: {ctx.author.name}, данной команды не существует.**', color=0x0c0c0c))
             
     @commands.Cog.listener()
-    async def on_invite_create(self, invite: discord.Invite) -> None:
-        """
-            New in discord.py 1.3
-        """
-        guild = invite.guild
-        
-        try:
-            channel = await self.modlog_channel(guild, "invite_created")
-        except RuntimeError:
-            return
-        embed_links = (
-            channel.permissions_for(guild.me).embed_links
-            and self.settings[guild.id]["invite_created"]["embed"]
-        )
-        invite_attrs = {
-            "code": _("Code:"),
-            "inviter": _("Inviter:"),
-            "channel": _("Channel:"),
-            "max_uses": _("Max Uses:"),
-        }
-        try:
-            invite_time = invite.created_at.strftime("%H:%M:%S")
-        except AttributeError:
-            invite_time = datetime.datetime.utcnow().strftime("%H:%M:%S")
-        msg = _("{emoji} `{time}` Invite created ").format(
-            emoji=self.settings[guild.id]["invite_created"]["emoji"], time=invite_time,
-        )
-        embed = discord.Embed(
-            title=_("Invite Created"),
-            colour=await self.get_event_colour(guild, "invite_created")
-        )
-        worth_updating = False
-        for attr, name in invite_attrs.items():
-            before_attr = getattr(invite, attr)
-            if before_attr:
-                worth_updating = True
-                msg += f"{name} {before_attr}\n"
-                embed.add_field(name=name, value=str(before_attr))
-        if not worth_updating:
-            return
-        if embed_links:
-            await channel.send(embed=embed)
-        else:
-            await channel.send(escape(msg, mass_mentions=True)) 
+    async def on_invite_create(self, invite: discord.Invite):
+		guild = invite.guild
+		if guild.id in self.bot.premium_guilds:
+			await self.load_invites(guild.id)
+		if not isinstance(guild, discord.Guild):
+			return
+		logch = self.bot.get_config(guild).get('log.action')
+		if logch:
+			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**An invite was created**')
+			embed.set_author(name=guild.name, icon_url=str(guild.icon_url_as(static_format='png', size=2048)))
+			embed.add_field(name='Invite Code', value=invite.code, inline=False)
+			embed.add_field(name='Max Uses', value=invite.max_uses, inline=False)
+			embed.add_field(name='Temporary', value=invite.temporary, inline=False)
+			if invite.temporary:
+				delta = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(seconds=invite.max_age)
+				if isinstance(delta, datetime.timedelta):
+					embed.add_field(name='Expires in', value=humanfriendly.format_timespan(delta), inline=False)
+			if isinstance(invite.channel, discord.abc.GuildChannel):
+				embed.add_field(name='Channel', value=f'#{invite.channel.name}({invite.channel.id})', inline=False)
+			if invite.inviter:
+				embed.set_footer(text=f'Created by: {invite.inviter} ({invite.inviter.id})')
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass 
             
             
             
