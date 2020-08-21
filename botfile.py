@@ -35,9 +35,9 @@ async def start_emoji(ctx, id:int):
     channel = id
     while True:
         emj = str('👍')
-        await channel.message.add_reaction(emj)
+        await ctx.message.channel.add_reaction(emj)
         emji = str('👎')
-        await channel.message.add_reaction(emji)
+        await ctx.message.channel.add_reaction(emji)
         
                     
 @client.command()
