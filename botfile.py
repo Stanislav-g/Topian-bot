@@ -31,13 +31,14 @@ async def rew(ctx , * , arg = None):
         await ctx.message.add_reaction('👍')
         
 @client.command()
-async def start_emoji(ctx):
-    channel = (ctx.message.channel.name) 
+async def start_emoji(ctx, id:int):
+    channel = id
+    message = author.message
     while True:
-        emj = str('👍')
-        await ctx.add_reaction(emj)
-        emji = str('👎')
-        await ctx.add_reaction(emji)
+        emj = str(':thumbsup:')
+        await channel.message.add_reaction(emj)
+        emji = str(':thumbsdown:')
+        await channel.message.add_reaction(emji)
 
     
 @client.event
