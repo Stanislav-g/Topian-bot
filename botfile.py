@@ -32,16 +32,16 @@ async def rew(ctx , * , arg = None):
  
 channell = ['']  
 @client.command()
-async def start_emoji(ctx, channel: client.get_channel(id)):
+async def start_emoji(ctx):
     global channell
-    channell = channel
+    channell = client.get_channel(id)
+    await ctx.send(channell)
     
 channell = ['']          
 @client.event
 async def on_message ( message ):
     global channell
-    channel = client.get_channel(id)
-    textchannel = channel
+    textchannel = client.get_channel(id)
     if textchannel == channell:
         emj = str('👍')
         await message.add_reaction(emj)
