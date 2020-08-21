@@ -32,7 +32,7 @@ class user(commands.Cog):
         global fi
         global fo
         if a == '1':   
-            start_ev = ['']    
+              
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 14 \n🟧 - 45\n🟨 - 34\n🟩 - 35")
@@ -67,7 +67,7 @@ class user(commands.Cog):
                 
 
         elif a == '2':  
-            ev_player = ['']
+            
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 55 \n🟧 - 19\n🟨 - 34\n🟩 - 35")
@@ -101,7 +101,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")
                 
         elif a == '3':  
-            th = [''] 
+            
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 14 \n🟧 - 45\n🟨 - 34\n🟩 - 35")
@@ -135,7 +135,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")   
                 
         elif a == '4':
-            fo = ['']
+           
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 543894 \n🟧 - 584295\n🟨 - 546784\n🟩 - 32915")
@@ -169,7 +169,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")       
            
         elif a == '5':  
-            fi = [''] 
+    
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 20533\n🟧 - 5320\n🟨 - 20053\n🟩 - 2053")
