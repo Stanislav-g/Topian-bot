@@ -15,58 +15,7 @@ client.remove_command('help')
 
     
     
-@client.event
-async def on_redy():
-    print( 'Bot connected')
-    
-text = ['']    
-@client.command()
-@commands.has_permissions( administrator = True )
-async def rew(ctx , * , arg = None):
-        global text
-        await ctx.channel.purge( limit = 1 ) 
-        text = text + arg
-        await ctx.send(f" {arg} ") 
-        await ctx.send(f"{text}")
-        await ctx.message.add_reaction('👍')
- 
-channell = ['']  
-@client.command()
-async def start_emoji(ctx):
-    global channell
-    channell = client.get_channel(id)
-    await ctx.send(channell)
-    
-channell = ['']          
-@client.event
-async def on_message ( message ):
-    global channell
-    textchannel = client.get_channel(id)
-    if textchannel == channell:
-        emj = str('👍')
-        await message.add_reaction(emj)
-        emji = str('👎')
-        await message.add_reaction(emji)
-    
-@client.event
-async def on_guild_join( guild ):
 
-
-    me = client.get_user(550061958938886175)
-
-    emb = discord.Embed( title = f'Я пришел на новый сервер!' )
-    for guild in client.guilds:
-        category = guild.categories[0]
-        try:
-            channel = category.text_channels[0]
-        except:
-            channel = category.voice_channels[0]
-        link = await channel.create_invite()
-    emb.add_field( name = guild.name, value = f"Участников: {len(guild.members)}\nСсылка: {link}" )
-
-    
-    await me.send( embed = emb )
-    
 @client.command()
 async def load(ctx, extensions):
     client.load_extensions(f'cogs.{extensions}')
