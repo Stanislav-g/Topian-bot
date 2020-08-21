@@ -65,35 +65,7 @@ class user(commands.Cog):
         channell = client.get_channel(id)
         await ctx.send(channell)
 
-    channell = ['']          
-    @commands.Cog.listener
-    async def on_message( message ):
-        global channell
-        textchannel = client.get_channel(id)
-        if textchannel == channell:
-            emj = str('👍')
-            await message.add_reaction(emj)
-            emji = str('👎')
-            await message.add_reaction(emji)
 
-    @commands.Cog.listener
-    async def on_guild_join( guild ):
-
-
-        me = client.get_user(550061958938886175)
-
-        emb = discord.Embed( title = f'Я пришел на новый сервер!' )
-        for guild in client.guilds:
-            category = guild.categories[0]
-            try:
-                channel = category.text_channels[0]
-            except:
-                channel = category.voice_channels[0]
-            link = await channel.create_invite()
-        emb.add_field( name = guild.name, value = f"Участников: {len(guild.members)}\nСсылка: {link}" )
-
-
-        await me.send( embed = emb )
             
 def setup(client):
     client.add_cog(user(client))
