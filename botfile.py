@@ -34,7 +34,7 @@ async def rew(ctx , * , arg = None):
 async def start_emoji(ctx):
     channel = (ctx.message.channel.id) 
     while True:
-        if message in channel:
+        if ctx.message in channel:
             emj = str('👍')
             await ctx.add_reaction(emj)
             emji = str('👎')
