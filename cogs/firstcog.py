@@ -27,9 +27,107 @@ class user(commands.Cog):
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.CommandNotFound ):
             await ctx.send(embed = discord.Embed(description = f'**:exclamation: {ctx.author.name}, данной команды не существует.**', color=0x0c0c0c))
-
-    
-
+            
+    @commands.Cog.listener()
+    async def on_invite_create(self, invite: discord.Invite) -> None:
+        """
+            New in discord.py 1.3
+        """
+        guild = invite.guild
+        if guild.id not in self.settings:
+            return
+        if not self.settings[guild.id]["invite_created"]["enabled"]:
+            return
+        try:
+            channel = await self.modlog_channel(guild, "invite_created")
+        except RuntimeError:
+            return
+        embed_links = (
+            channel.permissions_for(guild.me).embed_links
+            and self.settings[guild.id]["invite_created"]["embed"]
+        )
+        invite_attrs = {
+            "code": _("Code:"),
+            "inviter": _("Inviter:"),
+            "channel": _("Channel:"),
+            "max_uses": _("Max Uses:"),
+        }
+        try:
+            invite_time = invite.created_at.strftime("%H:%M:%S")
+        except AttributeError:
+            invite_time = datetime.datetime.utcnow().strftime("%H:%M:%S")
+        msg = _("{emoji} `{time}` Invite created ").format(
+            emoji=self.settings[guild.id]["invite_created"]["emoji"], time=invite_time,
+        )
+        embed = discord.Embed(
+            title=_("Invite Created"),
+            colour=await self.get_event_colour(guild, "invite_created")
+        )
+        worth_updating = False
+        for attr, name in invite_attrs.items():
+            before_attr = getattr(invite, attr)
+            if before_attr:
+                worth_updating = True
+                msg += f"{name} {before_attr}\n"
+                embed.add_field(name=name, value=str(before_attr))
+        if not worth_updating:
+            return
+        if embed_links:
+            await channel.send(embed=embed)
+        else:
+            await channel.send(escape(msg, mass_mentions=True)) 
+            
+            
+            
+    @commands.Cog.listener()
+    async def on_invite_delete(self, invite: discord.Invite) -> None:
+        """
+            New in discord.py 1.3
+        """
+        guild = invite.guild
+        if guild.id not in self.settings:
+            return
+        if not self.settings[guild.id]["invite_deleted"]["enabled"]:
+            return
+        try:
+            channel = await self.modlog_channel(guild, "invite_deleted")
+        except RuntimeError:
+            return
+        embed_links = (
+            channel.permissions_for(guild.me).embed_links
+            and self.settings[guild.id]["invite_deleted"]["embed"]
+        )
+        invite_attrs = {
+            "code": _("Code: "),
+            "inviter": _("Inviter: "),
+            "channel": _("Channel: "),
+            "max_uses": _("Max Uses: "),
+            "uses": _("Used: "),
+        }
+        try:
+            invite_time = invite.created_at.strftime("%H:%M:%S")
+        except AttributeError:
+            invite_time = datetime.datetime.utcnow().strftime("%H:%M:%S")
+        msg = _("{emoji} `{time}` Invite deleted ").format(
+            emoji=self.settings[guild.id]["invite_deleted"]["emoji"], time=invite_time,
+        )
+        embed = discord.Embed(
+            title=_("Invite Deleted"),
+            colour=await self.get_event_colour(guild, "invite_deleted")
+        )
+        worth_updating = False
+        for attr, name in invite_attrs.items():
+            before_attr = getattr(invite, attr)
+            if before_attr:
+                worth_updating = True
+                msg += f"{name} {before_attr}\n"
+                embed.add_field(name=name, value=str(before_attr))
+        if not worth_updating:
+            return
+        if embed_links:
+            await channel.send(embed=embed)
+        else:
+            await channel.send(escape(msg, mass_mentions=True)) 
    
     @commands.command(aliases = ['clear', 'c'])
     @commands.has_permissions(manage_messages = True)
