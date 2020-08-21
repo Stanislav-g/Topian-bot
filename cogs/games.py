@@ -26,7 +26,7 @@ class user(commands.Cog):
     @commands.command()
     async def color(self, ctx):     
         global fo 
-        a = random.choice(['1','4','3'])
+        a = random.choice(['1','4'])
         
         if a == '1':  
             global start_ev 
@@ -66,7 +66,7 @@ class user(commands.Cog):
             global ev_player
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
-            await ctx.send(f"🟥 - 55 \n🟧 - 14\n🟨 - 34\n🟩 - 35")
+            await ctx.send(f"🟥 - 55 \n🟧 - 19\n🟨 - 34\n🟩 - 35")
             await asyncio.sleep(1)
             await ctx.send(f"3")
             await asyncio.sleep(1)
@@ -75,7 +75,7 @@ class user(commands.Cog):
             await ctx.send(f"1")
             await asyncio.sleep(1)
             await ctx.channel.purge(limit = 4)
-            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 14?", description= f" 🟥 🟧 🟨 🟩 \n\n")
+            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 19?", description= f" 🟥 🟧 🟨 🟩 \n\n")
             message = await ctx.send(embed=embed)
             await message.add_reaction('🟥')
             await message.add_reaction('🟧')
@@ -129,7 +129,18 @@ class user(commands.Cog):
                 
     
            
-    
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        
+        global ev_player
+        global start_ev
+        if str(payload.emoji) == '🟧': # Emoji для реакций
+            ev_player = '2'
+        if str(payload.emoji) == '🟥': # Emoji для реакций
+            start_ev = '2'
+        else:
+            ev_player = '0'  
+            start_ev = '0'
          
     
            
