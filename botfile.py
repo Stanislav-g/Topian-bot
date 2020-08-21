@@ -32,13 +32,13 @@ async def rew(ctx , * , arg = None):
  
 channell = ['']  
 @client.command()
-async def start_emoji(ctx, channel: client.getchannel(ID)):
+async def start_emoji(ctx, channel: int):
     global channell
     channell = channel
     
 channell = ['']          
 @client.event
-async def on_message ( message, channel: client.getchannel(ID)):
+async def on_message ( message , channel: client.get_channel(ID)):
     global channell
     textchannel = channel
     if textchannel == channell:
