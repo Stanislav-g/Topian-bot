@@ -12,7 +12,9 @@ from discord.utils import get
 client = commands.Bot( command_prefix = '=')
 client.remove_command('help')
 
-
+@client.event
+async def on_redy():
+    print( 'Bot connected')
     
     
 
