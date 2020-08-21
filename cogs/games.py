@@ -33,6 +33,7 @@ class user(commands.Cog):
         global start_ev
         global ev_player
         a = random.choice(['1','2','3','4','5'])
+        
         if a == '1':    
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
@@ -99,7 +100,6 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")
                 
         elif a == '3':  
-            
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 14 \n🟧 - 45\n🟨 - 34\n🟩 - 35")
@@ -128,12 +128,10 @@ class user(commands.Cog):
             await ctx.channel.purge(limit = 4)
             if th == '2':
                 await ctx.send(f"Ты угадал правильно!")
-            
             else:
                 await ctx.send(f"Ты не угадал")   
                 
         elif a == '4':
-           
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 543894 \n🟧 - 584295\n🟨 - 546784\n🟩 - 32915")
@@ -162,12 +160,10 @@ class user(commands.Cog):
             await ctx.channel.purge(limit = 4)
             if fo >= '2':
                 await ctx.send(f"Ты угадал правильно!")
-           
             else:
                 await ctx.send(f"Ты не угадал")       
            
         elif a == '5':  
-    
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 20533\n🟧 - 5320\n🟨 - 20053\n🟩 - 2053")
@@ -196,7 +192,6 @@ class user(commands.Cog):
             await ctx.channel.purge(limit = 4)
             if fi >= '2':
                 await ctx.send(f"Ты угадал правильно!")
-            
             else:
                 await ctx.send(f"Ты не угадал")     
         
@@ -208,6 +203,7 @@ class user(commands.Cog):
         global th
         global fo
         global fi
+        
         if str(payload.emoji) == '🟧': # Emoji для реакций
             ev_player = '2'
         elif str(payload.emoji) == '🟥': # Emoji для реакций
