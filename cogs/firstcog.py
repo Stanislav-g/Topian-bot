@@ -34,10 +34,7 @@ class user(commands.Cog):
             New in discord.py 1.3
         """
         guild = invite.guild
-        if guild.id not in self.settings:
-            return
-        if not self.settings[guild.id]["invite_created"]["enabled"]:
-            return
+        
         try:
             channel = await self.modlog_channel(guild, "invite_created")
         except RuntimeError:
