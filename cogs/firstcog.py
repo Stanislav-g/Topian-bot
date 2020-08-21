@@ -475,7 +475,7 @@ async def on_guild_update(self, before, after):
 			else:
 				embed = discord.Embed(color=discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s system channel was removed**')
 			embed.set_author(name=after.name, icon_url=str(after.icon_url))
-	  		embed.set_footer(text=f"Guild ID: {after.id}")
+	  		
 			try:
 				await logch.send(embed=embed)
 			except Exception:
