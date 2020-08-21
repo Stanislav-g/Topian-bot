@@ -30,30 +30,30 @@ class user(commands.Cog):
             
     @commands.Cog.listener()
     async def on_invite_create(self, invite: discord.Invite):
-		guild = invite.guild
-		if guild.id in self.bot.premium_guilds:
-			await self.load_invites(guild.id)
-		if not isinstance(guild, discord.Guild):
-			return
-		logch = self.bot.get_config(guild).get('log.action')
-		if logch:
-			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**An invite was created**')
-			embed.set_author(name=guild.name, icon_url=str(guild.icon_url_as(static_format='png', size=2048)))
-			embed.add_field(name='Invite Code', value=invite.code, inline=False)
-			embed.add_field(name='Max Uses', value=invite.max_uses, inline=False)
-			embed.add_field(name='Temporary', value=invite.temporary, inline=False)
-			if invite.temporary:
-				delta = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(seconds=invite.max_age)
-				if isinstance(delta, datetime.timedelta):
-					embed.add_field(name='Expires in', value=humanfriendly.format_timespan(delta), inline=False)
-			if isinstance(invite.channel, discord.abc.GuildChannel):
-				embed.add_field(name='Channel', value=f'#{invite.channel.name}({invite.channel.id})', inline=False)
-			if invite.inviter:
-				embed.set_footer(text=f'Created by: {invite.inviter} ({invite.inviter.id})')
-			try:
-				await logch.send(embed=embed)
-			except Exception:
-				pass 
+	guild = invite.guild
+	if guild.id in self.bot.premium_guilds:
+		await self.load_invites(guild.id)
+	if not isinstance(guild, discord.Guild):
+		return
+	logch = self.bot.get_config(guild).get('log.action')
+	if logch:
+		embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**An invite was created**')
+		embed.set_author(name=guild.name, icon_url=str(guild.icon_url_as(static_format='png', size=2048)))
+		embed.add_field(name='Invite Code', value=invite.code, inline=False)
+		embed.add_field(name='Max Uses', value=invite.max_uses, inline=False)
+		embed.add_field(name='Temporary', value=invite.temporary, inline=False)
+		if invite.temporary:
+			delta = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(seconds=invite.max_age)
+			if isinstance(delta, datetime.timedelta):
+				embed.add_field(name='Expires in', value=humanfriendly.format_timespan(delta), inline=False)
+		if isinstance(invite.channel, discord.abc.GuildChannel):
+			embed.add_field(name='Channel', value=f'#{invite.channel.name}({invite.channel.id})', inline=False)
+		if invite.inviter:
+			embed.set_footer(text=f'Created by: {invite.inviter} ({invite.inviter.id})')
+		try:
+			await logch.send(embed=embed)
+		except Exception:
+			pass 		
             
             
             
