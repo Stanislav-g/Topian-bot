@@ -30,7 +30,7 @@ class user(commands.Cog):
             
     @commands.Cog.listener()
     async def on_invite_create(self, invite: discord.Invite):
-	guild = invite.guild
+        guild = invite.guild
 	if guild.id in self.bot.premium_guilds:
 		await self.load_invites(guild.id)
 	if not isinstance(guild, discord.Guild):
@@ -59,9 +59,7 @@ class user(commands.Cog):
             
     @commands.Cog.listener()
     async def on_invite_delete(self, invite: discord.Invite) -> None:
-        """
-            New in discord.py 1.3
-        """
+        
         guild = invite.guild
         if guild.id not in self.settings:
             return
