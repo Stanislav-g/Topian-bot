@@ -27,6 +27,7 @@ class user(commands.Cog):
     async def color(self, ctx):     
         a = random.choice(['1','2'])
         if a == '1':   
+            start_ev = [''] 
             global start_ev
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
@@ -62,6 +63,7 @@ class user(commands.Cog):
                 
 
         elif a == '2':  
+            ev_player = ['']
             global ev_player
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
