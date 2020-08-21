@@ -25,12 +25,7 @@ class user(commands.Cog):
     ev_player = [''] #игроки в розыгрыше
     @commands.command()
     async def color(self, ctx):     
-        a = random.choice(['1','2','3','4','5'])
-         
-        
-        global th 
-        global fi
-        global fo
+        a = random.choice(['1','2'])
         if a == '1':   
             global start_ev
             await ctx.send(f"Приготовься, до старта 5 секунд!")
