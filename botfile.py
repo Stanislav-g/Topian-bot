@@ -41,7 +41,7 @@ channell = ['']
 async def on_message ( message ):
     global channell
     client.getchannel(ID)
-    if message in channell
+    if message in channell:
         emj = str('👍')
         await message.add_reaction(emj)
         emji = str('👎')
