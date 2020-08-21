@@ -40,8 +40,8 @@ channell = ['']
 @client.event
 async def on_message ( message ):
     global channell
-    client.getchannel(ID)
-    if message in channell:
+    textchannel = client.getchannel(ID)
+    if textchannel = channell:
         emj = str('👍')
         await message.add_reaction(emj)
         emji = str('👎')
