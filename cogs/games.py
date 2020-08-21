@@ -94,7 +94,107 @@ class user(commands.Cog):
             else:
                 await ctx.send(f"Ты не угадал")
                 
- 
+        elif a == '3':  
+            
+            await ctx.send(f"Приготовься, до старта 5 секунд!")
+            await asyncio.sleep(5)
+            await ctx.send(f"🟥 - 14 \n🟧 - 45\n🟨 - 34\n🟩 - 35")
+            await asyncio.sleep(1)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1)
+            await ctx.channel.purge(limit = 4)
+            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 35?", description= f" 🟥 🟧 🟨 🟩 \n\n")
+            message = await ctx.send(embed=embed)
+            await message.add_reaction('🟥')
+            await message.add_reaction('🟧')
+            await message.add_reaction('🟨')
+            await message.add_reaction('🟩')
+            await ctx.send(f"У тебя есть 15 секунд что-бы сделать выбор")
+            await asyncio.sleep(12)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1) 
+            await ctx.channel.purge(limit = 4)
+            if th == '2':
+                await ctx.send(f"Ты угадал правильно!")
+            
+            else:
+                await ctx.send(f"Ты не угадал")   
+                
+        elif a == '4':
+           
+            await ctx.send(f"Приготовься, до старта 5 секунд!")
+            await asyncio.sleep(5)
+            await ctx.send(f"🟥 - 543894 \n🟧 - 584295\n🟨 - 546784\n🟩 - 32915")
+            await asyncio.sleep(1)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1)
+            await ctx.channel.purge(limit = 4)
+            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 54678?", description= f" 🟥 🟧 🟨 🟩 \n\n")
+            message = await ctx.send(embed=embed)
+            await message.add_reaction('🟥')
+            await message.add_reaction('🟧')
+            await message.add_reaction('🟨')
+            await message.add_reaction('🟩')
+            await ctx.send(f"У тебя есть 15 секунд что-бы сделать выбор")
+            await asyncio.sleep(12)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1) 
+            await ctx.channel.purge(limit = 4)
+            if fo >= '2':
+                await ctx.send(f"Ты угадал правильно!")
+           
+            else:
+                await ctx.send(f"Ты не угадал")       
+           
+        elif a == '5':  
+    
+            await ctx.send(f"Приготовься, до старта 5 секунд!")
+            await asyncio.sleep(5)
+            await ctx.send(f"🟥 - 20533\n🟧 - 5320\n🟨 - 20053\n🟩 - 2053")
+            await asyncio.sleep(1)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1)
+            await ctx.channel.purge(limit = 4)
+            embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 2053?", description= f" 🟥 🟧 🟨 🟩 \n\n")
+            message = await ctx.send(embed=embed)
+            await message.add_reaction('🟥')
+            await message.add_reaction('🟧')
+            await message.add_reaction('🟨')
+            await message.add_reaction('🟩')
+            await ctx.send(f"У тебя есть 15 секунд что-бы сделать выбор")
+            await asyncio.sleep(12)
+            await ctx.send(f"3")
+            await asyncio.sleep(1)
+            await ctx.send(f"2")
+            await asyncio.sleep(1)
+            await ctx.send(f"1")
+            await asyncio.sleep(1) 
+            await ctx.channel.purge(limit = 4)
+            if fi >= '2':
+                await ctx.send(f"Ты угадал правильно!")
+            
+            else:
+                await ctx.send(f"Ты не угадал")     
         
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
@@ -108,7 +208,12 @@ class user(commands.Cog):
             ev_player = '2'
         elif str(payload.emoji) == '🟥': # Emoji для реакций
             start_ev = '2'
-        
+        elif str(payload.emoji) == '🟩': # Emoji для реакций
+            th = '2'
+        elif str(payload.emoji) == '🟨': # Emoji для реакций
+            fo = '2'
+        elif str(payload.emoji) == '🟩': # Emoji для реакций
+            fi = '2'
         
         else:
             ev_player = '0'  
