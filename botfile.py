@@ -32,7 +32,7 @@ async def rew(ctx , * , arg = None):
         
 @client.command()
 async def start_emoji(ctx):
-    while True
+    while True:
         emj = str('👍')
         await ctx.message.add_reaction(emj)
         emji = str('👎')
