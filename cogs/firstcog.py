@@ -334,6 +334,7 @@ class user(commands.Cog):
         
 @commands.Cog.listener()
 async def on_guild_update(self, before, after):
+	logch = self.bot.get_config(after).get('log.action')
 	channel = client.get_channel( 705461507953262793 )
 	if logch:
 		if before.name != after.name:
@@ -343,7 +344,7 @@ async def on_guild_update(self, before, after):
 			embed.set_author(name=after.name, icon_url=str(after.icon_url))
 			embed.set_footer(text=f"Guild ID: {after.id}")
 			try:
-				await channel.send(embed=embed)
+				await logch.channel.send(embed=embed)
 			except Exception:
 				pass
 		
@@ -354,7 +355,7 @@ async def on_guild_update(self, before, after):
 			embed.set_author(name=after.name, icon_url=str(after.icon_url))
 			embed.set_footer(text=f"Guild ID: {after.id}")
 			try:
-				await channel.send(embed=embed)
+				await logch.channel.send(embed=embed)
 			except Exception:
 				pass
 		
