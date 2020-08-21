@@ -38,8 +38,9 @@ async def start_emoji(ctx, channel: client.get_channel(id)):
     
 channell = ['']          
 @client.event
-async def on_message ( message , channel: client.get_channel(id)):
+async def on_message ( message ):
     global channell
+    channel = client.get_channel(id)
     textchannel = channel
     if textchannel == channell:
         emj = str('👍')
