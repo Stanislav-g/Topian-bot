@@ -32,7 +32,7 @@ async def rew(ctx , * , arg = None):
         
 @client.command()
 async def start_emoji(ctx):
-    channel = (ctx.message.channel.id) 
+    channel = (ctx.message.channel.name) 
     while True:
         if ctx.message in channel:
             emj = str('👍')
