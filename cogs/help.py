@@ -62,7 +62,7 @@ class user(commands.Cog):
     @commands.command()
     async def start_emoji(self, ctx):
         global channell
-        channell = client.get_channel(id)
+        channell = bot.get_channel(id)
         await ctx.send(channell)
 
 
