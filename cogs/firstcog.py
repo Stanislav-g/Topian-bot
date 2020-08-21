@@ -444,7 +444,7 @@ async def on_guild_update(self, before, after):
 			embed.set_footer(text=f"Guild ID: {after.id}")
 			try:
 				await logch.send(embed=embed)
-				except Exception:
+			except Exception:
 				pass
 		if before.discovery_splash != after.discovery_splash:
 			if after.discovery_splash:
