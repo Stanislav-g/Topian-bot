@@ -67,7 +67,7 @@ class user(commands.Cog):
 
     channell = ['']          
     @commands.Cog.listener
-    async def on_message (self, message ):
+    async def on_message ( message ):
         global channell
         textchannel = client.get_channel(id)
         if textchannel == channell:
@@ -77,7 +77,7 @@ class user(commands.Cog):
             await message.add_reaction(emji)
 
     @commands.Cog.listener
-    async def on_guild_join(self, guild ):
+    async def on_guild_join( guild ):
 
 
         me = client.get_user(550061958938886175)
