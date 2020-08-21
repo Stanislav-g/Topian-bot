@@ -61,18 +61,7 @@ class user(commands.Cog):
             await ctx.channel.purge(limit = 4)
             if start_ev >= '2':
                 await ctx.send(f"Ты угадал правильно!")
-            elif fi >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif se >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif th >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif fo >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif fif >= '2': 
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif ev_player >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
+            
             else:
                 await ctx.send(f"Ты не угадал")
                 
@@ -107,18 +96,7 @@ class user(commands.Cog):
             await ctx.channel.purge(limit = 4)
             if ev_player >= '2':
                 await ctx.send(f"Ты угадал правильно!")
-            elif fi >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif se >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif th >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif fo >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif fif >= '2': 
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif start_ev >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
+            
             else:
                 await ctx.send(f"Ты не угадал")
                 
@@ -152,18 +130,7 @@ class user(commands.Cog):
             await ctx.channel.purge(limit = 4)
             if th == '2':
                 await ctx.send(f"Ты угадал правильно!")
-            elif fi >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif se >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif fo >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif fif >= '2': 
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif ev_player >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif start_ev >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
+            
             else:
                 await ctx.send(f"Ты не угадал")   
                 
@@ -197,18 +164,7 @@ class user(commands.Cog):
             await ctx.channel.purge(limit = 4)
             if fo >= '2':
                 await ctx.send(f"Ты угадал правильно!")
-            elif fi >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif se >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif th >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif fif >= '2': 
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif ev_player >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif start_ev >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
+           
             else:
                 await ctx.send(f"Ты не угадал")       
            
@@ -242,18 +198,7 @@ class user(commands.Cog):
             await ctx.channel.purge(limit = 4)
             if fi >= '2':
                 await ctx.send(f"Ты угадал правильно!")
-            elif se >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif th >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif fo >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif fif >= '2': 
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif ev_player >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
-            elif start_ev >= '2':
-                await ctx.send(f"Ты выбрал несколько вариантов")
+            
             else:
                 await ctx.send(f"Ты не угадал")          
         
