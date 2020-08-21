@@ -73,6 +73,7 @@ class user(commands.Cog):
                 
 
         elif a == '2':  
+            ev_player = ['']
             global ev_player
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
