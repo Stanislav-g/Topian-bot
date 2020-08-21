@@ -28,82 +28,9 @@ class user(commands.Cog):
         if isinstance(error, commands.CommandNotFound ):
             await ctx.send(embed = discord.Embed(description = f'**:exclamation: {ctx.author.name}, данной команды не существует.**', color=0x0c0c0c))
             
-    @commands.Cog.listener()
-    async def on_invite_create(self, invite: discord.Invite):
-        guild = invite.guild
-	if guild.id in self.bot.premium_guilds:
-		await self.load_invites(guild.id)
-	if not isinstance(guild, discord.Guild):
-		return
-	logch = self.bot.get_config(guild).get('log.action')
-	if logch:
-		embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**An invite was created**')
-		embed.set_author(name=guild.name, icon_url=str(guild.icon_url_as(static_format='png', size=2048)))
-		embed.add_field(name='Invite Code', value=invite.code, inline=False)
-		embed.add_field(name='Max Uses', value=invite.max_uses, inline=False)
-		embed.add_field(name='Temporary', value=invite.temporary, inline=False)
-		if invite.temporary:
-			delta = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(seconds=invite.max_age)
-			if isinstance(delta, datetime.timedelta):
-				embed.add_field(name='Expires in', value=humanfriendly.format_timespan(delta), inline=False)
-		if isinstance(invite.channel, discord.abc.GuildChannel):
-			embed.add_field(name='Channel', value=f'#{invite.channel.name}({invite.channel.id})', inline=False)
-		if invite.inviter:
-			embed.set_footer(text=f'Created by: {invite.inviter} ({invite.inviter.id})')
-		try:
-			await logch.send(embed=embed)
-		except Exception:
-			pass 		
-            
-            
-            
-    @commands.Cog.listener()
-    async def on_invite_delete(self, invite: discord.Invite) -> None:
+    
+
         
-        guild = invite.guild
-        if guild.id not in self.settings:
-            return
-        if not self.settings[guild.id]["invite_deleted"]["enabled"]:
-            return
-        try:
-            channel = await self.modlog_channel(guild, "invite_deleted")
-        except RuntimeError:
-            return
-        embed_links = (
-            channel.permissions_for(guild.me).embed_links
-            and self.settings[guild.id]["invite_deleted"]["embed"]
-        )
-        invite_attrs = {
-            "code": _("Code: "),
-            "inviter": _("Inviter: "),
-            "channel": _("Channel: "),
-            "max_uses": _("Max Uses: "),
-            "uses": _("Used: "),
-        }
-        try:
-            invite_time = invite.created_at.strftime("%H:%M:%S")
-        except AttributeError:
-            invite_time = datetime.datetime.utcnow().strftime("%H:%M:%S")
-        msg = _("{emoji} `{time}` Invite deleted ").format(
-            emoji=self.settings[guild.id]["invite_deleted"]["emoji"], time=invite_time,
-        )
-        embed = discord.Embed(
-            title=_("Invite Deleted"),
-            colour=await self.get_event_colour(guild, "invite_deleted")
-        )
-        worth_updating = False
-        for attr, name in invite_attrs.items():
-            before_attr = getattr(invite, attr)
-            if before_attr:
-                worth_updating = True
-                msg += f"{name} {before_attr}\n"
-                embed.add_field(name=name, value=str(before_attr))
-        if not worth_updating:
-            return
-        if embed_links:
-            await channel.send(embed=embed)
-        else:
-            await channel.send(escape(msg, mass_mentions=True)) 
    
     @commands.command(aliases = ['clear', 'c'])
     @commands.has_permissions(manage_messages = True)
@@ -405,7 +332,154 @@ class user(commands.Cog):
         membersrole = rolee.members
         await ctx.send( "users {}".format( membersrole ) ) 
         
-      
+@commands.Cog.listener()
+async def on_guild_update(self, before, after):
+	logch = self.bot.get_config(after).get('log.action')
+	if logch:
+		if before.name != after.name:
+			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Guild name was changed**')
+			embed.add_field(name='Before', value=before.name, inline=False)
+			embed.add_field(name='After', value=after.name, inline=False)
+			embed.set_author(name=after.name, icon_url=str(after.icon_url))
+			embed.set_footer(text=f"Guild ID: {after.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass
+		if before.description != after.description and after.id != 411619823445999637:
+			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Guild description was changed**')
+			embed.add_field(name='Before', value=before.description, inline=False)
+			embed.add_field(name='After', value=after.description, inline=False)
+			embed.set_author(name=after.name, icon_url=str(after.icon_url))
+			embed.set_footer(text=f"Guild ID: {after.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass
+		if before.region != after.region:
+			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s region was changed**')
+			embed.add_field(name='Before', value=region[str(before.region)], inline=False)
+			embed.add_field(name='After', value=region[str(after.region)], inline=False)
+			embed.set_author(name=after.name, icon_url=str(after.icon_url))
+			embed.set_footer(text=f"Guild ID: {after.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass
+		if before.owner != after.owner:
+			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name} was transferred to a new owner**')
+			embed.add_field(name='Before', value=before.owner, inline=False)
+			embed.add_field(name='After', value=after.owner, inline=False)
+			embed.set_author(name=after.name, icon_url=str(after.icon_url))
+			embed.set_footer(text=f"Guild ID: {after.id} | Old Owner ID: {before.owner.id} | New Owner ID: {after.owner.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass
+		if before.verification_level != after.verification_level:
+			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s verification level was changed**')
+			embed.add_field(name='Before', value=str(before.verification_level).capitalize(), inline=False)
+			embed.add_field(name='After', value=str(after.verification_level).capitalize(), inline=False)
+			embed.set_author(name=after.name, icon_url=str(after.icon_url))
+			embed.set_footer(text=f"Guild ID: {after.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass
+		if before.explicit_content_filter != after.explicit_content_filter:
+			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s content filter level was changed**')
+			embed.add_field(name='Before', value=str(before.explicit_content_filter).capitalize().replace('_', ''), inline=False)
+			embed.add_field(name='After', value=str(after.explicit_content_filter).capitalize().replace('_', ''), inline=False)
+			embed.set_author(name=after.name, icon_url=str(after.icon_url))
+			embed.set_footer(text=f"Guild ID: {after.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass
+		if set(before.features) != set(after.features):
+			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s features were updated**')
+			s = set(after.features)
+			removed = [x for x in before.features if x not in s]
+			ignored = ['PREMIUM']
+			[removed.remove(f) for f in ignored if f in removed]
+			s = set(before.features)
+			added = [x for x in after.features if x not in s]
+			[added.remove(f) for f in ignored if f in added]
+			if added:
+				features = []
+				for feature in added:
+					features.append(f'> {feature}')
+				embed.add_field(name='Added', value='\n'.join(features), inline=False)
+			if removed:
+				features = []
+				for feature in removed:
+					features.append(f'> {feature}')
+				embed.add_field(name='Removed', value='\n'.join(features), inline=False)
+			embed.set_author(name=after.name, icon_url=str(after.icon_url))
+			embed.set_footer(text=f"Guild ID: {after.id}")
+			if added or removed:
+				try:
+					await logch.send(embed=embed)
+				except Exception:
+					pass
+		if before.banner != after.banner:
+			if after.banner:
+				embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s banner was changed**')
+				embed.set_image(url=str(after.banner_url))
+			else:
+				embed = discord.Embed(color=discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s banner was removed**')
+			embed.set_author(name=after.name, icon_url=str(after.icon_url))
+			embed.set_footer(text=f"Guild ID: {after.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass
+		if before.splash != after.splash:
+			if after.splash:
+				embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s splash was changed**')
+				embed.set_image(url=str(after.splash_url))
+			else:
+				embed = discord.Embed(color=discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s splash was removed**')
+			embed.set_author(name=after.name, icon_url=str(after.icon_url))
+			embed.set_footer(text=f"Guild ID: {after.id}")
+			try:
+				await logch.send(embed=embed)
+				except Exception:
+				pass
+		if before.discovery_splash != after.discovery_splash:
+			if after.discovery_splash:
+				embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s discovery splash was changed**')
+				embed.set_image(url=str(after.discovery_splash_url))
+			else:
+				embed = discord.Embed(color=discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s discovery splash was removed**')
+				embed.set_author(name=after.name, icon_url=str(after.icon_url))
+			embed.set_footer(text=f"Guild ID: {after.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass
+		if before.premium_tier != after.premium_tier:
+			if after.premium_tier > before.premium_tier:
+				embed = discord.Embed(color=discord.Color.from_rgb(255, 115, 250), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name} got boosted to Level {after.premium_tier}**')
+			if after.premium_tier < before.premium_tier:
+				embed = discord.Embed(color=discord.Color.from_rgb(255, 115, 250), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name} got weakened to Level {after.premium_tier}**')
+			embed.set_author(name=after.name, icon_url=str(after.icon_url))
+			embed.set_footer(text=f"Guild ID: {after.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass
+		if before.system_channel != after.system_channel:
+			if after.system_channel:
+				embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s system channel was changed to {after.system_channel.mention}**')
+			else:
+				embed = discord.Embed(color=discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{after.name}\'s system channel was removed**')
+			embed.set_author(name=after.name, icon_url=str(after.icon_url))
+	  		embed.set_footer(text=f"Guild ID: {after.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass      
      
 def setup(client):
     client.add_cog(user(client))
