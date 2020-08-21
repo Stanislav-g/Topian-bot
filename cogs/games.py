@@ -29,7 +29,6 @@ class user(commands.Cog):
         
         a = random.choice(['1','2'])
         if a == '1':    
-            global start_ev
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 14 \n🟧 - 45\n🟨 - 34\n🟩 - 35")
@@ -61,9 +60,8 @@ class user(commands.Cog):
             else:
                 await ctx.send(f"Ты не угадал")
                 
-
+        
         elif a == '2':
-            global ev_player
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"🟥 - 55 \n🟧 - 19\n🟨 - 34\n🟩 - 35")
