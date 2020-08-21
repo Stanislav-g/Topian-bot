@@ -54,7 +54,7 @@ class user(commands.Cog):
             await ctx.send(f"1")
             await asyncio.sleep(1) 
             await ctx.channel.purge(limit = 4)
-            if start_ev >= '2':
+            if start_ev == '2':
                 await ctx.send(f"Ты угадал правильно!")
             
             else:
@@ -89,7 +89,7 @@ class user(commands.Cog):
             await ctx.send(f"1")
             await asyncio.sleep(1) 
             await ctx.channel.purge(limit = 4)
-            if ev_player >= '2':
+            if ev_player == '2':
                 await ctx.send(f"Ты угадал правильно!")
             
             else:
