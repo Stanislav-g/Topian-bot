@@ -334,7 +334,7 @@ class user(commands.Cog):
         
 @commands.Cog.listener()
 async def on_guild_update(self, before, after):
-	logch = self.bot.get_config(after).get('log.action')
+	logch = client.get_channel( 705461507953262793 )
 	if logch:
 		if before.name != after.name:
 			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Guild name was changed**')
