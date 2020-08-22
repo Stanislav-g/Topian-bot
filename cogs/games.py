@@ -155,8 +155,7 @@ class user(commands.Cog):
              
         elif str(payload.emoji) == '🟥': # Emoji для реакций
             start_ev = '2'
-            else:
-                start_ev = '0'
+
         elif str(payload.emoji) == '🟩': # Emoji для реакций
             three = '2'
        
