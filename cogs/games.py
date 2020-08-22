@@ -44,6 +44,10 @@ class user(commands.Cog):
             await asyncio.sleep(1)
             messageeee = await ctx.send(f"1")
             await asyncio.sleep(1)
+            await message.delete()
+            await messagee.delete()
+            await messageee.delete()
+            await messageeee.delete()
             embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 14?", description= f" 🟥 🟧 🟨 🟩 \n\n")
             message = await ctx.send(embed=embed)
             await message.add_reaction('🟥')
@@ -132,7 +136,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")           
         
     @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload, member):
+    async def on_raw_reaction_add(self, payload):
         
         global ev_player
         global start_ev
