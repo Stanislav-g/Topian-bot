@@ -4,7 +4,7 @@ import os
 import random
 import asyncio
 from discord.utils import get
-
+import PyNaCl
 
 
     
