@@ -34,7 +34,6 @@ class user(commands.Cog):
         global ev_player
         a = random.choice(['1'])
         if a == '1':    
-            
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             message = await ctx.send(f"🟥 - 14\n🟧 - 45\n🟨 - 34\n🟩 - 35")
@@ -64,7 +63,6 @@ class user(commands.Cog):
             await ctx.send(f"1")
             await asyncio.sleep(1) 
             await ctx.channel.purge(limit = 4)
-            global start_ev
             if start_ev >= '2':
                 await ctx.send(f"Ты угадал правильно!")
             else:
@@ -147,16 +145,10 @@ class user(commands.Cog):
         global fi
         global u
         
-        if str(payload.emoji) == '🟧': # Emoji для реакций
-            ev_player = '2'    
-             
-        elif str(payload.emoji) == '🟥': # Emoji для реакций
+           
+        if str(payload.emoji) == '🟥': # Emoji для реакций
             start_ev = '2'
 
-        elif str(payload.emoji) == '🟩': # Emoji для реакций
-            three = '2'
-       
-        
         else:
             ev_player = '0'  
             start_ev = '0'
