@@ -32,12 +32,16 @@ class user(commands.Cog):
         global fif
         global start_ev
         global ev_player
-        a = random.choice(['1','2','3','4','5'])
+        a = random.choice(['1'])
         
         if a == '1':    
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
-            await ctx.send(f"🟥 - 14 \n🟧 - 45\n🟨 - 34\n🟩 - 35")
+            await ctx.send(f"14,  45,  34,  35")
+            await message.add_reaction('🟥')
+            await message.add_reaction('🟧')
+            await message.add_reaction('🟨')
+            await message.add_reaction('🟩')
             await asyncio.sleep(1)
             await ctx.send(f"3")
             await asyncio.sleep(1)
