@@ -210,7 +210,7 @@ class user(commands.Cog):
             embw.add_field( name = 'Suggest',value = '**suggest** = suggest (text)')
             await ctx.send( embed = embw )
         else:
-            embed = discord.Embed(title=f"{ctx.author.name} Предложил :", description= f" {agr} \n\n")
+            embed = discord.Embed(title=f"{ctx.author.name} Предложил :", description= f" {arg} \n\n")
 
             embed.set_thumbnail(url=ctx.guild.icon_url)
 
@@ -218,13 +218,20 @@ class user(commands.Cog):
             await message.add_reaction('✅')
             await message.add_reaction('❎')
 
-    #suggest
+    #text chat
     @commands.command()
     @commands.has_permissions( administrator = True )
     async def text(self, ctx , * , arg = None):
             await ctx.channel.purge( limit = 1 )  
             await ctx.send(f" {arg} ")
-           
+
+        #text member
+    @commands.command()
+    @commands.has_permissions( administrator = True )
+    async def textmember_lc(self, ctx , * , arg = None, member: discord.Member = None):
+            await member.channel.purge( limit = 1 )  
+            await member.send(f" {arg} ")   
+    
     #temp_add_role
     @commands.command()
     @commands.has_permissions(administrator = True)
