@@ -22,7 +22,7 @@ class user(commands.Cog):
     async def join(self, ctx):
         global voise
         channel = ctx.message.author.voice.channel
-        voice = get(ctx.author.voice_clients, guild = ctx.guild)
+        voice = get(client.voice_clients, guild = ctx.guild)
 
         if voice and voice.is_connected():
             await voice.move_to(channel)
@@ -33,7 +33,6 @@ class user(commands.Cog):
     #leave from channel
     @commands.command()
     async def leave(self, ctx):
-        global voise
         channel = ctx.message.author.voice.channel
         voice = get(client.voice_clients, guild = ctx.guild)
 
