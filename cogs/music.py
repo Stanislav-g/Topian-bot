@@ -17,30 +17,7 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
             
-    #join to channel
-    @commands.command()
-    async def join(self, ctx):
-        global voise
-        channel = ctx.message.author.voice.channel
-        voice = get(client.voice_clients, guild = ctx.guild)
 
-        if voice and voice.is_connected():
-            await voice.move_to(channel)
-        else:
-            voice = await channel.connect()
-            await ctx.send(f'Бот присоеденился к каналу: {channel}')
-
-    #leave from channel
-    @commands.command()
-    async def leave(self, ctx):
-        channel = ctx.message.author.voice.channel
-        voice = get(client.voice_clients, guild = ctx.guild)
-
-        if voice and voice.is_connected():
-            await voice.disconnect()
-        else:
-            voice = await channel.connect()
-            await ctx.send(f'Бот отключился от канала: {channel}')
 
 
 
