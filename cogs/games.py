@@ -36,20 +36,23 @@ class user(commands.Cog):
         global u
         u = ctx.author.id
         await ctx.send(u)
-        a = random.choice(['1','2','3'])
+        a = random.choice(['1'])
         
         if a == '1':    
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             message = await ctx.send(f"🟥 - 14\n🟧 - 45\n🟨 - 34\n🟩 - 35")
             await asyncio.sleep(1)
-            message = await ctx.send(f"3")
+            messagee = await ctx.send(f"3")
             await asyncio.sleep(1)
-            message = await ctx.send(f"2")
+            messageee = await ctx.send(f"2")
             await asyncio.sleep(1)
-            message = await ctx.send(f"1")
+            messageeee = await ctx.send(f"1")
             await asyncio.sleep(1)
             await message.delete()
+            await messagee.delete()
+            await messageee.delete()
+            await messageeee.delete()
             embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 14?", description= f" 🟥 🟧 🟨 🟩 \n\n")
             message = await ctx.send(embed=embed)
             await message.add_reaction('🟥')
@@ -145,11 +148,20 @@ class user(commands.Cog):
         global three
         global fo
         global fi
+        global u
         
         if str(payload.emoji) == '🟧': # Emoji для реакций
-            ev_player = '2'
+            i = ctx.author.id
+            if u == i:
+                ev_player = '2'
+            else:
+                ev_player = '0'
         elif str(payload.emoji) == '🟥': # Emoji для реакций
-            start_ev = '2'
+            i = ctx.author.id
+            if u == i:
+                ev_player = '2'
+            else:
+                ev_player = '0'
         elif str(payload.emoji) == '🟩': # Emoji для реакций
             three = '2'
        
