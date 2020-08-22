@@ -18,7 +18,6 @@ class user(commands.Cog):
         self.client = client
     fi = [''] 
     se = [''] 
-    u = ['']
     three = [''] 
     fo = [''] 
     fif = [''] 
@@ -33,9 +32,6 @@ class user(commands.Cog):
         global fif
         global start_ev
         global ev_player
-        global u
-        u = ctx.author.id
-        await ctx.send(u)
         a = random.choice(['1'])
         
         if a == '1':    
