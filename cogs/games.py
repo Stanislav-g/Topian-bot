@@ -38,6 +38,7 @@ class user(commands.Cog):
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
             await ctx.send(f"14,  45,  34,  35")
+            message = await ctx.send(f"14,  45,  34,  35")
             await message.add_reaction('🟥')
             await message.add_reaction('🟧')
             await message.add_reaction('🟨')
