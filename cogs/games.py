@@ -157,7 +157,7 @@ class user(commands.Cog):
             else:
                 ev_player = '0'
         elif str(payload.emoji) == '🟥': # Emoji для реакций
-            i = ctx.author.id
+            i = member.payload.id
             if u == i:
                 ev_player = '2'
             else:
