@@ -18,6 +18,7 @@ class user(commands.Cog):
         self.client = client
     fi = [''] 
     se = [''] 
+    u = ['']
     three = [''] 
     fo = [''] 
     fif = [''] 
@@ -32,6 +33,9 @@ class user(commands.Cog):
         global fif
         global start_ev
         global ev_player
+        global u
+        u = ctx.author.id
+        await ctx.send(u)
         a = random.choice(['1','2','3'])
         
         if a == '1':    
@@ -46,7 +50,6 @@ class user(commands.Cog):
             message = await ctx.send(f"1")
             await asyncio.sleep(1)
             await message.delete()
-            await ctx.channel.purge(limit = 4)
             embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 14?", description= f" 🟥 🟧 🟨 🟩 \n\n")
             message = await ctx.send(embed=embed)
             await message.add_reaction('🟥')
@@ -80,7 +83,6 @@ class user(commands.Cog):
             message = await ctx.send(f"1")
             await asyncio.sleep(1)
             await message.delete()
-            await ctx.channel.purge(limit = 4)
             embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 19?", description= f" 🟥 🟧 🟨 🟩 \n\n")
             message = await ctx.send(embed=embed)
             await message.add_reaction('🟥')
@@ -114,7 +116,6 @@ class user(commands.Cog):
             message = await ctx.send(f"1")
             await asyncio.sleep(1)
             await message.delete()
-            await ctx.channel.purge(limit = 4)
             embed = discord.Embed(title=f"{ctx.author.name}  что было под номером 35?", description= f" 🟥 🟧 🟨 🟩 \n\n")
             message = await ctx.send(embed=embed)
             await message.add_reaction('🟥')
