@@ -152,13 +152,13 @@ class user(commands.Cog):
         
         if str(payload.emoji) == '🟧': # Emoji для реакций
             ev_player = '2'    
-                ev_player = '0'
+             
         elif str(payload.emoji) == '🟥': # Emoji для реакций
             i = member.payload.id
             if u == i:
-                ev_player = '2'
+                start_ev = '2'
             else:
-                ev_player = '0'
+                start_ev = '0'
         elif str(payload.emoji) == '🟩': # Emoji для реакций
             three = '2'
        
