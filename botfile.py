@@ -36,7 +36,30 @@ async def reload(ctx, extensions):
     await ctx.send('reloaded')
 
 
+    #join to channel
+@client.command()
+async def join(ctx):
+    global voise
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients, guild = ctx.guild)
 
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
+        await ctx.send(f'Бот присоеденился к каналу: {channel}')
+
+    #leave from channel 
+@client.command()
+async def leave(ctx):
+   channel = ctx.message.author.voice.channel
+   voice = get(client.voice_clients, guild = ctx.guild)
+
+    if voice and voice.is_connected():
+        await voice.disconnect()
+    else:
+        voice = await channel.connect()
+        await ctx.send(f'Бот отключился от канала: {channel}')
         
         
 @client.event
