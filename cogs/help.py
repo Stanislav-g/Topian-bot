@@ -35,6 +35,8 @@ class user(commands.Cog):
         await ctx.author.send( embed = embw )
 
     @commands.command()
+    @commands.has_permissions( administrator = True )
+
     async def log(self, ctx, num : int = None, member: discord.Member = None ):
         guild = ctx.message.guild
         if member == None:
