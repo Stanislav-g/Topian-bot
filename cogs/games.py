@@ -217,7 +217,7 @@ class user(commands.Cog):
     async def knb(self, ctx, member: discord.Member = None):
         a = random.choice([':moyai: камень',':scissors: ножницы',':scroll: бумага'])
         v = random.choice([':moyai: камень',':scissors: ножницы',':scroll: бумага'])
-        if Member == None:
+        if member == None:
              embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
              embw.add_field( name = 'knb',value = '**knb** = knb @user')
              await ctx.send( embed = embw )
