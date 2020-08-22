@@ -27,7 +27,7 @@ class user(commands.Cog):
         k = (":2_:")
         await ctx.send(t)
     @commands.command()
-    async def message_edit(self, ctx , * , arg = None, id:int = None):
+    async def message_edit(self, ctx , * , arg, id:int):
         message = await ctx.message.channel.fetch_message(id)
         await message.edit(arg)
 
