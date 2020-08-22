@@ -33,7 +33,6 @@ class user(commands.Cog):
         global start_ev
         global ev_player
         a = random.choice(['2'])
-        
         if a == '1':    
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
