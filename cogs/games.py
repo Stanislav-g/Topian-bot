@@ -141,7 +141,7 @@ class user(commands.Cog):
                 await ctx.send(f"Ты не угадал")           
         
     @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
+    async def on_raw_reaction_add(self, payload, member):
         
         global ev_player
         global start_ev
@@ -154,7 +154,7 @@ class user(commands.Cog):
             ev_player = '2'    
              
         elif str(payload.emoji) == '🟥': # Emoji для реакций
-            i = author.payload.id
+            i = member.payload.id
             if u == i:
                 start_ev = '2'
             else:
