@@ -16,9 +16,16 @@ class user(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-            
+                
+    @commands.command()
+    async def mine(self, ctx):
+        await ctx.send(":tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_: :2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_:")            
 
-
+    @commands.command()
+    async def mine_tk(self, ctx):
+        t = (":tasokuva:")
+        k = (":2_:")
+        await ctx.send(t , k)
 
 
 def setup(client):
