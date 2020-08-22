@@ -19,13 +19,13 @@ class user(commands.Cog):
                 
     @commands.command()
     async def mine(self, ctx):
-        await ctx.send(":tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::tasokuva::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_: :2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_::2_:")            
+        await ctx.send("🟫\n🟫🟫\n🟫🟫🟫\n🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫\n🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫\n⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️\n⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️\n⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️⬛️")            
 
     @commands.command()
     async def mine_tk(self, ctx):
-        t = (":tasokuva:")
+        t = ("🟫")
         k = (":2_:")
-        await ctx.send(t , k)
+        await ctx.send(t)
 
 
 def setup(client):
