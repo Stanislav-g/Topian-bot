@@ -26,7 +26,7 @@ class user(commands.Cog):
         await ctx.send('{} arguments: {}'.format(len(args), ', '.join(args)))
 
     @commands.command()
-    async def roles(self, ctx, *, member: Member.Roles):
+    async def roles(self, ctx, *, member: discord.Member.Roles):
         """Tells you a member's roles."""
         await ctx.send('I see the following roles: ' + ', '.join(member))
 
