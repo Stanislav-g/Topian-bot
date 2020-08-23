@@ -33,6 +33,9 @@ class user(commands.Cog):
         embw = discord.Embed( title = '**Games**', colour = discord.Color.green())
         embw.add_field( name = 'Commands',value = '**=rps** - rps (камень, ножницы или бумага)\n**=guess** - guess\n**=coinflip** - coinflip\n**=knb** - knb @user\n')
         await ctx.author.send( embed = embw )
+        embw = discord.Embed( title = '**Other**', colour = discord.Color.green())
+        embw.add_field( name = 'Commands',value = '**=num** - num рандомная цифра от 1 до 100\n**=wordnum** - wordnum (text)\n**=slapperson** - slapperson @user\n**=emoji_random** - emoji_random\n**=math** - math (arg) (+-*/) (arg)\n**=covid** - covid\n**=ball** - ball\n**=link** - link (url)\n**=kiss** - kiss @user' )
+        await ctx.author.send( embed = embw )
 
     @commands.command()
     @commands.has_permissions( administrator = True )
