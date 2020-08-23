@@ -264,7 +264,7 @@ class user(commands.Cog):
     
             
     @commands.command() # Попытки 5
-    async def guess(self, ctx):
+    async def угадайка(self, ctx):
         await ctx.message.delete()
         num = random.randint(1, 20)
         attems = 1
@@ -307,7 +307,7 @@ class user(commands.Cog):
                     )
                     await msg.edit(content= None, embed=emb2)
                     await msg_o.delete() 
-                    await asyncio.sleep(2)  
+                    await asyncio.sleep(2)
     #coinflip
     @commands.command()
     async def coinflip(self, ctx ):
