@@ -19,7 +19,7 @@ class user(commands.Cog):
 
     #info
     @commands.command()
-    async def help(self, ctx ):
+    async def helphelp(self, ctx ):
         await ctx.channel.purge( limit = 1 )
         emb = discord.Embed( title = '**Moderation**', colour= 0x808080)
         emb.add_field( name = 'Commands',value = '**=clear** - clear (количество) или clear (пользователь)(количество)\n**=ban** - ban @user\n **=unban** - unban @user\n **=kick** - kick @user\n **=emoji** - emoji (message id) (emoji)\n**-tempban** - tempban @user *s* or *m* or *h* or *d*\n**=temp_add_role** - temp_add_role (time) @user @role\n **=add_role** - add_role @user @role\n**=channel_create** - channel_create (name)\n**=voice_create** - voice_create (name)\n**=suggest** - suggest (text)\n**=changing_name** - changing_name @user\n**=text** - text (arg)')
@@ -39,14 +39,14 @@ class user(commands.Cog):
 
         
     @commands.command(pass_context = True)
-    async def helphelp(self, ctx):
+    async def help(self, ctx):
         await ctx.channel.purge(limit = 1)
         emb = discord.Embed( 
             title = 'Навигация по командам :clipboard:',
             color = 0x7aa13d
          )
 
-        emb.add_field( name = '__**Информация**__', value = '''
+        emb.add_field( name = '__**Moderation**__', value = '''
             **=clear** - clear (количество) или clear (пользователь)(количество)
             **=ban** - ban @user 
             **=unban** - unban @user
@@ -62,7 +62,7 @@ class user(commands.Cog):
             **=text** - text (arg)
              
             ''' )
-        emb.add_field( name = '__**Игры**__', value = '''
+        emb.add_field( name = '__**Info**__', value = '''
             **=userinfo** - userinfo @user
             **=botinfo**
             **=serverinfo**
@@ -70,20 +70,20 @@ class user(commands.Cog):
             **=ping** - ping
             **=user_boost** - user_ boost @user
             ''' )
-        emb.add_field( name = '__**Остальное**__', value = '''
+        emb.add_field( name = '__**Search**__', value = '''
             **=search** - search (запрос)
             **=youtube_search** - youtube_search (запрос)
             **=yandex** - yandex (запрос)
             **=wiki** - wiki (запрос)
             **=google** - google (запрос)
             ''' )
-        emb.add_field( name = '__**Поиск**__', value = '''
+        emb.add_field( name = '__**Games**__', value = '''
             **=rps** - rps (камень, ножницы или бумага)
             **=угадайка** - угадайка
             **=coinflip** - coinflip
             **=knb** - knb @user\n
             ''' )
-        emb.add_field( name = '__**Поиск**__', value = '''
+        emb.add_field( name = '__**Other**__', value = '''
             **=num** - num рандомная цифра от 1 до 100
             **=wordnum** - wordnum (text)
             **=slapperson** - slapperson @user
