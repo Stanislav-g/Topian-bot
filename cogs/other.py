@@ -25,10 +25,7 @@ class user(commands.Cog):
     async def wordnum(self, ctx, *args):
         await ctx.send('{} arguments: {}'.format(len(args), ', '.join(args)))
 
-    @commands.command()
-    async def roles(self, ctx, *, member: discord.Member.Roles):
-        """Tells you a member's roles."""
-        await ctx.send('I see the following roles: ' + ', '.join(member))
+
 
     @commands.command()
     async def slap(self, ctx, *, reason: Slapper):
