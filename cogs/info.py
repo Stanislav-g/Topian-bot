@@ -22,7 +22,7 @@ class user(commands.Cog):
     @commands.command( pass_context = True )
     async def botinfo(self, ctx ):
         await ctx.channel.purge( limit = 1 )
-        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  подробнее о командах  =help\n По вопросам обращатся на сервер https://discord.gg/NfTf9JD", color = 0x00FF00)
+        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  подробнее о командах  =help\n По вопросам обращатся на сервер https://discord.gg/NfTf9JD\n Добавь меня на свой сервер https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=470412503&scope=bot", color = 0x00FF00)
         emt.add_field(name=f'**Меня создал:**', value="Stanislav", inline=True)  # Создает строку
         emt.add_field(name=f'**Помощь в создании:**', value="Topian Team", inline=True)  # Создает строку
         emt.add_field(name=f'**Лицензия:**', value="TSBot", inline=True)  # Создает строку
@@ -121,13 +121,12 @@ class user(commands.Cog):
         if member == None:
             await ctx.send(f"Буст: {ctx.author.premium_since}\n\n") 
         else:
-            await ctx.send(f"Буст: {Member.premium_since}\n\n")    
+            await ctx.send(f"Буст: {member.premium_since}\n\n")    
             
         
     @commands.command()
-    async def guild_emojis(self, ctx, member : discord.Member = None):
-        if member == None:
-            await ctx.send(f"Гильдии: {ctx.guild.emojis}\n\n") 
+    async def guild_emojis(self, ctx):
+        await ctx.send(f"Гильдии: {ctx.guild.emojis}\n\n") 
         
         
 def setup(client):
