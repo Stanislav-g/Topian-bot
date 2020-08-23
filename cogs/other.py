@@ -35,9 +35,7 @@ class user(commands.Cog):
     @commands.command()
     async def kiss(self, ctx, members: commands.Greedy[discord.Member]):
         slapped = ", ".join(x.name for x in members)
-        a = ("https://tenor.com/view/kiss-love-anime-gif-12837192")
-        b = ("https://tenor.com/view/anime-kiss-love-sweet-gif-5095865")
-        gif = random.choice(a, b)
+        gif = random.choice(['https://tenor.com/view/kiss-love-anime-gif-12837192','https://tenor.com/view/anime-kiss-love-sweet-gif-5095865'])
         embed = discord.Embed(title=f"{ctx.author}, поцеловал {member}", description= gif)
         await ctx.send(embed=embed)
 
