@@ -85,6 +85,7 @@ class user(commands.Cog):
         r = requests.get(url)
         if r.status_code == 404:
             await ctx.message.delete()
+            await ctx.send(f"Ссылка не работает")
         else:
             await ctx.send(f"Ссылка работает")
 
