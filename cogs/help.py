@@ -49,24 +49,7 @@ class user(commands.Cog):
             await ctx.send('I made {} moderation actions.'.format(len(entries)))
     
 
-    text = ['']    
-    @commands.command()
-    @commands.has_permissions( administrator = True )
-    async def rew(self, ctx , * , arg = None):
-            global text
-            await ctx.channel.purge( limit = 1 ) 
-            text = text + arg
-            await ctx.send(f" {arg} ") 
-            await ctx.send(f"{text}")
-            await ctx.message.add_reaction('👍')
-
-    channell = ['']  
-    @commands.command()
-    async def start_emoji(self, ctx):
-        global channell
-        channell = bot.get_channel(id)
-        await ctx.send(channell)
-
+    
 
             
 def setup(client):
