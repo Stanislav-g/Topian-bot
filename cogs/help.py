@@ -39,7 +39,7 @@ class user(commands.Cog):
 
         
     @commands.command(pass_context = True)
-    async def helphelp(ctx):
+    async def helphelp(self, ctx):
         await ctx.channel.purge(limit = 1)
         emb = discord.Embed( 
             title = 'Навигация по командам :clipboard:',
