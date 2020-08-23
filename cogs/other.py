@@ -11,7 +11,7 @@ from random import randint, choice, choices
 import io
 import sqlite3
 import random as r
-
+import requests
 class user(commands.Cog):
 
     def __init__(self, client):
