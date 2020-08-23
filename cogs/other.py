@@ -33,10 +33,10 @@ class user(commands.Cog):
         await ctx.send('{} ,был ударен участником {} {}'.format(slapped, ctx.author, reason))
         
     @commands.command()
-    async def kiss(self, ctx, member: commands.Greedy[discord.Member]):
+    async def kiss(self, ctx, member: discord.Member):
         slapped = ", ".join(x.name for x in member)
         gif = random.choice(['https://tenor.com/view/kiss-love-anime-gif-12837192','https://tenor.com/view/anime-kiss-love-sweet-gif-5095865'])
-        embed = discord.Embed(title=f"{ctx.author}, поцеловал {member.mention}", description= gif)
+        embed = discord.Embed(title=f"{ctx.author}, поцеловал {member.name}", description= gif)
         await ctx.send(embed=embed)
         await ctx.send(gif)
 
