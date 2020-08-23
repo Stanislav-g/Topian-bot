@@ -109,8 +109,8 @@ class user(commands.Cog):
             await ctx.send('**Упомяните роль для розыгрыша.**' '\n' '`/event_roles [role]`')
             return  
         start_ev = 1
-        await ctx.send(f'Администратор запустил розыгрыш роли {role.mention}. Для участия пропишите `-уч`.' '\n' f"**Розыгрыш состоится через {} час.**".format(amount))
-        await asyncio.sleep(amount)
+        await ctx.send(f'Администратор запустил розыгрыш роли {role.mention}. Для участия пропишите `-уч`.' '\n' f"**Розыгрыш состоится через 1 час.**")
+        await asyncio.sleep(3600)
         ev_win = r.choice(ev_player)
         member = ev_win
         await ctx.send(f'**Поздравляем {ev_win.mention}! Он выигрывает в розыгрыше и получает роль {role.mention}.**')
