@@ -38,7 +38,7 @@ class user(commands.Cog):
         await ctx.author.send( embed = embw )
 
         
-    @client.command(pass_context = True)
+    @commands.command(pass_context = True)
     async def helphelp(ctx):
         await ctx.channel.purge(limit = 1)
         emb = discord.Embed( 
