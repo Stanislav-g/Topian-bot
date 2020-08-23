@@ -113,8 +113,7 @@ class user(commands.Cog):
             await ctx.send('I made {} moderation actions.'.format(len(entries)))
     
 
-    
-
+   
             
 def setup(client):
     client.add_cog(user(client))
