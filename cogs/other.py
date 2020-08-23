@@ -28,7 +28,7 @@ class user(commands.Cog):
 
 
     @commands.command()
-    async def slap(self, ctx, *, reason: Slapper):
+    async def slap(self, ctx, *, reason='no reason'):
         await ctx.send(reason)
 
     @commands.command()
