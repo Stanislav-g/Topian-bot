@@ -28,25 +28,21 @@ class user(commands.Cog):
 
 
     @commands.command()
-    async def slap(self, ctx, *, reason='no reason'):
-        await ctx.send(reason)
-
-    @commands.command()
     async def slapperson(self, ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
         slapped = ", ".join(x.name for x in members)
-        await ctx.send('{} just got slapped for {}'.format(slapped, reason))
+        await ctx.send('{} ,был ударен участником {} {}'.format(slapped, ctx.author, reason))
 
     @commands.command()
     async def kill(  ctx, member: discord.Member ):
-        await ctx.send( f"{ctx.author.mention} Достает дробовик... \n https://tenor.com/view/eyebrow-raise-smile-prepared-ready-loaded-gif-15793001" )
+        await ctx.send( f"{} Достает дробовик... \n https://tenor.com/view/eyebrow-raise-smile-prepared-ready-loaded-gif-15793001".format(ctx.author.mention) )
         await asyncio.sleep( 3 )
-        await ctx.send( f"{ctx.author.mention} Направляет дробовик на {member.mention}... \n https://tenor.com/view/aim-point-gun-prepared-locked-and-loaded-gif-15793489" )
+        await ctx.send( f"{} Направляет дробовик на {}... \n https://tenor.com/view/aim-point-gun-prepared-locked-and-loaded-gif-15793489".format(ctx.author.mention, member.mention))
         await asyncio.sleep( 2 )
-        await ctx.send( f"{ctx.author.mention} Стреляет в {member.mention}... \n https://media.discordapp.net/attachments/690222948283580435/701494203607416943/tenor_3.gif" )
+        await ctx.send( f"{ctx.author.mention} Стреляет в {member.mention}... \n https://media.discordapp.net/attachments/690222948283580435/701494203607416943/tenor_3.gif".format(ctx.author.mention, member.mention)))
         await asyncio.sleep( 2 )
-        await ctx.send( f"{member.mention} истекает кровью..." )
+        await ctx.send( f"{member.mention} истекает кровью...".format(member.mention)))
         await asyncio.sleep( 3 )
-        await ctx.send( f"{member.mention} погиб..." )
+        await ctx.send( f"{member.mention} погиб...".format(member.mention)))
 
     #math
     @commands.command()
