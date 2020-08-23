@@ -31,7 +31,13 @@ class user(commands.Cog):
     async def slapperson(self, ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
         slapped = ", ".join(x.name for x in members)
         await ctx.send('{} ,был ударен участником {} {}'.format(slapped, ctx.author, reason))
-
+        
+    @commands.command()
+    async def kiss(self, ctx, members: commands.Greedy[discord.Member]):
+        slapped = ", ".join(x.name for x in members)
+        gif = random.choise("https://tenor.com/view/kiss-love-anime-gif-12837192", "https://tenor.com/view/anime-kiss-love-sweet-gif-5095865")
+        embed = discord.Embed(title=f"{}, поцеловал {}", description= gif".format(slapped, ctx.author))
+        await ctx.send(embed=embed)
 
 
     #math
@@ -73,12 +79,11 @@ class user(commands.Cog):
     #link     
     @commands.command()
     async def link(self, ctx, url ):
-        while True: 
-            r = requests.get(url)
-            if r.status_code == 404:
-                await ctx.message.delete()
-            else:
-                await ctx.send(f"Ссылка работает")
+        r = requests.get(url)
+        if r.status_code == 404:
+            await ctx.message.delete()
+        else:
+            await ctx.send(f"Ссылка работает")
 
     ev_player = [''] #игроки в розыгрыше
     start_ev = 0 #перемычка
