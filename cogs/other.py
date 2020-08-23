@@ -34,7 +34,6 @@ class user(commands.Cog):
         
     @commands.command()
     async def kiss(self, ctx, member: discord.Member):
-        slapped = ", ".join(x.name for x in member)
         gif = random.choice(['https://tenor.com/view/kiss-love-anime-gif-12837192','https://tenor.com/view/anime-kiss-love-sweet-gif-5095865'])
         embed = discord.Embed(title=f"{ctx.author}, поцеловал {member.name}", description= gif)
         await ctx.send(embed=embed)
