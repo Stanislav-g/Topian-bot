@@ -30,12 +30,15 @@ class user(commands.Cog):
     @commands.command()
     async def slapperson(self, ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
         slapped = ", ".join(x.name for x in members)
+        gif = random.choice(['https://tenor.com/view/back-slap-backhand-funny-animals-penguin-slap-gif-11724800','https://tenor.com/view/slap-bears-gif-10422113','https://tenor.com/view/gap-slapped-knockout-punch-gif-5122019','https://tenor.com/view/kevin-hart-slap-face-your-gif-10570690'])
         await ctx.send('{} ,был ударен участником {} {}'.format(slapped, ctx.author, reason))
+        await ctx.send(gif)
+        
         
     @commands.command()
     async def kiss(self, ctx, member: discord.Member):
         gif = random.choice(['https://tenor.com/view/kiss-love-anime-gif-12837192','https://tenor.com/view/anime-kiss-love-sweet-gif-5095865'])
-        embed = discord.Embed(title=f"{ctx.author}, поцеловал {member.name}", description= gif)
+        embed = discord.Embed(title=f"{ctx.author}, поцеловал {member.name}", description= " ")
         await ctx.send(embed=embed)
         await ctx.send(gif)
 
