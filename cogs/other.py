@@ -38,11 +38,11 @@ class user(commands.Cog):
         await asyncio.sleep( 3 )
         await ctx.send( f"{} Направляет дробовик на {}... \n https://tenor.com/view/aim-point-gun-prepared-locked-and-loaded-gif-15793489".format(ctx.author.mention, member.mention))
         await asyncio.sleep( 2 )
-        await ctx.send( f"{ctx.author.mention} Стреляет в {member.mention}... \n https://media.discordapp.net/attachments/690222948283580435/701494203607416943/tenor_3.gif".format(ctx.author.mention, member.mention)))
+        await ctx.send( f"{} Стреляет в {}... \n https://media.discordapp.net/attachments/690222948283580435/701494203607416943/tenor_3.gif".format(ctx.author.mention, member.mention)))
         await asyncio.sleep( 2 )
-        await ctx.send( f"{member.mention} истекает кровью...".format(member.mention)))
+        await ctx.send( f"{} истекает кровью...".format(member.mention)))
         await asyncio.sleep( 3 )
-        await ctx.send( f"{member.mention} погиб...".format(member.mention)))
+        await ctx.send( f"{} погиб...".format(member.mention)))
 
     #math
     @commands.command()
