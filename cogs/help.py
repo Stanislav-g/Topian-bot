@@ -37,6 +37,67 @@ class user(commands.Cog):
         embw.add_field( name = 'Commands',value = '**=num** - num рандомная цифра от 1 до 100\n**=wordnum** - wordnum (text)\n**=slapperson** - slapperson @user\n**=emoji_random** - emoji_random\n**=math** - math (arg) (+-*/) (arg)\n**=covid** - covid\n**=ball** - ball\n**=link** - link (url)\n**=kiss** - kiss @user' )
         await ctx.author.send( embed = embw )
 
+        
+    @client.command(pass_context = True)
+    async def helphelp(ctx):
+        await ctx.channel.purge(limit = 1)
+        emb = discord.Embed( 
+            title = 'Навигация по командам :clipboard:',
+            color = 0x7aa13d
+         )
+
+        emb.add_field( name = '__**Информация**__', value = '''
+            **=clear** - clear (количество) или clear (пользователь)(количество)
+            **=ban** - ban @user 
+            **=unban** - unban @user
+            **=kick** - kick @user
+            **=emoji** - emoji (message id) (emoji)
+            **-tempban** - tempban @user *s* or *m* or *h* or *d*
+            **=temp_add_role** - temp_add_role (time) @user @role
+            **=add_role** - add_role @user @role
+            **=channel_create** - channel_create (name)
+            **=voice_create** - voice_create (name)
+            **=suggest** - suggest (text)
+            **=changing_name** - changing_name @user
+            **=text** - text (arg)
+             
+            ''' )
+        emb.add_field( name = '__**Игры**__', value = '''
+            **=userinfo** - userinfo @user
+            **=botinfo**
+            **=serverinfo**
+            **=avatar** - avatar или avatar @user
+            **=ping** - ping
+            **=user_boost** - user_ boost @user
+            ''' )
+        emb.add_field( name = '__**Остальное**__', value = '''
+            **=search** - search (запрос)
+            **=youtube_search** - youtube_search (запрос)
+            **=yandex** - yandex (запрос)
+            **=wiki** - wiki (запрос)
+            **=google** - google (запрос)
+            ''' )
+        emb.add_field( name = '__**Поиск**__', value = '''
+            **=rps** - rps (камень, ножницы или бумага)
+            **=угадайка** - угадайка
+            **=coinflip** - coinflip
+            **=knb** - knb @user\n
+            ''' )
+        emb.add_field( name = '__**Поиск**__', value = '''
+            **=num** - num рандомная цифра от 1 до 100
+            **=wordnum** - wordnum (text)
+            **=slapperson** - slapperson @user
+            **=emoji_random** - emoji_random
+            **=math** - math (arg) (+-*/) (arg)
+            **=covid** - covid
+            **=ball** - ball
+            **=link** - link (url)
+            **=kiss** - kiss @user
+            ''' )
+        await ctx.author.send(embed = emb)        
+        
+        
+    
     @commands.command()
     @commands.has_permissions( administrator = True )
 
