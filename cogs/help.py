@@ -60,6 +60,7 @@ class user(commands.Cog):
             **=suggest** - suggest (text)
             **=changing_name** - changing_name @user
             **=text** - text (arg)
+            **=image** - image (image)
              
             ''' )
         emb.add_field( name = '__**Info**__', value = '''
@@ -69,6 +70,7 @@ class user(commands.Cog):
             **=avatar** - avatar или avatar @user
             **=ping** - ping
             **=user_boost** - user_ boost @user
+            **=info_emoji** - info_emoji (emoji)
             ''' )
         emb.add_field( name = '__**Search**__', value = '''
             **=search** - search (запрос)
@@ -93,6 +95,7 @@ class user(commands.Cog):
             **=ball** - ball
             **=link** - link (url)
             **=kiss** - kiss @user
+            **=reverse** - reverse (text)
             ''' )
         await ctx.author.send(embed = emb)        
         
