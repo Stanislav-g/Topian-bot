@@ -165,8 +165,8 @@ class user(commands.Cog):
             files.append(discord.File(fp, filename = file.filename, spoiler = file.is_spoiler()))
         await ctx.send(files = files)    
         
-    @client.command()
-    async def reverse(ctx, *, text: str):
+    @commands.command()
+    async def reverse(self, ctx, *, text: str):
 
         t_rev = text[::-1].replace("@", "@\u200B").replace("&", "&\u200B")
         await ctx.send(f"{t_rev}")    
