@@ -129,7 +129,7 @@ class user(commands.Cog):
             print('Розыгрыш роли завершен.')  
             
     @commands.command()
-    async def emoji(self, ctx, emoji: discord.Emoji = None):
+    async def info_emoji(self, ctx, emoji: discord.Emoji = None):
         if not emoji:
             e = discord.Embed(description = ":x: {0}, укажи **эмодзи**, о которым хочешь узнать **информацию** :x:".format(ctx.author.mention), color = 0xFF0000)
 
