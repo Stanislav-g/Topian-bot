@@ -12,6 +12,7 @@ import io
 import sqlite3
 import random as r
 import requests
+import pyowm
 class user(commands.Cog):
 
     def __init__(self, client):
@@ -126,6 +127,69 @@ class user(commands.Cog):
             ev_player.append(author)
             print(f'Игрок {author} принял участие в розыгрыши роли.')
             await ctx.send(embed = discord.Embed(description = f'**{author.mention}, Вы успешно приняли участие в розыгрыши роли!**', color = 0xee3131))
-            print('Розыгрыш роли завершен.')            
+            print('Розыгрыш роли завершен.')  
+            
+    @commands.command()
+    async def emoji(self, ctx, emoji: discord.Emoji = None):
+        if not emoji:
+            e = discord.Embed(description = ":x: {0}, укажи **эмодзи**, о которым хочешь узнать **информацию** :x:".format(ctx.author.mention), color = 0xFF0000)
+
+            e.set_footer(text = f'{client.user.name} © 2020 | Все права защищены', icon_url = client.user.avatar_url)
+            e.timestamp = datetime.utcnow()
+
+            await ctx.send(embed = e)
+
+        e = discord.Embed(description = f"[Эмодзи]({emoji.url}) сервера - {emoji}", color = 0x00FF00)
+
+        e.add_field(name = "Название эмодзи:", value = "**`{0}`**".format(emoji.name))
+        e.add_field(name = "Автор:", value = "{0}".format((await ctx.guild.fetch_emoji(emoji.id)).user.mention))
+        e.add_field(name = "‎‎‎‎", value = "‎‎‎‎")
+        e.add_field(name = "Дата добавления:", value = "**`{0}`**".format((emoji.created_at.date())))
+        e.add_field(name = "ID эмодзи:", value = "**`{0}`**".format(emoji.id))
+        e.add_field(name = "‎‎‎‎", value = "‎‎‎‎")
+        e.set_thumbnail(url = "{0}".format(emoji.url))
+        e.set_author(icon_url = 'https://www.flaticon.com/premium-icon/icons/svg/3084/3084443.svg', name = 'Бот | Эмодзи')
+        e.set_footer(text = f'{client.user.name} © 2020 | Все права защищены', icon_url = client.user.avatar_url)
+        e.timestamp = datetime.utcnow()
+
+        await ctx.send(embed = e)   
+        
+    @commands.command(name='weather', aliases=['погода'])
+    async def weather(self, ctx, city: str = None):
+        if not city:
+            await ctx.send(embed = discord.Embed(description="**Ты не указал город -_-**", colour=discord.Color.from_rgb(47, 49, 54)))
+            await ctx.message.add_reaction("🔴")
+        else:
+            owm = pyowm.OWM('api key')
+            mgr = owm.weather_manager()
+            observation = mgr.weather_at_place(city)
+            w = observation.weather
+            temp = w.temperature('celsius')["temp"]
+            temp_max = w.temperature('celsius')["temp_max"]
+            temp_min = w.temperature('celsius')["temp_min"]
+            feels_like = w.temperature('celsius')["feels_like"]
+
+            embed = discord.Embed(
+                colour=discord.Color.from_rgb(47, 49, 54),
+                description=f"**Погода в городе {city}**",
+                timestamp=ctx.message.created_at
+            )
+            embed.set_thumbnail(url="https://avatars.mds.yandex.net/get-pdb/752643/d215f5fe-77ec-4923-aea7-b2184f2b6598/orig")
+            embed.add_field(name="Температура", value=f"{temp} °С")
+            embed.add_field(name="Ощущается как", value=f"{feels_like} °С")
+            embed.add_field(name="Максимальная температура", value=f"{temp_max} °С")
+            embed.add_field(name="Минимальная температура", value=f"{temp} °С")
+            await ctx.send(embed=embed)
+            await ctx.message.add_reaction("🟢")
+
+    @commands.command()
+    async def image(self, ctx):
+        files = []
+        for file in ctx.message.attachments:
+            fp = io.BytesIO()
+            await file.save(fp)
+            files.append(discord.File(fp, filename = file.filename, spoiler = file.is_spoiler()))
+        await ctx.send(files = files)    
+        
 def setup(client):
     client.add_cog(user(client))
