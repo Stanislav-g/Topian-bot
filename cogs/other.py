@@ -157,6 +157,7 @@ class user(commands.Cog):
 
 
     @commands.command()
+    @commands.has_permissions( administrator = True )
     async def image(self, ctx):
         files = []
         for file in ctx.message.attachments:
