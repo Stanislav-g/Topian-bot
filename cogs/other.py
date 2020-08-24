@@ -159,35 +159,17 @@ class user(commands.Cog):
     @commands.command()
     async def image(self, ctx):
         files = []
-        await ctx.channel.purge(limit = 1)
         for file in ctx.message.attachments:
             fp = io.BytesIO()
             await file.save(fp)
             files.append(discord.File(fp, filename = file.filename, spoiler = file.is_spoiler()))
         await ctx.send(files = files)    
         
-    @commands.command()
-    async def weather(self, ctx,  *, city):
-        data = get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&APPID=fb9df86d9c484eba8a69269cfb0beac9").json()
-        cleared_data = {
-            'City': data['name'],
-            'Time': datetime.utcfromtimestamp(data['dt']).strftime('%H:%M:%S'),
-            'Weather': f"{data['weather'][0]['main']} - {data['weather'][0]['description']}",
-            'Temperature': f"{data['main']['temp']}°C",
-            'Feels like': f"{data['main']['feels_like']}°C",
-            'Min temperature': f"{data['main']['temp_min']}°C",
-            'Max temperature': f"{data['main']['temp_max']}°C",
-            'Humidity': f"{data['main']['humidity']}%",
-            'Pressure': f"{data['main']['pressure']}Pa",
-            'Clouds': f"{data['clouds']['all']}%",
-            'Wind': f"{data['wind']['speed']} km/h",
-            'Sunset': datetime.utcfromtimestamp(data['sys']['sunset']).strftime('%H:%M:%S'),
-            'Sunrise': datetime.utcfromtimestamp(data['sys']['sunrise']).strftime('%H:%M:%S'),
-        }
-        embed = Embed(title=f":white_sun_small_cloud: Weather in {cleared_data['City']}", color=0x3498db)
-        for key, value in cleared_data.items():
-            embed.add_field(name=key, value=value)
-        await ctx.send(embed=embed)        
+    @client.command()
+    async def reverse(ctx, *, text: str):
+
+        t_rev = text[::-1].replace("@", "@\u200B").replace("&", "&\u200B")
+        await ctx.send(f"{t_rev}")    
         
 def setup(client):
     client.add_cog(user(client))
