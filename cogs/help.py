@@ -103,7 +103,7 @@ class user(commands.Cog):
         
 			
     @commands.command()
-    @commands.has_permissions( administrator = True )
+    @commands.has_permissions( expel.participants = True )
     async def log(self, ctx, num : int = None, member: discord.Member = None ):
         guild = ctx.message.guild
         if member == None:
