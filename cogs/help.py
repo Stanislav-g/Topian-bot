@@ -115,7 +115,157 @@ class user(commands.Cog):
             entries = await guild.audit_logs(limit=None, user=guild.me).flatten()
             await ctx.send('I made {} moderation actions.'.format(len(entries)))
     
+@commands.Cog.listener()
+	async def on_guild_role_create(self, role):
+		logch = self.bot.get_config(role.guild).get('log.action')
+		if logch:
+			embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**A new role was created**\n{role.mention}')
+			embed.set_author(name=role.guild.name, icon_url=str(role.guild.icon_url))
+			embed.set_footer(text=f"Role ID: {role.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass
 
+	@commands.Cog.listener()
+	async def on_guild_role_delete(self, role):
+		logch = self.bot.get_config(role.guild).get('log.action')
+		if logch:
+			embed = discord.Embed(color=role.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**The role** `{role.name}` **was deleted**')
+			embed.set_author(name=role.guild.name, icon_url=str(role.guild.icon_url))
+			embed.set_footer(text=f"Role ID: {role.id}")
+			try:
+				await logch.send(embed=embed)
+			except Exception:
+				pass
+
+	@commands.Cog.listener()
+	async def on_voice_state_update(self, member, before, after):
+		logch = self.bot.get_config(member.guild).get('log.action')
+		if logch:
+			if before.deaf != after.deaf:
+				if after.deaf:
+					embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **was server deafened**')
+					embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+					if after.channel:
+						embed.set_footer(text=f"Member ID: {member.id} | Channel ID: {after.channel.id}")
+					else:
+						embed.set_footer(text=f"Member ID: {member.id}")
+					try:
+						await logch.send(embed=embed)
+					except Exception:
+						pass
+				elif not after.deaf:
+					embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **was server undeafened**')
+					embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+					if after.channel:
+						embed.set_footer(text=f"Member ID: {member.id} | Channel ID: {after.channel.id}")
+					else:
+						embed.set_footer(text=f"Member ID: {member.id}")
+					try:
+						await logch.send(embed=embed)
+					except Exception:
+						pass
+			if before.mute != after.mute:
+				if after.mute:
+					embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **was server muted**')
+					embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+					if after.channel:
+						embed.set_footer(text=f"Member ID: {member.id} | Channel ID: {after.channel.id}")
+					else:
+						embed.set_footer(text=f"Member ID: {member.id}")
+					try:
+						await logch.send(embed=embed)
+					except Exception:
+						pass
+				elif not after.mute:
+					embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **was server unmuted**')
+					embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+					if after.channel:
+						embed.set_footer(text=f"Member ID: {member.id} | Channel ID: {after.channel.id}")
+					else:
+						embed.set_footer(text=f"Member ID: {member.id}")
+					try:
+						await logch.send(embed=embed)
+					except Exception:
+						pass
+			if before.self_video != after.self_video:
+				if after.self_video:
+					if after.channel:
+						embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **started sharing video in {after.channel.name}**')
+						embed.set_footer(text=f"Member ID: {member.id} | Channel ID: {after.channel.id}")
+					else:
+						embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **started sharing video**')
+						embed.set_footer(text=f"Member ID: {member.id}")
+					embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+					try:
+						await logch.send(embed=embed)
+					except Exception:
+						pass
+				elif not after.self_video:
+					if after.channel:
+						embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **stopped sharing video in {after.channel.name}**')
+						embed.set_footer(text=f"Member ID: {member.id} | Channel ID: {after.channel.id}")
+					else:
+						embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **stopped sharing video**')
+						embed.set_footer(text=f"Member ID: {member.id}")
+					embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+					try:
+						await logch.send(embed=embed)
+					except Exception:
+						pass
+			if before.self_stream != after.self_stream:
+				if after.self_stream:
+					if after.channel:
+						embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **went live in {after.channel.name}**')
+						embed.set_footer(text=f"Member ID: {member.id} | Channel ID: {after.channel.id}")
+					else:
+						embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **went live**')
+						embed.set_footer(text=f"Member ID: {member.id}")
+					embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+					try:
+						await logch.send(embed=embed)
+					except Exception:
+						pass
+				elif not after.self_stream:
+					if after.channel:
+						embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **stopped being live in {after.channel.name}**')
+						embed.set_footer(text=f"Member ID: {member.id} | Channel ID: {after.channel.id}")
+					else:
+						embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **stopped being live**')
+						embed.set_footer(text=f"Member ID: {member.id}")
+					embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+					try:
+						await logch.send(embed=embed)
+					except Exception:
+						pass
+			if before.channel != after.channel:
+				if before.channel and after.channel:
+					embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **switched voice channel**')
+					embed.add_field(name='Before', value=before.channel.name, inline=False)
+					embed.add_field(name='After', value=after.channel.name, inline=False)
+					embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+					embed.set_footer(text=f"Member ID: {member.id} | Old Channel ID: {before.channel.id} | New Channel ID: {after.channel.id}")
+					try:
+						return await logch.send(embed=embed)
+					except Exception:
+						pass
+				if after.channel:
+					embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **joined voice channel {after.channel.name}**')
+					embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+					embed.set_footer(text=f"Member ID: {member.id} | Channel ID: {after.channel.id}")
+					try:
+						return await logch.send(embed=embed)
+					except Exception:
+						pass
+				elif not after.channel:
+					embed = discord.Embed(color=member.color, timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'{member.mention} **left voice channel {before.channel.name}**')
+					embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+					embed.set_footer(text=f"Member ID: {member.id} | Channel ID: {before.channel.id}")
+					try:
+						return await logch.send(embed=embed)
+					except Exception:
+						pass
    
             
 def setup(client):
