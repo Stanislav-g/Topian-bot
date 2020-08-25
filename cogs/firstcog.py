@@ -23,7 +23,7 @@ class user(commands.Cog):
         await ctx.send("work")
     
 
-    @commands.Cog.listener
+    @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.CommandNotFound ):
             await ctx.send(embed = discord.Embed(description = f'**:exclamation: {ctx.author.name}, данной команды не существует.**', color=0x0c0c0c))
