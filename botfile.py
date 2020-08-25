@@ -61,13 +61,7 @@ async def leave(ctx):
         voice = await channel.connect()
         await ctx.send(f'Бот отключился от канала: {channel}')
         
-@client.event
-async def on_guild_role_create( role ):
-    channel = client.get_channel( 705392639863685170 )
-    embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**A new role was created**\n{role.mention}')
-    embed.set_author(name=role.guild.name, icon_url=str(role.guild.icon_url))
-    embed.set_footer(text=f"Role ID: {role.id}")
-    await channel.send(embed=embed)
+
     
 @client.event
 async def on_raw_reaction_add(payload):
