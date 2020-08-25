@@ -106,7 +106,18 @@ class user(commands.Cog):
 	embed.set_author(name=role.guild.name, icon_url=str(role.guild.icon_url))
 	embed.set_footer(text=f"Role ID: {role.id}")
 	await logch.send(embed=embed)        
-    
+    @commands.Cog.listener()
+    async def on_guild_role_create(self, role):
+	logch = self.bot.get_config(role.guild).get('log.action')
+	if logch == logch:
+	    embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**A new role was created**\n{role.mention}')
+	    embed.set_author(name=role.guild.name, icon_url=str(role.guild.icon_url))
+	    embed.set_footer(text=f"Role ID: {role.id}")
+	    try:
+	        await logch.send(embed=embed)
+		except Exception:
+		    pass
+			
     @commands.command()
     @commands.has_permissions( administrator = True )
     async def log(self, ctx, num : int = None, member: discord.Member = None ):
