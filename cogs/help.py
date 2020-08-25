@@ -100,12 +100,7 @@ class user(commands.Cog):
         await ctx.author.send(embed = emb)        
         
       
-    @commands.Cog.listener()
-    async def on_guild_role_create(self, role):
-	embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**A new role was created**\n{role.mention}')
-	embed.set_author(name=role.guild.name, icon_url=str(role.guild.icon_url))
-	embed.set_footer(text=f"Role ID: {role.id}")
-	await ctx.send(embed=embed)    
+        
 			
     @commands.command()
     @commands.has_permissions( administrator = True )
@@ -120,7 +115,6 @@ class user(commands.Cog):
             entries = await guild.audit_logs(limit=None, user=guild.me).flatten()
             await ctx.send('I made {} moderation actions.'.format(len(entries)))
     
-
 
   
 
