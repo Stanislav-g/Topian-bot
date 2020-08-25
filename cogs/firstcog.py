@@ -23,7 +23,7 @@ class user(commands.Cog):
         await ctx.send("work")
     
 
-    @commands.command
+    @commands.Cog.listener
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.CommandNotFound ):
             await ctx.send(embed = discord.Embed(description = f'**:exclamation: {ctx.author.name}, данной команды не существует.**', color=0x0c0c0c))
@@ -229,7 +229,7 @@ class user(commands.Cog):
     @commands.command()
     @commands.has_permissions( administrator = True )
     async def textmember_lc(self, ctx , * , arg = None, member: discord.Member = None):
-            await member.channel.purge( limit = 1 )  
+            await ctx.channel.purge( limit = 1 )  
             await member.send(f" {arg} ")   
     
     #temp_add_role
