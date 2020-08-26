@@ -30,7 +30,7 @@ class user(commands.Cog):
             
     
 
-        
+       
    
     @commands.command(aliases = ['clear', 'c'])
     @commands.has_permissions(manage_messages = True)
