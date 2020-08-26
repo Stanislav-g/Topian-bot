@@ -221,7 +221,7 @@ class user(commands.Cog):
     #text chat
     @commands.command()
     @commands.has_permissions( administrator = True )
-    async def text(self, ctx , * , arg = None, reaction:str = None):
+    async def text(self, ctx , reaction:str = None, * , arg = None):
             await ctx.channel.purge( limit = 1 )
             if reaction == None: 
                 await ctx.send(f" {arg} ")
