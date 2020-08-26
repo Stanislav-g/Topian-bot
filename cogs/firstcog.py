@@ -221,13 +221,19 @@ class user(commands.Cog):
     #text chat
     @commands.command()
     @commands.has_permissions( administrator = True )
-    async def text(self, ctx , reaction:str = None, * , arg = None):
+    async def text_emoji(self, ctx , reaction:str = None, * , arg = None):
             await ctx.channel.purge( limit = 1 )
-            if reaction == None: 
-                await ctx.send(f" {arg} ")
-            else:
-                message = await ctx.send(f" {arg} ")
-                await message.add_reaction(reaction)
+           
+            message = await ctx.send(f" {arg} ")
+            await message.add_reaction(reaction)
+
+
+    @commands.command()
+    @commands.has_permissions( administrator = True )
+    async def text(self, ctx , * , arg = None):
+            await ctx.channel.purge( limit = 1 )
+            await ctx.send(f" {arg} ")
+           
 
 
         #text member
