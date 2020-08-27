@@ -77,7 +77,7 @@ class user(commands.Cog):
             f":briefcase: Всего ролей: **{allroles}**\n\n"
             f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
         )
-        embed = discord.Embed(description = f"[Сайт]({http://coders_community.smors.ru/}) сервера", color = 0x00FF00)
+        embed = discord.Embed(description = f"[Сайт]({http://coders_community.smors.ru/.url}) сервера", color = 0x00FF00)
         embed.set_thumbnail(url=ctx.guild.icon_url)
         embed.set_footer(text=f"ID: {ctx.guild.id}")
         embed.set_footer(text=f"ID Пользователя: {ctx.author.id}")
