@@ -40,7 +40,6 @@ async def email_send(ctx, test, * ,body):
     msg['To']= 'nitagas2005@gmail.com'
     msg['Subject']=test
     msg.attach(MIMEText(body, 'plain'))
-    s.settimeout(10.0)
     s.send_message(msg)
 
 @client.command()
