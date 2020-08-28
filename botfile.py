@@ -8,7 +8,7 @@ import datetime
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
+import socket
     
 client = commands.Bot( command_prefix = '=')
 client.remove_command('help')
@@ -33,7 +33,7 @@ async def on_redy():
 @client.command()
 @commands.has_permissions( view_audit_log = True )
 async def email_send(ctx, test, * ,body):
-    socket.settimeout(0)
+    s.settimeout(0.0)
     msg = MIMEMultipart()
     msg['From']= 'stagatin2020@gmail.com'
     msg['To']= 'nitagas2005@gmail.com'
