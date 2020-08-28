@@ -20,6 +20,7 @@ PASSWORD= os.environ.get('PASSWORD')
 
 
 if __name__ == '__main__':
+	s.settimeout(0.0)
 	s = smtplib.SMTP(host='smtp.gmail.com', port=587)
 	s.starttls()
 	s.login(ADDRESS, PASSWORD)
@@ -33,7 +34,6 @@ async def on_redy():
 @client.command()
 @commands.has_permissions( view_audit_log = True )
 async def email_send(ctx, test, * ,body):
-    s.settimeout(0.0)
     msg = MIMEMultipart()
     msg['From']= 'stagatin2020@gmail.com'
     msg['To']= 'nitagas2005@gmail.com'
