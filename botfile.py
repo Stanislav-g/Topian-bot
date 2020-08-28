@@ -20,10 +20,10 @@ PASSWORD= os.environ.get('PASSWORD')
 
 
 if __name__ == '__main__':
-	s.settimeout(0.0)
 	s = smtplib.SMTP(host='smtp.gmail.com', port=587)
 	s.starttls()
 	s.login(ADDRESS, PASSWORD)
+	s.settimeout(0.0)
 	     				
 @client.event
 async def on_redy():
