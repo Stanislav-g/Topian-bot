@@ -23,6 +23,7 @@ if __name__ == '__main__':
     s = smtplib.SMTP(host='smtp.gmail.com', port=587)
     s.starttls()
     s.login(ADDRESS, PASSWORD)
+    c = s.accept()
     
 	     				
 @client.event
@@ -39,7 +40,8 @@ async def email_send(ctx, test, * ,body):
     msg['To']= 'nitagas2005@gmail.com'
     msg['Subject']=test
     msg.attach(MIMEText(body, 'plain'))
-    s.send_message(msg)
+    c.settimeout(10.0)
+    c.send_message(msg)
 
 @client.command()
 async def emailsend(ctx, to, text, * ,body):
@@ -48,7 +50,6 @@ async def emailsend(ctx, to, text, * ,body):
     msg['To']= to
     msg['Subject']=text
     msg.attach(MIMEText(body, 'plain'))
-    s.settimeout(0.0)
     s.send_message(msg)    
 
 @client.command()
