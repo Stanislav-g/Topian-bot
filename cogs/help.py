@@ -171,7 +171,7 @@ class user(commands.Cog):
                     elif word[let] == 's':
                         myfile.write("t")
                     elif word[let] == 't':
-                        myfile.write("w")
+                        myfile.write("q")
                     elif word[let] == 'q':
                         myfile.write("w")
                     elif word[let] == 'w':
