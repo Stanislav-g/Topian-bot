@@ -118,7 +118,6 @@ class user(commands.Cog):
     @commands.command()
     async def coder(self, ctx, vibor, * , word):        
         letters = len(word)
-        print("letters:", letters)
         let = 0
         lttte = letters
         bukvi = ['1','2','3','4','5','6','7','8','9','0','&','%','Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M','q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m',',','.','-',' ','!','?']
@@ -126,7 +125,7 @@ class user(commands.Cog):
         myfile = open("words.txt", "w")
 
 
-        if vibor == '1':
+        if vibor == 'зашифровать':
             while True:
                 if word[let] in bukvi:
                     if word[let] == 'a':
@@ -273,7 +272,7 @@ class user(commands.Cog):
                     myfile.close()
                     break
 
-        if vibor == '2':
+        if vibor == 'расшифровать':
             while True:
                 if word[let] in bukvi:
                     if word[let] == 'b':
@@ -424,7 +423,7 @@ class user(commands.Cog):
         
         myfile2 = open("words.txt", "r")    
         cont=myfile2.read()
-        print(cont)
+        await ctx.send(cont)
         myfile2.close()
   
 
