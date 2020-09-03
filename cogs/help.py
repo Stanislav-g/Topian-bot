@@ -37,6 +37,13 @@ class user(commands.Cog):
         embw.add_field( name = 'Commands',value = '**=num** - num рандомная цифра от 1 до 100\n**=wordnum** - wordnum (text)\n**=slapperson** - slapperson @user\n**=emoji_random** - emoji_random\n**=math** - math (arg) (+-*/) (arg)\n**=covid** - covid\n**=ball** - ball\n**=link** - link (url)\n**=kiss** - kiss @user' )
         await ctx.author.send( embed = embw )
 
+    @commands.command()
+    async def h_coder(self, ctx ):
+        await ctx.channel.purge( limit = 1 )
+        emb = discord.Embed( title = '**Кодировщик**', colour= 0x808080)
+        emb.add_field( name = 'CODER',value = '=coder encode (text) - зашифровать\n=coder decode (text) расшифровать') 
+        emb.set_footer(text='Команда вызвана: {}\n© Copyright 2020 Topian Team | Все права закодированы'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
+        await ctx.author.send( embed = emb )  
         
     @commands.command(pass_context = True)
     async def help(self, ctx):
@@ -96,6 +103,9 @@ class user(commands.Cog):
             **=link** - link (url)
             **=kiss** - kiss @user
             **=reverse** - reverse (text)
+            ***NEW***
+            **=coder** - coder encode (text)
+            **=coder** - coder decode (text)
             ''' )
         await ctx.author.send(embed = emb)        
         
