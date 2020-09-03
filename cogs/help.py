@@ -270,6 +270,7 @@ class user(commands.Cog):
                     
                 let = let + 1
                 if let == lttte:
+                    myfile.close()
                     break
 
         if vibor == '2':
@@ -417,13 +418,14 @@ class user(commands.Cog):
                         myfile.write("0")
                 let = let + 1
                 if let == lttte:
+                    myfile.close()
                     break
                 
-    myfile.close()
-    myfile2 = open("words.txt", "r")    
-    cont=myfile2.read()
-    print(cont)
-    myfile2.close()
+        
+        myfile2 = open("words.txt", "r")    
+        cont=myfile2.read()
+        print(cont)
+        myfile2.close()
   
 
 
