@@ -125,7 +125,7 @@ class user(commands.Cog):
         myfile = open("words.txt", "w")
 
 
-        if vibor == 'зашифровать':
+        if vibor == 'encode':
             while True:
                 if word[let] in bukvi:
                     if word[let] == 'a':
@@ -272,7 +272,7 @@ class user(commands.Cog):
                     myfile.close()
                     break
 
-        if vibor == 'расшифровать':
+        if vibor == 'decode':
             while True:
                 if word[let] in bukvi:
                     if word[let] == 'b':
