@@ -100,8 +100,7 @@ class user(commands.Cog):
         await ctx.author.send(embed = emb)        
         
       
-        
-			
+        		
     @commands.command()
     @commands.has_permissions( administrator = True )
     async def log(self, ctx, num : int = None, member: discord.Member = None ):
