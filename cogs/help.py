@@ -43,7 +43,7 @@ class user(commands.Cog):
         emb = discord.Embed( title = '**Кодировщик**', colour= 0x808080)
         emb.add_field( name = 'CODER',value = '=coder encode (text) - зашифровать\n=coder decode (text) расшифровать') 
         emb.set_footer(text='Команда вызвана: {}\n© Copyright 2020 Topian Team | Все права закодированы'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
-        await ctx.author.send( embed = emb )  
+        await ctx.send( embed = emb )  
         
     @commands.command(pass_context = True)
     async def help(self, ctx):
