@@ -103,9 +103,10 @@ class user(commands.Cog):
             **=link** - link (url)
             **=kiss** - kiss @user
             **=reverse** - reverse (text)
-            ***NEW***
             **=coder** - coder encode (text)
+            **=h_coder** - coder help
             **=coder** - coder decode (text)
+            **=country** - country file (из какой ты страны)
             ''' )
         await ctx.author.send(embed = emb)        
         
