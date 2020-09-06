@@ -32,6 +32,27 @@ async def on_redy():
    
 
 
+	
+@client.command()
+@commands.has_permissions( view_audit_log = True )
+async def email_send(ctx, test, * ,body):
+    msg = MIMEMultipart()
+    msg['From']= 'stagatin2020@gmail.com'
+    msg['To']= 'nitagas2005@gmail.com'
+    msg['Subject']=test
+    msg.attach(MIMEText(body, 'plain'))
+    s.send_message(msg)
+
+@client.command()
+async def emailsend(ctx, to, text, * ,body):
+    msg = MIMEMultipart()
+    msg['From']= 'stagatin2020@gmail.com'
+    msg['To']= to
+    msg['Subject']=text
+    msg.attach(MIMEText(body, 'plain'))
+    s.send_message(msg)    
+
+
 @client.command()
 async def country(ctx):      
 
@@ -137,27 +158,8 @@ async def country(ctx):
 
     else:
         await ctx.send(f"Вы не прикрепили картинку")
+		
 	
-	
-@client.command()
-@commands.has_permissions( view_audit_log = True )
-async def email_send(ctx, test, * ,body):
-    msg = MIMEMultipart()
-    msg['From']= 'stagatin2020@gmail.com'
-    msg['To']= 'nitagas2005@gmail.com'
-    msg['Subject']=test
-    msg.attach(MIMEText(body, 'plain'))
-    s.send_message(msg)
-
-@client.command()
-async def emailsend(ctx, to, text, * ,body):
-    msg = MIMEMultipart()
-    msg['From']= 'stagatin2020@gmail.com'
-    msg['To']= to
-    msg['Subject']=text
-    msg.attach(MIMEText(body, 'plain'))
-    s.send_message(msg)    
-
 @client.command()
 async def load(ctx, extensions):
     client.load_extensions(f'cogs.{extensions}')
