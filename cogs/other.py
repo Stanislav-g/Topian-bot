@@ -13,6 +13,17 @@ import io
 import sqlite3
 import random as r
 import requests
+from fire.converters import Member
+from discord.ext import commands
+from random import randint
+from io import BytesIO
+import urllib.parse
+import functools
+import aiohttp
+import discord
+import typing
+import json
+import os
 class user(commands.Cog):
 
     def __init__(self, client):
