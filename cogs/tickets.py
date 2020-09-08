@@ -11,7 +11,10 @@ class user(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-
+   
+    @commands.has_permissions(manage_channels=True)
+    async def test(self, ctx):
+        await ctx.send(f'12345')
 
     @commands.group(name='tickets', description='View all the ticket configuration commands', aliases=['ticket'])
     @commands.has_permissions(manage_channels=True)
