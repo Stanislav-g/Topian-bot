@@ -305,9 +305,7 @@ class user(commands.Cog):
             embw.add_field( name = 'Channel_create',value = '**channel_create** = channel_create (name)')
             await ctx.send( embed = embw )
         else:
-            guild = ctx.guild
-            ove = {ctx.author: discord.PermissionOverwrite(read_messages=True, send_messages=True), ctx.guild.me: discord.PermissionOverwrite(read_messages=True, send_messages=True, manage_channels=True, manage_roles=True), ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False)}
-
+	    guild = ctx.guild
 	    channel = await guild.create_text_channel(f'{arg}')
 	    await ctx.send(embed = discord.Embed(description = f'**:keyboard: Текстовый канал "{arg}" успешно создан!**', color=0x0c0c0c))
 	
