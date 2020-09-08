@@ -37,6 +37,7 @@ class user(commands.Cog):
     async def wordnum(self, ctx, *args):
         await ctx.send('{} arguments: {}'.format(len(args), ', '.join(args)))
 
+	
     @commands.command()
     async def makeameme(self, ctx, image: typing.Union[Member, str] = None, *, text: str = None):
 	    if ctx.message.attachments:
