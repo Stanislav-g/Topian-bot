@@ -12,19 +12,7 @@ from random import randint, choice, choices
 import io
 import sqlite3
 import random as r
-import request
-import fire
-from fire.converters import Member
-from discord.ext import commands
-from random import randint
-from io import BytesIO
-import urllib.parse
-import functools
-import aiohttp
-import discord
-import typing
-import json
-import os
+import requests
 class user(commands.Cog):
 
     def __init__(self, client):
