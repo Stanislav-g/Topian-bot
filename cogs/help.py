@@ -438,12 +438,11 @@ class user(commands.Cog):
         myfile2.close()
   
 
-    @commands.has_permissions(manage_channels=True)
+    @commands.command()
     async def test(self, ctx):
         await ctx.send(f'12345')
 
-    @commands.group(name='tickets', description='View all the ticket configuration commands', aliases=['ticket'])
-    @commands.has_permissions(manage_channels=True)
+    @commands.command()
     async def tickets_group(self, ctx):
         if ctx.invoked_subcommand:
             return
@@ -469,24 +468,21 @@ class user(commands.Cog):
             ctx.author.avatar_url_as(static_format='png')))
         return await ctx.send(embed=embed)
 
-    @tickets_group.command(name='category', description='Set the category where tickets are made')
-    @commands.has_permissions(manage_channels=True)
+    @commands.command()
     async def tickets_category(self, ctx, category: discord.CategoryChannel = None):
         await ctx.config.set('tickets.parent', category)
         if not category:
             return await ctx.success(f'Successfully disabled tickets.')
         return await ctx.success(f'Successfully enabled tickets and set the category to {category}.')
 
-    @tickets_group.command(name='limit', description='Set the limit for how many tickets a user can make')
-    @commands.has_permissions(manage_channels=True)
+    @commands.command()
     async def tickets_limit(self, ctx, limit: int = 0):
         if limit < 0 or limit > 20:
             return await ctx.error('Invalid limit')
         await ctx.config.set('tickets.limit', limit)
         return await ctx.success(f'Successfully set the ticket limit to {limit}')
 
-    @tickets_group.command(name='name', description='Set the name for tickets')
-    @commands.has_permissions(manage_channels=True)
+    @commands.command()
     async def tickets_name(self, ctx, name: str = None):
         variables = {
             '{increment}': ctx.config.get('tickets.increment'),
@@ -510,8 +506,7 @@ class user(commands.Cog):
             fname = fname.replace(k, str(v))
         return await ctx.success(f'Successfully set the tickets name to {name}\nExample: {fname}')
 
-    @commands.command(name='new', description='Makes a new ticket')
-    @commands.bot_has_permissions(manage_channels=True, manage_roles=True)
+    @commands.command()
     async def tickets_new(self, ctx, *, subject: str = "No subject given"):
         creating = await ctx.send('Creating your ticket...')
         config = ctx.config
@@ -560,8 +555,7 @@ class user(commands.Cog):
         await config.set('tickets.increment', config.get('tickets.increment') + 1)
         return await creating.edit(content=f'<:check:674359197378281472> Successfully made your ticket, {ticket.mention}')
 
-    @commands.command(name='add', description='Add a user to the current ticket')
-    @commands.bot_has_permissions(manage_roles=True)
+    @commands.command()
     async def tickets_add(self, ctx, *, user: discord.Member):
         tchannels = ctx.config.get('tickets.channels')
         if ctx.channel not in tchannels:
@@ -573,8 +567,7 @@ class user(commands.Cog):
         await ctx.channel.edit(overwrites=overwrites)
         return await ctx.success(f'Successfully added {user.mention} to the ticket')
 
-    @commands.command(name='remove', description='Remove a user from the current ticket')
-    @commands.bot_has_permissions(manage_roles=True)
+   @commands.command()
     async def tickets_remove(self, ctx, *, user: discord.Member):
         tchannels = ctx.config.get('tickets.channels')
         if ctx.channel not in tchannels:
@@ -592,8 +585,7 @@ class user(commands.Cog):
         await ctx.channel.edit(overwrites=overwrites)
         return await ctx.success(f'Successfully removed {user} from the ticket')
 
-    @commands.command(name='close', description='Closes a ticket, uploads the transcript to action logs channel and sends to the ticket author')
-    @commands.bot_has_permissions(manage_roles=True)
+    @commands.command()
     async def tickets_close(self, ctx, *, reason: str = "No Reason Provided"):
         config = ctx.config
         tchannels = config.get('tickets.channels')
