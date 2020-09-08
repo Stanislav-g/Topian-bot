@@ -308,7 +308,15 @@ class user(commands.Cog):
             guild = ctx.guild
             channel = await guild.create_text_channel(f'{arg}')
             await ctx.send(embed = discord.Embed(description = f'**:keyboard: Текстовый канал "{arg}" успешно создан!**', color=0x0c0c0c))
+	    overwrites = {
+			ctx.author: discord.PermissionOverwrite(read_messages=True, send_messages=True),
+			ctx.guild.me: discord.PermissionOverwrite(read_messages=True, send_messages=True, manage_channels=True, manage_roles=True),
+			ctx.guild.default_role: discord.PermissionOverwrite(
+		        read_messages=False)
+		    }
 
+	    channel = await parent.create_text_channel(name={arg}, overwrites=overwrites, topic=f'Ticket created by {ctx.author} ({ctx.author.id}) with subject "{subject}"', reason=f'Ticket created by {ctx.author} ({ctx.author.id})')
+   	    await ctx.send(embed = discord.Embed(description = f'**:keyboard: Текстовый канал "{arg}" успешно создан!**', color=0x0c0c0c))
     #voice_create
     @commands.command()
     @commands.has_permissions(administrator = True)
