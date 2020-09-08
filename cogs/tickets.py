@@ -232,6 +232,5 @@ class Tickets(commands.Cog, name="Tickets"):
         return await ctx.channel.delete(reason=f'Ticket closed by {ctx.author} for "{reason}"')
 
 
-def setup(bot):
-    bot.add_cog(Tickets(bot))
-    bot.logger.info(f'$GREENLoaded $CYANTickets $GREENmodule!')
+def setup(client):
+    client.add_cog(user(client))
