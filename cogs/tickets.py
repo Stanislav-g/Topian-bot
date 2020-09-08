@@ -164,7 +164,7 @@ class Tickets(commands.Cog, name="Tickets"):
 
     @commands.command(name='remove', description='Remove a user from the current ticket')
     @commands.bot_has_permissions(manage_roles=True)
-    async def tickets_remove(self, ctx, *, user: Member):
+    async def tickets_remove(self, ctx, *, user: discord.Member):
         tchannels = ctx.config.get('tickets.channels')
         if ctx.channel not in tchannels:
             return await ctx.error('This command can only be ran in ticket channels!')
