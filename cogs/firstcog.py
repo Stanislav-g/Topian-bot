@@ -295,19 +295,19 @@ class user(commands.Cog):
             channel = await guild.create_voice_channel(f'{arg}')
             await ctx.send(embed = discord.Embed(description = f'**:microphone2: Голосовой канал "{arg}" успешно создан!**', color=0x0c0c0c))
 
-    #channel_create   
+    #voice_create
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def channel_create(self, ctx, *, arg = None): 
+    async def channel_create(self, ctx, *, arg = None):
         await ctx.channel.purge( limit = 1 )
         if arg == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'Channel_create',value = '**channel_create** = channel_create (name)')
             await ctx.send( embed = embw )
         else:
-	    guild = ctx.guild
-	    channel = await guild.create_text_channel(f'{arg}')
-	    await ctx.send(embed = discord.Embed(description = f'**:keyboard: Текстовый канал "{arg}" успешно создан!**', color=0x0c0c0c))
+            guild = ctx.guild
+            channel = await guild.create_text_channel(f'{arg}')
+            await ctx.send(embed = discord.Embed(description = f'**Текстовой канал "{arg}" успешно создан!**', color=0x0c0c0c))
 	
     #voice_create
     @commands.command()
