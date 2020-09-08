@@ -26,6 +26,39 @@ class user(commands.Cog):
     async def wordnum(self, ctx, *args):
         await ctx.send('{} arguments: {}'.format(len(args), ', '.join(args)))
 
+	@commands.command()
+	async def makeameme(self, ctx, image: typing.Union[Member, str] = None, *, text: str = None):
+		if ctx.message.attachments:
+			if isinstance(image, discord.Member):
+				image = image.name
+			text = f'{image} {text or ""}'
+			image = ctx.message.attachments[0].url
+		if not image:
+			return await ctx.error('You need to provide an image')
+		if isinstance(image, discord.Member):
+			image = str(image.avatar_url_as(format='png'))
+		image = urllib.parse.quote(image.strip('<>'))
+		if 'cdn.discordapp.com' in image and ('gif' in image or 'webp' in image):
+			image = image.replace('gif', 'png').replace('webp', 'png')
+		if '.gif' in image:
+			return await ctx.error('Animated images are not supported!')
+		if not text:
+			return await ctx.error('You must provide text seperated by **|**')
+		if len(text.split('|')) != 2:
+			return await ctx.error('You must provide text seperated by **|**')
+		text = urllib.parse.quote(text).split('%7C')
+		async with aiohttp.ClientSession(
+			headers={'Authorization': self.bot.config["aeromeme"]}
+		) as s:
+			imgraw = await s.get(f'https://memes.aero.bot/api/meme?avatar1={image}&top_text={text[0]}&bottom_text={text[1]}')
+			if imgraw.status != 200:
+				return await ctx.error('Something went wrong...')
+			imgraw = await imgraw.read()
+			await s.close()
+		file = discord.File(BytesIO(imgraw), f'spicymeme.png')
+		await ctx.send(file=file)
+        
+        
    
     @commands.command()
     async def slapperson(self, ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
