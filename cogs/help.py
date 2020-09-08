@@ -567,7 +567,7 @@ class user(commands.Cog):
         await ctx.channel.edit(overwrites=overwrites)
         return await ctx.success(f'Successfully added {user.mention} to the ticket')
 
-   @commands.command()
+    @commands.command()
     async def tickets_remove(self, ctx, *, user: discord.Member):
         tchannels = ctx.config.get('tickets.channels')
         if ctx.channel not in tchannels:
