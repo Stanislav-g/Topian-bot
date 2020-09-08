@@ -307,7 +307,7 @@ class user(commands.Cog):
         else:
             guild = ctx.guild
             overwrites = {ctx.author: discord.PermissionOverwrite(read_messages=True, send_messages=True), ctx.guild.me: discord.PermissionOverwrite(read_messages=True, send_messages=True, manage_channels=True, manage_roles=True), ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False)}
-        overwrites.update(guild.overwrites)
+            overwrites.update(guild.overwrites)
 	    channel = await guild.create_text_channel(name={arg}, overwrites=overwrites, topic=f'Ticket created by {ctx.author} ({ctx.author.id}) with subject "{subject}"', reason=f'Ticket created by {ctx.author} ({ctx.author.id})')
    	    await ctx.send(embed = discord.Embed(description = f'**:keyboard: Текстовый канал "{arg}" успешно создан!**', color=0x0c0c0c))
 	
