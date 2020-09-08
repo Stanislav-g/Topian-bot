@@ -29,7 +29,6 @@ class user(commands.Cog):
             await ctx.send(embed = discord.Embed(description = f'**:exclamation: {ctx.author.name}, данной команды не существует.**', color=0x0c0c0c))
             
     
-
        
    
     @commands.command(aliases = ['clear', 'c'])
