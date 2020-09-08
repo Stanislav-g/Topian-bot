@@ -60,7 +60,6 @@ class user(commands.Cog):
 	    await ctx.send(file=file)
         
         
-   
     @commands.command()
     async def slapperson(self, ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
         slapped = ", ".join(x.name for x in members)
