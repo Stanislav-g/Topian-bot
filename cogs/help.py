@@ -509,13 +509,7 @@ class user(commands.Cog):
     @commands.command()
     async def tickets_new(self, ctx, *, subject: str = "No subject given"):
         creating = await ctx.send('Creating your ticket...')
-        config = ctx.config
-        parent = config.get('tickets.parent')
-        limit = config.get('tickets.limit')
-        if not parent:
-            return await ctx.error('Tickets are not enabled here')
-        if limit and len([c for c in parent.channels if str(ctx.author.id) in str(c.topic)]) > limit:
-            return await ctx.error('You have too many tickets open!')
+       
         variables = {
             '{increment}': config.get('tickets.increment'),
             '{name}': ctx.author.name,
