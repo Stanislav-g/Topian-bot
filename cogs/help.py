@@ -518,7 +518,7 @@ class user(commands.Cog):
             '{uuid}': str(uuid.uuid4())[:4],
             '{crab}': '🦀'  # crab in the code? nah, crab in the ticket name
         }
-        name = config.get('tickets.name')
+        name = 'test'
         for k, v in variables.items():
             # asbyth has me putting crabs everywhere
             name = name.replace(k, str(v)).replace('crab', '🦀')
