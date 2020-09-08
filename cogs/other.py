@@ -12,7 +12,8 @@ from random import randint, choice, choices
 import io
 import sqlite3
 import random as r
-import requests
+import request
+import fire
 from fire.converters import Member
 from discord.ext import commands
 from random import randint
