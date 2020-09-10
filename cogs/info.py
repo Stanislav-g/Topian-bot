@@ -20,7 +20,7 @@ class user(commands.Cog):
 
         
     @commands.command()
-    async def server(self, ctx):
+    async def serverinfo(self, ctx):
         members = ctx.guild.members
         online = len(list(filter(lambda x: x.status == discord.Status.online, members)))
         offline = len(list(filter(lambda x: x.status == discord.Status.offline, members)))
@@ -97,7 +97,7 @@ class user(commands.Cog):
         await ctx.send( '``` Информация отправлена в личные сообщения!```' )
 
     @commands.command()
-    async def serverinfo(self, ctx):
+    async def server(self, ctx):
         await ctx.channel.purge( limit = 1 )
         members = ctx.guild.members
         online = len(list(filter(lambda x: x.status == discord.Status.online, members)))
@@ -149,7 +149,32 @@ class user(commands.Cog):
         emb.set_footer(text='Команда вызвана: {}'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
         await ctx.send(embed=emb)    
     
-    
+
+        
+        # userinfo
+    @commands.command()
+    async def user(self, ctx, Member: discord.Member = None ):
+        await ctx.channel.purge( limit = 1 )
+        if not Member:
+            Member = ctx.author
+        roles = (role for role in Member.roles )
+        embed = discord.Embed(title=f"{ctx.guild.name}\nСервер создали {ctx.guild.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
+        embed.add_field( name = '__**Сервер**__', value = 
+            f"Имя: {Member.name}\n\n"
+            f"Никнейм: {Member.nick}\n\n"
+            f"Статус: {Member.status}\n\n"
+            f"ID: {Member.id}\n\n"
+            f"Высшая роль: {Member.top_role}\n\n"
+            f"Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", 
+                                                                                          
+       )
+                          
+                          
+        embed.set_thumbnail(url= Member.avatar_url)
+        embed.set_footer(icon_url= Member.avatar_url)
+        embed.set_footer(text='Команда вызвана: {}'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
+        await ctx.send(embed=embed)       
+                              
     #avatar
     @commands.command()
     async def avatar(self, ctx, member : discord.Member = None):
