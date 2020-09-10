@@ -27,7 +27,7 @@ class user(commands.Cog):
         embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Сообщение о баге отправил {ctx.author.name}\nБаг: {arg}**\n')
         embed.set_author(name=ctx.author.guild.name, icon_url=str(ctx.author.guild.icon_url))
         embed.set_footer(text=f"Author name: {ctx.author.name}#{ctx.author.discriminator}")
-        await channel.send(embed=embed)
+        await ctx.send(embed=embed)
 
         
     #info\n
