@@ -160,11 +160,7 @@ class user(commands.Cog):
             Member = ctx.author
         if Member.status == idle:
             status = 'Не активен'
-        if Member.status == dnd:
-            status = 'Не беспокоить'
-        if Member.status == offline:
-            status = 'offline'
-        if Member.status == online:
+
             status = 'online'                              
         roles = (role for role in Member.roles )
         embed = discord.Embed(title=f"Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
