@@ -18,6 +18,11 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+    @commands.command()
+        async def testtt(self, ctx): 
+            channel = client.get_channel( 747764481559494686 )
+            await channel.send(f'hi')
+            
      #info
     @commands.command()
     async def bag(self, ctx, * ,arg):  
