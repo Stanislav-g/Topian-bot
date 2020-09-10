@@ -18,17 +18,12 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()
-    async def testtt(self, ctx): 
-        channel = client.get_channel( 747764481559494686 )
-        await channel.send(f'hi')
+
             
      #info
     @commands.command()
     async def bag(self, ctx, * ,arg):  
-        guild = client.get_guild( 691292290748252211 )
-        channel = discord.utils.get( guild.channel, id = 747764481559494686 )
-        
+        channel = client.get_channel( 747764481559494686 )
         embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Сообщение о баге отправил {ctx.author.name}\nБаг: {arg}**\n')
         embed.set_author(name=ctx.author.guild.name, icon_url=str(ctx.author.guild.icon_url))
         embed.set_footer(text=f"Author name: {ctx.author.name}#{ctx.author.discriminator}")
