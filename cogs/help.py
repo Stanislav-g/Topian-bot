@@ -17,7 +17,19 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    #info
+     #info
+    @commands.command()
+    async def bag(self, ctx, * ,arg):       
+        channel = client.get_channel( 705392639863685170 )
+        emb = discord.Embed( title = 'Bag', colour = discord.Color.red() )
+        emb.add_field( name = 'ИНФОРМАЦИЯ',value = 'Баг отправил {ctx.author.mention}\n')
+        
+        emb = discord.Embed(color=member.color if member.color != discord.Color.default() else discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member.mention}, вы кикнуты**')
+        emb.set_author(name=ctx.author, icon_url=str(ctx.author.avatar_url_as(static_format='png', size=2048)))
+        emb.set_footer(timestamp=datetime.datetime.now(datetime.timezone.utc))
+        await member.send( embed = emb )        
+        
+    #info\n
     @commands.command()
     async def helphelp(self, ctx ):
         await ctx.channel.purge( limit = 1 )
