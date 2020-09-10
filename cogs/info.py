@@ -167,7 +167,7 @@ class user(commands.Cog):
         embed.add_field( name = '__**Пользователь**__', value = 
             f"Имя: {Member.name}\n\n"
             f"Никнейм: {Member.nick}\n\n"
-            f"Статус: {status}\n\n"
+            f'Статус:' status'\n\n'
             f"ID: {Member.id}\n\n"
             f"Высшая роль: {Member.top_role}\n\n"                                                                            
        )
