@@ -12,14 +12,24 @@ import io
 import sqlite3
 import random as r
 import typing 
+from discord import Webhook, AsyncWebhookAdapter
+import aiohttp
+
 
 class user(commands.Cog):
 
     def __init__(self, client):
         self.client = client
 
-   
-
+    @commands.command()
+    @commands.has_permissions( administrator = True )
+    async def web(self, ctx, arg, urll, * , text):
+        await ctx.channel.purge( limit = 1 )
+        async with aiohttp.ClientSession() as session:
+            webhook = Webhook.from_url('https://discordapp.com/api/webhooks/753667884399722527/JOjqOcGEDPPLCxTwswJLpqEKf7u6onIZ0IFb0qsYoXPeBJ1eCZ2V58liVyRMfSIuqPGH', adapter=AsyncWebhookAdapter(session))
+            emb = discord.Embed( title = arg, description = f"**{text}**\n ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀", colour = discord.Colour.red(), url = urll, timestamp=ctx.message.created_at)
+            await webhook.send(embed=emb)     
+            
     @commands.command()
     async def serverinfo(self, ctx):
         members = ctx.guild.members
@@ -131,7 +141,7 @@ class user(commands.Cog):
         await ctx.send(embed=embed)
     # userinfo
     @commands.command()
-    async def user(self, ctx, Member: discord.Member = None ):
+    async def userinfo(self, ctx, Member: discord.Member = None ):
         await ctx.channel.purge( limit = 1 )
         if not Member:
             Member = ctx.author
@@ -154,28 +164,27 @@ class user(commands.Cog):
         
         # userinfo
     @commands.command()
-    async def userinfo(self, ctx, Member: discord.Member = None ):
+    async def user(self, ctx, Member: discord.Member = None ):
+        await ctx.channel.purge( limit = 1 )
         if not Member:
-            Member = ctx.author                       
+            Member = ctx.author
         roles = (role for role in Member.roles )
-        roleee = len(Member.roles)
-        embed = discord.Embed(title=f":tools: Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
-        embed.add_field( name = '__**Пользователь {Member.mention}**__', value = 
-            f":smiley: Имя: {Member.name}#{Member.discriminator}\n\n"
-            f":billed_cap: Никнейм: {Member.nick}\n\n"
-            f":id: ID: {Member.id}\n\n"
-            f":briefcase: Высшая роль: {Member.top_role}\n\n"
-            f":briefcase: Всего ролей: {roleee}\n\n"             
-            f":scroll: Статус: {Member.activity}\n\n"
-            f"Представитель Discord: {Member.system}\n\n"
-            f"Цвет ника: {Member.colour}\n\n" 
-            f"Фото профиля: {Member.avatar_url}"             
-        )
-
+        embed = discord.Embed(title=f"{ctx.guild.name}\nСервер создали {ctx.guild.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
+        embed.add_field( name = '__**Сервер**__', value = 
+            f"Имя: {Member.name}\n\n"
+            f"Никнейм: {Member.nick}\n\n"
+            f"Статус: {Member.status}\n\n"
+            f"ID: {Member.id}\n\n"
+            f"Высшая роль: {Member.top_role}\n\n"
+            f"Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", 
+                                                                                          
+       )
+                          
+                          
         embed.set_thumbnail(url= Member.avatar_url)
         embed.set_footer(icon_url= Member.avatar_url)
         embed.set_footer(text='Команда вызвана: {}'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
-        await ctx.send(embed=embed)
+        await ctx.send(embed=embed)       
                               
     #avatar
     @commands.command()
