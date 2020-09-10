@@ -173,11 +173,7 @@ class user(commands.Cog):
             f"Никнейм: {Member.nick}\n\n"
             f"Статус: {status}\n\n"
             f"ID: {Member.id}\n\n"
-            f"Высшая роль: {Member.top_role}\n\n"
-            f"activities: {Member.activities}", 
-            f"premium_since: {Member.premium_since}", 
-            f"activities: {Member.activities}", 
-            f"premium_since: {Member.premium_since}",                                                                                
+            f"Высшая роль: {Member.top_role}\n\n"                                                                            
        )
                           
                           
