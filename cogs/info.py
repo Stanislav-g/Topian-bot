@@ -37,7 +37,7 @@ class user(commands.Cog):
             color = 0x7aa13d
          )
 
-        embed.add_field( name = '__**Информация**__', value = '''
+        embed.add_field( name = '__**Информация**__', value = 
             f":timer: Сервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
             f":flag_white: Регион **{ctx.guild.region}\n\nГлава сервера **{ctx.guild.owner}**\n\n"
             f":tools: Ботов на сервере: **{len([m for m in members if m.bot])}**\n\n"
@@ -45,15 +45,15 @@ class user(commands.Cog):
             f":black_circle: Оффлайн: **{offline}**\n\n"
             f":yellow_circle: Отошли: **{idle}**\n\n"
             f":red_circle: Не трогать: **{dnd}**\n\n"
-            ''' )
-        embed.add_field( name = '__**Игры**__', value = '''
+             )
+        embed.add_field( name = '__**Игры**__', value = 
             f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
             f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
             f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
             f":keyboard: Текстовых каналов: **{alltext}**\n\n"
             f":briefcase: Всего ролей: **{allroles}**\n\n"
             f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
-            ''' )
+             )
 
         embed.set_thumbnail(url=ctx.guild.icon_url)
         embed.set_footer(text=f"ID: {ctx.guild.id}")
