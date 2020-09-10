@@ -21,9 +21,9 @@ class user(commands.Cog):
      #info
     @commands.command()
     async def bag(self, ctx, * ,arg):       
-        embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**A new role was created**\n')
-        embed.set_author(name=ctx.author.name, icon_url=str(ctx.author.guild.icon_url))
-        embed.set_footer(text=f"Author ID: {ctx.author.id}")
+        embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Сообщение о баге отправил {ctx.author.name}\nБаг: {arg}**\n')
+        embed.set_author(name=ctx.author.guild.name, icon_url=str(ctx.author.guild.icon_url))
+        embed.set_footer(text=f"Author name: {ctx.author.name}#{ctx.author.discriminator}")
         await ctx.send(embed=embed)
 
         
