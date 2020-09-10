@@ -20,7 +20,7 @@ class user(commands.Cog):
 
         
     @commands.command()
-    async def serverinfo(self, ctx):
+    async def server(self, ctx):
         await ctx.channel.purge( limit = 1 )
         members = ctx.guild.members
         online = len(list(filter(lambda x: x.status == discord.Status.online, members)))
