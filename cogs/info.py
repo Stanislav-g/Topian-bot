@@ -30,21 +30,20 @@ class user(commands.Cog):
         allvoice = len(ctx.guild.voice_channels)
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
-        embed = discord.Embed(title=f"{ctx.guild.name}\n{ctx.guild.description}", color=0x00FF00, timestamp=ctx.message.created_at)
+        embed = discord.Embed(title=f"{ctx.guild.name}\nСервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
         emb = discord.Embed( 
             title = 'Server info',
             color = 0x7aa13d
          )
 
         embed.add_field( name = '__**Сервер**__', value = 
-            f":timer: Сервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
             f":flag_white: Регион **{ctx.guild.region}**\n\n"
             f":crown: Глава сервера **{ctx.guild.owner}**\n\n"
             f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
             f":arrow_up: Большая гильдия **{ctx.guild.large}**\n\n"
             f":clown: Лимит эмодзи **{ctx.guild.emoji_limit}**\n\n"
             f":briefcase: Всего ролей: **{allroles}**\n\n"
-            f":briefcase: max_presences: **{ctx.guild.max_presences}**\n\n"
+            f":briefcase: default_notifications: **{ctx.guild.default_notifications}**\n\n"
              )
         embed.add_field( name = '__**Участники**__', value = 
             f":tools: Ботов на сервере: **{len([m for m in members if m.bot])}**\n\n"
@@ -53,11 +52,13 @@ class user(commands.Cog):
             f":yellow_circle: Отошли: **{idle}**\n\n"
             f":red_circle: Не трогать: **{dnd}**\n\n"
             f":slight_smile: Людей на сервере **{ctx.guild.member_count}**\n\n"
+            f":gem: Бустеры сервера **{ctx.guild.premium_subscribers}**\n\n"
              )
         embed.add_field( name = '__**Каналы**__', value = 
             f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
             f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
             f":keyboard: Текстовых каналов: **{alltext}**\n\n"
+            f":card_box: Категории сервера: **{ctx.guild.categories}**\n\n"
              )
         
         embed.set_thumbnail(url=ctx.guild.icon_url)
