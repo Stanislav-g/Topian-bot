@@ -157,16 +157,16 @@ class user(commands.Cog):
     async def user(self, ctx, Member: discord.Member = None ):
         if not Member:
             Member = ctx.author                       
-        roles = (role for role in Member.roles )
-        role = len(member.roles)                    
+        roles = (role for role in Member.roles )                 
         embed = discord.Embed(title=f":tools: Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
         embed.add_field( name = '__**Пользователь**__', value = 
             f":smiley: Имя: {Member.name}#{Member.descriminator}\n\n"
             f":billed_cap: Никнейм: {Member.nick}\n\n"
             f":id: ID: {Member.id}\n\n"
             f":briefcase: Высшая роль: {Member.top_role}\n\n"    
-            f":ballot_box: Всего ролей: {role}\n\n"             
-            f":scroll: Статус: {Member.activity}\n\n"              
+          
+            f":scroll: Статус: {Member.activity}\n\n"   
+            f":scroll: Статус: {Member.relationship}\n\n"             
        )
                           
                           
