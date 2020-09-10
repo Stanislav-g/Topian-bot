@@ -164,9 +164,7 @@ class user(commands.Cog):
             f":billed_cap: Никнейм: {Member.nick}\n\n"
             f":id: ID: {Member.id}\n\n"
             f":briefcase: Высшая роль: {Member.top_role}\n\n"    
-          
-            f":scroll: Статус: {Member.activity}\n\n"   
-            f":scroll: Статус: {Member.relationship}\n\n"             
+            f":scroll: Статус: {Member.activity}\n\n"               
        )
                           
                           
