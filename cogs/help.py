@@ -19,9 +19,9 @@ class user(commands.Cog):
         self.client = client
 
     @commands.command()
-        async def testtt(self, ctx): 
-            channel = client.get_channel( 747764481559494686 )
-            await channel.send(f'hi')
+    async def testtt(self, ctx): 
+        channel = client.get_channel( 747764481559494686 )
+        await channel.send(f'hi')
             
      #info
     @commands.command()
