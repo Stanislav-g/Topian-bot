@@ -30,6 +30,7 @@ class user(commands.Cog):
         allvoice = len(ctx.guild.voice_channels)
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
+        cat = len(ctx.guild.categories)
         embed = discord.Embed(title=f"{ctx.guild.name}\nСервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
         emb = discord.Embed( 
             title = 'Server info',
@@ -43,7 +44,6 @@ class user(commands.Cog):
             f":arrow_up: Большая гильдия **{ctx.guild.large}**\n\n"
             f":clown: Лимит эмодзи **{ctx.guild.emoji_limit}**\n\n"
             f":briefcase: Всего ролей: **{allroles}**\n\n"
-            f":briefcase: default_notifications: **{ctx.guild.default_notifications}**\n\n"
              )
         embed.add_field( name = '__**Участники**__', value = 
             f":tools: Ботов на сервере: **{len([m for m in members if m.bot])}**\n\n"
@@ -58,7 +58,7 @@ class user(commands.Cog):
             f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
             f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
             f":keyboard: Текстовых каналов: **{alltext}**\n\n"
-            f":card_box: Категории сервера: **{ctx.guild.categories}**\n\n"
+            f":card_box: Категории сервера: **{cat}**\n\n"
              )
         
         embed.set_thumbnail(url=ctx.guild.icon_url)
