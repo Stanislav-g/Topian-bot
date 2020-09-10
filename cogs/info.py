@@ -75,6 +75,7 @@ class user(commands.Cog):
             f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
             f":keyboard: Текстовых каналов: **{alltext}**\n\n"
             f":briefcase: Всего ролей: **{allroles}**\n\n"
+            f":laughing: Эмодзи: **{ctx.guild.emojis}**\n\n"
             f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
         )
         embed.set_thumbnail(url=ctx.guild.icon_url)
