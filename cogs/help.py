@@ -24,7 +24,7 @@ class user(commands.Cog):
         channel = client.get_channel( 747764481559494686 )
         embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Пользователь **\n{ctx.author.name}, отправил баг.\nBag: {arg}')
 
-        await channel.send(embed=embed)
+        await ctx.send(embed=embed)
 
         
     #info\n
