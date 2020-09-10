@@ -18,6 +18,47 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+        
+    @commands.command()
+    async def serverinfo(self, ctx):
+        await ctx.channel.purge( limit = 1 )
+        members = ctx.guild.members
+        online = len(list(filter(lambda x: x.status == discord.Status.online, members)))
+        offline = len(list(filter(lambda x: x.status == discord.Status.offline, members)))
+        idle = len(list(filter(lambda x: x.status == discord.Status.idle, members)))
+        dnd = len(list(filter(lambda x: x.status == discord.Status.dnd, members)))
+        allchannels = len(ctx.guild.channels)
+        allvoice = len(ctx.guild.voice_channels)
+        alltext = len(ctx.guild.text_channels)
+        allroles = len(ctx.guild.roles)
+        embed = discord.Embed(title=f"{ctx.guild.name}", color=0x00FF00, timestamp=ctx.message.created_at)
+        emb = discord.Embed( 
+            title = 'Server info',
+            color = 0x7aa13d
+         )
+
+        embed.add_field( name = '__**Информация**__', value = '''
+            f":timer: Сервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
+            f":flag_white: Регион **{ctx.guild.region}\n\nГлава сервера **{ctx.guild.owner}**\n\n"
+            f":tools: Ботов на сервере: **{len([m for m in members if m.bot])}**\n\n"
+            f":green_circle: Онлайн: **{online}**\n\n"
+            f":black_circle: Оффлайн: **{offline}**\n\n"
+            f":yellow_circle: Отошли: **{idle}**\n\n"
+            f":red_circle: Не трогать: **{dnd}**\n\n"
+            ''' )
+        embed.add_field( name = '__**Игры**__', value = '''
+            f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
+            f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
+            f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
+            f":keyboard: Текстовых каналов: **{alltext}**\n\n"
+            f":briefcase: Всего ролей: **{allroles}**\n\n"
+            f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
+            ''' )
+
+        embed.set_thumbnail(url=ctx.guild.icon_url)
+        embed.set_footer(text=f"ID: {ctx.guild.id}")
+        embed.set_footer(text=f"ID Пользователя: {ctx.author.id}")
+        await ctx.send(embed=embed)        
     #botinfo
     @commands.command( pass_context = True )
     async def botinfo(self, ctx ):
@@ -61,7 +102,6 @@ class user(commands.Cog):
         allvoice = len(ctx.guild.voice_channels)
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
-        emoji = (ctx.guild.emojis)
         embed = discord.Embed(title=f"{ctx.guild.name}", color=0x00FF00, timestamp=ctx.message.created_at)
         embed.description=(
             f":timer: Сервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
@@ -76,7 +116,6 @@ class user(commands.Cog):
             f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
             f":keyboard: Текстовых каналов: **{alltext}**\n\n"
             f":briefcase: Всего ролей: **{allroles}**\n\n"
-            f":laughing: Эмодзи: **{emoji}**\n\n"
             f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
         )
         embed.set_thumbnail(url=ctx.guild.icon_url)
