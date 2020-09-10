@@ -42,7 +42,8 @@ class user(commands.Cog):
             f":flag_white: Регион **{ctx.guild.region}**\n\n"
             f":crown: Глава сервера **{ctx.guild.owner}**\n\n"
             f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
-            
+            f":crown: Большая гильдия **{ctx.guild.large}**\n\n"
+            f":crown: Лимит эмодзи **{ctx.guild.emoji_limit}**\n\n"
              )
         embed.add_field( name = '__**Участники**__', value = 
             f":tools: Ботов на сервере: **{len([m for m in members if m.bot])}**\n\n"
@@ -51,7 +52,6 @@ class user(commands.Cog):
             f":yellow_circle: Отошли: **{idle}**\n\n"
             f":red_circle: Не трогать: **{dnd}**\n\n"
             f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
-            f":top: Максимум людей на сервере **{dnd}\n\n"
              )
         embed.add_field( name = '__**Каналы**__', value = 
             f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
