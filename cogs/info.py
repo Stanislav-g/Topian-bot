@@ -163,13 +163,14 @@ class user(commands.Cog):
 
             status = 'online'                              
         roles = (role for role in Member.roles )
-        embed = discord.Embed(title=f"Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
+        embed = discord.Embed(title=f":tools: Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
         embed.add_field( name = '__**Пользователь**__', value = 
-            f"Имя: {Member.name}\n\n"
-            f"Никнейм: {Member.nick}\n\n"
-            f'Статус:' status'\n\n'
-            f"ID: {Member.id}\n\n"
-            f"Высшая роль: {Member.top_role}\n\n"                                                                            
+            f":smiley: Имя: {Member.name}\n\n"
+            f":billed_cap: Никнейм: {Member.nick}\n\n"
+            f":id: ID: {Member.id}\n\n"
+            f":briefcase: Высшая роль: {Member.top_role}\n\n"    
+            f"activities: {Member.activities}"
+            f"premium_since: {Member.premium_since}"          
        )
                           
                           
