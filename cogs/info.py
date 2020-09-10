@@ -61,6 +61,7 @@ class user(commands.Cog):
         allvoice = len(ctx.guild.voice_channels)
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
+        emoji = (ctx.guild.emojis)
         embed = discord.Embed(title=f"{ctx.guild.name}", color=0x00FF00, timestamp=ctx.message.created_at)
         embed.description=(
             f":timer: Сервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
@@ -75,7 +76,7 @@ class user(commands.Cog):
             f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
             f":keyboard: Текстовых каналов: **{alltext}**\n\n"
             f":briefcase: Всего ролей: **{allroles}**\n\n"
-            f":laughing: Эмодзи: **{ctx.guild.emojis}**\n\n"
+            f":laughing: Эмодзи: **{emoji}**\n\n"
             f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
         )
         embed.set_thumbnail(url=ctx.guild.icon_url)
