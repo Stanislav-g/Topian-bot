@@ -22,7 +22,10 @@ class user(commands.Cog):
     @commands.command()
     async def bag(self, ctx, * ,arg):       
         channel = client.get_channel( 747764481559494686 )
-        embed = discord.Embed(color=discord.Color.green(),  description=f'**Пользователь **\n{ctx.author.name}, отправил баг.\nBag: {arg}')
+        emb = discord.Embed( title = '**Кодировщик**', colour= 0x808080)
+        emb.add_field( name = 'CODER',value = '=coder encode (text) - зашифровать\n=coder decode (text) расшифровать') 
+        emb.set_footer(text='Команда вызвана: {}\n© Copyright 2020 Topian Team | Все права закодированы'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
+        await ctx.send( embed = emb )  
         embed.set_author(name=ctx.author.name, icon_url=str(ctx.author.guild.icon_url))
         embed.set_footer(text=f"Author ID: {ctx.author.id}")
         await ctx.send(embed=embed)
