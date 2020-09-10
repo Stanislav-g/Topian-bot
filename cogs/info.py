@@ -155,13 +155,8 @@ class user(commands.Cog):
         # userinfo
     @commands.command()
     async def user(self, ctx, Member: discord.Member = None ):
-        await ctx.channel.purge( limit = 1 )
         if not Member:
-            Member = ctx.author
-        if Member.status == idle:
-            status = 'Не активен'
-
-            status = 'online'                              
+            Member = ctx.author                       
         roles = (role for role in Member.roles )
         embed = discord.Embed(title=f":tools: Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
         embed.add_field( name = '__**Пользователь**__', value = 
@@ -169,7 +164,7 @@ class user(commands.Cog):
             f":billed_cap: Никнейм: {Member.nick}\n\n"
             f":id: ID: {Member.id}\n\n"
             f":briefcase: Высшая роль: {Member.top_role}\n\n"    
-         
+            f":briefcase: Высшая роль: {Member.activity}\n\n"                
        )
                           
                           
