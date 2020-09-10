@@ -22,8 +22,9 @@ class user(commands.Cog):
     @commands.command()
     async def bag(self, ctx, * ,arg):       
         channel = client.get_channel( 747764481559494686 )
-        embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Пользователь **\n{ctx.author.name}, отправил баг.\nBag: {arg}')
-
+        embed = discord.Embed(color=discord.Color.green(),  description=f'**Пользователь **\n{ctx.author.name}, отправил баг.\nBag: {arg}')
+        embed.set_author(name=ctx.author.name, icon_url=str(ctx.author.guild.icon_url))
+        embed.set_footer(text=f"Author ID: {ctx.author.id}")
         await ctx.send(embed=embed)
 
         
