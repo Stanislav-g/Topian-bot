@@ -162,12 +162,8 @@ class user(commands.Cog):
         embed.add_field( name = '__**Пользователь**__', value = 
             f":smiley: Имя: {Member.name}#{Member.descriminator}\n\n"
             f":billed_cap: Никнейм: {Member.nick}\n\n"
-            f":id: ID: {Member.id}\n\n"
-            f":briefcase: Высшая роль: {Member.top_role}\n\n"    
-            f":scroll: Статус: {Member.activity}\n\n"               
        )
-                          
-                          
+                                      
         embed.set_thumbnail(url= Member.avatar_url)
         embed.set_footer(icon_url= Member.avatar_url)
         embed.set_footer(text='Команда вызвана: {}'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
