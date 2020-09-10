@@ -157,14 +157,20 @@ class user(commands.Cog):
         await ctx.channel.purge( limit = 1 )
         if not Member:
             Member = ctx.author
-        if Member.status = idle:
+        if Member.status == idle:
+            status = 'Не активен'
+        if Member.status == dnd:
             status = 'Не беспокоить'
+        if Member.status == offline:
+            status = 'offline'
+        if Member.status == online:
+            status = 'online'                              
         roles = (role for role in Member.roles )
         embed = discord.Embed(title=f"Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
         embed.add_field( name = '__**Пользователь**__', value = 
             f"Имя: {Member.name}\n\n"
             f"Никнейм: {Member.nick}\n\n"
-            f"Статус: {Member.status}\n\n"
+            f"Статус: {status}\n\n"
             f"ID: {Member.id}\n\n"
             f"Высшая роль: {Member.top_role}\n\n"
             f"activities: {Member.activities}", 
