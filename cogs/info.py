@@ -31,7 +31,7 @@ class user(commands.Cog):
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
         cat = len(ctx.guild.categories)
-        embed = discord.Embed(title=f"{ctx.guild.name}\nСервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
+        embed = discord.Embed(title=f"{ctx.guild.name}\nСервер создали {ctx.guild.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
         emb = discord.Embed( 
             title = 'Server info',
             color = 0x7aa13d
