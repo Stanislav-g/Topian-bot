@@ -18,7 +18,8 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-        
+   
+
     @commands.command()
     async def serverinfo(self, ctx):
         members = ctx.guild.members
