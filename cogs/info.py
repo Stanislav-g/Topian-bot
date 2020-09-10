@@ -31,6 +31,7 @@ class user(commands.Cog):
         allvoice = len(ctx.guild.voice_channels)
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
+        maxmembers = len(ctx.guild.max_members)
         embed = discord.Embed(title=f"{ctx.guild.name}", color=0x00FF00, timestamp=ctx.message.created_at)
         emb = discord.Embed( 
             title = 'Server info',
@@ -39,7 +40,8 @@ class user(commands.Cog):
 
         embed.add_field( name = '__**Сервер**__', value = 
             f":timer: Сервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
-            f":flag_white: Регион **{ctx.guild.region}\n\nГлава сервера **{ctx.guild.owner}**\n\n"
+            f":flag_white: Регион **{ctx.guild.region}**\n\n"
+            f":crown: Глава сервера **{ctx.guild.owner}**\n\n"
             f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
             
              )
@@ -50,6 +52,7 @@ class user(commands.Cog):
             f":yellow_circle: Отошли: **{idle}**\n\n"
             f":red_circle: Не трогать: **{dnd}**\n\n"
             f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
+            f":top: Максимум людей на сервере **{maxmembers}\n\n"
              )
         embed.add_field( name = '__**Каналы**__', value = 
             f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
