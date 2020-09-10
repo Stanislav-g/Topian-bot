@@ -21,7 +21,6 @@ class user(commands.Cog):
         
     @commands.command()
     async def server(self, ctx):
-        await ctx.channel.purge( limit = 1 )
         members = ctx.guild.members
         online = len(list(filter(lambda x: x.status == discord.Status.online, members)))
         offline = len(list(filter(lambda x: x.status == discord.Status.offline, members)))
@@ -31,7 +30,7 @@ class user(commands.Cog):
         allvoice = len(ctx.guild.voice_channels)
         alltext = len(ctx.guild.text_channels)
         allroles = len(ctx.guild.roles)
-        embed = discord.Embed(title=f"{ctx.guild.name}", color=0x00FF00, timestamp=ctx.message.created_at)
+        embed = discord.Embed(title=f"{ctx.guild.name}\n{ctx.guild.description}", color=0x00FF00, timestamp=ctx.message.created_at)
         emb = discord.Embed( 
             title = 'Server info',
             color = 0x7aa13d
@@ -44,6 +43,8 @@ class user(commands.Cog):
             f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
             f":arrow_up: Большая гильдия **{ctx.guild.large}**\n\n"
             f":clown: Лимит эмодзи **{ctx.guild.emoji_limit}**\n\n"
+            f":briefcase: Всего ролей: **{allroles}**\n\n"
+            f":briefcase: max_presences: **{ctx.guild.max_presences}**\n\n"
              )
         embed.add_field( name = '__**Участники**__', value = 
             f":tools: Ботов на сервере: **{len([m for m in members if m.bot])}**\n\n"
@@ -57,7 +58,6 @@ class user(commands.Cog):
             f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
             f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
             f":keyboard: Текстовых каналов: **{alltext}**\n\n"
-            f":briefcase: Всего ролей: **{allroles}**\n\n"
              )
         
         embed.set_thumbnail(url=ctx.guild.icon_url)
