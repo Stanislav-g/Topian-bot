@@ -160,8 +160,15 @@ class user(commands.Cog):
         roles = (role for role in Member.roles )                 
         embed = discord.Embed(title=f":tools: Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
         embed.add_field( name = '__**Пользователь**__', value = 
-            f":smiley: Имя: {Member.name}#{Member.descriminator}\n\n"
+            f":smiley: Имя: {Member.name}#{Member.discriminator}\n\n"
             f":billed_cap: Никнейм: {Member.nick}\n\n"
+            f":id: ID: {Member.id}\n\n"
+            f":briefcase: Высшая роль: {Member.top_role}\n\n"
+            f":briefcase: Всего ролей: {roleee}\n\n"             
+            f":scroll: Статус: {Member.activity}\n\n"
+            f"Представитель Discord: {Member.system}\n\n"
+            f"Цвет ника: {Member.colour}\n\n" 
+            f"Фото профиля: {Member.avatar_url}"
        )
                                       
         embed.set_thumbnail(url= Member.avatar_url)
