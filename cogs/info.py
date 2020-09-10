@@ -131,7 +131,7 @@ class user(commands.Cog):
         await ctx.send(embed=embed)
     # userinfo
     @commands.command()
-    async def userinfo(self, ctx, Member: discord.Member = None ):
+    async def user(self, ctx, Member: discord.Member = None ):
         await ctx.channel.purge( limit = 1 )
         if not Member:
             Member = ctx.author
@@ -154,7 +154,7 @@ class user(commands.Cog):
         
         # userinfo
     @commands.command()
-    async def user(self, ctx, Member: discord.Member = None ):
+    async def userinfo(self, ctx, Member: discord.Member = None ):
         if not Member:
             Member = ctx.author                       
         roles = (role for role in Member.roles )
