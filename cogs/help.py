@@ -21,11 +21,7 @@ class user(commands.Cog):
      #info
     @commands.command()
     async def bag(self, ctx, * ,arg):       
-        channel = client.get_channel( 747764481559494686 )
-        emb = discord.Embed( title = '**Кодировщик**', colour= 0x808080)
-        emb.add_field( name = 'CODER',value = '=coder encode (text) - зашифровать\n=coder decode (text) расшифровать') 
-        emb.set_footer(text='Команда вызвана: {}\n© Copyright 2020 Topian Team | Все права закодированы'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
-        await ctx.send( embed = emb )  
+        embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**A new role was created**\n')
         embed.set_author(name=ctx.author.name, icon_url=str(ctx.author.guild.icon_url))
         embed.set_footer(text=f"Author ID: {ctx.author.id}")
         await ctx.send(embed=embed)
