@@ -24,7 +24,7 @@ class user(commands.Cog):
    
     @commands.command()
     async def roleinfo(self, ctx, role: discord.Role = None):
-        embed = discord.Embed(title=f"{ctx.role.name}\nРоль создали {ctx.role.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
+        embed = discord.Embed(title=f"{role.name}")
         await ctx.send(embed=embed)        
                               
     @commands.command()
