@@ -25,17 +25,6 @@ class user(commands.Cog):
     @commands.command()
     async def roleinfo(self, ctx, role: discord.Role = None):
         embed = discord.Embed(title=f"{ctx.role.name}\nРоль создали {ctx.role.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
-        emb = discord.Embed( 
-            title = 'Server info',
-            color = 0x7aa13d
-         )
-
-        embed.add_field( name = '__**Сервер**__', value = 
-            f":flag_white: Регион **{ctx.role.name}**\n\n" 
-             )
-        
-        embed.set_footer(text=f"ID: {ctx.role.id}")
-        embed.set_footer(text=f"ID Пользователя: {ctx.author.id}")
         await ctx.send(embed=embed)        
                               
     @commands.command()
