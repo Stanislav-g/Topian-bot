@@ -31,24 +31,23 @@ class user(commands.Cog):
             color = 0x7aa13d
          )
 
-        embed.add_field( name = '__**Сервер**__', value = 
+        embed.add_field( name = '__**Роль**__', value = 
             f":flag_white: Название: **{role.name}**\n\n"
-            f":crown: ID: **{role.id}**\n\n"
-            f":shield: Гильдия: **{role.guild}**\n\n"
-            f":arrow_up: хоист: **{role.hoist}**\n\n"
-            f":clown: Позиция: **{role.position}**\n\n"
-            f":briefcase: role.managed: **{role.managed}**\n\n"
+            f":id: ID: **{role.id}**\n\n"
+            f":flag_white: Гильдия: **{role.guild}**\n\n"
+            f":art: Цвет: **{role.colour}**\n\n"            
+            f":arrow_up: Позиция роли: **{role.position}**\n\n"
              )
         embed.add_field( name = '__**Сервер**__', value = 
-            f":flag_white: mentionable: **{role.mentionable}**\n\n"
-            f":crown: Права: **{role.permissions}**\n\n"
-            f":shield: Цвет: **{role.colour}**\n\n"
-            f":arrow_up: Люди с этой ролью: **{role.members}**\n\n"
-            f":clown: Всего людей с ролью: **{members}**\n\n"
+            f":arrow_up_down: Участники с этой ролью показываются отдельно: **{role.hoist}**\n\n"            
+            f":arrow_up_down: Можно упоминать роль: **{role.mentionable}**\n\n"
+            f":briefcase: Управляется ли роль гильдией: **{role.managed}**\n\n"           
+            f":billed_cap: Права: **{role.permissions}**\n\n"
+            f":smiley: Всего людей с этой ролью: **{members}**\n\n"
              )
                               
         embed.set_thumbnail(url=ctx.guild.icon_url)
-        embed.set_footer(text=f"ID: {ctx.guild.id}")
+        embed.set_footer(text=f"ID: {role.id}")
         embed.set_footer(text=f"ID Пользователя: {ctx.author.id}")
         await ctx.send(embed=embed)             
                               
