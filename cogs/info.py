@@ -191,7 +191,7 @@ class user(commands.Cog):
         roles = (role for role in Member.roles )
         roleee = len(Member.roles)
         embed = discord.Embed(title=f":tools: Аккаунт создан: {Member.created_at.strftime('%b %#d, %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
-        embed.add_field( name = '__**Пользователь {Member.mention}**__', value = 
+        embed.add_field( name = '__**Пользователь**__', value = 
             f":smiley: Имя: {Member.name}#{Member.discriminator}\n\n"
             f":billed_cap: Никнейм: {Member.nick}\n\n"
             f":id: ID: {Member.id}\n\n"
