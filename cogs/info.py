@@ -184,7 +184,7 @@ class user(commands.Cog):
 
         
         # userinfo
-    @command.command()
+    @commands.command()
     async def userinfo(self, ctx, Member: discord.Member = None ):
         if not Member:
             Member = ctx.author                       
