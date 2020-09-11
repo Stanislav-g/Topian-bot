@@ -200,6 +200,7 @@ class user(commands.Cog):
             f":scroll: Статус: {Member.activity}\n\n"
             f"Представитель Discord: {Member.system}\n\n"
             f"Цвет ника: {Member.colour}\n\n" 
+            f"Участник зашёл на сервер: {Member.joined_at.strftime('%b %#d, %Y')}\n\n"
             f"Фото профиля: {Member.avatar_url}"             
         )
 
