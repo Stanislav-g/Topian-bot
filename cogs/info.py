@@ -24,8 +24,33 @@ class user(commands.Cog):
    
     @commands.command()
     async def roleinfo(self, ctx, role: discord.Role = None):
-        embed = discord.Embed(title=f"{role.name}")
-        await ctx.send(embed=embed)        
+        members = len(role.members)
+        embed = discord.Embed(title=f"{role.name}\nРоль создали {role.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
+        emb = discord.Embed( 
+            title = 'Server info',
+            color = 0x7aa13d
+         )
+
+        embed.add_field( name = '__**Сервер**__', value = 
+            f":flag_white: Название: **{role.name}**\n\n"
+            f":crown: ID: **{role.id}**\n\n"
+            f":shield: Гильдия: **{role.guild}**\n\n"
+            f":arrow_up: хоист: **{role.hoist}**\n\n"
+            f":clown: Позиция: **{role.position}**\n\n"
+            f":briefcase: role.managed: **{role.managed}**\n\n"
+             )
+        embed.add_field( name = '__**Сервер**__', value = 
+            f":flag_white: mentionable: **{role.mentionable}**\n\n"
+            f":crown: Права: **{role.permissions}**\n\n"
+            f":shield: Цвет: **{role.colour}**\n\n"
+            f":arrow_up: Люди с этой ролью: **{role.members}**\n\n"
+            f":clown: Всего людей с ролью: **{members}**\n\n"
+             )
+                              
+        embed.set_thumbnail(url=ctx.guild.icon_url)
+        embed.set_footer(text=f"ID: {ctx.guild.id}")
+        embed.set_footer(text=f"ID Пользователя: {ctx.author.id}")
+        await ctx.send(embed=embed)             
                               
     @commands.command()
     async def serverinfo(self, ctx):
