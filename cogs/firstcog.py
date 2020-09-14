@@ -344,6 +344,29 @@ class user(commands.Cog):
             await ctx.send(embed = discord.Embed(description = f' Не удалось выдать роль.', color=0x0c0c0c))
 
     @commands.command()
+    @commands.has_permissions(administrator = True)
+    async def del_role(self, ctx, member: discord.Member = None, role: discord.Role = None):
+        
+        try:
+            if member is None:
+                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+                embw.add_field( name = 'del_role',value = '**del_role** = del_role @user @role')
+                await ctx.send( embed = embw )
+            elif role is None:
+                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+                embw.add_field( name = 'del_role',value = '**del_role** = del_role @user @role')
+                await ctx.send( embed = embw )
+            else:
+                await discord.Member.remove_roles(member, role)
+                await ctx.send(embed = discord.Embed(description = f'**Роль успешна убрана**'))
+
+        except:
+            await ctx.send(embed = discord.Embed(description = f' Не удалось выдать роль.', color=0x0c0c0c))
+
+  
+
+
+    @commands.command()
     async def role_members(self, ctx, rolee: discord.Role = None, role: discord.Role = None):
         membersrole = rolee.members
         await ctx.send( "users {}".format( membersrole ) ) 
