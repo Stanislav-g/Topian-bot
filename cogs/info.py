@@ -101,10 +101,10 @@ class user(commands.Cog):
     @commands.command( pass_context = True )
     async def botinfo(self, ctx ):
         urll = 'https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=470412503&scope=bot'
-        url = 'https://discord.gg/NfTf9JD'         
-        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  чтобы узнать команды бота, пиши: =help\n ", color = 0x00FF00, url = urll)
+        urltr = 'https://discord.gg/NfTf9JD'         
+        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  чтобы узнать команды бота, пиши: =help\n ", color = 0x00FF00)
 
-        emuy = discord.Embed(title=f"Сервер поддежки.", color = 0x00FF00, url = url)
+        emuy = discord.Embed(title=f"Сервер поддежки.", color = 0x00FF00, url = urltr)
 
         emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
 
@@ -114,7 +114,7 @@ class user(commands.Cog):
         emt.add_field(name=f'**Помощь в создании:**', value="Topian Team", inline=True)  # Создает строку
         emt.add_field(name=f'**Лицензия:**', value="TSBot", inline=True)  # Создает строку
         emt.add_field(name=f'**Я написан на:**', value="Discord.py", inline=True)  # Создает строку
-        emt.add_field(name=f'**Версия:**', value="1.0", inline=True)  # Создает строку
+        emt.add_field(name=f'**Версия:**', value="1.4", inline=True)  # Создает строку
         emt.add_field(name=f'**Патч:**', value="1.0", inline=True)  # Создает строку
         emt.set_footer(text=f"© Copyright 2020 Stanislav | Все права защищены")  # создаение футера
         await ctx.send(embed=emuy)   
