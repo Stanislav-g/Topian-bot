@@ -102,7 +102,13 @@ class user(commands.Cog):
     async def botinfo(self, ctx ):
         urll = 'https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=470412503&scope=bot'
         url = 'https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=470412503&scope=bot'         
-        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  подробнее о командах  =help\n По вопросам обращатся на сервер https://discord.gg/NfTf9JD", url = urll, '\n Добавь меня на свой сервер https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=470412503&scope=bot", color = 0x00FF00, url = urll)
+        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  подробнее о командах  =help\n По вопросам обращатся на сервер https://discord.gg/NfTf9JD\n Добавь меня на свой сервер https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=470412503&scope=bot", color = 0x00FF00, url = urll)
+
+        emuy = discord.Embed(title=f"Сервер поддежки.", color = 0x00FF00, url = urll)
+
+        emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
+
+
 
         emt.add_field(name=f'**Меня создал:**', value="Stanislav", inline=True)  # Создает строку
         emt.add_field(name=f'**Помощь в создании:**', value="Topian Team", inline=True)  # Создает строку
@@ -111,7 +117,9 @@ class user(commands.Cog):
         emt.add_field(name=f'**Версия:**', value="1.0", inline=True)  # Создает строку
         emt.add_field(name=f'**Патч:**', value="1.0", inline=True)  # Создает строку
         emt.set_footer(text=f"© Copyright 2020 Stanislav | Все права защищены")  # создаение футера
-        await ctx.send(embed=emt)    
+        await ctx.send(embed=emt)  
+        await ctx.send(embed=emuy)   
+        await ctx.send(embed=emrrrr)                       
 
     #ip_info
     @commands.command()
