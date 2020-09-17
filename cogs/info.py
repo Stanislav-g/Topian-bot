@@ -101,10 +101,10 @@ class user(commands.Cog):
     @commands.command( pass_context = True )
     async def botinfo(self, ctx ):
         urll = 'https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=470412503&scope=bot'
-         
-        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  подробнее о командах  =help\n По вопросам обращатся на сервер https://discord.gg/NfTf9JD\n Добавь меня на свой сервер https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=470412503&scope=bot", color = 0x00FF00, url = urll)
-        emt = discord.Embed(title=f"Сервер поддежки", description=" ", color = 0x00FF00, url = urll)
-        emt = discord.Embed(title=f"Добавить бота на свой сервер", description=" ", color = 0x00FF00, url = urll)
+        url = 'https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=470412503&scope=bot'         
+        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  подробнее о командах  =help\n По вопросам обращатся на сервер https://discord.gg/NfTf9JD{url}\n Добавь меня на свой сервер https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=470412503&scope=bot", color = 0x00FF00, url = urll)
+        emt = discord.Embed(title=f"Сервер поддежки", description=" ", color = 0x00FF00)
+        emt = discord.Embed(title=f"Добавить бота на свой сервер", description=" ", color = 0x00FF00)
 
         emt.add_field(name=f'**Меня создал:**', value="Stanislav", inline=True)  # Создает строку
         emt.add_field(name=f'**Помощь в создании:**', value="Topian Team", inline=True)  # Создает строку
