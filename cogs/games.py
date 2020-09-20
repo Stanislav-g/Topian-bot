@@ -34,7 +34,7 @@ class user(commands.Cog):
         global fif
         global start_ev
         global ev_player
-        a = random.choice(['1'])
+        a = random.choice(['1','2','3'])
         if a == '1':    
             await ctx.send(f"Приготовься, до старта 5 секунд!")
             await asyncio.sleep(5)
@@ -314,7 +314,12 @@ class user(commands.Cog):
         a = random.choice(['орел','решка','орел','решка'])
         await ctx.send( a )
 
-   
+    @commands.command()
+    async def slapperson(self, ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
+        slapped = ", ".join(x.name for x in members)
+        gif = random.choice(['https://tenor.com/view/back-slap-backhand-funny-animals-penguin-slap-gif-11724800%27,%27https://tenor.com/view/slap-bears-gif-10422113%27,%27https://tenor.com/view/gap-slapped-knockout-punch-gif-5122019%27,%27https://tenor.com/view/kevin-hart-slap-face-your-gif-10570690%27])
+        await ctx.send('{} ,был ударен участником {} {}'.format(slapped, ctx.author, reason))
+        await ctx.send(gif)   
         
 def setup(client):
     client.add_cog(user(client))
