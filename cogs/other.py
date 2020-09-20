@@ -148,15 +148,12 @@ class user(commands.Cog):
         e.timestamp = datetime.utcnow()
 
         await ctx.send(embed = e)   
-        
-
+	
     @commands.command()
     async def slapperson(self, ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
 	slapped = ", ".join(x.name for x in members)
-	gif = random.choice(['https://tenor.com/view/back-slap-backhand-funny-animals-penguin-slap-gif-11724800','https://tenor.com/view/slap-bears-gif-10422113','https://tenor.com/view/gap-slapped-knockout-punch-gif-5122019','https://tenor.com/view/kevin-hart-slap-face-your-gif-10570690'])
-	await ctx.send('{} ,был ударен участником {} {}'.format(slapped, ctx.author, reason))
-	await ctx.send(gif)
-
+	await ctx.send('{} just got slapped for {}'.format(slapped, reason))
+    
     @commands.command()
     @commands.has_permissions( administrator = True )
     async def image(self, ctx):
