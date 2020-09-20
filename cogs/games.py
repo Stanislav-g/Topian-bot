@@ -317,13 +317,18 @@ class user(commands.Cog):
         await ctx.send( a )
 
     @commands.command()
-    async def slapperson(self, ctx, members: commands.Greedy[discord.Member] = None, *, reason='no reason'):
+    async def slapperson(self, ctx, members: commands.Greedy[discord.Member] = None, *, reason = None):
         if members == None:
-            await ctx.send('e')
-        slapped = ", ".join(x.name for x in members)
-        await ctx.send('{} ,был ударен участником {} {}'.format(slapped, ctx.author, reason))
-        gif = random.choice(['https://tenor.com/view/back-slap-backhand-funny-animals-penguin-slap-gif-11724800','https://tenor.com/view/slap-bears-gif-10422113','https://tenor.com/view/gap-slapped-knockout-punch-gif-5122019','https://tenor.com/view/kevin-hart-slap-face-your-gif-10570690'])        
-        await ctx.send(gif)
+                await ctx.send('{} ,вы не упомянули пользователя'.format( ctx.author))
+        if members == 'everyone' or '@everyone':
+                await ctx.send('{} ,не могу понять кого ты хочешь ударить'.format( ctx.author)) 
+        if reason == None:
+                await ctx.send('{} ,вы не написали почему хотите ударить пользователя'.format( ctx.author))   
+        else:
+            slapped = ", ".join(x.name for x in members)
+            await ctx.send('{} ,был ударен участником {} {}'.format(slapped, ctx.author, reason))
+            gif = random.choice(['https://tenor.com/view/back-slap-backhand-funny-animals-penguin-slap-gif-11724800','https://tenor.com/view/slap-bears-gif-10422113','https://tenor.com/view/gap-slapped-knockout-punch-gif-5122019','https://tenor.com/view/kevin-hart-slap-face-your-gif-10570690'])        
+            await ctx.send(gif)
         
 def setup(client):
     client.add_cog(user(client))
