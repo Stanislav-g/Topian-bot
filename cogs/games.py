@@ -317,7 +317,7 @@ class user(commands.Cog):
         await ctx.send( a )
 
     @commands.command()
-    async def slapperson(self, ctx, members: commands.Greedy[discord.Member] = None, *, reason = None):
+    async def slapperson(self, ctx, member: discord.Member = None, *, reason = None):
         if members == None:
                 await ctx.send('{} ,вы не упомянули пользователя'.format( ctx.author))
         elif members == 'everyone' or '@everyone':
