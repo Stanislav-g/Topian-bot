@@ -30,7 +30,7 @@ class user(commands.Cog):
        
     @commands.command()
     async def slapperson(self, ctx, members: commands.Greedy[discord.Member] = None, *, reason='no reason'):
-	if member == 'everyone' or '@everyone:
+	if member == 'everyone':
 		await ctx.send('{} , я не могу понять кого ты хочешь ударить.'.format( ctx.author ))
 	if member == None:
 		await ctx.send('{} , я не могу понять кого ты хочешь ударить так как ты не упомянул пользователя.'.format( ctx.author ))
