@@ -320,9 +320,9 @@ class user(commands.Cog):
     async def slapperson(self, ctx, members: commands.Greedy[discord.Member] = None, *, reason = None):
         if members == None:
                 await ctx.send('{} ,вы не упомянули пользователя'.format( ctx.author))
-        if members == 'everyone' or '@everyone':
+        elif members == 'everyone' or '@everyone':
                 await ctx.send('{} ,не могу понять кого ты хочешь ударить'.format( ctx.author)) 
-        if reason == None:
+        elif reason == None:
                 await ctx.send('{} ,вы не написали почему хотите ударить пользователя'.format( ctx.author))   
         else:
             slapped = ", ".join(x.name for x in members)
