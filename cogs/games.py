@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import datetime
+from datetime import datetime
 from discord.utils import get
 import asyncio
 from time import sleep
@@ -11,6 +12,7 @@ from random import randint, choice, choices
 import io
 import sqlite3
 import random as r
+import requests
 
 class user(commands.Cog):
 
