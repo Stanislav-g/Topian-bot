@@ -27,7 +27,7 @@ class user(commands.Cog):
         await ctx.send('{} arguments: {}'.format(len(args), ', '.join(args)))
 
 	
-        
+       
     @commands.command()
     async def slapperson(self, ctx, members: commands.Greedy[discord.Member] = None, *, reason='no reason'):
 	if member == 'everyone' or '@everyone:
