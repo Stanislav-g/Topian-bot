@@ -149,10 +149,7 @@ class user(commands.Cog):
 
         await ctx.send(embed = e)   
 	
-    @commands.command()
-    async def slapperson(self, ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
-		slapped = ", ".join(x.name for x in members)
-		await ctx.send('{} just got slapped for {}'.format(slapped, reason))
+
     
     @commands.command()
     @commands.has_permissions( administrator = True )
