@@ -35,11 +35,11 @@ class user(commands.Cog):
                 embw.add_field( name = 'Kick',value = '**kick** = kick @user')
                 await ctx.send( embed = embw )
 	        await ctx.send('{} , я не могу понять кого ты хочешь ударить так как ты не упомянул пользователя.'.format( ctx.author ))
-        else:
-	    slapped = ", ".join(x.name for x in member)
-	    gif = random.choice(['https://tenor.com/view/back-slap-backhand-funny-animals-penguin-slap-gif-11724800','https://tenor.com/view/slap-bears-gif-10422113','https://tenor.com/view/gap-slapped-knockout-punch-gif-5122019','https://tenor.com/view/kevin-hart-slap-face-your-gif-10570690'])
-	    await ctx.send('{} ,был ударен участником {} {}'.format(slapped, ctx.author, reason))
-	    await ctx.send(gif)
+            else:
+	        slapped = ", ".join(x.name for x in member)
+	        gif = random.choice(['https://tenor.com/view/back-slap-backhand-funny-animals-penguin-slap-gif-11724800','https://tenor.com/view/slap-bears-gif-10422113','https://tenor.com/view/gap-slapped-knockout-punch-gif-5122019','https://tenor.com/view/kevin-hart-slap-face-your-gif-10570690'])
+	        await ctx.send('{} ,был ударен участником {} {}'.format(slapped, ctx.author, reason))
+	        await ctx.send(gif)
         
         
     @commands.command()
