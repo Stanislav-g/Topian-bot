@@ -29,7 +29,7 @@ class user(commands.Cog):
 	
        
     @commands.command()
-    async def slapperson(self, ctx, members: commands.Greedy[discord.Member] = None, *, reason='no reason'):
+    async def slapperson(self, ctx, member: discord.Member = None, *, reason='no reason'):
 	if members == None:
 	    await ctx.send('{} , я не могу понять кого ты хочешь ударить так как ты не упомянул пользователя.'.format( ctx.author ))
         slapped = ", ".join(x.name for x in members)
