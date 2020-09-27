@@ -51,6 +51,16 @@ async def w_create(ctx, wid: int, * , name):
     web=await chan.create_webhook(name= name)
     await ctx.author.send(web.url)
 
+
+@unban.error    
+async def w_create_error( ctx, error ):
+    if isinstance( error, commands.MissingRequiredArgument ):
+        await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
+
+    if isinstance( error, commands.MissingPermissions ):
+        await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
+	
+	
 @client.command()
 @commands.has_permissions( view_audit_log = True )
 async def email_send(ctx, test, * ,body):
