@@ -116,8 +116,7 @@ class user(commands.Cog):
         emt.add_field(name=f'**Лицензия:**', value="TSBot", inline=True)  # Создает строку
         emt.add_field(name=f'**Я написан на:**', value="Discord.py", inline=True)  # Создает строку
         emt.add_field(name=f'**Версия:**', value="1.4", inline=True)  # Создает строку
-        emt.add_field(name=f'**Патч:**', value= {client.guilds}, inline=True)  # Создает строку
-        emt.add_field(name=f'**Пинг:**', value= {self.client.ws.latency * 1000:.0f}, inline=True)  # Создает строку                      
+        emt.add_field(name=f'**Патч:**', value= {client.guilds}, inline=True)  # Создает строку                     
         emt.set_footer(text=f"© Copyright 2020 Stanislav | Все права защищены")  # создаение футера
         await ctx.send(embed=emuy)   
         await ctx.send(embed=emrrrr)  
