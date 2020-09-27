@@ -23,9 +23,15 @@ class user(commands.Cog):
         await ctx.send("work")
     
     @commands.Cog.listener()
-    async def on_guild_join(self)
+    async def on_guild_join(self, guild)
 	channel = client.get_channel( 747764481559494686 )
 	await channel.send(f"hi")
+	
+    @commands.Cog.listener()
+    async def on_guild_join(self, guild):
+        general = find(lambda x: x.name == 'general',  guild.text_channels)
+        if general and general.permissions_for(guild.me).send_messages:
+            await general.send('Hello {}!'.format(guild.name))
 	
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
