@@ -143,7 +143,7 @@ class user(commands.Cog):
         e.add_field(name = "ID эмодзи:", value = "**`{0}`**".format(emoji.id))
         e.add_field(name = "‎‎‎‎", value = "‎‎‎‎")
         e.set_thumbnail(url = "{0}".format(emoji.url))
-        e.set_author(icon_url = 'https://www.flaticon.com/premium-icon/icons/svg/3084/3084443.svg', name = 'Бот | Эмодзи')
+        e.set_author(name = 'Topian bot ')
         e.set_footer(text = f'{ctx.author.name} © 2020 | Все права защищены', icon_url = ctx.author.avatar_url)
         e.timestamp = datetime.utcnow()
 
