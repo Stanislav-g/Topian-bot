@@ -23,7 +23,7 @@ class user(commands.Cog):
         await ctx.send("work")
     
     @commands.Cog.listener()
-    async def on_guild_join()
+    async def on_guild_join(self, guild)
 	await ctx.send(f"hi")
 	
     @commands.Cog.listener()
