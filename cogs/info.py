@@ -107,7 +107,7 @@ class user(commands.Cog):
         emuy = discord.Embed(title=f"Сервер поддежки.", color = 0x00FF00, url = urltr)
 
         emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
-        test = len(client.guilds)
+        test = client.guilds
 
 
         emt.add_field(name=f'**Меня создал:**', value="Stanislav", inline=True)  # Создает строку
