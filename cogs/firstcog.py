@@ -22,7 +22,10 @@ class user(commands.Cog):
     async def example(self,ctx):
         await ctx.send("work")
     
-
+    @commands.Cog.listener()
+    async def on_guild_join()
+	await ctx.send(f"hi")
+	
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.CommandNotFound ):
