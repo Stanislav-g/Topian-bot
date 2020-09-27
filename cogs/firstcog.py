@@ -23,8 +23,9 @@ class user(commands.Cog):
         await ctx.send("work")
     
     @commands.Cog.listener()
-    async def on_guild_join(self, guild)
-	await ctx.send(f"hi")
+    async def on_guild_join(self)
+	channel = client.get_channel( 747764481559494686 )
+	await channel.send(f"hi")
 	
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
