@@ -107,7 +107,7 @@ class user(commands.Cog):
         emuy = discord.Embed(title=f"Сервер поддежки.", color = 0x00FF00, url = urltr)
 
         emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
-
+        test = len(client.guilds)
 
 
         emt.add_field(name=f'**Меня создал:**', value="Stanislav", inline=True)  # Создает строку
@@ -115,13 +115,14 @@ class user(commands.Cog):
         emt.add_field(name=f'**Лицензия:**', value="TSBot", inline=True)  # Создает строку
         emt.add_field(name=f'**Я написан на:**', value="Discord.py", inline=True)  # Создает строку
         emt.add_field(name=f'**Версия:**', value="1.4", inline=True)  # Создает строку
-        emt.add_field(name=f'**Патч:**', value="1.0", inline=True)  # Создает строку
+        emt.add_field(name=f'**Патч:**', value="1.0 {test}", inline=True)  # Создает строку
         emt.set_footer(text=f"© Copyright 2020 Stanislav | Все права защищены")  # создаение футера
         await ctx.send(embed=emuy)   
         await ctx.send(embed=emrrrr)  
         await ctx.send(embed=emt)  
                      
 
+                              
     #ip_info
     @commands.command()
     async def ip_info(self, ctx, arg ):
