@@ -338,7 +338,7 @@ class user(commands.Cog):
                 await ctx.send( embed = embw )
             else:
                 await discord.Member.add_roles(member, role)
-                await ctx.send(embed = discord.Embed(description = f'**Роль успешна выдана**'))
+                await ctx.send(embed = discord.Embed(description = f'**Роль успешно выдана**'))
 
         except:
             await ctx.send(embed = discord.Embed(description = f' Не удалось выдать роль.', color=0x0c0c0c))
