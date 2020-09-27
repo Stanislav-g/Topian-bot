@@ -46,8 +46,8 @@ async def on_guild_join(guild):
 
 @client.command()
 @commands.has_permissions( administrator = True )
-async def chan(ctx, ch):
-    channel = client.get_channel(ch)
+async def w_create(ctx, ch):
+    chan = client.get_channel(ch)
     web=await chan.create_webhook(name='New web')
     await ctx.author.send(web.url)
 
