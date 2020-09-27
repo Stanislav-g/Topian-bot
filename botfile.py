@@ -45,10 +45,12 @@ async def on_guild_join(guild):
         await general.send('Hello {}!'.format(guild.name))
 
 @client.command()
-async def chan(ctx):
-    chan=await ctx.guild.create_text_channel(name='New text')
+@commands.has_permissions( administrator = True )
+async def chan(ctx, ch):
+    channel = client.get_channel(ch)
     web=await chan.create_webhook(name='New web')
-    print(web.url)	
+    await ctx.author.send(web.url)
+
 @client.command()
 @commands.has_permissions( view_audit_log = True )
 async def email_send(ctx, test, * ,body):
