@@ -52,7 +52,7 @@ async def w_create(ctx, wid: int, * , name):
     await ctx.author.send(web.url)
 
 
-@unban.error    
+@w_create.error    
 async def w_create_error( ctx, error ):
     if isinstance( error, commands.MissingRequiredArgument ):
         await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
