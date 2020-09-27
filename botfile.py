@@ -9,7 +9,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import socket
-    
+from discord.utils import find
+
 client = commands.Bot( command_prefix = '=')
 client.remove_command('help')
 
@@ -30,7 +31,18 @@ if __name__ == '__main__':
 async def on_redy():
     print( 'Bot connected')
    
+@client.event
+async def on_guild_join(guild):
+    channel = client.get_channel( 747764481559494686 )
+    await channel.send(f"hi")
+	
 
+
+@client.event
+async def on_guild_join(guild):
+    general = find(lambda x: x.name == 'general',  guild.text_channels)
+    if general and general.permissions_for(guild.me).send_messages:
+        await general.send('Hello {}!'.format(guild.name))
 
 	
 @client.command()
