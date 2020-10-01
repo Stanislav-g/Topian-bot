@@ -44,21 +44,8 @@ async def on_guild_join(guild):
     if general and general.permissions_for(guild.me).send_messages:
         await general.send('Hello {}!'.format(guild.name))
 
-@client.command()
-@commands.has_permissions( administrator = True )
-async def w_create(ctx, wid: int, * , name):
-    chan = client.get_channel(wid)
-    web=await chan.create_webhook(name= name)
-    await ctx.author.send(web.url)
 
 
-@w_create.error    
-async def w_create_error( ctx, error ):
-    if isinstance( error, commands.MissingRequiredArgument ):
-        await ctx.send( f'{ ctx.author.name }, обязательно укажите аргумент')
-
-    if isinstance( error, commands.MissingPermissions ):
-        await ctx.send( f'{ ctx.author.name }, у вас недостаточно прав ')
 	
 	
 @client.command()
