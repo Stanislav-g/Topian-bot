@@ -122,7 +122,7 @@ class user(commands.Cog):
             ''' )
         await ctx.author.send(embed = emb)        
         
-    @commands.command(pass_context = True
+    @commands.command(pass_context = True)
     async def help(self, ctx):  
         await ctx.send(embed = discord.Embed(description = f"""**Moderation**
                 ``=clear`` - удалить сообщения.
