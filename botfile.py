@@ -52,13 +52,6 @@ async def on_guild_join(guild):
 	
 
 
-@client.event
-async def on_guild_join(guild):
-    general = find(lambda x: x.name == 'general',  guild.text_channels)
-    if general and general.permissions_for(guild.me).send_messages:
-        await general.send('Hello {}!'.format(guild.name))
-
-
 
 	
 	
