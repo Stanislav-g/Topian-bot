@@ -66,59 +66,59 @@ class user(commands.Cog):
          )
 
         emb.add_field( name = '__**Moderation**__', value = '''
-            **=clear** - clear (количество) или clear (пользователь)(количество)
-            **=ban** - ban @user 
-            **=unban** - unban @user
-            **=kick** - kick @user
-            **=emoji** - emoji (message id) (emoji)
-            **-tempban** - tempban @user *s* or *m* or *h* or *d*
-            **=temp_add_role** - temp_add_role (time) @user @role
-            **=add_role** - add_role @user @role
-            **=channel_create** - channel_create (name)
-            **=voice_create** - voice_create (name)
-            **=suggest** - suggest (text)
-            **=changing_name** - changing_name @user
-            **=text** - text (arg)
-            **=image** - image (image)
+            ``=clear`` - clear (количество) или clear (пользователь)(количество)
+            ``=ban`` - ban @user 
+            ``=unban`` - unban @user
+            ``=kick`` - kick @user
+            ``=emoji`` - emoji (message id) (emoji)
+            ``-tempban`` - tempban @user *s* or *m* or *h* or *d*
+            ``=temp_add_role`` - temp_add_role (time) @user @role
+            ``=add_role`` - add_role @user @role
+            ``=channel_create`` - channel_create (name)
+            ``=voice_create`` - voice_create (name)
+            ``=suggest`` - suggest (text)
+            ``=changing_name`` - changing_name @user
+            ``=text`` - text (arg)
+            ``=image`` - image (image)
              
             ''' )
-        emb.add_field( name = '__**Info**__', value = '''
-            **=userinfo** - userinfo @user
-            **=botinfo**
-            **=serverinfo**
-            **=avatar** - avatar или avatar @user
-            **=ping** - ping
-            **=user_boost** - user_ boost @user
-            **=info_emoji** - info_emoji (emoji)
+        emb.add_field( name = '__``Info``__', value = '''
+            ``=userinfo`` - userinfo @user
+            ``=botinfo``
+            ``=serverinfo``
+            ``=avatar`` - avatar или avatar @user
+            ``=ping`` - ping
+            ``=user_boost`` - user_ boost @user
+            ``=info_emoji`` - info_emoji (emoji)
             ''' )
-        emb.add_field( name = '__**Search**__', value = '''
-            **=search** - search (запрос)
-            **=youtube_search** - youtube_search (запрос)
-            **=yandex** - yandex (запрос)
-            **=wiki** - wiki (запрос)
-            **=google** - google (запрос)
+        emb.add_field( name = '__``Search``__', value = '''
+            ``=search`` - search (запрос)
+            ``=youtube_search`` - youtube_search (запрос)
+            ``=yandex`` - yandex (запрос)
+            ``=wiki`` - wiki (запрос)
+            ``=google`` - google (запрос)
             ''' )
-        emb.add_field( name = '__**Games**__', value = '''
-            **=rps** - rps (камень, ножницы или бумага)
-            **=угадайка** - угадайка
-            **=coinflip** - coinflip
-            **=knb** - knb @user\n
+        emb.add_field( name = '__``Games``__', value = '''
+            ``=rps`` - rps (камень, ножницы или бумага)
+            ``=угадайка`` - угадайка
+            ``=coinflip`` - coinflip
+            ``=knb`` - knb @user\n
             ''' )
-        emb.add_field( name = '__**Other**__', value = '''
-            **=num** - num рандомная цифра от 1 до 100
-            **=wordnum** - wordnum (text)
-            **=slapperson** - slapperson @user
-            **=emoji_random** - emoji_random
-            **=math** - math (arg) (+-*/) (arg)
-            **=covid** - covid
-            **=ball** - ball
-            **=link** - link (url)
-            **=kiss** - kiss @user
-            **=reverse** - reverse (text)
-            **=coder** - coder encode (text)
-            **=h_coder** - coder help
-            **=coder** - coder decode (text)
-            **=country** - country file (из какой ты страны)
+        emb.add_field( name = '__``Other``__', value = '''
+            ``=num`` - num рандомная цифра от 1 до 100
+            ``=wordnum`` - wordnum (text)
+            ``=slapperson`` - slapperson @user
+            ``=emoji_random`` - emoji_random
+            ``=math`` - math (arg) (+-*/) (arg)
+            ``=covid`` - covid
+            ``=ball`` - ball
+            ``=link`` - link (url)
+            ``=kiss`` - kiss @user
+            ``=reverse`` - reverse (text)
+            ``=coder`` - coder encode (text)
+            ``=h_coder`` - coder help
+            ``=coder`` - coder decode (text)
+            ``=country`` - country file (из какой ты страны)
             ''' )
         await ctx.author.send(embed = emb)        
         
