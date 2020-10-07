@@ -58,7 +58,7 @@ class user(commands.Cog):
         await ctx.send( embed = emb )  
         
     @commands.command(pass_context = True)
-    async def help(self, ctx):
+    async def helpghjk(self, ctx):
         await ctx.channel.purge(limit = 1)
         emb = discord.Embed( 
             title = 'Навигация по командам :clipboard:',
@@ -122,7 +122,63 @@ class user(commands.Cog):
             ''' )
         await ctx.author.send(embed = emb)        
         
-      
+    @commands.command(pass_context = True
+    async def help(self, ctx):  
+        await ctx.send(embed = discord.Embed(description = f"""**Moderation**
+                ``=clear`` - удалить сообщения.
+                ``=ban`` - забанить пользователя.
+                ``=unban`` - разбанить пользователя.
+                ``=kick`` - кикнуть пользователя.
+                ``=emoji`` - добавить реакцию на сообщение.
+                ``=tempban`` - забанить пользователя на время.
+                ``=temp_add_role`` - добавить роль пользователю на время.
+                ``=add_role`` - добавить роль пользователю.
+                ``=channel_create`` - создать текстовый канал.
+                ``=voice_create`` - создать голосовой канал.
+                ``=suggest`` - создать опрос.
+                ``=changing_name`` - поменять имя пользователю.
+                ``=text`` - писать от имени бота.
+                ``=image`` - отправлять сообщения от имени бота.
+                 
+                **Info**
+                ``=userinfo`` - инфо. о пользователе.
+                ``=botinfo`` - инфо. о боте.
+                ``=serverinfo`` - инфо. о сервере.
+                ``=avatar`` - аватар пользователя.
+                ``=ping`` - пинг бота
+                ``=user_boost`` - узнать давал пользователь буст или нет.
+                ``=info_emoji`` - info_emoji (emoji)
+
+                **Search**
+                ``=search`` - search (запрос)
+                ``=youtube_search`` - youtube_search (запрос)
+                ``=yandex`` - yandex (запрос)
+                ``=wiki`` - wiki (запрос)
+                ``=google`` - google (запрос)
+                     ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                """))
+        
+        await ctx.send(embed = discord.Embed(description = f"""
+                **Games**
+                ``=rps`` - камень, ножницы или бумага*
+                ``=угадайка`` - угадайка*
+                ``=coinflip`` - орел или решка.
+                ``=knb`` - камень, ножницы, бумага с другим пользователем.
+
+                **Other**
+                ``=num`` - рандомная цифра от 1 до 100
+                ``=wordnum`` - посчитать количество слов в тексте.
+                ``=slapperson`` - ударить пользователя.
+                ``=emoji_random`` - рандомное эмодзи.
+                ``=math`` - калькулятор.
+                ``=covid`` - covid
+                ``=ball`` - шар предсказаний.
+                ``=link`` - link (url)
+                ``=kiss`` - kiss @user
+                ``=reverse`` - текст задом на перед.
+                ``=h_coder`` - инфо. о кодировщике.
+                     ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                """))      
         		
     @commands.command()
     @commands.has_permissions( administrator = True )
