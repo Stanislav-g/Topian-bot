@@ -94,7 +94,7 @@ class user(commands.Cog):
     #link     
     @commands.command()
     async def link(self, ctx, url = None):
-	if url == None:
+        if url == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'link',value = '**link** = link (url)')
             await ctx.send( embed = embw )
@@ -146,9 +146,9 @@ class user(commands.Cog):
         
     @commands.command()
     async def reverse(self, ctx, *, text: str = None):
-	if text == None:
+        if text == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-            embw.add_field( name = 'reverse',value = '**reverse** = reverse (text)')
+            embw.add_field( name = 'text',value = '**text** = text (text)')
             await ctx.send( embed = embw )		
 
         t_rev = text[::-1].replace("@", "@\u200B").replace("&", "&\u200B")
