@@ -38,7 +38,7 @@ async def on_guild_join(guild):
             message = await channel.send(embed = discord.Embed(description = f"""Привет! Я Topian Bot, чтобы узнать мои команды напиши ``=help``"""))
             invite = await channel.create_invite()
 
-            embed = discord.Embed(title=':white_check_mark: Guild hinzugefügt', type='rich', color=0x2ecc71) #Green
+            embed = discord.Embed(title=':white_check_mark: Добавили бота на новый сервер!', type='rich', color=0x2ecc71) #Green
             embed.set_thumbnail(url=guild.icon_url)
             embed.add_field(name='Name', value=guild.name, inline=True)
             embed.add_field(name='ID', value=guild.id, inline=True)
