@@ -46,18 +46,18 @@ class user(commands.Cog):
     #math
     @commands.command()
     async def math(self, ctx, a : int = None, arg = None, b : int = None):
-	if a == None:
+        if a == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'math',value = '**math** = math (arg) (+-*/) (arg)')
             await ctx.send( embed = embw )
-	if arg == None:
+        if arg == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'math',value = '**math** = math (arg) (+-*/) (arg)')
-            await ctx.send( embed = embw )
-	if b == None:
+            await ctx.send( embed = embw ) )
+        if b == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'math',value = '**math** = math (arg) (+-*/) (arg)')
-            await ctx.send( embed = embw )
+            await ctx.send( embed = embw ) )
         try:
             if arg == '+':
                 await ctx.send(embed = discord.Embed(description = f'**:bookmark_tabs: Результат:** { a + b }', color=0x0c0c0c))  
