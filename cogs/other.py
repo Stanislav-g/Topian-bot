@@ -33,10 +33,10 @@ class user(commands.Cog):
         
     @commands.command()
     async def kiss(self, ctx, member: discord.Member = None):
-	if member == None:
-            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-            embw.add_field( name = 'kiss',value = '**kiss** = kiss @user')
-            await ctx.send( embed = embw )
+        if member == None:
+        	embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+		embw.add_field( name = 'kiss',value = '**kiss** = kiss @user')
+		await ctx.send( embed = embw )
         gif = random.choice(['https://tenor.com/view/kiss-love-anime-gif-12837192','https://tenor.com/view/anime-kiss-love-sweet-gif-5095865'])
         embed = discord.Embed(title=f"{ctx.author}, поцеловал {member.name}", description= " ")
         await ctx.send(embed=embed)
