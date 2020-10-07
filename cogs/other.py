@@ -53,11 +53,11 @@ class user(commands.Cog):
         if arg == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'math',value = '**math** = math (arg) (+-*/) (arg)')
-            await ctx.send( embed = embw ) )
+            await ctx.send( embed = embw )
         if b == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'math',value = '**math** = math (arg) (+-*/) (arg)')
-            await ctx.send( embed = embw ) )
+            await ctx.send( embed = embw )
         try:
             if arg == '+':
                 await ctx.send(embed = discord.Embed(description = f'**:bookmark_tabs: Результат:** { a + b }', color=0x0c0c0c))  
