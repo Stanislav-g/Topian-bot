@@ -32,7 +32,11 @@ class user(commands.Cog):
         
         
     @commands.command()
-    async def kiss(self, ctx, member: discord.Member):
+    async def kiss(self, ctx, member: discord.Member = None):
+	if member == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'kiss',value = '**kiss** = kiss @user')
+            await ctx.send( embed = embw )
         gif = random.choice(['https://tenor.com/view/kiss-love-anime-gif-12837192','https://tenor.com/view/anime-kiss-love-sweet-gif-5095865'])
         embed = discord.Embed(title=f"{ctx.author}, поцеловал {member.name}", description= " ")
         await ctx.send(embed=embed)
@@ -41,7 +45,19 @@ class user(commands.Cog):
 
     #math
     @commands.command()
-    async def math(self, ctx, a : int, arg, b : int ):
+    async def math(self, ctx, a : int = None, arg = None, b : int = None):
+	if a == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'math',value = '**math** = math (arg) (+-*/) (arg)')
+            await ctx.send( embed = embw )
+	if arg == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'math',value = '**math** = math (arg) (+-*/) (arg)')
+            await ctx.send( embed = embw )
+	if b == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'math',value = '**math** = math (arg) (+-*/) (arg)')
+            await ctx.send( embed = embw )
         try:
             if arg == '+':
                 await ctx.send(embed = discord.Embed(description = f'**:bookmark_tabs: Результат:** { a + b }', color=0x0c0c0c))  
@@ -77,7 +93,11 @@ class user(commands.Cog):
 
     #link     
     @commands.command()
-    async def link(self, ctx, url ):
+    async def link(self, ctx, url = None):
+	if url == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'link',value = '**link** = link (url)')
+            await ctx.send( embed = embw )
         r = requests.get(url)
         if r.status_code == 404:
             await ctx.message.delete()
@@ -88,50 +108,13 @@ class user(commands.Cog):
     ev_player = [''] #игроки в розыгрыше
     start_ev = 0 #перемычка
 
-    #event_roles
-    @commands.command()
-    async def event_roles(self, ctx, role: discord.Role = None, member: discord.Member = None, amount: int = None):
-        global ev_player
-        global start_ev
-        if role is None:
-            await ctx.send('**Упомяните роль для розыгрыша.**' '\n' '`/event_roles [role]`')
-            return  
-        start_ev = 1
-        await ctx.send(f'Администратор запустил розыгрыш роли {role.mention}. Для участия пропишите `-уч`.' '\n' f"**Розыгрыш состоится через 1 час.**")
-        await asyncio.sleep(3600)
-        ev_win = r.choice(ev_player)
-        member = ev_win
-        await ctx.send(f'**Поздравляем {ev_win.mention}! Он выигрывает в розыгрыше и получает роль {role.mention}.**')
-        await ev_win.add_roles(role)
-        ev_player = ['']
-        start_ev = 0
 
-    #mp
-    @commands.command()
-    async def уч(self, ctx):
-        global ev_player
-        global start_ev
-        author = ctx.message.author
-        if start_ev == 0:
-            await ctx.send('**Сейчас нету розыгрыша ролей!**')
-            return
-        if author in ev_player:
-            await ctx.send('Вы уже приняли участие в этом розыгрыше!')
-            return
-        else:
-            ev_player.append(author)
-            print(f'Игрок {author} принял участие в розыгрыши роли.')
-            await ctx.send(embed = discord.Embed(description = f'**{author.mention}, Вы успешно приняли участие в розыгрыши роли!**', color = 0xee3131))
-            print('Розыгрыш роли завершен.')  
-            
     @commands.command()
     async def info_emoji(self, ctx, emoji: discord.Emoji = None):
-        if not emoji:
+        if emoji == None:
             e = discord.Embed(description = ":x: {0}, укажи **эмодзи**, о которым хочешь узнать **информацию** :x:".format(ctx.author.mention), color = 0xFF0000)
-
             e.set_footer(text = f'{client.user.name} © 2020 | Все права защищены', icon_url = client.user.avatar_url)
             e.timestamp = datetime.utcnow()
-
             await ctx.send(embed = e)
 
         e = discord.Embed(description = f"[Эмодзи]({emoji.url}) сервера - {emoji}", color = 0x00FF00)
@@ -162,7 +145,11 @@ class user(commands.Cog):
         await ctx.send(files = files)    
         
     @commands.command()
-    async def reverse(self, ctx, *, text: str):
+    async def reverse(self, ctx, *, text: str = None):
+	if text == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'reverse',value = '**reverse** = reverse (text)')
+            await ctx.send( embed = embw )		
 
         t_rev = text[::-1].replace("@", "@\u200B").replace("&", "&\u200B")
         await ctx.send(f"{t_rev}")    
