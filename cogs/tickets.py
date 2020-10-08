@@ -4,7 +4,6 @@ from pymongo import MongoClient
 from random import randint, choice, choices
 import datetime
 from discord.utils import find
-from datetime import datetime
 from discord.utils import get
 import asyncio
 from time import sleep
@@ -87,10 +86,10 @@ class user(commands.Cog):
                 else:
                     await ctx.send(f"Вы уже создали тикет!")
             else:
-                await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+                await ctx.send(f"Модуль тикетов на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
 
         else:
-            await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+            await ctx.send(f"Модуль тикетов на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
             
     @commands.command()
     async def ticket_delete(self, ctx, arg = None):
@@ -127,10 +126,10 @@ class user(commands.Cog):
                         await ctx.send(f"Напишите эту команду в вашем тикете!")
                         
             else:
-                await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+                await ctx.send(f"Модуль тикетов на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
 
         else:
-            await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+            await ctx.send(f"Модуль тикетов на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
 
     @commands.has_permissions(administrator = True)     
     @commands.command()
