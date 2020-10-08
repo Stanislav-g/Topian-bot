@@ -49,6 +49,8 @@ class user(commands.Cog):
             num = ctx.author.guild.id
             num2 = '111'
             allnum = str(num) + str(num2)
+            cluster = MongoClient("mongodb+srv://eco:oHZsayafcqplUdWG@topianbot.zqukb.mongodb.net/topianbot?retryWrites=true&w=majority")
+            db = cluster["topianbot"]
             collectionmodules = db["modules"]
             if collectionmodules.count_documents({"_id": allnum}) == 0:
                 num = ctx.author.guild.id
