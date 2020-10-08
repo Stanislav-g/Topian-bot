@@ -159,7 +159,7 @@ class user(commands.Cog):
                         reps = collection.find_one({"_id": allnum})["rep"]  
                         await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** репутация данного пользователя составляет: {reps}"""))
             else:
-                await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+                await ctx.send(f"Модуль репутаций на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
 
     rate = 1
     #per: the amount of seconds the cooldown lasts
@@ -224,7 +224,7 @@ class user(commands.Cog):
                     await ctx.send(f"Введите правильно команду!") 
                     
             else:
-                await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")   
+                await ctx.send(f"Модуль репутаций на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")   
                 
 
 
