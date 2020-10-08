@@ -34,8 +34,8 @@ class user(commands.Cog):
     collectionticket = db["ticket"]
 
 
-    @client.command()
-    async def ticket_create(ctx, arg = None):
+    @commands.command()
+    async def ticket_create(self, ctx, arg = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"]
@@ -92,8 +92,8 @@ class user(commands.Cog):
         else:
             await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
             
-    @client.command()
-    async def ticket_delete(ctx, arg = None):
+    @commands.command()
+    async def ticket_delete(self, ctx, arg = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"]
@@ -132,8 +132,9 @@ class user(commands.Cog):
         else:
             await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
 
-    @client.command()
-    async def module_ticket(ctx, arg = None):
+    @commands.has_permissions(administrator = True)     
+    @commands.command()
+    async def module_ticket(self, ctx, arg = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"]
