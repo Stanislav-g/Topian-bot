@@ -6,3 +6,4 @@ youtube_dl
 requests
 voice
 pymongo
+dnspython
