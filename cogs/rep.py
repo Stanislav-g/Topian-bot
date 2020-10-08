@@ -43,6 +43,7 @@ class user(commands.Cog):
     @commands.has_permissions(administrator = True)     
     @commands.command()
     async def module_rep(self, ctx, arg = None):
+        clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"]
         collectionmodules = db["modules"]
@@ -110,6 +111,7 @@ class user(commands.Cog):
 
     @commands.command()
     async def rep(self, ctx, Member: discord.Member = None):
+        clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"]
         collectionmodules = db["modules"]        
@@ -160,6 +162,7 @@ class user(commands.Cog):
     @commands.cooldown(rate, per, commands.BucketType.user)
     @commands.command()
     async def rep_user(self, ctx, arg = None, Member: discord.Member = None):
+        clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"]
         collectionmodules = db["modules"]        
