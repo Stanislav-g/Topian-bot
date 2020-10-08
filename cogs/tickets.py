@@ -23,13 +23,6 @@ class user(commands.Cog):
         self.client = client
 
 
-client = commands.Bot( command_prefix = '-')
-#*help
-@client.event
-async def on_redy():
-    print( 'Bot connected')
-
-
 
 
     clu= os.environ.get('MONGODB_URI')
