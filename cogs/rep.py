@@ -35,7 +35,10 @@ class user(commands.Cog):
 
 
     #__________________________________REPS_______________
-
+    @commands.command()
+    async def hi(self, ctx):
+        await ctx.send(f'Hi')
+        
     @commands.has_permissions(administrator = True)     
     @commands.command()
     async def module_rep(self, ctx, arg = None):
