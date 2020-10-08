@@ -49,12 +49,14 @@ class user(commands.Cog):
             num = ctx.author.guild.id
             num2 = '111'
             allnum = str(num) + str(num2)
+            collectionmodules = db["modules"]
             if collectionmodules.count_documents({"_id": allnum}) == 0:
                 num = ctx.author.guild.id
                 name = 'economy'
                 num2 = '111'
                 allnum = str(num) + str(num2)
                 on = 'on'
+                collectionmodules = db["modules"]
                 collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": on, "lvls": 0, "rep": on, "ticket": 1})
                 await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль репутаций успешно включен!"""))
             
