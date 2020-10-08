@@ -53,38 +53,6 @@ async def on_guild_join(guild):
 	
 
 
-@client.event
-async def on_message( message ):
-    clu= os.environ.get('MONGODB_URI')
-    cluster = MongoClient(clu)
-    db = cluster["topianbot"]
-    collection = db["money"]
-    collectionmodules = db["modules"]
-    collectionshop = db["shop"]
-    collectionticket = db["ticket"]
-    num1 = message.author.guild.id
-    num22 = '111'
-    allnum4 = str(num1) + str(num22)
-    if collectionmodules.count_documents({"_id": allnum4}) == 1:
-        if collectionmodules.find_one({"_id": allnum4})["lvls"] == 'on':
-            num = message.author.guild.id
-            num2 = message.author.id
-            allnum = num + num2
-            if collection.count_documents({"_id": allnum}) == 0:
-                name = message.author.name
-                num = message.author.guild.id
-                num2 = message.author.id
-                allnum = num + num2
-                collection.insert_one({"_id": allnum, "name": name, "balance": 0, "lvl": 0, "rep": 0, "message": 0})
-                
-            else:
-                num = message.author.guild.id
-                num2 = message.author.id
-                allnum = num + num2
-                message = collection.find_one({"_id": allnum})["message"]
-                msg = int(message) + int('1')
-                collection.update_one({"_id": allnum}, {"$set": {"message": msg}}) 
-
 
 
 	
