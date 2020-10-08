@@ -202,6 +202,5 @@ async def on_redy():
         else:
             await ctx.send(f"На данном сервере не создана база данных, ее можно создать командой")
 
-
-    token =('NzYwODY4OTczODcyMTUyNjM2.X3SUcw.c6Z1xC3ChigEg4fiYH7xO4DiDLA')
-    client.run( token )
+def setup(client):
+    client.add_cog(user(client))
