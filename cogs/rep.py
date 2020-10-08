@@ -43,6 +43,9 @@ class user(commands.Cog):
     @commands.has_permissions(administrator = True)     
     @commands.command()
     async def module_rep(self, ctx, arg = None):
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"]
+        collectionmodules = db["modules"]
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_rep on`` ``=module_rep off`` """))
         elif arg == 'on':
@@ -50,9 +53,7 @@ class user(commands.Cog):
             num = ctx.author.guild.id
             num2 = '111'
             allnum = str(num) + str(num2)
-            cluster = MongoClient("mongodb+srv://eco:oHZsayafcqplUdWG@topianbot.zqukb.mongodb.net/topianbot?retryWrites=true&w=majority")
-            db = cluster["topianbot"]
-            collectionmodules = db["modules"]
+
             if collectionmodules.count_documents({"_id": allnum}) == 0:
                 num = ctx.author.guild.id
                 name = 'economy'
@@ -109,6 +110,9 @@ class user(commands.Cog):
 
     @commands.command()
     async def rep(self, ctx, Member: discord.Member = None):
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"]
+        collectionmodules = db["modules"]        
         num1 = ctx.author.guild.id
         num22 = '111'
         allnum4 = str(num1) + str(num22)
@@ -156,6 +160,9 @@ class user(commands.Cog):
     @commands.cooldown(rate, per, commands.BucketType.user)
     @commands.command()
     async def rep_user(self, ctx, arg = None, Member: discord.Member = None):
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"]
+        collectionmodules = db["modules"]        
         num1 = ctx.author.guild.id
         num22 = '111'
         allnum4 = str(num1) + str(num22)
