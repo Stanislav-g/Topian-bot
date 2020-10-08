@@ -46,7 +46,10 @@ class user(commands.Cog):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"]
+        collection = db["money"]
         collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_rep on`` ``=module_rep off`` """))
         elif arg == 'on':
@@ -114,7 +117,10 @@ class user(commands.Cog):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"]
-        collectionmodules = db["modules"]        
+        collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
         num1 = ctx.author.guild.id
         num22 = '111'
         allnum4 = str(num1) + str(num22)
@@ -165,7 +171,10 @@ class user(commands.Cog):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"]
-        collectionmodules = db["modules"]        
+        collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]   
         num1 = ctx.author.guild.id
         num22 = '111'
         allnum4 = str(num1) + str(num22)
