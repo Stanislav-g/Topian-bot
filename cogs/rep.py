@@ -26,7 +26,7 @@ class user(commands.Cog):
 
 
 
-    cluster = os.environ.get('MONGODB_URI')
+    cluster = os.environ.get.MongoClient('MONGODB_URI')
     db = cluster["topianbot"]
     collection = db["money"]
     collectionmodules = db["modules"]
