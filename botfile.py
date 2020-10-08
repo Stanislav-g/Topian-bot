@@ -10,6 +10,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import socket
 from discord.utils import find
+from pymongo import MongoClient
 
 client = commands.Bot( command_prefix = '=')
 client.remove_command('help')
