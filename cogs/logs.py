@@ -168,15 +168,13 @@ class user(commands.Cog):
             guildd = message.guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
             channell = self.client.get_channel(cha)
-            embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**The message is delited:**\n ``` {message.content} ``` \nAuthor: {message.author.mention}\nChannel: {message.channel.mention}')
+            embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**The message is deleted:**\n ``` {message.content} ``` \nAuthor: {message.author.mention}\nChannel: {message.channel.mention}')
             embed.set_footer(text=f"Message ID: {message.id}")
-            await message.channel.send(channell)
             await channell.send(embed=embed)
 
             
     @commands.Cog.listener()
     async def on_member_ban(self, guild, member):
-        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -192,7 +190,7 @@ class user(commands.Cog):
         if stat == 'on':
             guildd = guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channel = client.get_channel(cha)
+            channel = self.client.get_channel(cha)
             embed = discord.Embed(color=member.color if member.color != discord.Color.default() else discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member.mention} is banned**')
             embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
             embed.set_footer(text=f"Member ID: {member.id}")
@@ -222,7 +220,7 @@ class user(commands.Cog):
         if stat == 'on':
             guildd = channel.guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channell = client.get_channel(cha)
+            channell = self.client.get_channel(cha)
             embed = discord.Embed(color=discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Channel {channel.name} is deleted!**')
             embed.set_footer(text=f"channel.id: {channel.id}")
             await channell.send(embed=embed)
@@ -245,7 +243,7 @@ class user(commands.Cog):
         if stat == 'on':
             guildd = channel.guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channell = client.get_channel(cha)
+            channell = self.client.get_channel(cha)
             embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Channel {channel.mention} is created!**')
             embed.set_footer(text=f"channel.id: {channel.id}")
             await channell.send(embed=embed)
@@ -270,7 +268,7 @@ class user(commands.Cog):
         if stat == 'on':
             guildd = before.guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channell = client.get_channel(cha)
+            channell = self.client.get_channel(cha)
             embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Channel update.\nBefore: {before}\nAfter: {after}**')
             await channell.send(embed=embed)
 
@@ -292,7 +290,7 @@ class user(commands.Cog):
         if stat == 'on':
             guildd = role.guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channell = client.get_channel(cha)
+            channell = self.client.get_channel(cha)
             embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role is created: {role.mention}**')
             embed.set_footer(text=f"Role id: {role.id}")
             await channell.send(embed=embed)
@@ -315,7 +313,7 @@ class user(commands.Cog):
         if stat == 'on':
             guildd = role.guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channell = client.get_channel(cha)
+            channell = self.client.get_channel(cha)
             embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role is deleted: {role.name}**')
             embed.set_footer(text=f"Role id: {role.id}")
             await channell.send(embed=embed)
@@ -338,7 +336,7 @@ class user(commands.Cog):
         if stat == 'on':
             guildd = before.guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channell = client.get_channel(cha)
+            channell = self.client.get_channel(cha)
             embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role is update.\nBefore: {before}\nAfter: {after}**')
             await channell.send(embed=embed)
 
@@ -360,7 +358,7 @@ class user(commands.Cog):
         if stat == 'on':
             guildd = guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channel = client.get_channel(cha)
+            channel = self.client.get_channel(cha)
             embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member} is unbanned**')
             embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
             embed.set_footer(text=f"Member ID: {member.id}")
@@ -390,7 +388,7 @@ class user(commands.Cog):
         if stat == 'on':
             guildd = invite.guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channel = client.get_channel(cha)
+            channel = self.client.get_channel(cha)
             embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**An invite is created**')
             embed.add_field(name='Invite Code', value=invite.code, inline=False)
             embed.add_field(name='Max Uses', value=invite.max_uses, inline=False)
