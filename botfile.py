@@ -133,10 +133,9 @@ async def on_command_error(ctx, err):
     elif isinstance(err, commands.MissingPermissions):
         await ctx.send(embed=discord.Embed(description=f"У вас недостаточно прав для запуска этой команды!"))
 
-
     elif isinstance(err, commands.CommandOnCooldown):
-	await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
-         
+        await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
+
         
 for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
     client.load_extension(f'cogs.{filename[:-3]}') 
