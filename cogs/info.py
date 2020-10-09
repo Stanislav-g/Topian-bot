@@ -101,7 +101,7 @@ class user(commands.Cog):
     #botinfo
     @commands.command( pass_context = True )
     async def botinfo(self, ctx ):
-        urll = 'https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=470412503&scope=bot'
+        urll = 'https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=8&scope=bot'
         urltr = 'https://discord.gg/NfTf9JD'         
         emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  чтобы узнать команды бота, пиши: =help\n ", color = 0x00FF00)
 
