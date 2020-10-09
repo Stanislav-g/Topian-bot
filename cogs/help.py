@@ -56,6 +56,16 @@ class user(commands.Cog):
         emb.add_field( name = 'CODER',value = '=coder encode (text) - зашифровать\n=coder decode (text) расшифровать') 
         emb.set_footer(text='Команда вызвана: {}\n© Copyright 2020 Topian Team | Все права закодированы'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
         await ctx.send( embed = emb )  
+
+    @commands.command()
+    async def bug(self, ctx, arg = None):
+        guildf = ctx.guild.name
+        userf = ctx.author.name
+        if not arg:
+            await ctx.send(f"Вы забыли написать баг. =bug (text)")
+        channel = self.client.get_channel( 764184915209355302 )
+        await channel.send(embed = discord.Embed(description = f"""С сервера **{guildf}**, был отправлен баг\nБаг отправил **{userf}**\n\nБаг:\n{arg}"""))
+
         
     @commands.command(pass_context = True)
     async def helpghjk(self, ctx):
@@ -177,9 +187,32 @@ class user(commands.Cog):
                 ``=kiss`` - kiss @user
                 ``=reverse`` - текст задом на перед.
                 ``=h_coder`` - инфо. о кодировщике.
+                ``=bug`` - отправить бог о боте.
+                
+                **Modules**
+                ``=modules`` - инфо. о использовании модулей.
+                ``=module_logs`` - модуль логов.
+                ``=log_channel`` - добавить канал логов.
+                ``=module_rep`` - модуль репутаций.
+                ``=rep`` - посмотреть репутацию пользователя.
+                ``=rep_user`` - увеличить или уменьшить репутацию пользователя.
+                ``=module_ticket`` - модуль тикетов.
+                ``=ticket_create`` - создать тикет.
+                ``=ticket_delete`` - удалить тикет.
                      ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
                 """))      
-        		
+     
+    @commands.command()
+    async def modules(self, ctx):
+        emt = discord.Embed(title=f"Информация об использовании модулей.",description="Чтобы включить модуль, напишите следующую команду: =module_(имя модуля) on\nЧтобы отключить модуль, напишите следующую команду: =module_(имя модуля) off", color = 0x00FF00)
+        emt.add_field(name=f'``=module_logs on``', value="Включить модуль логов", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_logs off``', value="Отключить модуль логов", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_rep on``', value="Включить модуль репутаций", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_rep off``', value="Отключить модуль репутаций", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_ticket on``', value="Включить модуль тикетов", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_ticket off``', value="Отключить модуль тикетов", inline=True)  # Создает строку
+        await ctx.send(embed=emt)
+        
     @commands.command()
     @commands.has_permissions( administrator = True )
     async def log(self, ctx, num : int = None, member: discord.Member = None ):
