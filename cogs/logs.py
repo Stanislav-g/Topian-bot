@@ -163,14 +163,15 @@ class user(commands.Cog):
         num = message.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
-        stat = collectionmodules.find_one({"_id": allnum})["logs"]
-        if stat == 'on':
-            guildd = message.guild.id
-            cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channell = self.client.get_channel(cha)
-            embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**The message is deleted:**\n ``` {message.content} ``` \nAuthor: {message.author.mention}\nChannel: {message.channel.mention}')
-            embed.set_footer(text=f"Message ID: {message.id}")
-            await channell.send(embed=embed)
+        if collectionmodules.count_documents({"_id": allnum}) == 1:
+            stat = collectionmodules.find_one({"_id": allnum})["logs"]
+            if stat == 'on':
+                guildd = message.guild.id
+                cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
+                channell = self.client.get_channel(cha)
+                embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**The message is deleted:**\n ``` {message.content} ``` \nAuthor: {message.author.mention}\nChannel: {message.channel.mention}')
+                embed.set_footer(text=f"Message ID: {message.id}")
+                await channell.send(embed=embed)
 
             
     @commands.Cog.listener()
