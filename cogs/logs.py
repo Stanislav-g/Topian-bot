@@ -152,7 +152,6 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message_delete(self, message ):
-        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -168,7 +167,7 @@ class user(commands.Cog):
         if stat == 'on':
             guildd = message.guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channell = client.get_channel(cha)
+            channell = self.client.get_channel(cha)
             embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**The message is delited:**\n ``` {message.content} ``` \nAuthor: {message.author.mention}\nChannel: {message.channel.mention}')
             embed.set_footer(text=f"Message ID: {message.id}")
             await message.channel.send(channell)
