@@ -25,8 +25,8 @@ class user(commands.Cog):
 
 
 
-
-    cluster = MongoClient("mongodb+srv://eco:oHZsayafcqplUdWG@topianbot.zqukb.mongodb.net/topianbot?retryWrites=true&w=majority")
+    clu= os.environ.get('MONGODB_URI')
+    cluster = MongoClient(clu)
     db = cluster["topianbot"]
     collection = db["money"]
     collectionmodules = db["modules"]
@@ -39,6 +39,14 @@ class user(commands.Cog):
     @commands.has_permissions(administrator = True)     
     @commands.command()
     async def module_logs(self, ctx, arg = None):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"]
+        collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_logs on`` ``=module_logs off`` """))
         elif arg == 'on':
@@ -99,6 +107,13 @@ class user(commands.Cog):
 
     @commands.command()
     async def log_channel(self, ctx, arg = None):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         name = 'economy'
         num = ctx.author.guild.id
         num2 = '111'
@@ -136,6 +151,13 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message_delete(self, message ):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         num = message.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -151,6 +173,13 @@ class user(commands.Cog):
             
     @commands.Cog.listener()
     async def on_member_ban(self, guild, member):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         num = guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -172,6 +201,13 @@ class user(commands.Cog):
                             
     @commands.Cog.listener()
     async def on_guild_channel_delete(self, channel):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         num = channel.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -186,6 +222,13 @@ class user(commands.Cog):
             
     @commands.Cog.listener()
     async def on_guild_channel_create(self, channel):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         num = channel.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -202,6 +245,13 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_channel_update(self, before, after):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         num = before.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -215,6 +265,13 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_role_create(self, role):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         num = role.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -229,6 +286,13 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_role_delete(self, role):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         num = role.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -243,6 +307,13 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_role_update(self, before, after):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         num = before.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -256,6 +327,13 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_unban(self, guild, member):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         num = guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -277,6 +355,13 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_invite_create(self, invite: discord.Invite):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
         num = invite.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
