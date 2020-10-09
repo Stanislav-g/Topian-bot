@@ -4,7 +4,6 @@ from pymongo import MongoClient
 from random import randint, choice, choices
 import datetime
 from discord.utils import find
-from datetime import datetime
 from discord.utils import get
 import asyncio
 from time import sleep
