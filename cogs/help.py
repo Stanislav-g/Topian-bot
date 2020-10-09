@@ -27,7 +27,7 @@ class user(commands.Cog):
         userf = ctx.author.name
         if not arg:
             await ctx.send(f"Вы забыли написать баг. Правильное использование: =bug (text)")
-        channel = self.client.get_channel( 764219073885896704 )
+        channel = self.client.get_channel( 764184915209355302 )
         await channel.send(embed = discord.Embed(description = f"""С сервера **{guildf}**, был отправлен баг.\nБаг отправил **{userf}**\n\nБаг:\n{arg}"""))
         
     @commands.command()
