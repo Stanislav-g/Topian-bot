@@ -168,10 +168,11 @@ class user(commands.Cog):
         if stat == 'on':
             guildd = message.guild.id
             cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channel = client.get_channel(cha)
+            channell = int(client.get_channel(cha))
             embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**The message is delited:**\n ``` {message.content} ``` \nAuthor: {message.author.mention}\nChannel: {message.channel.mention}')
             embed.set_footer(text=f"Message ID: {message.id}")
-            await channel.send(embed=embed)
+            await message.channel.send(channell)
+            await channell.send(embed=embed)
 
             
     @commands.Cog.listener()
