@@ -23,7 +23,18 @@ class user(commands.Cog):
      #info
     @commands.command()
     async def bag(self, ctx, * ,arg):  
+        if not arg:
+            await ctx.send(f"Вы забыли написать баг, правильное использование команды: =bug (баг)")
         embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Сообщение о баге отправил {ctx.author.name}\nБаг: {arg}**\n')
+        embed.set_author(name=ctx.author.guild.name, icon_url=str(ctx.author.guild.icon_url))
+        embed.set_footer(text=f"Author name: {ctx.author.name}#{ctx.author.discriminator}")
+        await ctx.send(embed=embed)
+        
+    @commands.command()
+    async def review(self, ctx, * ,arg):  
+        if not arg:
+            await ctx.send(f"Вы забыли написать отзыв, правильное использование команды: =review (отзыв)")
+        embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Сообщение о отзыве отправил {ctx.author.name}\nОтзыв: {arg}**\n')
         embed.set_author(name=ctx.author.guild.name, icon_url=str(ctx.author.guild.icon_url))
         embed.set_footer(text=f"Author name: {ctx.author.name}#{ctx.author.discriminator}")
         await ctx.send(embed=embed)
@@ -128,7 +139,6 @@ class user(commands.Cog):
             ``=coder`` - coder encode (text)
             ``=h_coder`` - coder help
             ``=coder`` - coder decode (text)
-            ``=country`` - country file (из какой ты страны)
             ''' )
         await ctx.author.send(embed = emb)        
         
@@ -171,7 +181,7 @@ class user(commands.Cog):
         await ctx.send(embed = discord.Embed(description = f"""
                 **Games**
                 ``=rps`` - камень, ножницы или бумага*
-                ``=угадайка`` - угадайка*
+                ``=угадайка`` - угадайка* (НЕ ДОСТУПНО)
                 ``=coinflip`` - орел или решка.
                 ``=knb`` - камень, ножницы, бумага с другим пользователем.
 
@@ -188,6 +198,7 @@ class user(commands.Cog):
                 ``=reverse`` - текст задом на перед.
                 ``=h_coder`` - инфо. о кодировщике.
                 ``=bug`` - отправить бог о боте.
+                ``=review`` - отправить отзыв о боте.
                 
                 **Modules**
                 ``=modules`` - инфо. о использовании модулей.
