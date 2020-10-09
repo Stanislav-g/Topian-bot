@@ -139,7 +139,7 @@ async def on_command_error(ctx, err):
 
     else:
 	channel = client.get_channel( 764219073885896704 )
-        await channel.send(embed=discord.Embed(description=f"Произошла неизвестная ошибка: `{err}`\n\nОшибка в команде {ctx.command}))            
+	await channel.send(embed=discord.Embed(description=f"Произошла неизвестная ошибка: `{err}`\n\nОшибка в команде {ctx.command}))            
         
 for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
     client.load_extension(f'cogs.{filename[:-3]}') 
