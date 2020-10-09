@@ -37,8 +37,8 @@ class user(commands.Cog):
     #__________________________________logs_______________
 
     @commands.has_permissions(administrator = True)     
-    @client.command()
-    async def module_logs(ctx, arg = None):
+    @commands.command()
+    async def module_logs(self, ctx, arg = None):
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_logs on`` ``=module_logs off`` """))
         elif arg == 'on':
@@ -97,8 +97,8 @@ class user(commands.Cog):
         else:
             await ctx.send(f"На данном сервере не создана база данных, ее можно создать командой")
 
-    @client.command()
-    async def log_channel(ctx, arg = None):
+    @commands.command()
+    async def log_channel(self, ctx, arg = None):
         name = 'economy'
         num = ctx.author.guild.id
         num2 = '111'
@@ -134,8 +134,8 @@ class user(commands.Cog):
 
 
 
-    @client.event
-    async def on_message_delete( message ):
+    @commands.Cog.listener()
+    async def on_message_delete(self, message ):
         num = message.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -149,8 +149,8 @@ class user(commands.Cog):
             await channel.send(embed=embed)
 
             
-    @client.event
-    async def on_member_ban(guild, member):
+    @commands.Cog.listener()
+    async def on_member_ban(self, guild, member):
         num = guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -170,8 +170,8 @@ class user(commands.Cog):
             await member.send(embed=embe)
 
                             
-    @client.event
-    async def on_guild_channel_delete(channel):
+    @commands.Cog.listener()
+    async def on_guild_channel_delete(self, channel):
         num = channel.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -184,8 +184,8 @@ class user(commands.Cog):
             embed.set_footer(text=f"channel.id: {channel.id}")
             await channell.send(embed=embed)
             
-    @client.event
-    async def on_guild_channel_create(channel):
+    @commands.Cog.listener()
+    async def on_guild_channel_create(self, channel):
         num = channel.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -200,8 +200,8 @@ class user(commands.Cog):
 
 
 
-    @client.event
-    async def on_guild_channel_update(before, after):
+    @commands.Cog.listener()
+    async def on_guild_channel_update(self, before, after):
         num = before.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -213,8 +213,8 @@ class user(commands.Cog):
             embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Channel update.\nBefore: {before}\nAfter: {after}**')
             await channell.send(embed=embed)
 
-    @client.event
-    async def on_guild_role_create(role):
+    @commands.Cog.listener()
+    async def on_guild_role_create(self, role):
         num = role.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -227,8 +227,8 @@ class user(commands.Cog):
             embed.set_footer(text=f"Role id: {role.id}")
             await channell.send(embed=embed)
 
-    @client.event
-    async def on_guild_role_delete(role):
+    @commands.Cog.listener()
+    async def on_guild_role_delete(self, role):
         num = role.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -241,8 +241,8 @@ class user(commands.Cog):
             embed.set_footer(text=f"Role id: {role.id}")
             await channell.send(embed=embed)
 
-    @client.event
-    async def on_guild_role_update(before, after):
+    @commands.Cog.listener()
+    async def on_guild_role_update(self, before, after):
         num = before.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -254,8 +254,8 @@ class user(commands.Cog):
             embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role is update.\nBefore: {before}\nAfter: {after}**')
             await channell.send(embed=embed)
 
-    @client.event
-    async def on_member_unban(guild, member):
+    @commands.Cog.listener()
+    async def on_member_unban(self, guild, member):
         num = guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -275,8 +275,8 @@ class user(commands.Cog):
             await member.send(embed=embe)
                                 
 
-    @client.event
-    async def on_invite_create(invite: discord.Invite):
+    @commands.Cog.listener()
+    async def on_invite_create(self, invite: discord.Invite):
         num = invite.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
@@ -294,27 +294,6 @@ class user(commands.Cog):
        
 
             
-    @client.event
-    async def on_command_error(ctx, err):
-        if isinstance(err, commands.CommandNotFound):
-            await ctx.send(embed=discord.Embed(description=f"Команда не найдена!"))
-
-        elif isinstance(err, commands.BotMissingPermissions):
-            await ctx.send(
-                embed=discord.Embed(description=f"У бота отсутствуют права: {' '.join(err.missing_perms)}\nВыдайте их ему для полного функционирования бота"))
-
-        elif isinstance(err, commands.MissingPermissions):
-            await ctx.send(embed=discord.Embed(description=f"У вас недостаточно прав для запуска этой команды!"))
-
-        elif isinstance(err, commands.UserInputError):
-            await ctx.send(embed=discord.Embed(description=f"Правильное использование команды {ctx.command}({ctx.command.brief}): `{ctx.command.usage}`"))
-
-        elif isinstance(err, commands.CommandOnCooldown):
-            await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
-
-        else:
-            await ctx.send(embed=discord.Embed(description=f"Произошла неизвестная ошибка: `{err}`\nПожалуйста, свяжитесь с разработчиками для исправления этой ошибки"))
-
 
 def setup(client):
     client.add_cog(user(client))
