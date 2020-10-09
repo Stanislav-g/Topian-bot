@@ -106,7 +106,8 @@ class user(commands.Cog):
         allnum4 = str(num1) + str(num22)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
             if collectionmodules.find_one({"_id": allnum4})["ticket"] == 'on':
-                
+                if not member:
+                    await ctx.send(f"Правильное использование команды: =ticket_del @user")
                 num = ctx.author.guild.id
                 num2 = member.id
                 t = 'ticket'
@@ -124,7 +125,7 @@ class user(commands.Cog):
                         c = ctx.channel
                         await c.delete()
                     else:
-                        await ctx.send(f"Напишите эту команду в вашем тикете!")
+                        await ctx.send(f"Напишите эту команду в тикете данного пользователя!")
                         
             else:
                 await ctx.send(f"Модуль тикетов на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
