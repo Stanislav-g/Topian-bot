@@ -180,10 +180,12 @@ class user(commands.Cog):
         allnum4 = str(num1) + str(num22)
         if collectionmodules.count_documents({"_id": allnum4}) == 1: 
             if collectionmodules.find_one({"_id": allnum4})["rep"] == 'on':
+                if not arg:
+                    await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}**, правильное использования команды: =rep_user + @user или  =rep_user - @user!"""))
                 if arg == '+':
                     
                     if not Member:
-                        await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}**, укажите пользователя!"""))
+                        await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}**, укажите пользователя! Правильное использования команды: =rep_user + @user или  =rep_user - @user!"""))
                     elif Member == ctx.author:
                         await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}**, вы не можете сами себе выдавать репутацию!"""))
                     else:
