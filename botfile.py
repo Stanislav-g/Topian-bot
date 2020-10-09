@@ -125,18 +125,14 @@ async def leave(ctx):
 
 @client.event
 async def on_command_error(ctx, err):
-    if isinstance(err, commands.CommandNotFound):
-        await ctx.send(embed=discord.Embed(description=f"Команда не найдена!"))
 
-    elif isinstance(err, commands.BotMissingPermissions):
+    if isinstance(err, commands.BotMissingPermissions):
         await ctx.send(
             embed=discord.Embed(description=f"У бота отсутствуют права: {' '.join(err.missing_perms)}\nВыдайте их ему для полного функционирования бота"))
 
     elif isinstance(err, commands.MissingPermissions):
         await ctx.send(embed=discord.Embed(description=f"У вас недостаточно прав для запуска этой команды!"))
 
-    elif isinstance(err, commands.UserInputError):
-        await ctx.send(embed=discord.Embed(description=f"Правильное использование команды {ctx.command}({ctx.command.brief}): `{ctx.command.usage}`"))
 
     elif isinstance(err, commands.CommandOnCooldown):
         await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
