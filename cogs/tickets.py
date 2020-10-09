@@ -91,6 +91,48 @@ class user(commands.Cog):
         else:
             await ctx.send(f"Модуль тикетов на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
             
+    @commands.has_permissions(administrator = True)         
+    @commands.command()
+    async def ticket_del(self, ctx, member: discord.Member = None):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"]
+        collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        num1 = ctx.author.guild.id
+        num22 = '111'
+        allnum4 = str(num1) + str(num22)
+        if collectionmodules.count_documents({"_id": allnum4}) == 1:
+            if collectionmodules.find_one({"_id": allnum4})["ticket"] == 'on':
+                
+                num = ctx.author.guild.id
+                num2 = member.id
+                t = 'ticket'
+                allnumni = str(num) + str(num2) + str(t)
+                if collectionticket.count_documents({"_id": allnumni}) == 0:
+                    await ctx.send(f"Данный пользователь еще не создал тикет!")
+                else:
+                    num = ctx.author.guild.id
+                    num2 = member.id
+                    t = 'ticket'
+                    allnumn = str(num) + str(num2) + str(t)
+                    chan = collectionticket.find_one({"_id": allnumn})["channel"]
+                    if chan == ctx.channel.id:
+                        collectionticket.delete_one({"_id": allnumn})
+                        c = ctx.channel
+                        await c.delete()
+                    else:
+                        await ctx.send(f"Напишите эту команду в вашем тикете!")
+                        
+            else:
+                await ctx.send(f"Модуль тикетов на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+
+        else:
+            await ctx.send(f"Модуль тикетов на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+            
+            
     @commands.command()
     async def ticket_delete(self, ctx, arg = None):
         clu= os.environ.get('MONGODB_URI')
