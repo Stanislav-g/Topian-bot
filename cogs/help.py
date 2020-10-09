@@ -27,7 +27,7 @@ class user(commands.Cog):
         userf = ctx.author.name
         if not arg:
             await ctx.send(f"Вы забыли написать баг. Правильное использование: =bug (text)")
-        channel = client.get_channel( 764163194540785695 )
+        channel = self.client.get_channel( 764163194540785695 )
         await channel.send(embed = discord.Embed(description = f"""С сервера **{guildf}**, был отправлен баг.\nБаг отправил **{userf}**\n\nБаг:\n{arg}"""))
         
     @commands.command()
@@ -36,7 +36,7 @@ class user(commands.Cog):
         userf = ctx.author.name
         if not arg:
             await ctx.send(f"Вы забыли написать отзыв. Правильное использование: =review (text)")
-        channel = client.get_channel( 764219073885896704 )
+        channel = self.client.get_channel( 764219073885896704 )
         await channel.send(embed = discord.Embed(description = f"""С сервера **{guildf}**, был отправлен отзыв.\nОтзыв отправил **{userf}**\n\nОтзыв:\n{arg}"""))
         
 
@@ -69,14 +69,6 @@ class user(commands.Cog):
         emb.set_footer(text='Команда вызвана: {}\n© Copyright 2020 Topian Team | Все права закодированы'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
         await ctx.send( embed = emb )  
 
-    @commands.command()
-    async def bug(self, ctx, arg = None):
-        guildf = ctx.guild.name
-        userf = ctx.author.name
-        if not arg:
-            await ctx.send(f"Вы забыли написать баг. =bug (text)")
-        channel = self.client.get_channel( 764184915209355302 )
-        await channel.send(embed = discord.Embed(description = f"""С сервера **{guildf}**, был отправлен баг\nБаг отправил **{userf}**\n\nБаг:\n{arg}"""))
 
         
     @commands.command(pass_context = True)
