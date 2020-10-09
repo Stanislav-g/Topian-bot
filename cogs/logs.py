@@ -251,27 +251,6 @@ class user(commands.Cog):
 
 
 
-    @commands.Cog.listener()
-    async def on_guild_channel_update(self, before, after):
-        client = commands.Bot( command_prefix = '=')
-        clu= os.environ.get('MONGODB_URI')
-        cluster = MongoClient(clu)
-        db = cluster["topianbot"] 
-        collection = db["money"]
-        collectionmodules = db["modules"]
-        collectionshop = db["shop"]
-        collectionticket = db["ticket"]
-        collectionlogschannels = db["logschannels"]
-        num = before.guild.id
-        num2 = '111'
-        allnum = str(num) + str(num2)
-        stat = collectionmodules.find_one({"_id": allnum})["logs"]
-        if stat == 'on':
-            guildd = before.guild.id
-            cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-            channell = self.client.get_channel(cha)
-            embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Channel update.\nBefore: {before}\nAfter: {after}**')
-            await channell.send(embed=embed)
 
     @commands.Cog.listener()
     async def on_guild_role_create(self, role):
