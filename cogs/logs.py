@@ -107,6 +107,7 @@ class user(commands.Cog):
 
     @commands.command()
     async def log_channel(self, ctx, arg = None):
+        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -152,6 +153,7 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message_delete(self, message ):
+        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -175,6 +177,7 @@ class user(commands.Cog):
             
     @commands.Cog.listener()
     async def on_member_ban(self, guild, member):
+        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -204,6 +207,7 @@ class user(commands.Cog):
                             
     @commands.Cog.listener()
     async def on_guild_channel_delete(self, channel):
+        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -226,6 +230,7 @@ class user(commands.Cog):
             
     @commands.Cog.listener()
     async def on_guild_channel_create(self, channel):
+        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -250,6 +255,7 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_channel_update(self, before, after):
+        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -271,6 +277,7 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_role_create(self, role):
+        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -293,6 +300,7 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_role_delete(self, role):
+        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -315,6 +323,7 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_role_update(self, before, after):
+        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -336,6 +345,7 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_unban(self, guild, member):
+        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
@@ -365,6 +375,7 @@ class user(commands.Cog):
 
     @commands.Cog.listener()
     async def on_invite_create(self, invite: discord.Invite):
+        client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
