@@ -135,7 +135,10 @@ async def on_command_error(ctx, err):
 
     elif isinstance(err, commands.CommandOnCooldown):
         await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
-
+				
+    else:
+        channel = self.client.get_channel( 764223686353223752 )
+        await channel.send(embed=discord.Embed(description=f"Произошла неизвестная ошибка: {err}\n\nОшибка в команде {ctx.command}))
         
 for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
     client.load_extension(f'cogs.{filename[:-3]}') 
