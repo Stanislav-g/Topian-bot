@@ -22,22 +22,23 @@ class user(commands.Cog):
             
      #info
     @commands.command()
-    async def bag(self, ctx, * ,arg):  
+    async def bug(ctx, * , arg = None):
+        guildf = ctx.guild.name
+        userf = ctx.author.name
         if not arg:
-            await ctx.send(f"Вы забыли написать баг, правильное использование команды: =bug (баг)")
-        embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Сообщение о баге отправил {ctx.author.name}\nБаг: {arg}**\n')
-        embed.set_author(name=ctx.author.guild.name, icon_url=str(ctx.author.guild.icon_url))
-        embed.set_footer(text=f"Author name: {ctx.author.name}#{ctx.author.discriminator}")
-        await ctx.send(embed=embed)
+            await ctx.send(f"Вы забыли написать баг. Правильное использование: =bug (text)")
+        channel = client.get_channel( 764163194540785695 )
+        await channel.send(embed = discord.Embed(description = f"""С сервера **{guildf}**, был отправлен баг.\nБаг отправил **{userf}**\n\nБаг:\n{arg}"""))
         
     @commands.command()
     async def review(self, ctx, * ,arg):  
+        guildf = ctx.guild.name
+        userf = ctx.author.name
         if not arg:
-            await ctx.send(f"Вы забыли написать отзыв, правильное использование команды: =review (отзыв)")
-        embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Сообщение о отзыве отправил {ctx.author.name}\nОтзыв: {arg}**\n')
-        embed.set_author(name=ctx.author.guild.name, icon_url=str(ctx.author.guild.icon_url))
-        embed.set_footer(text=f"Author name: {ctx.author.name}#{ctx.author.discriminator}")
-        await ctx.send(embed=embed)
+            await ctx.send(f"Вы забыли написать отзыв. Правильное использование: =review (text)")
+        channel = client.get_channel( 764219073885896704 )
+        await channel.send(embed = discord.Embed(description = f"""С сервера **{guildf}**, был отправлен отзыв.\nОтзыв отправил **{userf}**\n\nОтзыв:\n{arg}"""))
+        
 
         
     #info\n
