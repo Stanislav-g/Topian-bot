@@ -40,6 +40,8 @@ async def on_guild_join(guild):
     for channel in guild.text_channels:
         if channel.permissions_for(guild.me).send_messages:
             message = await channel.send(embed = discord.Embed(description = f"""Привет! Я Topian Bot, чтобы узнать мои команды напиши ``=help``"""))
+	    user = client.get_user(550061958938886175)
+            await user.send(f"embed=embed")
             break
 
 @client.command()
