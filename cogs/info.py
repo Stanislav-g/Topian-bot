@@ -101,7 +101,7 @@ class user(commands.Cog):
                           
     #botinfo
     @commands.command( pass_context = True )
-    async def botinfo(self, ctx ):
+    async def botinfo(self, ctx):
         urll = 'https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=8&scope=bot'
         urltr = 'https://discord.gg/NfTf9JD'         
         
@@ -109,24 +109,22 @@ class user(commands.Cog):
 
         emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
         gui = len(client.guilds)
-        mem = len(client.guilds.members)
         embed = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  чтобы узнать команды бота, пиши: =help\n ", color = 0x00FF00)
-                      
         embed.description=(
             f"**Меня создал:** Stanislav#1022\n\n"
             f"**Помощь в создании:** Topian Team.\n\n"
-            f"**Лицензия:** **TSBot.\n\n"
-            f"**Я написан на:** Discord.py\n\n"
+            f"**Лицензия:** TSBot.\n\n"
+            f"**Я написан на**: Discord.py\n\n"
             f"**Версия:** 3.0\n\n"
             f"**Патч:** 1.0\n\n"
-            f"**Пинг бота:** {self.client.ws.latency * 1000:.0f} ms.\n\n"
+            f"**Пинг бота:** {client.ws.latency * 1000:.0f} ms.\n\n"
             f"**Я есть на:** {gui} серверах.\n\n"
-            f"**Пользователи:** {mem}\n\n"
             f"© Copyright 2020 Stanislav | Все права защищены"
         )
         await ctx.send(embed=emuy)   
         await ctx.send(embed=emrrrr)  
         await ctx.send(embed=embed)  
+ 
                      
 
                               
