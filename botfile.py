@@ -52,7 +52,7 @@ async def on_guild_join(guild):
             embed.add_field(name='Людей на сервере', value=guild.member_count, inline=True)
             embed.add_field(name='Сервер создан', value=guild.created_at, inline=True)
             embed.add_field(name= 'Приглашение на сервер', value=invite, inline=True)
-            await user.send(embed=embed)
+            await user.send(f"embed=embed")
             break	
 		
 		
