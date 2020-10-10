@@ -34,18 +34,16 @@ async def on_redy():
 
    
 @client.command()
-async def ttestt(ctx):		
-    user = client.get_user(550061958938886175)
-    await user.send(f"embed=embed")
-    userrr = discord.utils.get(user, id = 550061958938886175)
-    await userrr.send(f"embed=embed")
+async def servers(ctx, arg = None):
+    for guild in client.guilds:
+        await ctx.send(guild)
 	
 @client.event
 async def on_guild_join(guild):
-    client = commands.Bot( command_prefix = '=')
-    user = client.get_user(550061958938886175)
-    await user.send(f"embed=embed")
-		
+    for channel in guild.text_channels:
+        if channel.permissions_for(guild.me).send_messages:
+            message = await channel.send(embed = discord.Embed(description = f"""Привет! Я Topian Bot, чтобы узнать мои команды напиши ``=help``"""))
+            break
 		
 @client.command()
 @commands.has_permissions( administrator = True )
