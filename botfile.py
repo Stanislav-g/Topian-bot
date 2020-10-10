@@ -48,8 +48,9 @@ async def on_guild_join(guild):
             embed.add_field(name='Людей на сервере', value=guild.member_count, inline=True)
             embed.add_field(name='Сервер создан', value=guild.created_at, inline=True)
             embed.add_field(name= 'Приглашение на сервер', value=invite, inline=True)
-            user = client.get_user(550061958938886175)
-            await user.send(embed=embed)
+	    client = commands.Bot( command_prefix = '=')
+            userd = client.get_user(550061958938886175)
+            await userd.send(embed=embed)
 	
 
 
