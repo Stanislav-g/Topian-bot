@@ -102,6 +102,7 @@ class user(commands.Cog):
     #botinfo
     @commands.command( pass_context = True )
     async def botinfo(self, ctx):
+        client = commands.Bot( command_prefix = '=')
         urll = 'https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=8&scope=bot'
         urltr = 'https://discord.gg/NfTf9JD'         
         
