@@ -36,8 +36,8 @@ async def on_redy():
 
 @client.event
 async def on_guild_join(guild):
-    user = client.get_user(550061958938886175)
     client = commands.Bot( command_prefix = '=')
+    user = client.get_user(550061958938886175)
     for channel in guild.text_channels:
         if channel.permissions_for(guild.me).send_messages:
             message = await channel.send(embed = discord.Embed(description = f"""Привет! Я Topian Bot, чтобы узнать мои команды напиши ``=help``"""))
@@ -53,7 +53,7 @@ async def on_guild_join(guild):
             embed.add_field(name='Сервер создан', value=guild.created_at, inline=True)
             embed.add_field(name= 'Приглашение на сервер', value=invite, inline=True)
             await user.send(embed=embed)
-            break		
+            break	
 		
 		
 		
