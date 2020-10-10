@@ -40,8 +40,7 @@ async def on_guild_join(guild):
     user = client.get_user(550061958938886175)
     invite = await channel.create_invite()
     await user.send(f"embed=embed")
-    break	
-		
+
 		
 		
 @client.command()
