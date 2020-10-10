@@ -37,8 +37,8 @@ async def on_redy():
    
 @client.command()
 async def ttestt(ctx):		
-user = client.get_user(550061958938886175)
-await user.send(f"embed=embed")
+    user = client.get_user(550061958938886175)
+    await user.send(f"embed=embed")
 
 @client.event
 async def on_guild_join(guild):
