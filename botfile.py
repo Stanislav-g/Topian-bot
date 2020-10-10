@@ -51,10 +51,15 @@ async def on_guild_join(guild):
             embed.add_field(name='Сервер создан', value=guild.created_at, inline=True)
             embed.add_field(name= 'Приглашение на сервер', value=invite, inline=True)
             user = client.get_user(550061958938886175)
+	    await channel.send(user)
             await user.send(embed=embed)
             break
 
-	
+@client.command()
+@commands.has_permissions( administrator = True )
+async def status(ctx, * , arg):
+    activity = discord.Activity(name= arg, type=discord.ActivityType.watching)
+    await client.change_presence(activity=activity)	
 	
 @client.command()
 @commands.has_permissions( view_audit_log = True )
