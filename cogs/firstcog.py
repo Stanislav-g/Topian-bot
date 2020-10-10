@@ -222,7 +222,7 @@ class user(commands.Cog):
             await ctx.channel.purge( limit = 1 )
             if reaction == None:
                 embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                embw.add_field( name = 'text_emoji',value = '*text_emoji** = text_emoji (реакция) (текст)')
+                embw.add_field( name = 'text_emoji',value = '**text_emoji** = text_emoji (реакция) (текст)')
                 await ctx.send( embed = embw )           
             message = await ctx.send(f" {arg} ")
             await message.add_reaction(reaction)
@@ -361,7 +361,7 @@ class user(commands.Cog):
                 await ctx.send( embed = embw )
             else:
                 await discord.Member.remove_roles(member, role)
-                await ctx.send(embed = discord.Embed(description = f'**Роль успешна убрана**'))
+                await ctx.send(embed = discord.Embed(description = f'**Роль успешно убрана**'))
 
         except:
             await ctx.send(embed = discord.Embed(description = f' Не удалось выдать роль.', color=0x0c0c0c))
