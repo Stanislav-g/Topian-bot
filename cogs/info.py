@@ -117,13 +117,15 @@ class user(commands.Cog):
             f"**Я написан на**: Discord.py\n\n"
             f"**Версия:** 3.0\n\n"
             f"**Патч:** 1.0\n\n"
-            f"**Пинг бота:** {client.ws.latency * 1000:.0f} ms.\n\n"
+            f"**Пинг бота:** {self.client.ws.latency * 1000:.0f} ms.\n\n"
             f"**Я есть на:** {gui} серверах.\n\n"
             f"© Copyright 2020 Stanislav | Все права защищены"
         )
+        embed.set_thumbnail(url=self.client.icon_url)
         await ctx.send(embed=emuy)   
         await ctx.send(embed=emrrrr)  
         await ctx.send(embed=embed) 
+ 
   
  
                      
