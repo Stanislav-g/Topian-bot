@@ -136,21 +136,21 @@ class user(commands.Cog):
         await ctx.channel.purge( limit = 1 )
         if member == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-            embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
+            embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user (time) *s* *m* *h* *d*, пример: =tempban @user 3 m test, забанить на 3 минуты')
             await ctx.send( embed = embw )
             
         elif time == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-            embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
+            embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user (time) *s* *m* *h* *d*, пример: =tempban @user 3 m test, забанить на 3 минуты')
             await ctx.send( embed = embw )
             
         elif arg == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-            embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
+            embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user (time) *s* *m* *h* *d*, пример: =tempban @user 3 m test, забанить на 3 минуты')
             await ctx.send( embed = embw )
         elif reason == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-            embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user *s* or *m* or *h* or *d*')
+            embw.add_field( name = 'Tempban',value = '**tempban** = tempban @user (time) *s* *m* *h* *d*, пример: =tempban @user 3 m test, забанить на 3 минуты')
             await ctx.send( embed = embw )
         else:
             if member == ctx.message.author:
@@ -220,7 +220,10 @@ class user(commands.Cog):
     @commands.has_permissions( administrator = True )
     async def text_emoji(self, ctx , reaction:str = None, * , arg = None):
             await ctx.channel.purge( limit = 1 )
-           
+            if reaction == None:
+                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+                embw.add_field( name = 'text_emoji',value = '*text_emoji** = text_emoji (реакция) (текст)')
+                await ctx.send( embed = embw )           
             message = await ctx.send(f" {arg} ")
             await message.add_reaction(reaction)
 
@@ -247,17 +250,17 @@ class user(commands.Cog):
         await ctx.channel.purge( limit = 1 )
         if amount == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-            embw.add_field( name = 'Tempban',value = '*temp_add_role** = temp_add_role (time) @user @role')
+            embw.add_field( name = 'Tempban',value = '*temp_add_role** = temp_add_role (время в секундах) @user @role')
             await ctx.send( embed = embw )
             
         elif member == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-            embw.add_field( name = 'Tempban',value = '**temp_add_role** = temp_add_role (time) @user @role')
+            embw.add_field( name = 'Tempban',value = '**temp_add_role** = temp_add_role (время в секундах) @user @role')
             await ctx.send( embed = embw )
 
         elif role == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-            embw.add_field( name = 'Tempban',value = '**temp_add_role** = temp_add_role (time) @user @role')
+            embw.add_field( name = 'Tempban',value = '**temp_add_role** = temp_add_role (время в секундах) @user @role')
             await ctx.send( embed = embw )
            
         else:
@@ -312,7 +315,7 @@ class user(commands.Cog):
     #voice_create
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def rolec(self, ctx, *, arg = None):
+    async def role_create(self, ctx, *, arg = None):
         await ctx.channel.purge( limit = 1 )
         if arg == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -320,7 +323,7 @@ class user(commands.Cog):
             await ctx.send( embed = embw )
         else:
             guild = ctx.guild
-            role = await guild.create_role(f'{arg}')
+            role = await guild.create_role({arg})
             await ctx.send(embed = discord.Embed(description = f'**роль "{arg}" создана!**', color=0x0c0c0c))
 
     @commands.command()
