@@ -54,8 +54,8 @@ class user(commands.Cog):
             f"``=yandex`` - yandex (запрос)\n"
             f"``=wiki`` - wiki (запрос)\n"
             f"``=google`` - google (запрос)\n" )
-        
-        embed.add_field( name = '__**Команды**__', value =         
+        await ctx.author.send(embed=embed)
+        embedd.add_field( name = '__**Команды**__', value =         
             f"**Games**\n\n"
             f"``=rps`` - камень, ножницы или бумага.\n"
             f"``=угадайка`` - угадайка* (НЕ ДОСТУПНО)\n"
@@ -88,8 +88,8 @@ class user(commands.Cog):
             f"``=ticket_delete`` - удалить тикет.\n"
             f"``=ticket_del`` - удалить тикет, команда для администрации.")     
         await ctx.author.send(embed = discord.Embed(description = f"{ctx.author.mention}, я отправил список команд тебе в личку!"))
-        embed.set_footer(text=f"ID Пользователя: {ctx.author.mention}")
-        await ctx.send(embed=embed)        
+        embedd.set_footer(text=f"ID Пользователя: {ctx.author.mention}")
+        await ctx.author.send(embed=embedd)        
             
     @commands.command()
     async def bug(self, ctx, * ,arg):  
