@@ -53,7 +53,7 @@ class user(commands.Cog):
             f"``=youtube_search`` - youtube_search (запрос)\n"
             f"``=yandex`` - yandex (запрос)\n"
             f"``=wiki`` - wiki (запрос)\n"
-            f"``=google`` - google (запрос)" )
+            f"``=google`` - google запрос "  )
 
         await ctx.author.send(embed = discord.Embed(description = f"{ctx.author.mention}, я отправил список команд тебе в личку!"))
         embed.set_footer(text=f"ID Пользователя: {ctx.author.mention}")
