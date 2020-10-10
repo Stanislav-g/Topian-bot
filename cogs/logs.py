@@ -167,7 +167,7 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = message.guild.id
-                if collectionlogschannels.count_documents({"_id": guildd})
+                if collectionlogschannels.count_documents({"_id": guildd}) == 1:
                     cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
                     channell = self.client.get_channel(cha)
                     embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**The message was deleted:**\n ``` {message.content} ``` \nAuthor: {message.author.mention}\nChannel: {message.channel.mention}')
@@ -193,7 +193,7 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = guild.id
-                if collectionlogschannels.count_documents({"_id": guildd})
+                if collectionlogschannels.count_documents({"_id": guildd}) == 1:
                     cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
                     channel = self.client.get_channel(cha)
                     embed = discord.Embed(color=member.color if member.color != discord.Color.default() else discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member.mention} was banned**')
@@ -225,7 +225,7 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = channel.guild.id
-                if collectionlogschannels.count_documents({"_id": guildd})
+                if collectionlogschannels.count_documents({"_id": guildd}) == 1:
                     cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
                     channell = self.client.get_channel(cha)
                     embed = discord.Embed(color=discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Channel {channel.name} was deleted!**')
@@ -250,7 +250,7 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = channel.guild.id
-                if collectionlogschannels.count_documents({"_id": guildd})
+                if collectionlogschannels.count_documents({"_id": guildd}) == 1:
                     cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
                     channell = self.client.get_channel(cha)
                     embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Channel {channel.mention} was created!**')
@@ -278,7 +278,7 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = role.guild.id
-                if collectionlogschannels.count_documents({"_id": guildd})
+                if collectionlogschannels.count_documents({"_id": guildd}) == 1:
                     cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
                     channell = self.client.get_channel(cha)
                     embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role was created: {role.mention}**')
@@ -303,7 +303,7 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = role.guild.id
-                if collectionlogschannels.count_documents({"_id": guildd})
+                if collectionlogschannels.count_documents({"_id": guildd}) == 1:
                     cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
                     channell = self.client.get_channel(cha)
                     embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role was deleted: {role.name}**')
@@ -328,7 +328,7 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = before.guild.id
-                if collectionlogschannels.count_documents({"_id": guildd})
+                if collectionlogschannels.count_documents({"_id": guildd}) == 1:
                     cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
                     channell = self.client.get_channel(cha)
                     embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role was update.\nBefore: {before}\nAfter: {after}**')
@@ -352,7 +352,7 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = guild.id
-                if collectionlogschannels.count_documents({"_id": guildd})
+                if collectionlogschannels.count_documents({"_id": guildd}) == 1:
                     cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
                     channel = self.client.get_channel(cha)
                     embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member} was unbanned**')
@@ -384,7 +384,7 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = invite.guild.id
-                if collectionlogschannels.count_documents({"_id": guildd})
+                if collectionlogschannels.count_documents({"_id": guildd}) == 1:
                     cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
                     channel = self.client.get_channel(cha)
                     embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**An invite was created**')
