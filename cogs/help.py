@@ -20,7 +20,7 @@ class user(commands.Cog):
 
     @commands.command(pass_context = True)
     async def helpggg(self, ctx):
-        embed = discord.Embed(title=f"{ctx.guild.name}\nКоманды бота.", color=080707, timestamp=ctx.message.created_at)
+        embed = discord.Embed(title=f"{ctx.guild.name}\nКоманды бота.", color=0x00FF00, timestamp=ctx.message.created_at)
 
         embed.add_field( name = '__**Команды**__', value = 
             f"**Moderation**\n"
@@ -54,6 +54,40 @@ class user(commands.Cog):
             f"``=yandex`` - yandex (запрос)\n"
             f"``=wiki`` - wiki (запрос)\n"
             f"``=google`` - google (запрос)\n" )
+        
+        embed.add_field( name = '__**Команды**__', value =         
+            f"**Games**\n\n"
+            f"``=rps`` - камень, ножницы или бумага.\n"
+            f"``=угадайка`` - угадайка* (НЕ ДОСТУПНО)\n"
+            f"``=coinflip`` - орел или решка.\n"
+            f"``=knb`` - камень, ножницы, бумага с другим пользователем.\n"
+            f"``=color`` - игра, угадай цвет.\n\n"
+            f"**Other**\n\n"
+            f"``=num`` - рандомная цифра от 1 до 100\n"
+            f"``=wordnum`` - посчитать количество слов в тексте.\n"
+            f"``=slapperson`` - ударить пользователя.\n"
+            f"``=emoji_random`` - рандомное эмодзи.\n"
+            f"``=math`` - калькулятор.\n"
+            f"``=covid`` - covid\n"
+            f"``=ball`` - шар предсказаний.\n"
+            f"``=link`` - link (url)\n"
+            f"``=kiss`` - kiss @user\n"
+            f"``=reverse`` - текст задом на перед.\n"
+            f"``=h_coder`` - инфо. о кодировщике.\n"
+            f"``=bug`` - отправить бог о боте.\n"
+            f"``=review`` - отправить отзыв о боте.\n\n"
+            f"**Modules**\n\n"
+            f"``=modules`` - инфо. о использовании модулей.\n"
+            f"``=module_logs`` - модуль логов.\n"
+            f"``=log_channel`` - добавить канал логов.\n"
+            f"``=module_rep`` - модуль репутаций.\n"
+            f"``=rep`` - посмотреть репутацию пользователя.\n"
+            f"``=rep_user`` - увеличить или уменьшить репутацию пользователя.\n"
+            f"``=module_ticket`` - модуль тикетов.\n"
+            f"``=ticket_create`` - создать тикет.\n"
+            f"``=ticket_delete`` - удалить тикет.\n"
+            f"``=ticket_del`` - удалить тикет, команда для администрации.")     
+        await ctx.author.send(embed = discord.Embed(description = f"{ctx.author.mention}, я отправил список команд тебе в личку!"))
         embed.set_footer(text=f"ID Пользователя: {ctx.author.mention}")
         await ctx.send(embed=embed)        
             
