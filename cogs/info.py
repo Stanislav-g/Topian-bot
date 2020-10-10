@@ -53,8 +53,7 @@ class user(commands.Cog):
         await ctx.send(embed=embed)             
                               
     @commands.command()
-    async def serverinfo(self,ctx):
-        await ctx.channel.purge( limit = 1 )
+    async def serverinfo(self, ctx):
         members = ctx.guild.members
         online = len(list(filter(lambda x: x.status == discord.Status.online, members)))
         offline = len(list(filter(lambda x: x.status == discord.Status.offline, members)))
@@ -66,27 +65,39 @@ class user(commands.Cog):
         allroles = len(ctx.guild.roles)
         cat = len(ctx.guild.categories)
         embed = discord.Embed(title=f"{ctx.guild.name}\nСервер создали {ctx.guild.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
-        embed.description=(
-            f":timer: Сервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
-            f":flag_white: Регион **{ctx.guild.region}\n\nГлава сервера **{ctx.guild.owner}**\n\n"
+        emb = discord.Embed( 
+            title = 'Server info',
+            color = 0x7aa13d
+         )
+
+        embed.add_field( name = '__**Сервер**__', value = 
+            f":flag_white: Регион **{ctx.guild.region}**\n\n"
+            f":crown: Глава сервера **{ctx.guild.owner}**\n\n"
+            f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
+            f":arrow_up: Большая гильдия **{ctx.guild.large}**\n\n"
+            f":clown: Лимит эмодзи **{ctx.guild.emoji_limit}**\n\n"
+            f":briefcase: Всего ролей: **{allroles}**\n\n"
+             )
+        embed.add_field( name = '__**Участники**__', value = 
             f":tools: Ботов на сервере: **{len([m for m in members if m.bot])}**\n\n"
-            f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
             f":green_circle: Онлайн: **{online}**\n\n"
             f":black_circle: Оффлайн: **{offline}**\n\n"
             f":yellow_circle: Отошли: **{idle}**\n\n"
             f":red_circle: Не трогать: **{dnd}**\n\n"
-            f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
+            f":slight_smile: Людей на сервере **{ctx.guild.member_count}**\n\n"
+            f":gem: Бустеры сервера **{ctx.guild.premium_subscribers}**\n\n"
+             )
+        embed.add_field( name = '__**Каналы**__', value = 
             f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
             f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
             f":keyboard: Текстовых каналов: **{alltext}**\n\n"
             f":card_box: Категории сервера: **{cat}**\n\n"
-            f":briefcase: Всего ролей: **{allroles}**\n\n"
-        )
-
+             )
+        
         embed.set_thumbnail(url=ctx.guild.icon_url)
         embed.set_footer(text=f"ID: {ctx.guild.id}")
         embed.set_footer(text=f"ID Пользователя: {ctx.author.id}")
-        await ctx.send(embed=embed)
+        await ctx.send(embed=embed)   
                           
     #botinfo
     @commands.command( pass_context = True )
@@ -98,19 +109,27 @@ class user(commands.Cog):
         emuy = discord.Embed(title=f"Сервер поддежки.", color = 0x00FF00, url = urltr)
 
         emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
-        
-
-
-        emt.add_field(name=f'**Меня создал:**', value="Stanislav", inline=True)  # Создает строку
-        emt.add_field(name=f'**Помощь в создании:**', value="Topian Team", inline=True)  # Создает строку
-        emt.add_field(name=f'**Лицензия:**', value="TSBot", inline=True)  # Создает строку
-        emt.add_field(name=f'**Я написан на:**', value="Discord.py", inline=True)  # Создает строку
-        emt.add_field(name=f'**Версия:**', value="2.0", inline=True)  # Создает строку
-        emt.add_field(name=f'**Патч:**', value="1.0", inline=True)  # Создает строку                     
-        emt.set_footer(text=f"© Copyright 2020 Stanislav | Все права защищены")  # создаение футера
+        gui = len(client.guilds)
+        mem = len(client.guilds.members)
+        embed.description=(
+            f"**Меня создал:** Stanislav#1022\n\n"
+            f"**Помощь в создании:** Topian Team.\n\n"
+            f"**Лицензия:** **TSBot.\n\n"
+            f"**Я написан на:** Discord.py\n\n"
+            f"**Версия:** 3.0\n\n"
+            f"**Патч:** 1.0\n\n"
+            f"**Пинг бота:** {self.client.ws.latency * 1000:.0f} ms.\n\n"
+            f"**Я есть на:** {gui} серверах.\n\n"
+            f"**Пользователи:** {mem}\n\n"
+            f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
+            f":keyboard: Текстовых каналов: **{alltext}**\n\n"
+            f":briefcase: Всего ролей: **{allroles}**\n\n"
+            f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
+            f"© Copyright 2020 Stanislav | Все права защищены"
+        )
         await ctx.send(embed=emuy)   
         await ctx.send(embed=emrrrr)  
-        await ctx.send(embed=emt)  
+        await ctx.send(embed=embed)  
                      
 
                               
