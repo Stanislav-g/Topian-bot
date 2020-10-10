@@ -207,7 +207,7 @@ class user(commands.Cog):
                     await member.send(embed=embe)
 
     @commands.Cog.listener()
-    async def on_guild_join(guild):
+    async def on_guild_join(self, guild):
         client = commands.Bot( command_prefix = '=')
         for channel in guild.text_channels:
             if channel.permissions_for(guild.me).send_messages:
