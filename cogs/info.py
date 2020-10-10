@@ -104,14 +104,14 @@ class user(commands.Cog):
     async def botinfo(self, ctx ):
         urll = 'https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=8&scope=bot'
         urltr = 'https://discord.gg/NfTf9JD'         
-        emt = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  чтобы узнать команды бота, пиши: =help\n ", color = 0x00FF00)
-
+        
         emuy = discord.Embed(title=f"Сервер поддежки.", color = 0x00FF00, url = urltr)
 
         emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
         gui = len(client.guilds)
         mem = len(client.guilds.members)
-        embed = discord.Embed(title=f"Информация о Topian Bot.\n", color=0x00FF00
+        embed = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  чтобы узнать команды бота, пиши: =help\n ", color = 0x00FF00)
+                      
         embed.description=(
             f"**Меня создал:** Stanislav#1022\n\n"
             f"**Помощь в создании:** Topian Team.\n\n"
