@@ -122,7 +122,6 @@ class user(commands.Cog):
             f"**Я есть на:** {gui} серверах.\n\n"
             f"© Copyright 2020 Stanislav | Все права защищены"
         )
-        embed.set_thumbnail(url='https://drive.google.com/file/d/1Y9vNlKaBwTPIe3tvK9zH2le2UVr07jRm/view?usp=sharing')
         await ctx.send(embed=emuy)   
         await ctx.send(embed=emrrrr)  
         await ctx.send(embed=embed) 
