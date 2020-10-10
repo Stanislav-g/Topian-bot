@@ -40,7 +40,20 @@ class user(commands.Cog):
             f"``=text`` - писать от имени бота.\n"
             f"``=text_emoji`` - отправить сообщение от бота с реакцией.\n"
             f"``=image`` - отправлять сообщения от имени бота.\n\n")
-
+            f"**Info**\n\n"
+            f"``=userinfo`` - инфо. о пользователе.\n"
+            f"``=botinfo`` - инфо. о боте.\n"
+            f"``=serverinfo`` - инфо. о сервере.\n"
+            f"``=avatar`` - аватар пользователя.\n"
+            f"``=ping`` - пинг бота.\n"
+            f"``=user_boost`` - узнать давал пользователь буст или нет.\n"
+            f"``=info_emoji`` - info_emoji (emoji)\n\n"
+            f"**Search**\n\n"
+            f"``=search`` - search (запрос)\n"
+            f"``=youtube_search`` - youtube_search (запрос)\n"
+            f"``=yandex`` - yandex (запрос)\n"
+            f"``=wiki`` - wiki (запрос)\n"
+            f"``=google`` - google запрос")
         await ctx.author.send(embed = discord.Embed(description = f"{ctx.author.mention}, я отправил список команд тебе в личку!"))
         embed.set_footer(text=f"ID Пользователя: {ctx.author.mention}")
         await ctx.author.send(embed=embed)        
