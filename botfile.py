@@ -37,6 +37,7 @@ async def on_redy():
 async def servers(ctx, arg = None):
     for guild in client.guilds:
         await ctx.send(guild)
+	await ctx.send(guild.id)
 
 @client.command()
 async def send(ctx, arg = None, *, argg):
