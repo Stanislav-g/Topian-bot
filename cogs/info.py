@@ -109,7 +109,7 @@ class user(commands.Cog):
 
         emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
         gui = len(client.guilds)
-        embed = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Topian bot**.\n  чтобы узнать команды бота, пиши: =help\n ", color = 0x00FF00)
+        embed = discord.Embed(title=f"Информация о боте **Topian bot**.\n  чтобы узнать команды бота, пиши: =help", color = 0x00FF00)
         embed.description=(
             f"**Меня создал:** Stanislav#1022\n\n"
             f"**Помощь в создании:** Topian Team.\n\n"
@@ -123,7 +123,8 @@ class user(commands.Cog):
         )
         await ctx.send(embed=emuy)   
         await ctx.send(embed=emrrrr)  
-        await ctx.send(embed=embed)  
+        await ctx.send(embed=embed) 
+  
  
                      
 
