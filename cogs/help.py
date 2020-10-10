@@ -18,46 +18,7 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command(pass_context = True)
-    async def helpggg(self, ctx):
-        embed = discord.Embed(title=f"{ctx.guild.name}\nКоманды бота.", color=0x00FF00, timestamp=ctx.message.created_at)
-
-        embed.add_field( name = '__**Команды**__', value = 
-            f"**Moderation**\n"
-            f"``=clear`` - удалить сообщения.\n"
-            f"``=ban`` - забанить пользователя.\n"
-            f"``=unban`` - разбанить пользователя.\n"
-            f"``=kick`` - кикнуть пользователя.\n"
-            f"``=emoji`` - добавить реакцию на сообщение.\n"
-            f"``=tempban`` - забанить пользователя на время.\n"
-            f"``=temp_add_role`` - добавить роль пользователю на время.\n"
-            f"``=add_role`` - добавить роль пользователю.\n"
-            f"``=del_role`` - убрать роль у пользователя.\n"
-            f"``=channel_create`` - создать текстовый канал.\n"
-            f"``=voice_create`` - создать голосовой канал.\n"
-            f"``=suggest`` - создать опрос.\n"
-            f"``=changing_name`` - поменять имя пользователю.\n"
-            f"``=text`` - писать от имени бота.\n"
-            f"``=text_emoji`` - отправить сообщение от бота с реакцией.\n"
-            f"``=image`` - отправлять сообщения от имени бота.\n\n")
-            f"**Moderation**\n"
-            f"``=userinfo`` - инфо. о пользователе.\n"
-            f"``=botinfo`` - инфо. о боте.\n"
-            f"``=serverinfo`` - инфо. о сервере.\n"
-            f"``=avatar`` - аватар пользователя.\n"
-            f"``=ping`` - пинг бота.\n"
-            f"``=user_boost`` - узнать давал пользователь буст или нет.\n"
-            f"``=info_emoji`` - info_emoji (emoji)\n\n"
-            f"**Search**\n\n"
-            f"``=search`` - search (запрос)\n"
-            f"``=youtube_search`` - youtube_search (запрос)\n"
-            f"``=yandex`` - yandex (запрос)\n"
-            f"``=wiki`` - wiki (запрос)\n"
-            f"``=google`` - google запрос")
-        await ctx.author.send(embed = discord.Embed(description = f"{ctx.author.mention}, я отправил список команд тебе в личку!"))
-        embed.set_footer(text=f"ID Пользователя: {ctx.author.mention}")
-        await ctx.author.send(embed=embed)        
-            
+    
     @commands.command()
     async def bug(self, ctx, * ,arg):  
         guildf = ctx.guild.name
