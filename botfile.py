@@ -38,7 +38,6 @@ async def on_redy():
 async def on_guild_join(guild):
     client = commands.Bot( command_prefix = '=')
     user = client.get_user(550061958938886175)
-    invite = await channel.create_invite()
     await user.send(f"embed=embed")
 
 		
