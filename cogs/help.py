@@ -55,8 +55,7 @@ class user(commands.Cog):
                     ``=yandex`` - yandex (запрос)
                     ``=wiki`` - wiki (запрос)
                     ``=google`` - google (запрос)
-                         ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
-                    """))
+                         ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍ """))
             
             embed.add_field( name = '__**Команды**__', value = f"""
                     **Games**
@@ -91,8 +90,7 @@ class user(commands.Cog):
                     ``=ticket_create`` - создать тикет.
                     ``=ticket_delete`` - удалить тикет.
                     ``=ticket_del`` - удалить тикет, команда для администрации.
-                         ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
-                    """))      
+                         ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍ """))
 
 
 
@@ -214,8 +212,9 @@ class user(commands.Cog):
         await ctx.author.send(embed = emb)        
         
     @commands.command(pass_context = True)
-    async def help(self, ctx):  
-        await ctx.send(embed = discord.Embed(description = f"""**Moderation**
+    async def help(self, ctx): 
+        await ctx.author.send(embed = discord.Embed(description = f"{ctx.author.mention}, я отправил список команд тебе в личку!"))
+        await ctx.author.send(embed = discord.Embed(description = f"""**Moderation**
                 ``=clear`` - удалить сообщения.
                 ``=ban`` - забанить пользователя.
                 ``=unban`` - разбанить пользователя.
@@ -251,7 +250,7 @@ class user(commands.Cog):
                      ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
                 """))
         
-        await ctx.send(embed = discord.Embed(description = f"""
+        await ctx.author.send(embed = discord.Embed(description = f"""
                 **Games**
                 ``=rps`` - камень, ножницы или бумага.
                 ``=угадайка`` - угадайка* (НЕ ДОСТУПНО)
