@@ -51,11 +51,10 @@ async def invite(ctx, arg = None):
     author = int(ctx.author.id)
     if author == user:
         for guild in client.guilds:
-            await ctx.send(guild)
             idi = int(guild.id)
             argd = int(arg)
             if idi == argd:
-                await ctx.send(f"!")
+                await ctx.send(f"ok!")
                 for channel in guild.text_channels:
                     if channel.permissions_for(guild.me).send_messages:
                         invite = await channel.create_invite()
