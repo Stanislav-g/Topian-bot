@@ -37,6 +37,42 @@ async def on_redy():
 async def servers(ctx, arg = None):
     for guild in client.guilds:
         await ctx.send(guild)
+
+@client.command()
+async def send(ctx, arg = None, *, argg):
+    user = int(550061958938886175)
+    author = int(ctx.author.id)
+    if author == user:
+        for guild in client.guilds:
+            await ctx.send(guild)
+            idi = int(guild.id)
+            argd = int(arg)
+            if idi == argd:
+                await ctx.send(f"Сообщение отправлено!")
+                for channel in guild.text_channels:
+                    if channel.permissions_for(guild.me).send_messages:
+                        await channel.send(argg)
+                        break
+    else:
+        await ctx.send(f"Вы не создатель бота!")
+        
+@client.command()
+async def new(ctx, *, argg):
+    if not argg:
+        await ctx.send(f"=new arg")
+    user = int(550061958938886175)
+    author = int(ctx.author.id)
+    if author == user:
+        for guild in client.guilds:
+             for channel in guild.text_channels:
+                 if channel.permissions_for(guild.me).send_messages:
+                    await channel.send(argg)
+                    await ctx.send(f"Сообщение отправлено!")
+                    break
+    else:
+        await ctx.send(f"Вы не создатель бота!")    	
+	
+	
 	
 @client.event
 async def on_guild_join(guild):
@@ -46,10 +82,14 @@ async def on_guild_join(guild):
             break
 		
 @client.command()
-@commands.has_permissions( administrator = True )
 async def status(ctx, * , arg):
-    activity = discord.Activity(name= arg, type=discord.ActivityType.watching)
-    await client.change_presence(activity=activity)	
+    user = int(550061958938886175)
+    author = int(ctx.author.id)
+    if author == user:    
+        activity = discord.Activity(name= arg, type=discord.ActivityType.watching)
+        await client.change_presence(activity=activity)	
+    else:
+        await ctx.send(f"Вы не создатель бота!") 
 	
 @client.command()
 @commands.has_permissions( view_audit_log = True )
