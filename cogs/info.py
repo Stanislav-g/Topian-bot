@@ -111,6 +111,7 @@ class user(commands.Cog):
         emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
         gui = len(client.guilds)
         mem = len(client.guilds.members)
+        embed = discord.Embed(title=f"Информация о Topian Bot.\n", color=0x00FF00
         embed.description=(
             f"**Меня создал:** Stanislav#1022\n\n"
             f"**Помощь в создании:** Topian Team.\n\n"
