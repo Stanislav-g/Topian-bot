@@ -32,26 +32,6 @@ if __name__ == '__main__':
 async def on_redy():
     print( 'Bot connected')
    
-@client.event
-async def on_guild_join(guild):
-    for channel in guild.text_channels:
-        if channel.permissions_for(guild.me).send_messages:
-            message = await channel.send(embed = discord.Embed(description = f"""Привет! Я Topian Bot, чтобы узнать мои команды напиши ``=help``"""))
-            invite = await channel.create_invite()
-
-            embed = discord.Embed(title=':white_check_mark: Добавили бота на новый сервер!', type='rich', color=0x2ecc71) #Green
-            embed.set_thumbnail(url=guild.icon_url)
-            embed.add_field(name='Name', value=guild.name, inline=True)
-            embed.add_field(name='ID', value=guild.id, inline=True)
-            embed.add_field(name='Создатель сервера', value=f'{guild.owner})', inline=True)
-            embed.add_field(name='Регион', value=guild.region, inline=True)
-            embed.add_field(name='Людей на сервере', value=guild.member_count, inline=True)
-            embed.add_field(name='Сервер создан', value=guild.created_at, inline=True)
-            embed.add_field(name= 'Приглашение на сервер', value=invite, inline=True)
-	    client = commands.Bot( command_prefix = '=')
-            userd = client.get_user(550061958938886175)
-            await userd.send(embed=embed)
-	
 
 
 
