@@ -39,7 +39,7 @@ class user(commands.Cog):
             f"``=changing_name`` - поменять имя пользователю.\n"
             f"``=text`` - писать от имени бота.\n"
             f"``=text_emoji`` - отправить сообщение от бота с реакцией.\n"
-            f"``=image`` - отправлять сообщения от имени бота.\n" 
+            f"``=image`` - отправлять сообщения от имени бота.\n")
         embed.set_footer(text=f"ID Пользователя: {ctx.author.mention}")
         await ctx.send(embed=embed)        
             
