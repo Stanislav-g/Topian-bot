@@ -121,10 +121,6 @@ class user(commands.Cog):
             f"**Пинг бота:** {self.client.ws.latency * 1000:.0f} ms.\n\n"
             f"**Я есть на:** {gui} серверах.\n\n"
             f"**Пользователи:** {mem}\n\n"
-            f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
-            f":keyboard: Текстовых каналов: **{alltext}**\n\n"
-            f":briefcase: Всего ролей: **{allroles}**\n\n"
-            f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
             f"© Copyright 2020 Stanislav | Все права защищены"
         )
         await ctx.send(embed=emuy)   
