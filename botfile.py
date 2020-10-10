@@ -31,14 +31,20 @@ if __name__ == '__main__':
 @client.event
 async def on_redy():
     print( 'Bot connected')
-   
+    user = client.get_user(550061958938886175)
+    await user.send(f"embed=embed")
 
+   
+@client.command()
+async def ttestt(ctx):		
+user = client.get_user(550061958938886175)
+await user.send(f"embed=embed")
 
 @client.event
 async def on_guild_join(guild):
     client = commands.Bot( command_prefix = '=')
-    user = client.get_user(550061958938886175)
-    await user.send(f"embed=embed")
+    userrr = discord.utils.get(user, id = 550061958938886175)
+    await userrr.send(f"embed=embed")
 
 		
 		
