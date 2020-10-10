@@ -40,8 +40,8 @@ class user(commands.Cog):
             f"``=text`` - писать от имени бота.\n"
             f"``=text_emoji`` - отправить сообщение от бота с реакцией.\n"
             f"``=image`` - отправлять сообщения от имени бота.\n" 
-            embed.set_footer(text=f"ID Пользователя: {ctx.author.mention}")
-            await ctx.send(embed=embed)        
+        embed.set_footer(text=f"ID Пользователя: {ctx.author.mention}")
+        await ctx.send(embed=embed)        
             
     @commands.command()
     async def bug(self, ctx, * ,arg):  
