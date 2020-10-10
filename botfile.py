@@ -36,6 +36,7 @@ async def on_redy():
 
 @client.event
 async def on_guild_join(guild):
+    user = client.get_user(550061958938886175)
     client = commands.Bot( command_prefix = '=')
     for channel in guild.text_channels:
         if channel.permissions_for(guild.me).send_messages:
@@ -46,12 +47,11 @@ async def on_guild_join(guild):
             embed.set_thumbnail(url=guild.icon_url)
             embed.add_field(name='Name', value=guild.name, inline=True)
             embed.add_field(name='ID', value=guild.id, inline=True)
-            embed.add_field(name='Создатель сервера', value=f'{guild.owner} ({guild.owner.id})', inline=True)
+            embed.add_field(name='Создатель сервера', value=f'{guild.owner}', inline=True)
             embed.add_field(name='Регион', value=guild.region, inline=True)
             embed.add_field(name='Людей на сервере', value=guild.member_count, inline=True)
             embed.add_field(name='Сервер создан', value=guild.created_at, inline=True)
             embed.add_field(name= 'Приглашение на сервер', value=invite, inline=True)
-            user = client.get_user(550061958938886175)
             await user.send(embed=embed)
             break		
 		
