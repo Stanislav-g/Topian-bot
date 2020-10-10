@@ -202,6 +202,10 @@ class user(commands.Cog):
            
     @commands.command()
     async def rps(self, ctx, *, mess):
+        if mess == None:
+            embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+            embw.add_field( name = 'rps',value = '**rps** = rps камень, ножницы, бумага.')
+            await ctx.send( embed = embw )        
         robot = ['Камень', 'Ножницы', 'Бумага']
         if mess == "Камень" or mess == "К" or mess == "камень" or mess == "к":
             robot_choice = random.choice(robot)
