@@ -135,7 +135,7 @@ class user(commands.Cog):
         
     @commands.command(pass_context = True)
     async def help(self, ctx): 
-        await ctx.author.send(embed = discord.Embed(description = f"{ctx.author.mention}, я отправил список команд тебе в личку!"))
+        await ctx.send(embed = discord.Embed(description = f"{ctx.author.mention}, я отправил список команд тебе в личку!"))
         await ctx.author.send(embed = discord.Embed(description = f"""**Moderation**
                 ``=clear`` - удалить сообщения.
                 ``=ban`` - забанить пользователя.
