@@ -52,50 +52,42 @@ class user(commands.Cog):
         embed.set_footer(text=f"ID Пользователя: {ctx.author.id}")
         await ctx.send(embed=embed)             
                               
-        @commands.command()
-        async def serverinfo(self,ctx):
-            await ctx.channel.purge( limit = 1 )
-            members = ctx.guild.members
-            online = len(list(filter(lambda x: x.status == discord.Status.online, members)))
-            offline = len(list(filter(lambda x: x.status == discord.Status.offline, members)))
-            idle = len(list(filter(lambda x: x.status == discord.Status.idle, members)))
-            dnd = len(list(filter(lambda x: x.status == discord.Status.dnd, members)))
-            allchannels = len(ctx.guild.channels)
-            allvoice = len(ctx.guild.voice_channels)
-            alltext = len(ctx.guild.text_channels)
-            allroles = len(ctx.guild.roles)
-            cat = len(ctx.guild.categories)
-            embed = discord.Embed(title=f"{ctx.guild.name}\nСервер создали {ctx.guild.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
-            embed.add_field( name = '__**Сервер**__', value = 
-                f":flag_white: Регион **{ctx.guild.region}**\n\n"
-                f":crown: Глава сервера **{ctx.guild.owner}**\n\n"
-                f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
-                f":arrow_up: Большая гильдия **{ctx.guild.large}**\n\n"
-                f":clown: Лимит эмодзи **{ctx.guild.emoji_limit}**\n\n"
-                f":briefcase: Всего ролей: **{allroles}**\n\n"
-                 )
-            embed.add_field( name = '__**Участники**__', value = 
-                f":tools: Ботов на сервере: **{len([m for m in members if m.bot])}**\n\n"
-                f":green_circle: Онлайн: **{online}**\n\n"
-                f":black_circle: Оффлайн: **{offline}**\n\n"
-                f":yellow_circle: Отошли: **{idle}**\n\n"
-                f":red_circle: Не трогать: **{dnd}**\n\n"
-                f":slight_smile: Людей на сервере **{ctx.guild.member_count}**\n\n"
-                f":gem: Бустеры сервера **{ctx.guild.premium_subscribers}**\n\n"
-                 )
-            embed.add_field( name = '__**Каналы**__', value = 
-                f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
-                f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
-                f":keyboard: Текстовых каналов: **{alltext}**\n\n"
-                f":card_box: Категории сервера: **{cat}**\n\n"
-                 )
+    @commands.command()
+    async def serverinfo(self,ctx):
+        await ctx.channel.purge( limit = 1 )
+        members = ctx.guild.members
+        online = len(list(filter(lambda x: x.status == discord.Status.online, members)))
+        offline = len(list(filter(lambda x: x.status == discord.Status.offline, members)))
+        idle = len(list(filter(lambda x: x.status == discord.Status.idle, members)))
+        dnd = len(list(filter(lambda x: x.status == discord.Status.dnd, members)))
+        allchannels = len(ctx.guild.channels)
+        allvoice = len(ctx.guild.voice_channels)
+        alltext = len(ctx.guild.text_channels)
+        allroles = len(ctx.guild.roles)
+        cat = len(ctx.guild.categories)
+        embed = discord.Embed(title=f"{ctx.guild.name}\nСервер создали {ctx.guild.created_at.strftime('%A, %b %#d %Y')}", color=0x00FF00, timestamp=ctx.message.created_at)
+        embed.description=(
+            f":timer: Сервер создали **{ctx.guild.created_at.strftime('%A, %b %#d %Y')}**\n\n"
+            f":flag_white: Регион **{ctx.guild.region}\n\nГлава сервера **{ctx.guild.owner}**\n\n"
+            f":tools: Ботов на сервере: **{len([m for m in members if m.bot])}**\n\n"
+            f":slight_smile: Людей на сервере **{ctx.guild.member_count}\n\n"
+            f":green_circle: Онлайн: **{online}**\n\n"
+            f":black_circle: Оффлайн: **{offline}**\n\n"
+            f":yellow_circle: Отошли: **{idle}**\n\n"
+            f":red_circle: Не трогать: **{dnd}**\n\n"
+            f":shield: Уровень верификации: **{ctx.guild.verification_level}**\n\n"
+            f":musical_keyboard: Всего каналов: **{allchannels}**\n\n"
+            f":loud_sound: Голосовых каналов: **{allvoice}**\n\n"
+            f":keyboard: Текстовых каналов: **{alltext}**\n\n"
+            f":card_box: Категории сервера: **{cat}**\n\n"
+            f":briefcase: Всего ролей: **{allroles}**\n\n"
+        )
 
-            embed.set_thumbnail(url=ctx.guild.icon_url)
-            embed.set_footer(text=f"ID: {ctx.guild.id}")
-            embed.set_footer(text=f"ID Пользователя: {ctx.author.id}")
-            await ctx.send(embed=embed)   
-
-                              
+        embed.set_thumbnail(url=ctx.guild.icon_url)
+        embed.set_footer(text=f"ID: {ctx.guild.id}")
+        embed.set_footer(text=f"ID Пользователя: {ctx.author.id}")
+        await ctx.send(embed=embed)
+                          
     #botinfo
     @commands.command( pass_context = True )
     async def botinfo(self, ctx ):
