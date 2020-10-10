@@ -20,7 +20,7 @@ class user(commands.Cog):
 
     @commands.command(pass_context = True)
     async def helpggg(self, ctx):
-        embed = discord.Embed(title=f"{ctx.guild.name}\nКоманды бота.", color=0x00FF00, timestamp=ctx.message.created_at)
+        embed = discord.Embed(title=f"{ctx.guild.name}\nКоманды бота.", color=080707, timestamp=ctx.message.created_at)
 
         embed.add_field( name = '__**Команды**__', value = 
             f"**Moderation**\n"
@@ -39,7 +39,21 @@ class user(commands.Cog):
             f"``=changing_name`` - поменять имя пользователю.\n"
             f"``=text`` - писать от имени бота.\n"
             f"``=text_emoji`` - отправить сообщение от бота с реакцией.\n"
-            f"``=image`` - отправлять сообщения от имени бота.\n")
+            f"``=image`` - отправлять сообщения от имени бота.\n\n"
+            f"**Info**\n\n"
+            f"``=userinfo`` - инфо. о пользователе.\n"
+            f"``=botinfo`` - инфо. о боте.\n"
+            f"``=serverinfo`` - инфо. о сервере.\n"
+            f"``=avatar`` - аватар пользователя.\n"
+            f"``=ping`` - пинг бота.\n"
+            f"``=user_boost`` - узнать давал пользователь буст или нет.\n"
+            f"``=info_emoji`` - info_emoji (emoji)\n\n"
+            f"**Search**\n\n"
+            f"``=search`` - search (запрос)\n"
+            f"``=youtube_search`` - youtube_search (запрос)\n"
+            f"``=yandex`` - yandex (запрос)\n"
+            f"``=wiki`` - wiki (запрос)\n"
+            f"``=google`` - google (запрос)\n" )
         embed.set_footer(text=f"ID Пользователя: {ctx.author.mention}")
         await ctx.send(embed=embed)        
             
