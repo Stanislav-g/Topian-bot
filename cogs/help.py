@@ -53,7 +53,7 @@ class user(commands.Cog):
             f"``=youtube_search`` - youtube_search (запрос)\n"
             f"``=yandex`` - yandex (запрос)\n"
             f"``=wiki`` - wiki (запрос)\n"
-            f"``=google`` - google (запрос)\n" )
+            f"``=google`` - google (запрос)" )
         await ctx.author.send(embed=embed)
         embedd.add_field( name = '__**Команды**__', value =         
             f"**Games**\n\n"
