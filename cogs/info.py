@@ -109,7 +109,7 @@ class user(commands.Cog):
         emuy = discord.Embed(title=f"Сервер поддежки.", color = 0x00FF00, url = urltr)
 
         emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
-        gui = len(client.guilds)
+        gui = len(self.client.guilds)
         embed = discord.Embed(title=f"Информация о боте **Topian bot**.\n  чтобы узнать команды бота, пиши: =help", color = 0x00FF00)
         embed.description=(
             f"**Меня создал:** Stanislav#1022\n\n"
