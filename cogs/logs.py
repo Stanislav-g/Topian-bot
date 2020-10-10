@@ -167,11 +167,12 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = message.guild.id
-                cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-                channell = self.client.get_channel(cha)
-                embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**The message was deleted:**\n ``` {message.content} ``` \nAuthor: {message.author.mention}\nChannel: {message.channel.mention}')
-                embed.set_footer(text=f"Message ID: {message.id}")
-                await channell.send(embed=embed)
+                if collectionlogschannels.count_documents({"_id": guildd})
+                    cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
+                    channell = self.client.get_channel(cha)
+                    embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**The message was deleted:**\n ``` {message.content} ``` \nAuthor: {message.author.mention}\nChannel: {message.channel.mention}')
+                    embed.set_footer(text=f"Message ID: {message.id}")
+                    await channell.send(embed=embed)
 
             
             
@@ -192,17 +193,18 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = guild.id
-                cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-                channel = self.client.get_channel(cha)
-                embed = discord.Embed(color=member.color if member.color != discord.Color.default() else discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member.mention} was banned**')
-                embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
-                embed.set_footer(text=f"Member ID: {member.id}")
-                await channel.send(embed=embed)
+                if collectionlogschannels.count_documents({"_id": guildd})
+                    cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
+                    channel = self.client.get_channel(cha)
+                    embed = discord.Embed(color=member.color if member.color != discord.Color.default() else discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member.mention} was banned**')
+                    embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+                    embed.set_footer(text=f"Member ID: {member.id}")
+                    await channel.send(embed=embed)
 
-                embe = discord.Embed(color=member.color if member.color != discord.Color.default() else discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member.mention}, вы забанены**')
-                embe.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
-                embe.set_footer(text=f"Guild name: {guild.name}")
-                await member.send(embed=embe)
+                    embe = discord.Embed(color=member.color if member.color != discord.Color.default() else discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member.mention}, вы забанены**')
+                    embe.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+                    embe.set_footer(text=f"Guild name: {guild.name}")
+                    await member.send(embed=embe)
 
                             
     @commands.Cog.listener()
@@ -223,11 +225,12 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = channel.guild.id
-                cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-                channell = self.client.get_channel(cha)
-                embed = discord.Embed(color=discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Channel {channel.name} was deleted!**')
-                embed.set_footer(text=f"channel.id: {channel.id}")
-                await channell.send(embed=embed)
+                if collectionlogschannels.count_documents({"_id": guildd})
+                    cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
+                    channell = self.client.get_channel(cha)
+                    embed = discord.Embed(color=discord.Color.red(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Channel {channel.name} was deleted!**')
+                    embed.set_footer(text=f"channel.id: {channel.id}")
+                    await channell.send(embed=embed)
             
     @commands.Cog.listener()
     async def on_guild_channel_create(self, channel):
@@ -247,11 +250,12 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = channel.guild.id
-                cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-                channell = self.client.get_channel(cha)
-                embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Channel {channel.mention} was created!**')
-                embed.set_footer(text=f"channel.id: {channel.id}")
-                await channell.send(embed=embed)
+                if collectionlogschannels.count_documents({"_id": guildd})
+                    cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
+                    channell = self.client.get_channel(cha)
+                    embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Channel {channel.mention} was created!**')
+                    embed.set_footer(text=f"channel.id: {channel.id}")
+                    await channell.send(embed=embed)
 
 
 
@@ -274,11 +278,12 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = role.guild.id
-                cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-                channell = self.client.get_channel(cha)
-                embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role was created: {role.mention}**')
-                embed.set_footer(text=f"Role id: {role.id}")
-                await channell.send(embed=embed)
+                if collectionlogschannels.count_documents({"_id": guildd})
+                    cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
+                    channell = self.client.get_channel(cha)
+                    embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role was created: {role.mention}**')
+                    embed.set_footer(text=f"Role id: {role.id}")
+                    await channell.send(embed=embed)
 
     @commands.Cog.listener()
     async def on_guild_role_delete(self, role):
@@ -298,11 +303,12 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = role.guild.id
-                cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-                channell = self.client.get_channel(cha)
-                embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role was deleted: {role.name}**')
-                embed.set_footer(text=f"Role id: {role.id}")
-                await channell.send(embed=embed)
+                if collectionlogschannels.count_documents({"_id": guildd})
+                    cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
+                    channell = self.client.get_channel(cha)
+                    embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role was deleted: {role.name}**')
+                    embed.set_footer(text=f"Role id: {role.id}")
+                    await channell.send(embed=embed)
 
     @commands.Cog.listener()
     async def on_guild_role_update(self, before, after):
@@ -322,10 +328,11 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = before.guild.id
-                cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-                channell = self.client.get_channel(cha)
-                embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role was update.\nBefore: {before}\nAfter: {after}**')
-                await channell.send(embed=embed)
+                if collectionlogschannels.count_documents({"_id": guildd})
+                    cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
+                    channell = self.client.get_channel(cha)
+                    embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**Role was update.\nBefore: {before}\nAfter: {after}**')
+                    await channell.send(embed=embed)
 
     @commands.Cog.listener()
     async def on_member_unban(self, guild, member):
@@ -345,18 +352,19 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = guild.id
-                cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-                channel = self.client.get_channel(cha)
-                embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member} was unbanned**')
-                embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
-                embed.set_footer(text=f"Member ID: {member.id}")
-                await channel.send(embed=embed)
+                if collectionlogschannels.count_documents({"_id": guildd})
+                    cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
+                    channel = self.client.get_channel(cha)
+                    embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member} was unbanned**')
+                    embed.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+                    embed.set_footer(text=f"Member ID: {member.id}")
+                    await channel.send(embed=embed)
 
-                embe = discord.Embed(color=member.color if member.color != discord.Color.default() else discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member.mention}, вы разбанены**')
-                embe.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
-                embe.set_footer(text=f"Guild name: {guild.name}")
-                await member.send(embed=embe)
-                                    
+                    embe = discord.Embed(color=member.color if member.color != discord.Color.default() else discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**{member.mention}, вы разбанены**')
+                    embe.set_author(name=member, icon_url=str(member.avatar_url_as(static_format='png', size=2048)))
+                    embe.set_footer(text=f"Guild name: {guild.name}")
+                    await member.send(embed=embe)
+
 
     @commands.Cog.listener()
     async def on_invite_create(self, invite: discord.Invite):
@@ -376,14 +384,15 @@ class user(commands.Cog):
             stat = collectionmodules.find_one({"_id": allnum})["logs"]
             if stat == 'on':
                 guildd = invite.guild.id
-                cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
-                channel = self.client.get_channel(cha)
-                embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**An invite was created**')
-                embed.add_field(name='Invite Code', value=invite.code, inline=False)
-                embed.add_field(name='Max Uses', value=invite.max_uses, inline=False)
-                embed.add_field(name='Temporary', value=invite.temporary, inline=False)
+                if collectionlogschannels.count_documents({"_id": guildd})
+                    cha = collectionlogschannels.find_one({"_id": guildd})["logchannel"]
+                    channel = self.client.get_channel(cha)
+                    embed = discord.Embed(color=discord.Color.green(), timestamp=datetime.datetime.now(datetime.timezone.utc), description=f'**An invite was created**')
+                    embed.add_field(name='Invite Code', value=invite.code, inline=False)
+                    embed.add_field(name='Max Uses', value=invite.max_uses, inline=False)
+                    embed.add_field(name='Temporary', value=invite.temporary, inline=False)
 
-                await channel.send(embed=embed)
+                    await channel.send(embed=embed)
 
             
 
