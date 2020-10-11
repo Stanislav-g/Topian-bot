@@ -135,7 +135,7 @@ class user(commands.Cog):
                     collection.update_one({"_id": allnum}, {"$set": {"message": msg}}) 
 
 
-    @commands.Cog.listener()
+    @commands.command()
     async def message(self, ctx, Member: discord.Member = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
