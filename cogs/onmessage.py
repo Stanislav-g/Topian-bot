@@ -205,7 +205,8 @@ class user(commands.Cog):
                         allnum = num + num2
                         mes = collection.find_one({"_id": allnum})["message"]
                         await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** данный пользователь отправил **{mes}** сообщений"""))
-
+            else:
+                await ctx.send(f"Модуль уровней на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
         else:
             await ctx.send(f"Модуль уровней на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
 
@@ -250,6 +251,8 @@ class user(commands.Cog):
                         lvl = collection.find_one({"_id": allnum})["lvl"]
                         await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** уровень данного пользователя **{lvl}**"""))
 
+            else:
+                await ctx.send(f"Модуль уровней на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
         else:
             await ctx.send(f"Модуль уровней на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
 
