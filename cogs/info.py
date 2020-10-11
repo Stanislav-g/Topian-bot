@@ -107,7 +107,6 @@ class user(commands.Cog):
         urltr = 'https://discord.gg/NfTf9JD'         
         
         emuy = discord.Embed(title=f"Сервер поддежки.", color = 0x00FF00, url = urltr)
-        allmembers = len(set(self.client.get_guilds_all_members()))
         emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
         gui = len(self.client.guilds)
         embed = discord.Embed(title=f"Информация о боте **Topian bot**.\n  чтобы узнать команды бота, пиши: =help", color = 0x00FF00)
@@ -120,7 +119,6 @@ class user(commands.Cog):
             f"**Патч:** 1.0\n\n"
             f"**Пинг бота:** {self.client.ws.latency * 1000:.0f} ms.\n\n"
             f"**Я есть на:** {gui} серверах.\n\n"
-            f"**Пользователи бота:** {allmembers}n\n"
             f"© Copyright 2020 Stanislav | Все права защищены"
         )
         await ctx.send(embed=emuy)   
