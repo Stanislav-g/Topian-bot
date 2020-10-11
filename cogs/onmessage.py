@@ -53,7 +53,7 @@ class user(commands.Cog):
                 num2 = '111'
                 allnum = str(num) + str(num2)
                 on = 'on'
-                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 0, "lvls": on, "rep": 0, "ticket": 1, "warns": 0, "logs": 0})
+                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 0, "lvls": on, "rep": 0, "ticket": 1, "warns": 0, "logs": 0, "reaction": 0})
                 await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль уровней успешно включен!"""))
             
             else:
@@ -82,7 +82,7 @@ class user(commands.Cog):
                 num2 = '111'
                 allnum = str(num) + str(num2)
                 off = 'off'
-                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 0, "lvls": off, "rep": 0, "ticket": 1, "warns": 0, "logs": 0})
+                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 0, "lvls": off, "rep": 0, "ticket": 1, "warns": 0, "logs": 0, "reaction": 0})
                 await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль уровней успешно выключен!"""))
             else:
                 stat = collectionmodules.find_one({"_id": allnum})["lvls"]
