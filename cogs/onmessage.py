@@ -39,7 +39,7 @@ class user(commands.Cog):
         collectionshop = db["shop"]
         collectionticket = db["ticket"]
         collectionlogschannels = db["logschannels"]        
-        num1 = message.author.guild.id
+        num1 = message.guild.id
         num22 = '111'
         allnum4 = str(num1) + str(num22)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
