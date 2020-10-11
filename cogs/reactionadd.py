@@ -166,8 +166,7 @@ class user(commands.Cog):
         num2 = '111'
         allnum4 = str(num) + str(num2)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
-            if collectionmodules.count_documents({"_id": allnum4})["reaction"] == 1:
-                if collectionmodules.find_one({"_id": allnum4})["reaction"] == 'on':
+            if collectionmodules.find_one({"_id": allnum4})["reaction"] == 'on':
                 num = message.author.guild.id
                 if collectionreaction.count_documents({"_id": num}) == 0:
                     pass
