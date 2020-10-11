@@ -132,7 +132,23 @@ class user(commands.Cog):
                     allnum = num + num2
                     message = collection.find_one({"_id": allnum})["message"]
                     msg = int(message) + int('1')
-                    collection.update_one({"_id": allnum}, {"$set": {"message": msg}}) 
+                    collection.update_one({"_id": allnum}, {"$set": {"message": msg}})
+                    mes = collection.find_one({"_id": allnum})["message"]
+                    if mes == 10:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                    elif mes == 20:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                    elif mes == 30:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                    elif mes == 40:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                    elif mes == 50:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                    elif mes == 60:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                    elif mes == 70:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        
 
 
     @commands.command()
@@ -177,7 +193,51 @@ class user(commands.Cog):
                         await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** данный пользователь отправил **{mes}** сообщений"""))
 
         else:
-            await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+            await ctx.send(f"Модуль уровней на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+
+    @commands.command()
+    async def lvl(self, ctx, Member: discord.Member = None):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] 
+        collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]        
+        num1 = ctx.author.guild.id
+        num22 = '111'
+        allnum4 = str(num1) + str(num22)
+        if collectionmodules.count_documents({"_id": allnum4}) == 1:
+            if collectionmodules.find_one({"_id": allnum4})["lvls"] == 'on':
+                
+                if not Member:
+                    num = ctx.author.guild.id
+                    num2 = ctx.author.id
+                    allnum = num + num2
+                    if collection.count_documents({"_id": allnum}) == 0:
+                        await ctx.send(f"Ваша учетная запись не создана, вы можете создать ее командой =economy")
+                    else:
+                        num = ctx.author.guild.id
+                        num2 = ctx.author.id
+                        allnum = num + num2
+                        lvl = collection.find_one({"_id": allnum})["lvl"]
+                        await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** ваш уровень **{lvl}**"""))
+                else:
+                    num = ctx.author.guild.id
+                    num2 = Member.id
+                    allnum = num + num2
+                    if collection.count_documents({"_id": allnum}) == 0:
+                        await ctx.send(f"Учетная запись данного пользователя не создана!")
+                    else:
+                        num = ctx.author.guild.id
+                        num2 = Member.id
+                        allnum = num + num2
+                        lvl = collection.find_one({"_id": allnum})["lvl"]
+                        await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** уровень данного пользователя **{lvl}**"""))
+
+        else:
+            await ctx.send(f"Модуль уровней на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
 
 
 def setup(client):
