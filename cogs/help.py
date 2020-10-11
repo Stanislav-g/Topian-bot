@@ -206,8 +206,13 @@ class user(commands.Cog):
                 ``=ticket_create`` - создать тикет.
                 ``=ticket_delete`` - удалить тикет.
                 ``=ticket_del`` - удалить тикет, команда для администрации.
-                     ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
-                """))      
+                ``=module_lvls`` - модуль уровней.
+                ``=lvl`` - посмотреть ваш уровень.
+                ``=message`` - посмотреть количество отправленных сообщений.
+                ``=module_reaction`` - модуль авто-реакций.
+                ``=reaction_channel`` - установить канал куда будут ставиться реакции.‌‌‍
+                     ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                """))     
      
     @commands.command()
     async def modules(self, ctx):
@@ -218,6 +223,10 @@ class user(commands.Cog):
         emt.add_field(name=f'``=module_rep off``', value="Отключить модуль репутаций", inline=True)  # Создает строку
         emt.add_field(name=f'``=module_ticket on``', value="Включить модуль тикетов", inline=True)  # Создает строку
         emt.add_field(name=f'``=module_ticket off``', value="Отключить модуль тикетов", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_reaction on``', value="Включить модуль авто-реакций", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_reaction off``', value="Отключить модуль авто-реакций", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_lvls on``', value="Включить модуль уровней", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_lvls off``', value="Отключить модуль уровней", inline=True)  # Создает строку
         await ctx.send(embed=emt)
         
     @commands.command()
