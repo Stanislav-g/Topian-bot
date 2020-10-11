@@ -172,8 +172,9 @@ class user(commands.Cog):
                     pass
                     
                 else:
-                    stat = collectionreaction.find_one({"_id": num})["reaction"]
-                    if stat != '0':
+                    collectionreaction = db["reaction"]
+                    sta = collectionreaction.find_one({"_id": num})["reactionchannel"]
+                    if sta != '0':
                         await message.add_reaction('✅')
                         await message.add_reaction('❌') 
 
