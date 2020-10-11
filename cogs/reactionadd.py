@@ -138,7 +138,7 @@ class user(commands.Cog):
                             await ctx.send("Канал авто-реакций установлен!")
                             break
                         else:
-                            collectionlogschannels.update_one({"_id": guild}, {"$set": {"reactionchannel": argg}})
+                            collectionreaction.update_one({"_id": guild}, {"$set": {"reactionchannel": argg}})
                             await ctx.send("Канал авто-реакций обновлен!")
                             
                     else:
