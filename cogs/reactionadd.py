@@ -161,8 +161,8 @@ class user(commands.Cog):
         collectionmodules = db["modules"]
         collectionshop = db["shop"]
         collectionticket = db["ticket"]
-        collectionreaction = db["reaction"]
-        num = message.author.guild.id
+        collectionlogschannels = db["logschannels"]
+        num = message.guild.id
         num2 = '111'
         allnum4 = str(num) + str(num2)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
