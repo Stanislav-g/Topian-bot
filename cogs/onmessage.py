@@ -33,15 +33,15 @@ class user(commands.Cog):
     async def on_message(self, message ):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
-        db = cluster["topianbot"]
+        db = cluster["topianbot"] 
         collection = db["money"]
         collectionmodules = db["modules"]
         collectionshop = db["shop"]
         collectionticket = db["ticket"]
-        collectionlogschannels = db["logschannels"]        
-        num1 = message.guild.id
-        num22 = '111'
-        allnum4 = str(num1) + str(num22)
+        collectionlogschannels = db["logschannels"]
+        num = message.guild.id
+        num2 = '111'
+        allnum4 = str(num) + str(num2)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
             if collectionmodules.find_one({"_id": allnum4})["lvls"] == 'on':
                 num = message.author.guild.id
