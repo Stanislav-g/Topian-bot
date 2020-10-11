@@ -168,18 +168,18 @@ class user(commands.Cog):
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
             if collectionmodules.count_documents({"_id": allnum4})["reaction"] == 1:
                 if collectionmodules.find_one({"_id": allnum4})["reaction"] == 'on':
-                    num = message.author.guild.id
-                    if collectionreaction.count_documents({"_id": num}) == 0:
-                        pass
-                        
-                    else:
-                        collectionreaction = db["reaction"]
-                        sta = collectionreaction.find_one({"_id": num})["reactionchannel"]
-                        if sta != '0':
-                            chanm = message.channel.id
-                            if chanm == sta:
-                                await message.add_reaction('✅')
-                                await message.add_reaction('❌') 
+                num = message.author.guild.id
+                if collectionreaction.count_documents({"_id": num}) == 0:
+                    pass
+                    
+                else:
+                    collectionreaction = db["reaction"]
+                    sta = collectionreaction.find_one({"_id": num})["reactionchannel"]
+                    if sta != '0':
+                        chanm = message.channel.id
+                        if chanm == sta:
+                            await message.add_reaction('✅')
+                            await message.add_reaction('❌') 
             else:
                 pass
         else:
