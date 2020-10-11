@@ -99,11 +99,15 @@ class user(commands.Cog):
                     guild = collectionmodules.update_one({"_id": allnum}, {"$set": {"reaction": off}})
                     await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль реакций выключен!"""))
         else:
-            await ctx.send(f"На данном сервере не создана база данных, ее можно создать командой")
+            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_reaction on`` ``=module_reaction off`` """))
+
 
 
     @commands.command()
     async def reaction_channel(self, ctx, arg = None):
+        if not arg:
+            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали id канала для авто-реакций, правильное использование команды: =reaction_channel (id канала.) """))
+
         client = commands.Bot( command_prefix = '=')
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
@@ -119,21 +123,17 @@ class user(commands.Cog):
         num2 = '111'
         allnum = str(num) + str(num2)
         if collectionmodules.count_documents({"_id": allnum}) == 1:
-            await ctx.send("1")
             num = ctx.author.guild.id
             num2 = '111'
             allnum = str(num) + str(num2)
             stat = collectionmodules.find_one({"_id": allnum})["reaction"]
             if stat == 'on':
-                await ctx.send("2")
                 for channel in ctx.guild.text_channels:
                     ch = int(channel.id)
                     argg = int(arg)
                     if argg == ch:
-                        await ctx.send("3")
                         guild = ctx.guild.id
                         if collectionreaction.count_documents({"_id": guild}) == 0:
-                            await ctx.send("4")
                             collectionreaction.insert_one({"_id": guild, "reactionchannel": argg})
                             await ctx.send("Канал авто-реакций установлен!")
                             break
