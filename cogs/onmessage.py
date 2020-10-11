@@ -135,7 +135,7 @@ class user(commands.Cog):
                     collection.update_one({"_id": allnum}, {"$set": {"message": msg}})
                     mes = collection.find_one({"_id": allnum})["message"]
                     lvl = collection.find_one({"_id": allnum})["lvl"]
-                    author = message.author.id
+                    author = message.author
                     if mes == 100:
                         collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
                         lvlend = collection.find_one({"_id": allnum})["lvl"]
