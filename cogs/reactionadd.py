@@ -134,7 +134,7 @@ class user(commands.Cog):
                         guild = ctx.guild.id
                         if collectionreaction.count_documents({"_id": guild}) == 0:
                             await ctx.send("4")
-                            collectionlogschannels.insert_one({"_id": guild, "reactionchannel": argg})
+                            collectionreaction.insert_one({"_id": guild, "reactionchannel": argg})
                             await ctx.send("Канал авто-реакций установлен!")
                             break
                         else:
