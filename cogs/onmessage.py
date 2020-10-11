@@ -134,6 +134,7 @@ class user(commands.Cog):
                     msg = int(message) + int('1')
                     collection.update_one({"_id": allnum}, {"$set": {"message": msg}})
                     mes = collection.find_one({"_id": allnum})["message"]
+                    lvl = collection.find_one({"_id": allnum})["lvl"]
                     if mes == 10:
                         collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
                     elif mes == 20:
