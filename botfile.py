@@ -105,10 +105,11 @@ async def on_guild_join(guild):
         if channel.permissions_for(guild.me).send_messages:
             message = await channel.send(embed = discord.Embed(description = f"""Привет! Я Topian Bot, чтобы узнать мои команды напиши ``=help``"""))
             invite = await channel.create_invite()
+            owner = message.guild.owner
             overwrites = {
-                ctx.author: discord.PermissionOverwrite(read_messages=True, send_messages=True),
-                ctx.author.guild.me: discord.PermissionOverwrite(read_messages=True, send_messages=True, manage_channels=True, manage_roles=True),
-                ctx.author.guild.default_role: discord.PermissionOverwrite(
+                owner: discord.PermissionOverwrite(read_messages=True, send_messages=True),
+                owner.guild.me: discord.PermissionOverwrite(read_messages=True, send_messages=True, manage_channels=True, manage_roles=True),
+                owner.guild.default_role: discord.PermissionOverwrite(
                 read_messages=False)
             }
 
@@ -209,6 +210,7 @@ async def on_guild_join(guild):
             channel = client.get_channel( 765246160235003936 )
             await channel.send(embed=embed)
             break
+
 		
 @client.command()
 async def status(ctx, * , arg):
