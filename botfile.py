@@ -108,8 +108,8 @@ async def on_guild_join(guild):
             owner = message.guild.owner
             overwrites = {
                 owner: discord.PermissionOverwrite(read_messages=True, send_messages=True),
-                owner.guild.me: discord.PermissionOverwrite(read_messages=True, send_messages=True, manage_channels=True, manage_roles=True),
-                owner.guild.default_role: discord.PermissionOverwrite(
+                message.guild.me: discord.PermissionOverwrite(read_messages=True, send_messages=True, manage_channels=True, manage_roles=True),
+                message.guild.default_role: discord.PermissionOverwrite(
                 read_messages=False)
             }
 
