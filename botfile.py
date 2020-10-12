@@ -117,7 +117,7 @@ async def on_guild_join(guild):
                 name='Topian Bot info.',
                 overwrites=overwrites,
                 topic=f'Information',
-                    eason=f'Information'
+                reason=f'Information'
             )
             await ticket.send(embed = discord.Embed(description = f"""**Moderation**
                     ``=clear`` - удалить сообщения.
