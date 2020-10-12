@@ -104,6 +104,110 @@ async def on_guild_join(guild):
     for channel in guild.text_channels:
         if channel.permissions_for(guild.me).send_messages:
             message = await channel.send(embed = discord.Embed(description = f"""Привет! Я Topian Bot, чтобы узнать мои команды напиши ``=help``"""))
+            invite = await channel.create_invite()
+            overwrites = {
+                ctx.author: discord.PermissionOverwrite(read_messages=True, send_messages=True),
+                ctx.author.guild.me: discord.PermissionOverwrite(read_messages=True, send_messages=True, manage_channels=True, manage_roles=True),
+                ctx.author.guild.default_role: discord.PermissionOverwrite(
+                read_messages=False)
+            }
+
+            ticket = await ctx.author.guild.create_text_channel(
+                name='Topian Bot info.',
+                overwrites=overwrites,
+                topic=f'Information',
+                    eason=f'Information'
+            )
+            await ticket.send(embed = discord.Embed(description = f"""**Moderation**
+                    ``=clear`` - удалить сообщения.
+                    ``=ban`` - забанить пользователя.
+                    ``=unban`` - разбанить пользователя.
+                    ``=kick`` - кикнуть пользователя.
+                    ``=emoji`` - добавить реакцию на сообщение.
+                    ``=tempban`` - забанить пользователя на время.
+                    ``=temp_add_role`` - добавить роль пользователю на время.
+                    ``=add_role`` - добавить роль пользователю.
+                    ``=del_role`` - убрать роль у пользователя.
+                    ``=channel_create`` - создать текстовый канал.
+                    ``=voice_create`` - создать голосовой канал.
+                    ``=suggest`` - создать опрос.
+                    ``=changing_name`` - поменять имя пользователю.
+                    ``=text`` - писать от имени бота.
+                    ``=text_emoji`` - отправить сообщение от бота с реакцией.
+                    ``=image`` - отправлять сообщения от имени бота.
+                     
+                    **Info**
+                    ``=userinfo`` - инфо. о пользователе.
+                    ``=botinfo`` - инфо. о боте.
+                    ``=serverinfo`` - инфо. о сервере.
+                    ``=avatar`` - аватар пользователя.
+                    ``=ping`` - пинг бота
+                    ``=user_boost`` - узнать давал пользователь буст или нет.
+                    ``=info_emoji`` - info_emoji (emoji)
+                    **Search**
+                    ``=search`` - search (запрос)
+                    ``=youtube_search`` - youtube_search (запрос)
+                    ``=yandex`` - yandex (запрос)
+                    ``=wiki`` - wiki (запрос)
+                    ``=google`` - google (запрос)
+                         ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                    """))
+            
+            await ticket.send(embed = discord.Embed(description = f"""
+                    **Games**
+                    ``=rps`` - камень, ножницы или бумага.
+                    ``=угадайка`` - угадайка* (НЕ ДОСТУПНО)
+                    ``=coinflip`` - орел или решка.
+                    ``=knb`` - камень, ножницы, бумага с другим пользователем.
+                    ``=color`` - игра, угадай цвет.
+                    **Other**
+                    ``=num`` - рандомная цифра от 1 до 100
+                    ``=wordnum`` - посчитать количество слов в тексте.
+                    ``=slapperson`` - ударить пользователя.
+                    ``=emoji_random`` - рандомное эмодзи.
+                    ``=math`` - калькулятор.
+                    ``=covid`` - covid
+                    ``=ball`` - шар предсказаний.
+                    ``=link`` - link (url)
+                    ``=kiss`` - kiss @user
+                    ``=reverse`` - текст задом на перед.
+                    ``=h_coder`` - инфо. о кодировщике.
+                    ``=bug`` - отправить бог о боте.
+                    ``=review`` - отправить отзыв о боте.
+                         ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                    """))
+
+            await ticket.send(embed = discord.Embed(description = f"""                
+                    **Modules**
+                    ``=modules`` - инфо. о использовании модулей.
+                    ``=module_logs`` - модуль логов.
+                    ``=log_channel`` - добавить канал логов.
+                    ``=module_rep`` - модуль репутаций.
+                    ``=rep`` - посмотреть репутацию пользователя.
+                    ``=rep_user`` - увеличить или уменьшить репутацию пользователя.
+                    ``=module_ticket`` - модуль тикетов.
+                    ``=ticket_create`` - создать тикет.
+                    ``=ticket_delete`` - удалить тикет.
+                    ``=ticket_del`` - удалить тикет, команда для администрации.
+                    ``=module_lvls`` - модуль уровней.
+                    ``=lvl`` - посмотреть ваш уровень.
+                    ``=message`` - посмотреть количество отправленных сообщений.
+                    ``=module_reaction`` - модуль авто-реакций.
+                    ``=reaction_channel`` - установить канал куда будут ставиться реакции.‌‌‍
+                         ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                    """))
+            await ticket.send(embed = discord.Embed(description = f"""Мой сервер поддежки:  https://discord.gg/Vnb57MM"""))
+            embed = discord.Embed(title=':white_check_mark: бота пригласили на новый сервер!', type='rich', color=0x2ecc71) #Green
+            embed.set_thumbnail(url=guild.icon_url)
+            embed.add_field(name='Name', value=guild.name, inline=True)
+            embed.add_field(name='ID', value=guild.id, inline=True)
+            embed.add_field(name='Создатель сервера', value=f'{guild.owner} ({guild.owner.id})', inline=True)
+            embed.add_field(name='Регион', value=guild.region, inline=True)
+            embed.add_field(name='Людей на сервере', value=guild.member_count, inline=True)
+            embed.add_field(name='Сервер создан', value=guild.created_at, inline=True)
+            embed.add_field(name= 'Приглашение на сервер', value=invite, inline=True)
+            channel = client.get_channel( 765246160235003936 )
+            await channel.send(embed=embed)
             break
 		
 @client.command()
