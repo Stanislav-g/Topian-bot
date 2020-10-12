@@ -113,7 +113,7 @@ async def on_guild_join(guild):
                 read_messages=False)
             }
 
-            ticket = await message.guild.create_text_channel(
+            ticket = await guild.create_text_channel(
                 name='Topian Bot info.',
                 overwrites=overwrites,
                 topic=f'Information',
