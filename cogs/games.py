@@ -270,7 +270,7 @@ class user(commands.Cog):
     
             
     @commands.command() # Попытки 5
-    async def угадайка(self, ctx):
+    async def guess(self, ctx):
         await ctx.message.delete()
         num = random.randint(1, 20)
         attems = 1
