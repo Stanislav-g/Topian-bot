@@ -222,11 +222,11 @@ class user(commands.Cog):
             robot_choice = random.choice(robot)
             emb = discord.Embed(title = robot_choice, colour = discord.Colour.lighter_grey())
             if robot_choice == 'Ножницы':
-                emb.add_field(name = 'scissors:', value = 'Вы проиграли :с')
+                emb.add_field(name = ':scissors:', value = 'Вы проиграли :с')
             elif robot_choice == 'Камень':
                 emb.add_field(name = ':moyai:', value = 'Вы выиграли!')
             else:
-                emb.add_field(name = '::scroll:', value = 'Ничья!')
+                emb.add_field(name = ':scroll:', value = 'Ничья!')
             await ctx.send(embed = emb)
 
         elif mess == "Ножницы" or mess == "Н" or mess == "ножницы" or mess == "н":
