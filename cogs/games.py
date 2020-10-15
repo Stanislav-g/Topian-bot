@@ -201,7 +201,7 @@ class user(commands.Cog):
     
            
     @commands.command()
-    async def rps(self, ctx, *, mess):
+    async def rps(self, ctx, *, mess = None):
         if mess == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
             embw.add_field( name = 'rps',value = '**rps** = rps камень, ножницы, бумага.')
@@ -282,7 +282,7 @@ class user(commands.Cog):
             )
             await msg.edit(content= None, embed=emb)
             try:
-                msg_o = await  client.wait_for('message', timeout= 30.0, check= lambda msg_o: msg_o.author == ctx.author)
+                msg_o = await  self.client.wait_for('message', timeout= 30.0, check= lambda msg_o: msg_o.author == ctx.author)
             except asyncio.TimeoutError:
                 await msg.edit(content= 'Время вышло!', embed=None)
                 break
