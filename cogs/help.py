@@ -175,7 +175,7 @@ class user(commands.Cog):
         await ctx.author.send(embed = discord.Embed(description = f"""
                 **Games**
                 ``=rps`` - камень, ножницы или бумага.
-                ``=угадайка`` - угадайка* (НЕ ДОСТУПНО)
+                ``=guess`` - угадай число
                 ``=coinflip`` - орел или решка.
                 ``=knb`` - камень, ножницы, бумага с другим пользователем.
                 ``=color`` - игра, угадай цвет.
