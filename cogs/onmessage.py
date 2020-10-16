@@ -101,6 +101,8 @@ class user(commands.Cog):
 
     
     
+
+                        
     @commands.Cog.listener()
     async def on_message(self, message ):
         clu= os.environ.get('MONGODB_URI')
@@ -144,11 +146,7 @@ class user(commands.Cog):
                         collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
                         lvlend = collection.find_one({"_id": allnum})["lvl"]
                         
-                    elif mes == 300:
-                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
-                        lvlend = collection.find_one({"_id": allnum})["lvl"]
-
-                    elif mes == 400:
+                    elif mes == 350:
                         collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
                         lvlend = collection.find_one({"_id": allnum})["lvl"]
 
@@ -156,14 +154,89 @@ class user(commands.Cog):
                         collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
                         lvlend = collection.find_one({"_id": allnum})["lvl"]
 
-                    elif mes == 600:
+                    elif mes == 650:
                         collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
                         lvlend = collection.find_one({"_id": allnum})["lvl"]
-                    elif mes == 700:
+
+                    elif mes == 800:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 1000:
                         collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
                         lvlend = collection.find_one({"_id": allnum})["lvl"]
                         
+                    elif mes == 1200:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
 
+                    elif mes == 1400:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 1600:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 1800:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+                        
+                    elif mes == 2000:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 2300:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 2600:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 2900:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 3200:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+                        
+                    elif mes == 3500:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 3800:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+                        
+                    elif mes == 4100:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 4400:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 4800:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 5200:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+                        
+                    elif mes == 5600:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 6000:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
+
+                    elif mes == 6500:
+                        collection.update_one({"_id": allnum}, {"$set": {"lvl": lvl + 1}})
+                        lvlend = collection.find_one({"_id": allnum})["lvl"]
 
     @commands.command()
     async def message(self, ctx, Member: discord.Member = None):
