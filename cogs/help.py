@@ -20,19 +20,19 @@ class user(commands.Cog):
 
     
     @commands.command()
-    async def bug(self, ctx, * ,arg):  
+    async def bug(self, ctx, * ,arg = None):  
         guildf = ctx.guild.name
         userf = ctx.author.name
-        if not arg:
+        if arg = None:
             await ctx.send(f"Вы забыли написать отзыв. Правильное использование: =bug (text)")
         channel = self.client.get_channel( 765195705383518220 )
         await channel.send(embed = discord.Embed(description = f"""С сервера **{guildf}**, был отправлен баг.\nБаг отправил **{userf}**\n\nБаг:\n{arg}"""))
         
     @commands.command()
-    async def review(self, ctx, * ,arg):  
+    async def review(self, ctx, * ,arg = None):  
         guildf = ctx.guild.name
         userf = ctx.author.name
-        if not arg:
+        if arg = None:
             await ctx.send(f"Вы забыли написать отзыв. Правильное использование: =review (text)")
         channel = self.client.get_channel( 765195681215807499 )
         await channel.send(embed = discord.Embed(description = f"""С сервера **{guildf}**, был отправлен отзыв.\nОтзыв отправил **{userf}**\n\nОтзыв:\n{arg}"""))
