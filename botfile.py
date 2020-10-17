@@ -14,7 +14,7 @@ from pymongo import MongoClient
 
 client = commands.Bot( command_prefix = '=')
 client.remove_command('help')
-
+guild_subscriptions = True
 
 ADDRESS= os.environ.get('ADDRESS')
 PASSWORD= os.environ.get('PASSWORD')
