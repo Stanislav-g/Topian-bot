@@ -31,8 +31,8 @@ class user(commands.Cog):
 
 
 
-
-    @client.command()
+    @commands.has_permissions(administrator = True)     
+    @commands.command()
     async def module_roles(ctx, arg = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
@@ -103,8 +103,8 @@ class user(commands.Cog):
 
 
 
-
-    @client.command()
+    @commands.has_permissions(administrator = True)     
+    @commands.command()
     async def autoreaction(ctx, message:int = None, role = None, reaction:str = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
@@ -151,7 +151,8 @@ class user(commands.Cog):
             
 
        
-    @client.command()
+    @commands.has_permissions(administrator = True)     
+    @commands.command()
     async def delete_autoreaction(ctx, message = None, reaction = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
@@ -190,7 +191,7 @@ class user(commands.Cog):
             
 
 
-    @client.event
+    @commands.Cog.listener()
     async def on_raw_reaction_add(payload):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
@@ -233,7 +234,7 @@ class user(commands.Cog):
 
 
 
-    @client.event
+    @commands.Cog.listener()
     async def on_raw_reaction_remove(payload):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
