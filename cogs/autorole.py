@@ -204,11 +204,8 @@ class user(commands.Cog):
         num1 = payload.guild_id
         num22 = '111'
         allnum4 = str(num1) + str(num22)
-        user = client.get_user(550061958938886175)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
-            user = client.get_user(550061958938886175)
             if collectionmodules.find_one({"_id": allnum4})["roles"] == 'on':
-                user = client.get_user(550061958938886175)
                 y = payload.message_id
                 i = payload.emoji
                 alln = str(y) + str(i)
@@ -216,7 +213,6 @@ class user(commands.Cog):
                     rolee = collectionroles.find_one({"_id": alln})["role"]
                     reactionn = collectionroles.find_one({"_id": alln})["reaction"]
                     messagee = collectionroles.find_one({"_id": alln})["message"]
-                    user = client.get_user(550061958938886175)
                     await user.send(messagee)
                     m = int(messagee)
                     if payload.message_id == m: # ID Сообщения
@@ -247,11 +243,8 @@ class user(commands.Cog):
         num1 = payload.guild_id
         num22 = '111'
         allnum4 = str(num1) + str(num22)
-        user = client.get_user(550061958938886175)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
-            user = client.get_user(550061958938886175)
             if collectionmodules.find_one({"_id": allnum4})["roles"] == 'on':
-                user = client.get_user(550061958938886175)
                 y = payload.message_id
                 i = payload.emoji
                 alln = str(y) + str(i)
@@ -259,7 +252,6 @@ class user(commands.Cog):
                     rolee = collectionroles.find_one({"_id": alln})["role"]
                     reactionn = collectionroles.find_one({"_id": alln})["reaction"]
                     messagee = collectionroles.find_one({"_id": alln})["message"]
-                    user = client.get_user(550061958938886175)
                     await user.send(messagee)
                     m = int(messagee)
                     if payload.message_id == m: # ID Сообщения
