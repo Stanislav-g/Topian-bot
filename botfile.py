@@ -271,13 +271,13 @@ async def auto_role(ctx, message:int = None, role = None, reaction:str = None):
                 if collectionroles.count_documents({"_id": alln}) == 0:
                     collectionroles.insert_one({"_id": alln, "role": role, "reaction": reaction, "message": message})
                     await ctx.send("Авто выдача роли по реакции добавлена!")
-        else:
+	    else:
+		await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+
+	else:
             await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
-        
-    else:
-        await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
-        
-        
+
+
 
    
 @client.command()
@@ -303,12 +303,14 @@ async def delete_auto_role(ctx, message = None, reaction = None):
                     await ctx.send("Авто выдача роли по реакции удалена!")
                 else:
                     await ctx.send(f"Данного сообщения не существует или данной авто выдачи ролей не существует!")
-        else:
+	    else:
+		await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+
+	else:
             await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
-        
-    else:
-        await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
-        
+
+
+
 
 @client.event
 async def on_raw_reaction_add(payload):
