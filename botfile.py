@@ -363,7 +363,6 @@ async def on_raw_reaction_remove(payload):
                 messagee = collectionroles.find_one({"_id": alln})["message"]
                 m = int(messagee)
                 if payload.message_id == m: # ID Сообщения
-                    await user.send(messagee)
                     guild = client.get_guild(payload.guild_id)
                     role = None
                     
