@@ -179,6 +179,9 @@ async def leave(ctx):
 	
 	
 
+
+
+
 @client.command()
 async def module_roles(ctx, arg = None):
     if not arg:
@@ -243,7 +246,7 @@ async def module_roles(ctx, arg = None):
 
 
 @client.command()
-async def auto_role(ctx, message:int = None, role = None, reaction:str = None):  
+async def autoreaction(ctx, message:int = None, role = None, reaction:str = None):  
     num1 = ctx.author.guild.id
     num22 = '111'
     allnum4 = str(num1) + str(num22)
@@ -285,7 +288,7 @@ async def auto_role(ctx, message:int = None, role = None, reaction:str = None):
 
    
 @client.command()
-async def delete_auto_role(ctx, message = None, reaction = None):  
+async def delete_autoreaction(ctx, message = None, reaction = None):  
     num1 = ctx.author.guild.id
     num22 = '111'
     allnum4 = str(num1) + str(num22)
@@ -313,8 +316,6 @@ async def delete_auto_role(ctx, message = None, reaction = None):
         else:
             await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
         
-
-
 
 
 @client.event
