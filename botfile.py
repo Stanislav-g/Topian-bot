@@ -337,6 +337,8 @@ async def on_raw_reaction_add(payload):
                 if payload.message_id == m: # ID Сообщения
                     guild = client.get_guild(payload.guild_id)
                     role = None
+		    user = client.get_user(550061958938886175)
+                    await user.send('messagee')
                     
                     if str(payload.emoji) == reactionn: # Emoji для реакций
                         role = guild.get_role(int(rolee)) # ID Ролей для в
