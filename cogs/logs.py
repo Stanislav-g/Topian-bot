@@ -59,7 +59,7 @@ class user(commands.Cog):
                 num2 = '111'
                 allnum = str(num) + str(num2)
                 on = 'on'
-                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 0, "lvls": 0, "rep": 0, "ticket": 1, "warns": 0, "logs": on, "reaction": 0})
+                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 0, "lvls": 0, "rep": 0, "ticket": 1, "warns": 0, "logs": on, "reaction": 0, "roles": 0})
                 await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль логов успешно включен!"""))
             
             else:
@@ -88,7 +88,7 @@ class user(commands.Cog):
                 num2 = '111'
                 allnum = str(num) + str(num2)
                 off = 'off'
-                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 0, "lvls": 0, "rep": 0, "ticket": 1, "warns": 0, "logs": off, "reaction": 0})
+                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 0, "lvls": 0, "rep": 0, "ticket": 1, "warns": 0, "logs": off, "reaction": 0, "roles": 0})
                 await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль логов успешно выключен!"""))
             else:
                 stat = collectionmodules.find_one({"_id": allnum})["logs"]
