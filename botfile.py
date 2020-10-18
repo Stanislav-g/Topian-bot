@@ -246,21 +246,21 @@ async def auto_role(ctx, message:int = None, role = None, reaction:str = None):
     num1 = ctx.author.guild.id
     num22 = '111'
     allnum4 = str(num1) + str(num22)
-    if collectionmodules.count_documents({"_id": allnum4}) == 1: 
-        if collectionmodules.find_one({"_id": allnum4})["roles"] == 'on':
-            if message == None:
-                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                embw.add_field( name = 'autoroe',value = '**autorole** = autorole (id сообщения) (id роли) (эмодзи)')
-                await ctx.send( embed = embw )
-            elif role == None:
-                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                embw.add_field( name = 'autoroe',value = '**autorole** = autorole (id сообщения) (id роли) (эмодзи)')
-                await ctx.send( embed = embw )
-            elif reaction == None:
-                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                embw.add_field( name = 'autoroe',value = '**autorole** = autorole (id сообщения) (id роли) (эмодзи)')
-                await ctx.send( embed = embw )
-            else:
+    if message == None:
+        embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+        embw.add_field( name = 'autoroe',value = '**autorole** = autorole (id сообщения) (id роли) (эмодзи)')
+        await ctx.send( embed = embw )
+    elif role == None:
+        embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+        embw.add_field( name = 'autoroe',value = '**autorole** = autorole (id сообщения) (id роли) (эмодзи)')
+        await ctx.send( embed = embw )
+    elif reaction == None:
+        embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+        embw.add_field( name = 'autoroe',value = '**autorole** = autorole (id сообщения) (id роли) (эмодзи)')
+        await ctx.send( embed = embw )
+    else:
+        if collectionmodules.count_documents({"_id": allnum4}) == 1: 
+            if collectionmodules.find_one({"_id": allnum4})["roles"] == 'on':
                 rea = reaction
                 alln = str(message) + str(rea)
                 
@@ -277,6 +277,7 @@ async def auto_role(ctx, message:int = None, role = None, reaction:str = None):
     else:
         await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
         
+        
 
    
 @client.command()
@@ -284,17 +285,17 @@ async def delete_auto_role(ctx, message = None, reaction = None):
     num1 = ctx.author.guild.id
     num22 = '111'
     allnum4 = str(num1) + str(num22)
-    if collectionmodules.count_documents({"_id": allnum4}) == 1: 
-        if collectionmodules.find_one({"_id": allnum4})["roles"] == 'on':
-            if message == None:
-                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                embw.add_field( name = 'delete_autoreaction',value = '**delete_autoreaction** = delete_autoreaction (id сообщения) (эмодзи)')
-                await ctx.send( embed = embw )
-            elif reaction == None:
-                embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
-                embw.add_field( name = 'delete_autoreaction',value = '**delete_autoreaction* = delete_autoreaction (id сообщения) (эмодзи)')
-                await ctx.send( embed = embw )
-            else:
+    if message == None:
+        embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+        embw.add_field( name = 'delete_autoreaction',value = '**delete_autoreaction** = delete_autoreaction (id сообщения) (эмодзи)')
+        await ctx.send( embed = embw )
+    elif reaction == None:
+        embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
+        embw.add_field( name = 'delete_autoreaction',value = '**delete_autoreaction* = delete_autoreaction (id сообщения) (эмодзи)')
+        await ctx.send( embed = embw )
+    else:
+        if collectionmodules.count_documents({"_id": allnum4}) == 1: 
+            if collectionmodules.find_one({"_id": allnum4})["roles"] == 'on':
                 rea = reaction
                 alln = str(message) + str(rea)
                 if collectionroles.count_documents({"_id": alln}) == 1:
@@ -308,7 +309,6 @@ async def delete_auto_role(ctx, message = None, reaction = None):
     else:
         await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
         
-
 
 @client.event
 async def on_raw_reaction_add(payload):
