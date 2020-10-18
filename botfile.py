@@ -25,6 +25,7 @@ collectionshop = db["shop"]
 collectionticket = db["ticket"]
 collectionlogschannels = db["logschannels"]
 collectionreaction = db["reaction"]
+collectionroles = db["roles"]
 	     				
 @client.event
 async def on_redy():
