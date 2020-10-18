@@ -164,7 +164,6 @@ class user(commands.Cog):
                 ``=ping`` - пинг бота
                 ``=user_boost`` - узнать давал пользователь буст или нет.
                 ``=info_emoji`` - info_emoji (emoji)
-
                 **Search**
                 ``=search`` - search (запрос)
                 ``=youtube_search`` - youtube_search (запрос)
@@ -181,7 +180,6 @@ class user(commands.Cog):
                 ``=coinflip`` - орел или решка.
                 ``=knb`` - камень, ножницы, бумага с другим пользователем.
                 ``=color`` - игра, угадай цвет.
-
                 **Other**
                 ``=num`` - рандомная цифра от 1 до 100
                 ``=wordnum`` - посчитать количество слов в тексте.
@@ -215,9 +213,31 @@ class user(commands.Cog):
                 ``=lvl`` - посмотреть ваш уровень.
                 ``=message`` - посмотреть количество отправленных сообщений.
                 ``=module_reaction`` - модуль авто-реакций.
-                ``=reaction_channel`` - установить канал куда будут ставиться реакции.‌‌‍
+                ``=reaction_channel`` - установить канал куда будут ставиться реакции.
+                ``=del_reaction_channel`` - удалить канал авто реакций.
+                ``=module_roles`` - модуль авто выдачи ролей по реакциям.
+                ``=auto_role`` - добавить выдачу роли по реакции, команду писать в канале где нужно поставить авто выдачу по реакции.
+                ``=delete_auto_role`` - убрать выдачу роли по реакции, команду писать в канале где нужно убрать авто выдачу по реакции.
                      ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
                 """))    
+
+
+    @commands.command()
+    async def modules(self, ctx):
+        emt = discord.Embed(title=f"Информация об использовании модулей.",description="Чтобы включить модуль, напишите следующую команду: =module_(имя модуля) on\nЧтобы отключить модуль, напишите следующую команду: =module_(имя модуля) off", color = 0x00FF00)
+        emt.add_field(name=f'``=module_logs on``', value="Включить модуль логов", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_logs off``', value="Отключить модуль логов", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_rep on``', value="Включить модуль репутаций", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_rep off``', value="Отключить модуль репутаций", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_ticket on``', value="Включить модуль тикетов", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_ticket off``', value="Отключить модуль тикетов", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_reaction on``', value="Включить модуль авто-реакций", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_reaction off``', value="Отключить модуль авто-реакций", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_lvls on``', value="Включить модуль уровней", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_lvls off``', value="Отключить модуль уровней", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_roles on``', value="Включить модуль авто выдачи ролей по реакциям", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_roles off``', value="Отключить модуль авто выдачи ролей по реакциям", inline=True)  # Создает строку
+        await ctx.send(embed=emt)
           
     @commands.command(pass_context = True)
     async def helpsend(self, ctx): 
@@ -303,20 +323,7 @@ class user(commands.Cog):
                      ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
                 """))     
      
-    @commands.command()
-    async def modules(self, ctx):
-        emt = discord.Embed(title=f"Информация об использовании модулей.",description="Чтобы включить модуль, напишите следующую команду: =module_(имя модуля) on\nЧтобы отключить модуль, напишите следующую команду: =module_(имя модуля) off", color = 0x00FF00)
-        emt.add_field(name=f'``=module_logs on``', value="Включить модуль логов", inline=True)  # Создает строку
-        emt.add_field(name=f'``=module_logs off``', value="Отключить модуль логов", inline=True)  # Создает строку
-        emt.add_field(name=f'``=module_rep on``', value="Включить модуль репутаций", inline=True)  # Создает строку
-        emt.add_field(name=f'``=module_rep off``', value="Отключить модуль репутаций", inline=True)  # Создает строку
-        emt.add_field(name=f'``=module_ticket on``', value="Включить модуль тикетов", inline=True)  # Создает строку
-        emt.add_field(name=f'``=module_ticket off``', value="Отключить модуль тикетов", inline=True)  # Создает строку
-        emt.add_field(name=f'``=module_reaction on``', value="Включить модуль авто-реакций", inline=True)  # Создает строку
-        emt.add_field(name=f'``=module_reaction off``', value="Отключить модуль авто-реакций", inline=True)  # Создает строку
-        emt.add_field(name=f'``=module_lvls on``', value="Включить модуль уровней", inline=True)  # Создает строку
-        emt.add_field(name=f'``=module_lvls off``', value="Отключить модуль уровней", inline=True)  # Создает строку
-        await ctx.send(embed=emt)
+
         
     @commands.command()
     @commands.has_permissions( administrator = True )
