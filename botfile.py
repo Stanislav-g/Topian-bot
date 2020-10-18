@@ -16,7 +16,15 @@ client = commands.Bot( command_prefix = '=')
 client.remove_command('help')
 guild_subscriptions = True
 
-
+clu= os.environ.get('MONGODB_URI')
+cluster = MongoClient(clu)
+db = cluster["topianbot"]
+collection = db["money"]
+collectionmodules = db["modules"]
+collectionshop = db["shop"]
+collectionticket = db["ticket"]
+collectionlogschannels = db["logschannels"]
+collectionreaction = db["reaction"]
 	     				
 @client.event
 async def on_redy():
@@ -234,7 +242,7 @@ async def module_roles(ctx, arg = None):
 
 
 @client.command()
-async def autoreaction(ctx, message:int = None, role = None, reaction:str = None):  
+async def auto_role(ctx, message:int = None, role = None, reaction:str = None):  
     num1 = ctx.author.guild.id
     num22 = '111'
     allnum4 = str(num1) + str(num22)
@@ -272,7 +280,7 @@ async def autoreaction(ctx, message:int = None, role = None, reaction:str = None
 
    
 @client.command()
-async def delete_autoreaction(ctx, message = None, reaction = None):  
+async def delete_auto_role(ctx, message = None, reaction = None):  
     num1 = ctx.author.guild.id
     num22 = '111'
     allnum4 = str(num1) + str(num22)
