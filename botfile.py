@@ -16,17 +16,7 @@ client = commands.Bot( command_prefix = '=')
 client.remove_command('help')
 guild_subscriptions = True
 
-ADDRESS= os.environ.get('ADDRESS')
-PASSWORD= os.environ.get('PASSWORD')
 
-
-
-if __name__ == '__main__':
-    s = smtplib.SMTP(host='smtp.gmail.com', port=587)
-    s.starttls()
-    s.login(ADDRESS, PASSWORD)
-    
-   
 	     				
 @client.event
 async def on_redy():
@@ -130,24 +120,6 @@ async def status(ctx, * , arg):
     else:
         await ctx.send(f"Вы не создатель бота!") 
 	
-@client.command()
-@commands.has_permissions( view_audit_log = True )
-async def email_send(ctx, test, * ,body):
-    msg = MIMEMultipart()
-    msg['From']= 'stagatin2020@gmail.com'
-    msg['To']= 'nitagas2005@gmail.com'
-    msg['Subject']=test
-    msg.attach(MIMEText(body, 'plain'))
-    s.send_message(msg)
-
-@client.command()
-async def emailsend(ctx, to, text, * ,body):
-    msg = MIMEMultipart()
-    msg['From']= 'stagatin2020@gmail.com'
-    msg['To']= to
-    msg['Subject']=text
-    msg.attach(MIMEText(body, 'plain'))
-    s.send_message(msg)    
 
 
 		
