@@ -65,7 +65,7 @@ class user(commands.Cog):
                 allnum = str(num) + str(num2)
                 on = 'on'
                 collectionmodules = db["modules"]
-                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": on, "lvls": 0, "rep": on, "ticket": 1, "warns": 0, "logs": 0, "reaction": 0})
+                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": on, "lvls": 0, "rep": on, "ticket": 1, "warns": 0, "logs": 0, "reaction": 0, "roles": 0})
                 await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль репутаций успешно включен!"""))
             
             else:
@@ -94,7 +94,7 @@ class user(commands.Cog):
                 num2 = '111'
                 allnum = str(num) + str(num2)
                 off = 'off'
-                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": off, "lvls": 0, "rep": off, "ticket": 1, "warns": 0, "logs": 0, "reaction": 0})
+                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": off, "lvls": 0, "rep": off, "ticket": 1, "warns": 0, "logs": 0, "reaction": 0, "roles": 0})
                 await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль репутаций успешно выключен!"""))
             else:
                 stat = collectionmodules.find_one({"_id": allnum})["rep"]
