@@ -132,7 +132,7 @@ class user(commands.Cog):
                     ch = int(channel.id)
                     argg = int(arg)
                     if argg == ch:
-                        guild = ctx.guild.id
+                        guild = str(ctx.guild.id) + str(arg)
                         if collectionreaction.count_documents({"_id": guild}) == 0:
                             collectionreaction.insert_one({"_id": guild, "reactionchannel": argg})
                             await ctx.send("Канал авто-реакций установлен!")
@@ -140,6 +140,50 @@ class user(commands.Cog):
                         else:
                             collectionreaction.update_one({"_id": guild}, {"$set": {"reactionchannel": argg}})
                             await ctx.send("Канал авто-реакций обновлен!")
+                            
+                    else:
+                        pass
+                    
+            else:
+                await ctx.send(f"Модуль реакций на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+        else:
+            await ctx.send(f"Модуль реакций на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")           
+
+
+    @commands.command()
+    async def del_reaction_channel(self, ctx, arg = None):
+        if not arg:
+            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали id канала для авто-реакций, правильное использование команды: =del_reaction_channel (id канала.) """))
+
+        client = commands.Bot( command_prefix = '=')
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] 
+        collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionlogschannels = db["logschannels"]
+        collectionreaction = db["reaction"]
+        name = 'economy'
+        num = ctx.author.guild.id
+        num2 = '111'
+        allnum = str(num) + str(num2)
+        if collectionmodules.count_documents({"_id": allnum}) == 1:
+            num = ctx.author.guild.id
+            num2 = '111'
+            allnum = str(num) + str(num2)
+            stat = collectionmodules.find_one({"_id": allnum})["reaction"]
+            if stat == 'on':
+                for channel in ctx.guild.text_channels:
+                    ch = int(channel.id)
+                    argg = int(arg)
+                    if argg == ch:
+                        guild = str(ctx.guild.id) + str(arg)
+                        if collectionreaction.count_documents({"_id": guild}) == 1:
+                            collectionreaction.delete_one({"_id": guild, "reactionchannel": argg})
+                            await ctx.send("Канал авто-реакций удалён!")
+                            break
                             
                     else:
                         pass
