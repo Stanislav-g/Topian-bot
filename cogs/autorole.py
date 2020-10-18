@@ -1,9 +1,16 @@
+
 import discord
 from discord.ext import commands
 from pymongo import MongoClient
 import random
 from random import randint, choice, choices
+import os
+import random
+import asyncio
+from discord.utils import get
 import datetime
+import smtplib
+import socket
 from discord.utils import find
 
 
