@@ -133,8 +133,7 @@ class user(commands.Cog):
                     alln = str(message) + str(rea)
                     
                     await ctx.message.delete()
-                    m = await ctx.guild.channels.fetch_message(message)
-                    me = await ctx.message.channel.fetch_message(message)
+                    m = await ctx.message.channel.fetch_message(message)
                     await m.add_reaction(reaction)
                     if collectionroles.count_documents({"_id": alln}) == 0:
                         collectionroles.insert_one({"_id": alln, "role": role, "reaction": reaction, "message": message})
