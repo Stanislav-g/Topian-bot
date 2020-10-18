@@ -102,7 +102,7 @@ class user(commands.Cog):
 
 
     @commands.command()
-    async def autoreaction(self, ctx, message:int = None, role = None, reaction:str = None):  
+    async def auto_role(self, ctx, message:int = None, role = None, reaction:str = None):  
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"]
@@ -152,7 +152,7 @@ class user(commands.Cog):
 
        
     @commands.command()
-    async def delete_autoreaction(self, ctx, message = None, reaction = None):
+    async def delete_auto_role(self, ctx, message = None, reaction = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"]
