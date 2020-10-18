@@ -213,10 +213,8 @@ class user(commands.Cog):
                     rolee = collectionroles.find_one({"_id": alln})["role"]
                     reactionn = collectionroles.find_one({"_id": alln})["reaction"]
                     messagee = collectionroles.find_one({"_id": alln})["message"]
-                    await user.send(messagee)
                     m = int(messagee)
                     if payload.message_id == m: # ID Сообщения
-                        await user.send(messagee)
                         guild = client.get_guild(payload.guild_id)
                         role = None
                         
@@ -252,10 +250,8 @@ class user(commands.Cog):
                     rolee = collectionroles.find_one({"_id": alln})["role"]
                     reactionn = collectionroles.find_one({"_id": alln})["reaction"]
                     messagee = collectionroles.find_one({"_id": alln})["message"]
-                    await user.send(messagee)
                     m = int(messagee)
                     if payload.message_id == m: # ID Сообщения
-                        await user.send(messagee)
                         guild = client.get_guild(payload.guild_id)
                         role = None
                         
