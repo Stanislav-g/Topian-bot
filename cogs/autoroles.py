@@ -132,15 +132,15 @@ class user(commands.Cog):
                     rea = reaction
                     alln = str(message) + str(rea)
                     
-                    
-                    await ctx.message.add_reaction('✅')
-                    m = await ctx.message.channel.fetch_message(message)
+                    await ctx.message.delete()
+                    m = await ctx.guild.channels.fetch_message(message)
+                    me = await ctx.message.channel.fetch_message(message)
                     await m.add_reaction(reaction)
                     if collectionroles.count_documents({"_id": alln}) == 0:
                         collectionroles.insert_one({"_id": alln, "role": role, "reaction": reaction, "message": message})
                         await ctx.send("Авто выдача роли по реакции добавлена!")
                     else:
-                        await ctx.send(f"Данного сообщения не существует или данной авто выдачи ролей не существует!")
+                        await ctx.send(f"Данная авто-роль уже существует!")
                 else:
                     await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
                 
