@@ -32,8 +32,9 @@ class user(commands.Cog):
 
    
 
-    @commands.has_permissions(administrator = True)     
+ 
     @commands.command()
+    @commands.has_permissions(administrator = True)  
     async def module_reaction(self, ctx, arg = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
@@ -104,6 +105,7 @@ class user(commands.Cog):
 
 
     @commands.command()
+    @commands.has_permissions(administrator = True)  
     async def reaction_channel(self, ctx, arg = None):
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали id канала для авто-реакций, правильное использование команды: =reaction_channel (id канала.) """))
@@ -151,6 +153,7 @@ class user(commands.Cog):
 
 
     @commands.command()
+    @commands.has_permissions(administrator = True)  
     async def del_reaction_channel(self, ctx, arg = None):
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали id канала для авто-реакций, правильное использование команды: =del_reaction_channel (id канала.) """))
