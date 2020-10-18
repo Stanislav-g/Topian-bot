@@ -317,8 +317,6 @@ async def delete_auto_role(ctx, message = None, reaction = None):
 
 
 
-
-
 @client.event
 async def on_raw_reaction_add(payload):
     num1 = payload.guild_id
@@ -337,7 +335,7 @@ async def on_raw_reaction_add(payload):
                 if payload.message_id == m: # ID Сообщения
                     guild = client.get_guild(payload.guild_id)
                     role = None
-
+                    
                     if str(payload.emoji) == reactionn: # Emoji для реакций
                         role = guild.get_role(int(rolee)) # ID Ролей для в
                         
@@ -364,6 +362,7 @@ async def on_raw_reaction_remove(payload):
                 messagee = collectionroles.find_one({"_id": alln})["message"]
                 m = int(messagee)
                 if payload.message_id == m: # ID Сообщения
+                    await user.send(messagee)
                     guild = client.get_guild(payload.guild_id)
                     role = None
                     
@@ -373,8 +372,8 @@ async def on_raw_reaction_remove(payload):
                         if role:
                             member = guild.get_member(payload.user_id)
                             if member:
-                                await member.remove_roles(role)	
-	
+                                await member.remove_roles(role)
+
 	
 @client.event
 async def on_command_error(ctx, err):
