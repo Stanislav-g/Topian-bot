@@ -167,21 +167,22 @@ async def leave(ctx):
         voice = await channel.connect()
         await ctx.send(f'Бот отключился от канала: {channel}')
         
-
 @client.event
 async def on_command_error(ctx, err):
 
     if isinstance(err, commands.BotMissingPermissions):
-        await ctx.send(
-            embed=discord.Embed(description=f"У бота отсутствуют права: {' '.join(err.missing_perms)}\nВыдайте их ему для полного функционирования бота"))
+        await ctx.send(embed=discord.Embed(description=f"У бота отсутствуют права: {' '.join(err.missing_perms)}\nВыдайте их ему для полного функционирования бота"))
 
     elif isinstance(err, commands.MissingPermissions):
         await ctx.send(embed=discord.Embed(description=f"У вас недостаточно прав для запуска этой команды!"))
 
     elif isinstance(err, commands.CommandOnCooldown):
         await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
+	
+    else:
+        await ctx.send(embed=discord.Embed(description=f"Произошла неизвестная ошибка: `{err}`\nПожалуйста, свяжитесь с разработчиками для исправления этой ошибки"))
 
-        
+
 for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
     client.load_extension(f'cogs.{filename[:-3]}') 
  
