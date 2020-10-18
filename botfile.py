@@ -355,7 +355,6 @@ async def on_raw_reaction_remove(payload):
     allnum4 = str(num1) + str(num22)
     if collectionmodules.count_documents({"_id": allnum4}) == 1:
         if collectionmodules.find_one({"_id": allnum4})["roles"] == 'on':
-            user = client.get_user(550061958938886175)
             y = payload.message_id
             i = payload.emoji
             alln = str(y) + str(i)
@@ -365,7 +364,6 @@ async def on_raw_reaction_remove(payload):
                 messagee = collectionroles.find_one({"_id": alln})["message"]
                 m = int(messagee)
                 if payload.message_id == m: # ID Сообщения
-                    await user.send(messagee)
                     guild = client.get_guild(payload.guild_id)
                     role = None
                     
