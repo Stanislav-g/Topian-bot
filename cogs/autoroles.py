@@ -28,9 +28,9 @@ class user(commands.Cog):
     collectionshop = db["shop"]
     collectionticket = db["ticket"]
     collectionroles = db["roles"]
-
-
+  
     @commands.command()
+    @commands.has_permissions(administrator = True)  
     async def module_roles(self, ctx, arg = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
@@ -102,6 +102,7 @@ class user(commands.Cog):
 
 
     @commands.command()
+    @commands.has_permissions(administrator = True)  
     async def auto_role(self, ctx, message:int = None, role = None, reaction:str = None):  
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
@@ -151,6 +152,7 @@ class user(commands.Cog):
 
        
     @commands.command()
+    @commands.has_permissions(administrator = True)  
     async def delete_auto_role(self, ctx, message = None, reaction = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
