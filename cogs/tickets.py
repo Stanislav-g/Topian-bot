@@ -197,7 +197,7 @@ class user(commands.Cog):
                 num2 = '111'
                 allnum = str(num) + str(num2)
                 on = 'on'
-                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 1, "lvls": 1, "rep": 1, "ticket": on, "warns": 0, "logs": 0, "reaction": 0})
+                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 0, "lvls": 0, "rep": 0, "ticket": on, "warns": 0, "logs": 0, "reaction": 0, "roles": 0})
                 await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль тикетов успешно включен!"""))
             
             else:
@@ -226,7 +226,7 @@ class user(commands.Cog):
                 num2 = '111'
                 allnum = str(num) + str(num2)
                 off = 'off'
-                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 1, "lvls": 1, "rep": 1, "ticket": off, "warns": 0, "logs": 0, "reaction": 0})
+                collectionmodules.insert_one({"_id": allnum, "name": name, "on_off": 0, "lvls": 0, "rep": 0, "ticket": off, "warns": 0, "logs": 0, "reaction": 0, "roles": 0})
                 await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль тикетов  успешно выключен!"""))
             else:
                 num = ctx.author.guild.id
