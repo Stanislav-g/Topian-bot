@@ -204,7 +204,7 @@ class user(commands.Cog):
                 num = ctx.author.guild.id
                 num2 = '111'
                 allnum = str(num) + str(num2)
-                stat = collectionmodules.find_one({"_id": allnum})["lvls"]
+                stat = collectionmodules.find_one({"_id": allnum})["ticket"]
                 if stat == 'on':
                     await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль тикетов  уже включен!"""))
                 else:
