@@ -119,6 +119,8 @@ class user(commands.Cog):
             f"**Патч:** 1.0\n\n"
             f"**Пинг бота:** {self.client.ws.latency * 1000:.0f} ms.\n\n"
             f"**Я есть на:** {gui} серверах.\n\n"
+            f"**Сервер поддежки:** [clik](https://discord.gg/Vnb57MM)\n\n"
+            f"**Добавить бота:** [clik](https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=8&scope=bot).\n\n"
             f"© Copyright 2020 Stanislav | Все права защищены"
         )
         await ctx.send(embed=emuy)   
