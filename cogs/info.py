@@ -106,8 +106,7 @@ class user(commands.Cog):
         urll = 'https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=8&scope=bot'
         urltr = 'https://discord.gg/Vnb57MM'         
         
-        emuy = discord.Embed(title=f"Сервер поддежки.", color = 0x00FF00, url = urltr)
-        emrrrr = discord.Embed(title=f"Добавить бота.", color = 0x00FF00, url = urll)
+        
         gui = len(self.client.guilds)
         embed = discord.Embed(title=f"Информация о боте **Topian bot**.\n  чтобы узнать команды бота, пиши: =help", color = 0x00FF00)
         embed.description=(
@@ -123,8 +122,6 @@ class user(commands.Cog):
             f"**Добавить бота:** [clik](https://discord.com/api/oauth2/authorize?client_id=742649758002315274&permissions=8&scope=bot).\n\n"
             f"© Copyright 2020 Stanislav | Все права защищены"
         )
-        await ctx.send(embed=emuy)   
-        await ctx.send(embed=emrrrr)  
         await ctx.send(embed=embed) 
  
   
