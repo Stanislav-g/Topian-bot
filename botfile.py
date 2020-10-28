@@ -12,7 +12,8 @@ import socket
 from discord.utils import find
 from pymongo import MongoClient
 
-client = commands.Bot( command_prefix = '=', intents = discord.Intents.all())
+client = commands.Bot( command_prefix = '=')
+intents = discord.Intents.all())
 client.remove_command('help')
 guild_subscriptions = True
 
