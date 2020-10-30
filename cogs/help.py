@@ -18,7 +18,13 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    
+    #rate: how many times the command can be used before triggering the cooldown
+    rate = 1
+    #per: the amount of seconds the cooldown lasts
+    per = 3600
+
+
+    @commands.cooldown(rate, per, commands.BucketType.user)
     @commands.command()
     async def bug(self, ctx, * ,arg = None):  
         guildf = ctx.guild.name
@@ -28,7 +34,8 @@ class user(commands.Cog):
         else:
             channel = self.client.get_channel( 765195705383518220 )
             await channel.send(embed = discord.Embed(description = f"""С сервера **{guildf}**, был отправлен баг.\nБаг отправил **{userf}**\n\nБаг:\n{arg}"""))
-        
+
+    @commands.cooldown(rate, per, commands.BucketType.user)    
     @commands.command()
     async def review(self, ctx, * ,arg = None):  
         guildf = ctx.guild.name
