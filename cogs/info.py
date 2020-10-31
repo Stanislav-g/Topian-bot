@@ -241,10 +241,12 @@ class user(commands.Cog):
     @commands.command()
     async def user_boost(self, ctx, member : discord.Member = None):
         if member == None:
+            a = ctx.author.premium_since
+            if a == None:
+                await ctx.send("Вы не давали буст серверу!")
             await ctx.send(f"Буст: {ctx.author.premium_since}\n\n") 
         else:
-            await ctx.send(f"Буст: {member.premium_since}\n\n")    
-            
+            await ctx.send(f"Буст: {member.premium_since}\n\n")  
         
     @commands.command()
     async def guild_emojis(self, ctx):
