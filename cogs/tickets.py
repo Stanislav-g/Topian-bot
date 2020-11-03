@@ -186,6 +186,13 @@ class user(commands.Cog):
         collectionticket = db["ticket"]
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_ticket on````=module_ticket off`` """))
+        elif arg == 'help':
+            await ctx.send(embed = discord.Embed(description = f"""                
+                **=module_ticket** - модуль тикетов.
+                ``=ticket_create`` - создать тикет.
+                ``=ticket_delete`` - удалить тикет.
+                ``=ticket_del`` - удалить тикет, команда для администрации. =ticket_del @user‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                """))
         elif arg == 'on':
             name = 'economy'
             num = ctx.author.guild.id
@@ -236,7 +243,7 @@ class user(commands.Cog):
                 guild = collectionmodules.update_one({"_id": allnum}, {"$set": {"ticket": off}})
                 await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль тикетов  успешно выключен!"""))
         else:
-            await ctx.send(f"На данном сервере не создана база данных, ее можно создать командой")
+            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_ticket on````=module_ticket off`` """))
 
 def setup(client):
     client.add_cog(user(client))
