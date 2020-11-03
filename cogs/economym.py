@@ -167,6 +167,7 @@ class user(commands.Cog):
 
 
 
+
     @commands.has_permissions(administrator = True)        
     @commands.command()
     async def module_economy(self, ctx, arg = None):
@@ -177,24 +178,18 @@ class user(commands.Cog):
         collectionmodules = db["modules"]
         collectionshop = db["shop"]        
         if not arg:
-            emb = discord.Embed( 
-            title = 'Чтобы включить модуль напишите ``=module_economy``, чтобы отключить модуль напишите ``=module_economy off``',
-            color = 0x7aa13d
-            )
-
-            emb.add_field( name = '__**Команды**__', value = '''
-            ``=balance`` - узнать баланс пользователя.
-            ``=work`` - заработать деньги.
-            ``=economy`` - создать профиль. 
-            ``=shop`` - посмотреть магазин.
-            ``=addshop`` - создать магазин.
-            ``=addrole_shop`` - добавить роль в магазин. =addshop_role @role (цена)
-            ``=deleteshop_role`` - нету
-            ``=deleteshop`` - нету
-                 
-                 
-            ''' )
-            await ctx.send(embed = emb) 
+            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_economy on````=module_economy off`` """))
+        elif arg == 'help':
+            await ctx.author.send(embed = discord.Embed(description = f"""                
+                **=module_economy** - включить модуль экономики.
+                ``=addrole_shop`` - добавить роль в магазин. =addrole_shop @role cost$
+                ``=deleterole_shop`` - удалить роль из магазина. =deleterole_shop @role
+                ``=shop`` - посмотреть магазин, если нету ролей в магазине, команда отключается.
+                ``=buyrole`` - купить роль. =buyrole @role
+                ``=balance`` - посмотреть баланс.
+                ``=work`` - заработать денег.
+                     ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                """))    
         elif arg == 'on':
             name = 'economy'
             num = ctx.author.guild.id
@@ -247,7 +242,10 @@ class user(commands.Cog):
                     
                     await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}**, модуль экономики успешно выключен!"""))
         else:
-            await ctx.send(f"На данном сервере не создана база данных, ее можно создать командой")
+            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_economy on````=module_economy off`` """))
+
+                
+
 
 
     @commands.command()
