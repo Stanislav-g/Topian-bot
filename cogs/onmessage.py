@@ -28,7 +28,7 @@ class user(commands.Cog):
     collectionshop = db["shop"]
     collectionticket = db["ticket"]
     collectionlogschannels = db["logschannels"]
-    
+   
     @commands.has_permissions(administrator = True)     
     @commands.command()
     async def module_lvls(self, ctx, arg = None):
@@ -42,6 +42,14 @@ class user(commands.Cog):
         collectionlogschannels = db["logschannels"]
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_lvls on`` ``=module_lvls off`` """))
+
+        elif arg == 'help':
+            await ctx.send(embed = discord.Embed(description = f"""                
+                **=module_lvls** - модуль уровней.
+                ``=lvl`` - посмотреть ваш уровень.
+                ``=message`` - посмотреть количество отправленных сообщений.‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                """))
+            
         elif arg == 'on':
             name = 'economy'
             num = ctx.author.guild.id
@@ -96,10 +104,9 @@ class user(commands.Cog):
                     guild = collectionmodules.update_one({"_id": allnum}, {"$set": {"lvls": off}})
                     await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль уровней выключен!"""))
         else:
-            await ctx.send(f"На данном сервере не создана база данных, ее можно создать командой")
+            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_lvls on`` ``=module_lvls off`` """))
 
 
-    
     
 
                         
