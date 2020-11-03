@@ -130,7 +130,7 @@ class user(commands.Cog):
                 allnum = num + num2
                 if collection.count_documents({"_id": allnum}) == 0:
                     name = message.author.name
-                    num = message.author.guild.id
+                    num = message.guild.id
                     num2 = message.author.id
                     allnum = num + num2
                     collection.insert_one({"_id": allnum, "name": name, "balance": 0, "lvl": 0, "rep": 0, "message": 0})
