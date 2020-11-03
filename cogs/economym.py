@@ -79,13 +79,17 @@ class user(commands.Cog):
         allnum4 = str(num1) + str(num22)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
             if collectionmodules.find_one({"_id": allnum4})["on_off"] == 'on':
-                idshop = str(ctx.author.guild.id) + str(role.id)
-                if collectionshop.count_documents({"_id": idshop}) == 1:
-                    collectionshop.delete_one({"_id": idshop})   
-                    await ctx.send(f"**{ctx.author}**, роль удалена из магазина!")
+                if role is None:
+                    await ctx.send(f"**{ctx.author}**, укажите роль")
+                else:    
+                    idshop = str(ctx.author.guild.id) + str(role.id)
+                    if collectionshop.count_documents({"_id": idshop}) == 1:
+                        collectionshop.delete_one({"_id": idshop})   
+                        await ctx.send(f"**{ctx.author}**, роль удалена из магазина!")
             else:
                 await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
 
+                
                 
     @commands.command()
     async def shop(self, ctx):
