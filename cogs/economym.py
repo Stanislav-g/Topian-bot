@@ -30,6 +30,41 @@ class user(commands.Cog):
     collectionlogschannels = db["logschannels"]
 
 
+    @commands.command()           
+    @commands.has_permissions(administrator = True) 
+    async def addmoney(self, ctx, member: discord.Member = None, amount:int = None):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] 
+        collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        if member == None:
+            await ctx.send("Укажите пользователя.")
+        elif amount == None:
+            await ctx.send("Укажите сумму.")
+        else:
+            num1 = ctx.author.guild.id
+            num22 = '111'
+            allnum4 = str(num1) + str(num22)
+            if collectionmodules.count_documents({"_id": allnum4}) == 1:
+                if collectionmodules.find_one({"_id": allnum4})["on_off"] == 'on':
+                    num = ctx.author.guild.id
+                    num2 = member.id
+                    allnum = num + num2
+                    if collection.count_documents({"_id": allnum}) == 0:
+                        await ctx.send(f"Учетная запись пользователя не создана, ее можно создать командой =balance")
+                    else:
+                        balancee = collection.find_one({"_id": allnum})["balance"]
+                        
+                        balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + amount}})
+                        balanceee = collection.find_one({"_id": allnum})["balance"]
+                        
+                        await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя увеличен на {numr} :dollar:"""))
+                else:
+                    await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")            
+
+                    
     @commands.has_permissions(administrator = True)            
     @commands.command()
     async def addrole_shop(self, ctx, role: discord.Role = None, cost: int = None):
