@@ -207,24 +207,31 @@ class user(commands.Cog):
         await ctx.author.send(embed = discord.Embed(description = f"""                
                 **Modules**
                 ``=modules`` - инфо. о использовании модулей.
-                ``=module_logs`` - модуль логов.
+                **=module_logs** - модуль логов.
                 ``=log_channel`` - добавить канал логов.
-                ``=module_rep`` - модуль репутаций.
+                **=module_rep** - модуль репутаций.
                 ``=rep`` - посмотреть репутацию пользователя.
                 ``=rep_user`` - увеличить или уменьшить репутацию пользователя.
-                ``=module_ticket`` - модуль тикетов.
+                **=module_ticket** - модуль тикетов.
                 ``=ticket_create`` - создать тикет.
                 ``=ticket_delete`` - удалить тикет.
                 ``=ticket_del`` - удалить тикет, команда для администрации.
-                ``=module_lvls`` - модуль уровней.
+                **=module_lvls** - модуль уровней.
                 ``=lvl`` - посмотреть ваш уровень.
                 ``=message`` - посмотреть количество отправленных сообщений.
-                ``=module_reaction`` - модуль авто-реакций.
+                **=module_reaction** - модуль авто-реакций.
                 ``=reaction_channel`` - установить канал куда будут ставиться реакции.
                 ``=del_reaction_channel`` - удалить канал авто реакций.
-                ``=module_roles`` - модуль авто выдачи ролей по реакциям.
+                **=module_roles** - модуль авто выдачи ролей по реакциям.
                 ``=auto_role`` - добавить выдачу роли по реакции, команду писать в канале где нужно поставить авто выдачу по реакции.
                 ``=delete_auto_role`` - убрать выдачу роли по реакции, команду писать в канале где нужно убрать авто выдачу по реакции.
+                **=module_economy** - включить модуль экономики.
+                ``=addrole_shop`` - добавить роль в магазин.
+                ``=deleterole_shop`` - удалить роль из магазина.
+                ``=shop`` - посмотреть магазин, если нету ролей в магазине, команда отключается.
+                ``=buyrole`` - купить роль.
+                ``=balance`` - посмотреть баланс.
+                ``=work`` - заработать денег.
                      ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
                 """))    
 
@@ -244,6 +251,8 @@ class user(commands.Cog):
         emt.add_field(name=f'``=module_lvls off``', value="Отключить модуль уровней", inline=True)  # Создает строку
         emt.add_field(name=f'``=module_roles on``', value="Включить модуль авто выдачи ролей по реакциям", inline=True)  # Создает строку
         emt.add_field(name=f'``=module_roles off``', value="Отключить модуль авто выдачи ролей по реакциям", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_economy on``', value="Включить модуль авто выдачи ролей по реакциям", inline=True)  # Создает строку
+        emt.add_field(name=f'``=module_economy off``', value="Отключить модуль авто выдачи ролей по реакциям", inline=True)  # Создает строку
         await ctx.send(embed=emt)
           
     @commands.command(pass_context = True)
