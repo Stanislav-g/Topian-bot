@@ -267,7 +267,11 @@ class user(commands.Cog):
                     num2 = ctx.author.id
                     allnum = num + num2
                     if collection.count_documents({"_id": allnum}) == 0:
-                        await ctx.send(f"Ваша учетная запись не создана, вы можете создать ее командой -economy")
+                        name = ctx.author.name
+                        num = ctx.guild.id
+                        num2 = ctx.author.id
+                        allnum = num + num2
+                        collection.insert_one({"_id": allnum, "name": name, "balance": 0, "lvl": 0, "rep": 0, "message": 0})
                     else:
                         num = ctx.author.guild.id
                         num2 = ctx.author.id
