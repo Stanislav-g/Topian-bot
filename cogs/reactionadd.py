@@ -32,7 +32,7 @@ class user(commands.Cog):
 
    
 
- 
+  
     @commands.command()
     @commands.has_permissions(administrator = True)  
     async def module_reaction(self, ctx, arg = None):
@@ -46,6 +46,14 @@ class user(commands.Cog):
         collectionlogschannels = db["logschannels"]
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_reaction on`` ``=module_reaction off`` """))
+
+        elif arg == 'help':
+            await ctx.send(embed = discord.Embed(description = f"""                
+                **=module_reaction** - модуль авто-реакций.
+                ``=reaction_channel`` - установить канал куда будут ставиться реакции. =reaction_channel (айди канала)‌
+                ``=del_reaction_channel`` - удалить канал авто реакций. =del_reaction_channel (айди канала)‌   ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                """))
+
         elif arg == 'on':
             name = 'economy'
             num = ctx.author.guild.id
@@ -101,6 +109,7 @@ class user(commands.Cog):
                     await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль реакций выключен!"""))
         else:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_reaction on`` ``=module_reaction off`` """))
+
 
 
 
