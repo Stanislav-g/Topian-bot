@@ -52,6 +52,13 @@ class user(commands.Cog):
         collectionticket = db["ticket"]
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_rep on`` ``=module_rep off`` """))
+
+        elif arg == 'help':
+            await ctx.send(embed = discord.Embed(description = f"""                
+                **=module_rep** - модуль репутаций.
+                ``=rep`` - посмотреть репутацию пользователя.
+                ``=rep_user`` - увеличить или уменьшить репутацию пользователя. =rep_user @user (- или +)  ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                """))
         elif arg == 'on':
             name = 'economy'
             num = ctx.author.guild.id
@@ -108,7 +115,7 @@ class user(commands.Cog):
                     guild = collectionmodules.update_one({"_id": allnum}, {"$set": {"rep": off}})
                     await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль репутаций выключен!"""))
         else:
-            await ctx.send(f"На данном сервере не создана база данных, ее можно создать командой")
+            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_rep on`` ``=module_rep off`` """))
 
 
 
