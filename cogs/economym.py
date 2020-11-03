@@ -180,7 +180,7 @@ class user(commands.Cog):
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_economy on````=module_economy off`` """))
         elif arg == 'help':
-            await ctx.author.send(embed = discord.Embed(description = f"""                
+            await ctx.send(embed = discord.Embed(description = f"""                
                 **=module_economy** - включить модуль экономики.
                 ``=addrole_shop`` - добавить роль в магазин. =addrole_shop @role cost$
                 ``=deleterole_shop`` - удалить роль из магазина. =deleterole_shop @role
@@ -242,7 +242,7 @@ class user(commands.Cog):
                     
                     await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}**, модуль экономики успешно выключен!"""))
         else:
-            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_economy on````=module_economy off`` """))
+            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_economy on`` ``=module_economy off`` """))
 
                 
 
