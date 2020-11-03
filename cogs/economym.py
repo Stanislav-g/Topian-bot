@@ -295,7 +295,7 @@ class user(commands.Cog):
     per = 3600
 
 
-
+    @commands.cooldown(rate, per, commands.BucketType.user)
     @commands.command()
     async def work(self, ctx):
         clu= os.environ.get('MONGODB_URI')
