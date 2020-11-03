@@ -125,7 +125,7 @@ class user(commands.Cog):
         allnum4 = str(num) + str(num2)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
             if collectionmodules.find_one({"_id": allnum4})["lvls"] == 'on':
-                num = message.author.guild.id
+                num = message.guild.id
                 num2 = message.author.id
                 allnum = num + num2
                 if collection.count_documents({"_id": allnum}) == 0:
@@ -136,7 +136,7 @@ class user(commands.Cog):
                     collection.insert_one({"_id": allnum, "name": name, "balance": 0, "lvl": 0, "rep": 0, "message": 0})
                     
                 else:
-                    num = message.author.guild.id
+                    num = message.guild.id
                     num2 = message.author.id
                     allnum = num + num2
                     message = collection.find_one({"_id": allnum})["message"]
