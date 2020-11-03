@@ -28,7 +28,7 @@ class user(commands.Cog):
     collectionshop = db["shop"]
     collectionticket = db["ticket"]
     collectionroles = db["roles"]
-  
+
     @commands.command()
     @commands.has_permissions(administrator = True)  
     async def module_roles(self, ctx, arg = None):
@@ -42,6 +42,16 @@ class user(commands.Cog):
         collectionroles = db["roles"]
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_roles on````=module_roles off`` """))
+
+
+        elif arg == 'help':
+            await ctx.send(embed = discord.Embed(description = f"""                
+                **=module_roles** - модуль авто выдачи ролей по реакциям.
+                ``=auto_role`` - добавить выдачу роли по реакции, команду писать в канале где нужно поставить авто выдачу по реакции.
+                ``=delete_auto_role`` - убрать выдачу роли по реакции, команду писать в канале где нужно убрать авто выдачу по реакции.
+                     ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                """))    
+
         elif arg == 'on':
             name = 'economy'
             num = ctx.author.guild.id
@@ -93,8 +103,6 @@ class user(commands.Cog):
                 await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль авто выдачи ролей успешно выключен!"""))
         else:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_roles on````=module_roles off`` """))
-
-
 
 
 
