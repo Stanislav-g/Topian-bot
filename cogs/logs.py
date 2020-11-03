@@ -35,6 +35,8 @@ class user(commands.Cog):
 
     #__________________________________logs_______________
 
+
+
     @commands.has_permissions(administrator = True)     
     @commands.command()
     async def module_logs(self, ctx, arg = None):
@@ -48,6 +50,12 @@ class user(commands.Cog):
         collectionlogschannels = db["logschannels"]
         if not arg:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_logs on`` ``=module_logs off`` """))
+
+        elif arg == 'help':
+            await ctx.send(embed = discord.Embed(description = f"""                
+                **=module_logs** - модуль логов.
+                ``=log_channel`` - добавить канал логов. =log_channel (айди канала)‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍        ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍‍    ‌‌‍
+                """))    
         elif arg == 'on':
             name = 'economy'
             num = ctx.author.guild.id
@@ -102,7 +110,9 @@ class user(commands.Cog):
                     guild = collectionmodules.update_one({"_id": allnum}, {"$set": {"logs": off}})
                     await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** модуль логов выключен!"""))
         else:
-            await ctx.send(f"На данном сервере не создана база данных, ее можно создать командой")
+            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_logs on`` ``=module_logs off`` """))
+                
+
 
     @commands.command()
     async def log_channel(self, ctx, arg = None):
