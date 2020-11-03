@@ -266,7 +266,7 @@ class user(commands.Cog):
                     num2 = ctx.author.id
                     allnum = num + num2
                     if collection.count_documents({"_id": allnum}) == 0:
-                        await ctx.send(f"Ваша учетная запись не создана, вы можете создать ее командой =economy")
+                        await ctx.send(f"Ваша учетная запись не создана, напишите любое сообщение в чат чтобы создать учетную запись!")
                     else:
                         num = ctx.author.guild.id
                         num2 = ctx.author.id
@@ -311,7 +311,7 @@ class user(commands.Cog):
                     num2 = ctx.author.id
                     allnum = num + num2
                     if collection.count_documents({"_id": allnum}) == 0:
-                        await ctx.send(f"Ваша учетная запись не создана, вы можете создать ее командой =economy")
+                        await ctx.send(f"Ваша учетная запись не создана, напишите любое сообщение в чат чтобы создать учетную запись!")
                     else:
                         num = ctx.author.guild.id
                         num2 = ctx.author.id
