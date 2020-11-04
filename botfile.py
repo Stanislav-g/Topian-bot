@@ -199,9 +199,9 @@ async def on_command_error(ctx, err):
         guildf = ctx.guild.name
         userf = ctx.author.name
         channel = client.get_channel( 773461826696380426 )
-        errorall = str({err}) + str("\n") + str({guildf})
+        errorall = str(err) + str("     ") + str(guildf)
 					   
-        await channel.send({errorall})
+        await channel.send(errorall)
 
 
 for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
