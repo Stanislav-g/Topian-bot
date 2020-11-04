@@ -195,7 +195,12 @@ async def on_command_error(ctx, err):
         await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
 	
     else:
-        await ctx.send(embed=discord.Embed(description=f"Произошла неизвестная ошибка: `{err}`\nПожалуйста, свяжитесь с разработчиками для исправления этой ошибки"))
+        await ctx.send(embed=discord.Embed(description=f"Вы неправильно ввели команду или данной команды не существует!||{err}||"))
+        guildf = ctx.guild.name
+        userf = ctx.author.name
+        channel = self.client.get_channel( 765195705383518220 )
+        await channel.send("{err}\n {guildf}")
+
 
 
 for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
