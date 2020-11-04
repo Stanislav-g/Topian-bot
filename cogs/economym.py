@@ -150,7 +150,7 @@ class user(commands.Cog):
                         name = collectionshop.find_one({"_id": guildid})["name"]
                         cost = collectionshop.find_one({"_id": guildid})["cost"]
                         allinfo = str(name) + str(" - ") + str(cost) + str("$")
-                        emt = discord.Embed(title=f"Информация о роли {name}",description=f'{allinfo}', color = 0x00FF00)
+                        emt = discord.Embed(title=f"Информация о роли {name.name}",description=f'{allinfo}', color = 0x00FF00)
                         await ctx.send(embed=emt)
 
             else:
