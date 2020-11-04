@@ -112,8 +112,6 @@ class user(commands.Cog):
         else:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_logs on`` ``=module_logs off`` """))
                 
-
-
     @commands.command()
     async def log_channel(self, ctx, arg = None):
         client = commands.Bot( command_prefix = '=')
@@ -129,31 +127,35 @@ class user(commands.Cog):
         num = ctx.author.guild.id
         num2 = '111'
         allnum = str(num) + str(num2)
-        if collectionmodules.count_documents({"_id": allnum}) == 1:
-            num = ctx.author.guild.id
-            num2 = '111'
-            allnum = str(num) + str(num2)
-            stat = collectionmodules.find_one({"_id": allnum})["logs"]
-            if stat == 'on':
-                for channel in ctx.guild.text_channels:
-                    ch = int(channel.id)
-                    argg = int(arg)
-                    if argg == ch:
-                        guild = ctx.guild.id
-                        if collectionlogschannels.count_documents({"_id": guild}) == 0:
-                            collectionlogschannels.insert_one({"_id": guild, "logchannel": argg})
-                            await ctx.send("Канал логов установлен!")
-                            break
-                        else:
-                            collectionlogschannels.update_one({"_id": guild}, {"$set": {"logchannel": argg}})
-                            await ctx.send("Канал логов обновлен!")
-                            
-                    else:
-                        pass
-                    
+        if '<' or '@' or '>' in arg:
+            await ctx.send("Введите айди канала!")
         else:
-            await ctx.send(f"Модуль логов на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
-            
+            if collectionmodules.count_documents({"_id": allnum}) == 1:
+                num = ctx.author.guild.id
+                num2 = '111'
+                allnum = str(num) + str(num2)
+                stat = collectionmodules.find_one({"_id": allnum})["logs"]
+                if stat == 'on':
+                    for channel in ctx.guild.text_channels:
+                        ch = int(channel.id)
+                        argg = int(arg)
+                        if argg == ch:
+                            guild = ctx.guild.id
+                            if collectionlogschannels.count_documents({"_id": guild}) == 0:
+                                collectionlogschannels.insert_one({"_id": guild, "logchannel": argg})
+                                await ctx.send("Канал логов установлен!")
+                                break
+                            else:
+                                collectionlogschannels.update_one({"_id": guild}, {"$set": {"logchannel": argg}})
+                                await ctx.send("Канал логов обновлен!")
+                                
+                        else:
+                            pass
+                        
+            else:
+                await ctx.send(f"Модуль логов на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+                
+
 
 
 
