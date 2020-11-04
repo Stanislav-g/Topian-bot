@@ -171,31 +171,37 @@ class user(commands.Cog):
         allnum4 = str(num1) + str(num22)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
             if collectionmodules.find_one({"_id": allnum4})["on_off"] == 'on':
-                if role is None:
-                    await ctx.send(f"**{ctx.author}**, укажите роль")
-                if role in ctx.author.roles:
-                    await ctx.send(f"**{ctx.author}**, у вас уже имеется данная роль")
+                num = ctx.author.guild.id
+                num2 = ctx.author.id
+                allnum = num + num2
+                if collection.count_documents({"_id": allnum}) == 0:
+                    await ctx.send(f"Ваша учетная запись не создана, вы можете создать ее командой =balance")
                 else:
-                    idshop = str(ctx.author.guild.id) + str(role.id)
-                    if collectionshop.count_documents({"_id": idshop}) == 0:
-                        await ctx.send( f'{ctx.author.name}, данной роли нету в продаже!')
+                    if role is None:
+                        await ctx.send(f"**{ctx.author}**, укажите роль")
+                    if role in ctx.author.roles:
+                        await ctx.send(f"**{ctx.author}**, у вас уже имеется данная роль")
                     else:
                         idshop = str(ctx.author.guild.id) + str(role.id)
-        
-                        cost = collectionshop.find_one({"_id": idshop})["cost"]
-
-                        
-                        n = ctx.author.guild.id
-                        nu = ctx.author.id
-                        alln = n + nu
-                        balance = collection.find_one({"_id": alln})["balance"]
-                        if cost > balance:
-                            await ctx.send(f"**{ctx.author}**, на вашем счету недостаточно средств")
+                        if collectionshop.count_documents({"_id": idshop}) == 0:
+                            await ctx.send( f'{ctx.author.name}, данной роли нету в продаже!')
                         else:
-                            await ctx.author.add_roles(role)
-                            balance = collection.update_one({"_id": alln}, {"$set": {"balance": balance - cost}})
-                            await ctx.send( f'{ctx.author.name}, поздравляю вас! Вы купили роль **{role}**')
-                        
+                            idshop = str(ctx.author.guild.id) + str(role.id)
+            
+                            cost = collectionshop.find_one({"_id": idshop})["cost"]
+
+                            
+                            n = ctx.author.guild.id
+                            nu = ctx.author.id
+                            alln = n + nu
+                            balance = collection.find_one({"_id": alln})["balance"]
+                            if cost > balance:
+                                await ctx.send(f"**{ctx.author}**, на вашем счету недостаточно средств")
+                            else:
+                                await ctx.author.add_roles(role)
+                                balance = collection.update_one({"_id": alln}, {"$set": {"balance": balance - cost}})
+                                await ctx.send( f'{ctx.author.name}, поздравляю вас! Вы купили роль **{role}**')
+                            
                     
             else:
                 await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
@@ -307,6 +313,11 @@ class user(commands.Cog):
                         num2 = ctx.author.id
                         allnum = num + num2
                         collection.insert_one({"_id": allnum, "name": name, "balance": 0, "lvl": 0, "rep": 0, "message": 0})
+                        num = ctx.author.guild.id
+                        num2 = ctx.author.id
+                        allnum = num + num2
+                        balance = collection.find_one({"_id": allnum})["balance"]
+                        await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}**, ваш баланс составляет **{balance}** :dollar:"""))
                     else:
                         num = ctx.author.guild.id
                         num2 = ctx.author.id
@@ -354,7 +365,7 @@ class user(commands.Cog):
                 num2 = ctx.author.id
                 allnum = num + num2
                 if collection.count_documents({"_id": allnum}) == 0:
-                    await ctx.send(f"Ваша учетная запись не создана, вы можете создать ее командой -economic")
+                    await ctx.send(f"Ваша учетная запись не создана, вы можете создать ее командой =balance")
                 else:
                     numr = random.randint(1,100)
                     balancee = collection.find_one({"_id": allnum})["balance"]
