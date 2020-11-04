@@ -195,10 +195,10 @@ async def on_command_error(ctx, err):
         await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
 	
     else:
-        await ctx.send(embed=discord.Embed(description=f"Вы неправильно ввели команду или данной команды не существует!||{err}||"))
+        await ctx.send(embed=discord.Embed(description=f"Вы неправильно ввели команду или данной команды не существует!\n||{err}||"))
         guildf = ctx.guild.name
         userf = ctx.author.name
-        channel = self.client.get_channel( 765195705383518220 )
+        channel = client.get_channel( 773461826696380426 )
         await channel.send("{err}\n {guildf}")
 
 
