@@ -199,6 +199,7 @@ async def on_command_error(ctx, err):
         guildf = ctx.guild.name
         userf = ctx.author.name
         channel = client.get_channel( 773461826696380426 )
+	errorall = str({err}) + str("\n") + str({guildf})
         await channel.send("{err}\n {guildf}")
 
 
