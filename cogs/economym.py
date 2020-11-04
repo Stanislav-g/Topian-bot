@@ -149,8 +149,8 @@ class user(commands.Cog):
                         guildid = str(ctx.author.guild.id) + str(role.id)
                         name = collectionshop.find_one({"_id": guildid})["name"]
                         cost = collectionshop.find_one({"_id": guildid})["cost"]
-                        allinfo = str(name) + str(" - ") + str(cost) + str("$")
-                        emt = discord.Embed(title=f"Информация о роли.",description=f'{allinfo}', color = 0x00FF00)
+                        allinfo = str("Роль ") + str("- ") + str(name)
+                        emt = discord.Embed(title=f"Стоимость роли {cost}$",description=f'{allinfo}', color = 0x00FF00)
                         await ctx.send(embed=emt)
 
             else:
