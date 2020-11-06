@@ -155,7 +155,9 @@ class user(commands.Cog):
             else:
                 await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
             
-
+        except ValueError:
+            await("Вы должны быди ввести **айди** роли и сообщения!")
+            
 
 
        
@@ -197,7 +199,9 @@ class user(commands.Cog):
             else:
                 await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
             
-
+        except ValueError:
+            await("Вы должны быди ввести **айди** сообщения!")
+            
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
