@@ -43,13 +43,6 @@ class user(commands.Cog):
         imge = Image.open("test4.jpg")
         img = imge.resize((400, 200))
         idraw = ImageDraw.Draw(img)
-        d = ctx.author.status
-        if d == 'dnd' or '1':
-            print('1')
-
-
-        if d == 'idle' or '2':
-            print(ctx.author.status)
 
         headline = ImageFont.truetype('SansPosterBold.ttf', size = 20)
 
