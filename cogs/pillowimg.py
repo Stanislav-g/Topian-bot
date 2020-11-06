@@ -19,13 +19,19 @@ class user(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-
+        
+    clu= os.environ.get('MONGODB_URI')
+    cluster = MongoClient(clu)
+    db = cluster["topianbot"]
+    collection = db["money"]
+    collectionmodules = db["modules"]
+    collectionshop = db["shop"]
+    collectionticket = db["ticket"]
+    collectionlogschannels = db["logschannels"]
 
         
     @commands.command()
     async def profile(self, ctx, user: discord.Member = None):
-        clu= os.environ.get('MONGODB_URI')
-        cluster = MongoClient(clu)
         db = cluster["topianbot"]
         collection = db["money"]
         if user == None:
