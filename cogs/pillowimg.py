@@ -1,16 +1,17 @@
+ 
 import discord
 from discord.ext import commands
-import datetime
-from discord.utils import get
-import asyncio
-from time import sleep
-from colorsys import hls_to_rgb
-import os
+from pymongo import MongoClient
 import random
 from random import randint, choice, choices
-import io
-import sqlite3
-import random as r
+import os
+import random
+import asyncio
+from discord.utils import get
+import datetime
+import smtplib
+import socket
+from discord.utils import find
 from PIL import Image, ImageFilter, ImageDraw, ImageFont
 import requests
 from io import BytesIO
