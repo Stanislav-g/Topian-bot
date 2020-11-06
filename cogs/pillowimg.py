@@ -33,6 +33,8 @@ class user(commands.Cog):
         
     @commands.command()
     async def profile(self, ctx, user: discord.Member = None):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
         db = cluster["topianbot"]
         collection = db["money"]
         if user == None:
