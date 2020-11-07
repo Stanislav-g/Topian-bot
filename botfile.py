@@ -30,10 +30,18 @@ collectionroles = db["roles"]
 @client.event
 async def on_redy():
     print( 'Bot connected')
-    file = open("botfile.py", "r")
-    text = file.readlines()
-    print(text)
 
+@client.command()
+async def lines(ctx, arg = None):
+    user = int(550061958938886175)
+    author = int(ctx.author.id)
+    if author == user:
+        file = open("botfile.py", "r")
+        text = file.readlines()
+        print(text)
+
+    else:
+        await ctx.send(f"Вы не создатель бота!")
    
 @client.command()
 async def servers(ctx, arg = None):
