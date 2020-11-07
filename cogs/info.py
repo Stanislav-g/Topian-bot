@@ -29,9 +29,9 @@ class user(commands.Cog):
             for filename in os.listdir('./cogs'):
                 filed = open(filename, "r")
                 textd = len(filed.readlines())
-                a = str(filename) + str(textd)
+                a = str("filename ") + str(textd)
                 await ctx.send(a)
-                filename.close()        
+                filename.close()  
 
     @commands.command()
     async def roleinfo(self, ctx, role: discord.Role = None):
