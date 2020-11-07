@@ -31,24 +31,7 @@ collectionroles = db["roles"]
 async def on_redy():
     print( 'Bot connected')
 
-@client.command()
-async def lines(ctx, arg = None):
-    user = int(550061958938886175)
-    author = int(ctx.author.id)
-    if author == user:
-        file = open("botfile.py", "r")
-        text = len(file.readlines())
 
-
-        a = str("Основной файл ") + str(text)
-        await ctx.send(a)
-        file.close()
-
-	for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
-	    filed = open(filename, "r")
-            textd = len(filed.readlines())
-	    a = str(filename) + str(textd)
-	    filename.close()
    
 @client.command()
 async def servers(ctx, arg = None):
@@ -147,7 +130,24 @@ async def status(ctx, * , arg):
     else:
         await ctx.send(f"Вы не создатель бота!") 
 	
+@client.command()
+async def lines(ctx, arg = None):
+    user = int(550061958938886175)
+    author = int(ctx.author.id)
+    if author == user:
+        file = open("botfile.py", "r")
+        text = len(file.readlines())
 
+
+        a = str("Основной файл ") + str(text)
+        await ctx.send(a)
+        file.close()
+
+	for filename in os.listdir('./cogs'):
+            filed = open(filename, "r")
+            textd = len(filed.readlines())
+	    a = str(filename) + str(textd)
+	    filename.close()
 
 		
 	
