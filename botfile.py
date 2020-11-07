@@ -217,9 +217,26 @@ async def on_command_error(ctx, err):
 					   
         await channel.send(errorall)
 
-
-for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
-    client.load_extension(f'cogs.{filename[:-3]}') 
+@client.command()
+async def cogs(ctx):
+    user = int(550061958938886175)
+    author = int(ctx.author.id)
+    if author == user:
+        for filename in os.listdir('./cogs'):
+            filed = open(filename, "r")
+            textd = len(filed.readlines())
+            a = str("filename ") + str(textd)
+            await ctx.send(a)
+            filename.close()
+					   
+					   
+for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs					   
+    client.load_extension(f'cogs.{filename[:-3]}')
+    filed = open(filename, "r")
+    textd = len(filed.readlines())
+    a = str("filename ") + str(textd)
+    print(a)
+    filename.close()
  
 
 token= os.environ.get('BOT_TOKEN')
