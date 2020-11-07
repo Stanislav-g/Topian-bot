@@ -37,11 +37,13 @@ async def lines(ctx, arg = None):
     author = int(ctx.author.id)
     if author == user:
         file = open("botfile.py", "r")
-        text = file.readlines()
-        print(text)
-
-    else:
-        await ctx.send(f"Вы не создатель бота!")
+        text = len(file.readlines())
+	a = str("Основной файл ") + str(text)
+        await ctx.send(a)
+	for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
+	    filed = open(filename, "r")
+            textd = len(filed.readlines())
+	    a = str(filename) + str(textd)
    
 @client.command()
 async def servers(ctx, arg = None):
