@@ -40,10 +40,12 @@ async def lines(ctx, arg = None):
         text = len(file.readlines())
 	a = str("Основной файл ") + str(text)
         await ctx.send(a)
+        file.close()
 	for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs
 	    filed = open(filename, "r")
             textd = len(filed.readlines())
 	    a = str(filename) + str(textd)
+	    filename.close()
    
 @client.command()
 async def servers(ctx, arg = None):
