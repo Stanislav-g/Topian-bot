@@ -135,8 +135,7 @@ async def lines(ctx, arg = None):
     user = int(550061958938886175)
     author = int(ctx.author.id)
     if author == user:
-	for filename in os.listdir('./cogs'):
-		await ctx.send(filename)
+
         file = open("botfile.py", "r")
         text = len(file.readlines())
 
@@ -145,7 +144,17 @@ async def lines(ctx, arg = None):
         await ctx.send(a)
         file.close()
 
-
+@client.command()
+async def cogs(ctx):
+    user = int(550061958938886175)
+    author = int(ctx.author.id)
+    if author == user:
+        for filename in os.listdir('./cogs'):
+            filed = open(filename, "r")
+            textd = len(filed.readlines())
+	    a = str(filename) + str(textd)
+	    await ctx.send(a)
+	    filename.close()
 		
 	
 @client.command()
