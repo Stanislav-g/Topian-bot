@@ -30,6 +30,9 @@ collectionroles = db["roles"]
 @client.event
 async def on_redy():
     print( 'Bot connected')
+    file = open("botfile.py", "r")
+    text = file.readlines()
+    print(text)
 
    
 @client.command()
