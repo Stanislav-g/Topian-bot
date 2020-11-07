@@ -232,7 +232,8 @@ async def cogs(ctx):
 					   
 for filename in os.listdir('./cogs'): # Цикл перебирающий файлы в cogs					   
     client.load_extension(f'cogs.{filename[:-3]}')
-    filed = open(filename, "r")
+    fff = str('./cogs/') + str(filename)
+    filed = open(fff, "r")
     textd = len(filed.readlines())
     a = str("filename ") + str(textd)
     print(a)
