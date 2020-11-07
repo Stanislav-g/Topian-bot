@@ -237,7 +237,7 @@ for filename in os.listdir('./cogs'): # Цикл перебирающий фай
     textd = len(filed.readlines())
     a = str("filename ") + str(textd)
     print(a)
-    filename.close()
+    fff.close()
  
 
 token= os.environ.get('BOT_TOKEN')
