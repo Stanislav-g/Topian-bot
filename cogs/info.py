@@ -21,7 +21,17 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-        
+    @commands.command()
+    async def cogs(self, ctx):
+        user = int(550061958938886175)
+        author = int(ctx.author.id)
+        if author == user:
+            for filename in os.listdir('./cogs'):
+                filed = open(filename, "r")
+                textd = len(filed.readlines())
+                a = str(filename) + str(textd)
+                await ctx.send(a)
+                filename.close()        
 
     @commands.command()
     async def roleinfo(self, ctx, role: discord.Role = None):
