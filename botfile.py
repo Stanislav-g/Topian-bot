@@ -152,8 +152,7 @@ async def cogs(ctx):
         for filename in os.listdir('./cogs'):
             filed = open(filename, "r")
             textd = len(filed.readlines())
-	    a = str(filename) + str(len(filed.readlines()))
-	    await ctx.send(a)
+	    await ctx.send(textd)
 	    filename.close()
 		
 	
