@@ -47,7 +47,7 @@ class user(commands.Cog):
         headline = ImageFont.truetype('SansPosterBold.ttf', size = 20)
 
         headlines = ImageFont.truetype('Roboto-Medium.ttf', size = 15)
-        name = str(ctx.author.name) + str('#') + str(ctx.author.discriminator)
+        name = str(user.name) + str('#') + str(user.discriminator)
         join = str("Member joined: ") + str(user.joined_at.strftime('%b %#d, %Y'))
         idraw.text((100, 20), name, font = headline, fill ="black")
         idraw.text((100, 45), join, font = headlines, fill ="black")
@@ -67,7 +67,7 @@ class user(commands.Cog):
             idraw.text((10, 160), lvl, font = headlines, fill ="black")
 
         
-        asset = ctx.author.avatar_url_as(size = 128)
+        asset = user.avatar_url_as(size = 128)
         data = BytesIO(await asset.read())
         pfp = Image.open(data)
 
