@@ -44,5 +44,10 @@ class user(commands.Cog):
         await page.start()
 
 
+    @commands.command()
+    async def tegdntst(self, ctx):
+        await ctx.send(f'12345')
+
+            
 def setup(client):
     client.add_cog(user(client))
