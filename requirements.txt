@@ -8,3 +8,4 @@ voice
 pymongo
 dnspython
 pillow
+Cybernator
