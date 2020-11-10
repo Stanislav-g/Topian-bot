@@ -68,7 +68,7 @@ class user(commands.Cog):
         embeds = [embed1, embed2, embed3, embed4, embed5, embed6, embed7]
         message = await ctx.send(embed = embed1)
         react = ['❌']
-        page = Paginator(client, message, only=ctx.author, use_more=False, embeds=embeds, timeout=60, use_exit=True,exit_reaction=react, color=#7FFF00)
+        page = Paginator(self.client, message, only=ctx.author, use_more=False, embeds=embeds, timeout=60, use_exit=True,exit_reaction=react, color=#7FFF00)
         await page.start()
 
 
