@@ -12,7 +12,7 @@ import io
 import sqlite3
 import datetime
 import random as r
-
+from Cybernator import Paginator
 class user(commands.Cog):
 
     def __init__(self, client):
@@ -46,6 +46,65 @@ class user(commands.Cog):
             channel = self.client.get_channel( 765195681215807499 )
             await channel.send(embed = discord.Embed(description = f"""С сервера **{guildf}**, был отправлен отзыв.\nОтзыв отправил **{userf}**\n\nОтзыв:\n{arg}"""))
             
+
+    @commands.command(pass_context = True)
+    async def helpnew(ctx):
+        embed1 = discord.Embed(title = 'Команды Бота.', description = '1 - Главная страница\n2 - Модерация.\n3 - Информация.\n4 - Игры\n5 - Модули\n6 - Поиск\n7 - Другое')
+        embed2 = discord.Embed(title = 'Модерация.', description = '``=clear`` - удалить сообщения.\n``=ban`` - забанить пользователя.\n``=unban`` - разбанить пользователя.\n``=kick`` - кикнуть пользователя.\n``=emoji`` - добавить реакцию на сообщение.\n``=tempban`` - забанить пользователя на время.\n``=temp_add_role`` - добавить роль пользователю на время.\n``=add_role`` - добавить роль пользователю.\n``=del_role`` - убрать роль у пользователя.\n``=channel_create`` - создать текстовый канал.\n``=voice_create`` - создать голосовой канал.\n``=suggest`` - создать опрос.\n``=changing_name`` - поменять имя пользователю.\n``=text`` - писать от имени бота.\n``=text_emoji`` - отправить сообщение от бота с реакцией.\n``=image`` - отправлять сообщения от имени бота.')
+        embed3 = discord.Embed(title = 'Информация.', description = '``=userinfo`` - инфо. о пользователе.\n``=botinfo`` - инфо. о боте.\n``=serverinfo`` - инфо. о сервере.\n``=avatar`` - аватар пользователя.\n``=ping`` - пинг бота\n``=user_boost`` - узнать давал пользователь буст или нет.\n``=info_emoji`` - info_emoji (emoji)')
+
+
+
+        embed4 = discord.Embed(title = 'Игры.', description = """                ``=rps`` - камень, ножницы или бумага.
+                    ``=guess`` - угадай число
+                    ``=coinflip`` - орел или решка.
+                    ``=knb`` - камень, ножницы, бумага с другим пользователем.
+                    ``=color`` - игра, угадай цвет.""")
+
+        
+        embed5 = discord.Embed(title = 'Модули.',
+                               description = """                ``=modules`` - инфо. о использовании модулей.
+                    **=module_logs** - модуль логов.
+                    ``=log_channel`` - добавить канал логов.
+                    **=module_rep** - модуль репутаций.
+                    ``=rep`` - посмотреть репутацию пользователя.
+                    ``=rep_user`` - увеличить или уменьшить репутацию пользователя.
+                    **=module_ticket** - модуль тикетов.
+                    ``=ticket_create`` - создать тикет.
+                    ``=ticket_delete`` - удалить тикет.
+                    ``=ticket_del`` - удалить тикет, команда для администрации.
+                    **=module_lvls** - модуль уровней.
+                    ``=lvl`` - посмотреть ваш уровень.
+                    ``=message`` - посмотреть количество отправленных сообщений.
+                    **=module_reaction** - модуль авто-реакций.
+                    ``=reaction_channel`` - установить канал куда будут ставиться реакции.
+                    ``=del_reaction_channel`` - удалить канал авто реакций.
+                    **=module_roles** - модуль авто выдачи ролей по реакциям.
+                    ``=auto_role`` - добавить выдачу роли по реакции, команду писать в канале где нужно поставить авто выдачу по реакции.
+                    ``=delete_auto_role`` - убрать выдачу роли по реакции, команду писать в канале где нужно убрать авто выдачу по реакции.
+                    **=module_economy** - включить модуль экономики.
+                    ``=addrole_shop`` - добавить роль в магазин.
+                    ``=deleterole_shop`` - удалить роль из магазина.
+                    ``=shop`` - посмотреть магазин, если нету ролей в магазине, команда отключается.
+                    ``=buyrole`` - купить роль.
+                    ``=balance`` - посмотреть баланс.
+                    ``=work`` - заработать денег.
+                    ``=profile`` - посмотреть провиль **НОВИНКА**""")
+
+        
+
+        embed6 = discord.Embed(title = 'Поиск.', description = '``=search`` - search (запрос)\n``=youtube_search`` - youtube_search (запрос)\n``=yandex`` - yandex (запрос)\n``=wiki`` - wiki (запрос)\n``=google`` - google (запрос)')
+
+        embed7 = discord.Embed(title = 'Другое.', description = '``=wanted`` - картинка с вашей аватаркой **НОВИНКА**\n``=num`` - рандомная цифра от 1 до 100\n``=wordnum`` - посчитать количество слов в тексте.\n``=slapperson`` - ударить пользователя.\n``=emoji_random`` - рандомное эмодзи.\n``=math`` - калькулятор.\n``=covid`` - covid\n``=ball`` - шар предсказаний.\n``=link`` - link (url)\n``=kiss`` - kiss @user\n``=reverse`` - текст задом на перед.\n``=h_coder`` - инфо. о кодировщике.\n``=bug`` - отправить бог о боте.\n``=review`` - отправить отзыв о боте.')
+        embeds = [embed1, embed2, embed3, embed4, embed5, embed6, embed7]
+        message = await ctx.send(embed = embed1)
+        react = ['❌']
+        page = Paginator(client, message, only=ctx.author, use_more=False, embeds=embeds, timeout=60, use_exit=True,exit_reaction=react)
+        await page.start()
+
+
+
+
 
         
     #info\n
