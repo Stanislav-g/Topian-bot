@@ -13,7 +13,7 @@ from discord.utils import find
 from pymongo import MongoClient
 from Cybernator import Paginator
 
-client = commands.Bot( command_prefix = '=', intents = discord.Intents.client.GUILD_MEMBERS())
+client = commands.Bot( command_prefix = '=', intents = discord.Intents.GUILD_MEMBERS())
 client.remove_command('help')
 guild_subscriptions = True
 
