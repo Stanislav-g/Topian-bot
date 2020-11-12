@@ -235,6 +235,7 @@ class user(commands.Cog):
 
 
 
+                                    
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
         clu= os.environ.get('MONGODB_URI')
