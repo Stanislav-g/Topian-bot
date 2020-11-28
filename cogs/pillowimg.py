@@ -30,7 +30,13 @@ class user(commands.Cog):
     collectionticket = db["ticket"]
     collectionlogschannels = db["logschannels"]
 
-        
+    #rate: how many times the command can be used before triggering the cooldown
+    rate = 1
+    #per: the amount of seconds the cooldown lasts
+    per = 4
+
+
+    @commands.cooldown(rate, per, commands.BucketType.user)        
     @commands.command()
     async def profile(self, ctx, user: discord.Member = None):
         clu= os.environ.get('MONGODB_URI')
@@ -78,6 +84,13 @@ class user(commands.Cog):
         await ctx.send(file = discord.File("canvas.png"))
 
         
+    #rate: how many times the command can be used before triggering the cooldown
+    rate = 1
+    #per: the amount of seconds the cooldown lasts
+    per = 4
+
+
+    @commands.cooldown(rate, per, commands.BucketType.user)        
     @commands.command()
     async def wanted(self, ctx, user: discord.Member = None):
         if user == None:
