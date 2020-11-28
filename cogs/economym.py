@@ -64,6 +64,81 @@ class user(commands.Cog):
                 else:
                     await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")            
 
+    @commands.command()           
+    @commands.has_permissions(administrator = True) 
+    async def perevod(self, ctx, member: discord.Member = None, amount:int = None):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] 
+        collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        if member == None:
+            await ctx.send("Укажите пользователя.")
+        elif amount == None:
+            await ctx.send("Укажите сумму.")
+        else:
+            
+            num1 = ctx.author.guild.id
+            num22 = '111'
+            allnum4 = str(num1) + str(num22)
+            if collectionmodules.count_documents({"_id": allnum4}) == 1:
+                if collectionmodules.find_one({"_id": allnum4})["on_off"] == 'on':
+                    num = ctx.author.guild.id
+                    num2 = member.id
+                    allnum = num + num2
+                    if collection.count_documents({"_id": allnum}) == 0:
+                        await ctx.send(f"Учетная запись пользователя не создана, ее можно создать командой =balance")
+                    else:
+                        balanceauthor = collection.find_one({"_id": allnum4})["balance"]
+                        balancemember = collection.find_one({"_id": allnum})["balance"]
+                        if balanceauthor >= amount:
+                            balanceauthor = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - amount}})
+                            balancemember = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + amount}})
+
+                        else:
+                            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** на вашем счету недостаточно средств"""))
+                        
+                            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя увеличен на {amount} :dollar:"""))
+                else:
+                    await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
+
+
+    @commands.command()           
+    @commands.has_permissions(administrator = True) 
+    async def removemoney(self, ctx, member: discord.Member = None, amount:int = None):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] 
+        collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
+        if member == None:
+            await ctx.send("Укажите пользователя.")
+        elif amount == None:
+            await ctx.send("Укажите сумму.")
+        else:
+            num1 = ctx.author.guild.id
+            num22 = '111'
+            allnum4 = str(num1) + str(num22)
+            if collectionmodules.count_documents({"_id": allnum4}) == 1:
+                if collectionmodules.find_one({"_id": allnum4})["on_off"] == 'on':
+                    num = ctx.author.guild.id
+                    num2 = member.id
+                    allnum = num + num2
+                    if collection.count_documents({"_id": allnum}) == 0:
+                        await ctx.send(f"Учетная запись пользователя не создана, ее можно создать командой =balance")
+                    else:
+                        balancee = collection.find_one({"_id": allnum})["balance"]
+                        
+                        balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - amount}})
+                        balanceee = collection.find_one({"_id": allnum})["balance"]
+                        
+                        await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя увеличен на {amount} :dollar:"""))
+                else:
+                    await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")            
+
+                    
                     
     @commands.has_permissions(administrator = True)            
     @commands.command()
