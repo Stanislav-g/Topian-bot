@@ -26,8 +26,8 @@ class user(commands.Cog):
         while True:
             client = commands.Bot( command_prefix = '=')
 
-            memberCount = len(set(client.get_all_members()))
-            mem = len(self.client.guilds.member_count)
+            mem = len(set(self.client.get_all_members()))
+
             gui = len(self.client.guilds)
             embed = discord.Embed(title=f"Статистика бота", color = 0x00FF00)
             embed.description=(
