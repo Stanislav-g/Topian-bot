@@ -211,27 +211,32 @@ class user(commands.Cog):
         num1 = payload.guild_id
         num22 = '111'
         allnum4 = str(num1) + str(num22)
+        print('1')
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
             if collectionmodules.find_one({"_id": allnum4})["roles"] == 'on':
                 y = payload.message_id
                 i = payload.emoji
                 alln = str(y) + str(i)
+                print('2')
                 if collectionroles.count_documents({"_id": alln}) == 1:
                     rolee = collectionroles.find_one({"_id": alln})["role"]
                     reactionn = collectionroles.find_one({"_id": alln})["reaction"]
                     messagee = collectionroles.find_one({"_id": alln})["message"]
                     m = int(messagee)
+                    print('3')
                     if payload.message_id == m: # ID Сообщения
                         guild = self.client.get_guild(payload.guild_id)
                         role = None
-                        
+                        print('4')
                         if str(payload.emoji) == reactionn: # Emoji для реакций
                             role = guild.get_role(int(rolee)) # ID Ролей для в
-                            
+                            print('5')
                             if role:
                                 member = guild.get_member(payload.user_id)
+                                print('6')
                                 if member:
                                     await member.add_roles(role)
+                                    print('7')
 
 
 
