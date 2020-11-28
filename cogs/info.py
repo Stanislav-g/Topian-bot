@@ -23,11 +23,24 @@ class user(commands.Cog):
 
     @commands.command( pass_context = True )
     async def stats(self, ctx):
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"]
+        collection = db["money"]
+        collectionmodules = db["modules"]
+        
+        collectionshop = db["shop"]
+        collectionticket = db["ticket"]
+        collectionroles = db["roles"]
         user = int(550061958938886175)
         author = int(ctx.author.id)
         if author == user:
             client = commands.Bot( command_prefix = '=')
-
+            a = collection.find().count()
+            b = collectionmodules.find().count()
+            c = collectionticket.find().count()
+            d = collectionshop.find().count()
+            e = collectionroles.find().count()
             mem = len(set(self.client.get_all_members()))
             #mem = len(self.client.guilds.member_count)
             gui = len(self.client.guilds)
@@ -49,12 +62,15 @@ class user(commands.Cog):
                 embed.description=(
                     f"**Пинг бота:** {self.client.ws.latency * 1000:.0f} ms.\n\n"
                     f"**Я есть на:** {gui} серверах.\n\n"
-                    f"**Пользователи бота:** {mem}\n\n"
+                    f"**Пользователей в базе данных:** {a}\n\n"
+                    f"**Серверов в базе данных:** {b}\n\n"
+                    f"**Тикетов в базе данных:** {c}\n\n"
+                    f"**Магазинов в базе данных:** {d}\n\n"
+                    f"**Ролей в базе данных:** {e}\n\n"
                     f"© Copyright 2020 Stanislav | Все права защищены"
                 ) 
                 await asyncio.sleep(1)
                 await msg.edit(content= None, embed=embed)
-
 
 
 
