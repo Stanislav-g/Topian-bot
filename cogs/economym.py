@@ -88,8 +88,12 @@ class user(commands.Cog):
                 if collectionmodules.find_one({"_id": allnum4})["on_off"] == 'on':
                     await ctx.send("4")
                     num = ctx.author.guild.id
-                    num2 = member.id
+                    num2 = ctx.author.id
                     allnum = num + num2
+                    
+                    num = ctx.author.guild.id
+                    num2 = member.id
+                    allnumem = num + num2
                     if collection.count_documents({"_id": allnum}) == 0:
                         await ctx.send(f"Учетная запись пользователя не создана, ее можно создать командой =balance")
                     else:
@@ -101,7 +105,7 @@ class user(commands.Cog):
                         if balanceauthor >= amount:
                             await ctx.send("7")
                             balanceauthor = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - amount}})
-                            balancemember = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + amount}})
+                            balancemember = collection.update_one({"_id": allnummem}, {"$set": {"balance": balancee + amount}})
 
                         else:
                             await ctx.send("7")
@@ -110,7 +114,6 @@ class user(commands.Cog):
                             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя увеличен на {amount} :dollar:"""))
                 else:
                     await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
-
 
     @commands.command()           
     @commands.has_permissions(administrator = True) 
