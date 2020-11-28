@@ -95,9 +95,11 @@ class user(commands.Cog):
                     else:
                         await ctx.send("5")
                         balanceauthor = collection.find_one({"_id": allnum4})["balance"]
+                        await ctx.send("55")
                         balancemember = collection.find_one({"_id": allnum})["balance"]
+                        await ctx.send("6")
                         if balanceauthor >= amount:
-                            await ctx.send("6")
+                            await ctx.send("7")
                             balanceauthor = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - amount}})
                             balancemember = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + amount}})
 
