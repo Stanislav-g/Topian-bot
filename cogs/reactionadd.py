@@ -223,7 +223,7 @@ class user(commands.Cog):
         allnum4 = str(num) + str(num2)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
             if collectionmodules.find_one({"_id": allnum4})["reaction"] == 'on':
-                num = str(ctx.author.guild.id) + str(message.channel.id)
+                num = str(message.guild.id) + str(message.channel.id)
                 collectionreaction = db["reaction"]
                 if collectionreaction.count_documents({"_id": num}) == 0:
                     pass
