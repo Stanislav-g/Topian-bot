@@ -21,6 +21,24 @@ class user(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+    @commands.command( pass_context = True )
+    async def stats(self, ctx):
+        client = commands.Bot( command_prefix = '=')
+
+        memberCount = len(set(client.get_all_members()))
+        
+        gui = len(self.client.guilds)
+        embed = discord.Embed(title=f"Статистика бота", color = 0x00FF00)
+        embed.description=(
+            f"**Пинг бота:** {self.client.ws.latency * 1000:.0f} ms.\n\n"
+            f"**Я есть на:** {gui} серверах.\n\n"
+            f"**Пользователи бота:** {memberCount}\n\n"
+            f"© Copyright 2020 Stanislav | Все права защищены"
+        )
+        await ctx.send(embed=embed) 
+        await asyncio.sleep(1)
+        await msg.edit(content= None, embed=emb1)
+
 
 
     @commands.command()
