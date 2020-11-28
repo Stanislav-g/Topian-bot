@@ -103,8 +103,8 @@ class user(commands.Cog):
 
                         if balanceauthor >= amount:
 
-                            balanceauthor = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - amount}})
-                            balancemember = collection.update_one({"_id": allnummem}, {"$set": {"balance": balancee + amount}})
+                            balanceauthor = collection.update_one({"_id": allnum}, {"$set": {"balance": balanceauthor - amount}})
+                            balancemember = collection.update_one({"_id": allnummem}, {"$set": {"balance": balancemember + amount}})
 
                         else:
                             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** на вашем счету недостаточно средств"""))
