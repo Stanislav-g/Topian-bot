@@ -73,42 +73,40 @@ class user(commands.Cog):
         collection = db["money"]
         collectionmodules = db["modules"]
         collectionshop = db["shop"]
-        await ctx.send("1")
+
         if member == None:
             await ctx.send("Укажите пользователя.")
         elif amount == None:
             await ctx.send("Укажите сумму.")
         else:
-            await ctx.send("2")
+
             num1 = ctx.author.guild.id
             num22 = '111'
             allnum4 = str(num1) + str(num22)
             if collectionmodules.count_documents({"_id": allnum4}) == 1:
-                await ctx.send("3")
+
                 if collectionmodules.find_one({"_id": allnum4})["on_off"] == 'on':
-                    await ctx.send("4")
+
                     num = ctx.author.guild.id
                     num2 = ctx.author.id
                     allnum = num + num2
                     
                     num = ctx.author.guild.id
                     num2 = member.id
-                    allnumem = num + num2
+                    allnummem = num + num2
                     if collection.count_documents({"_id": allnum}) == 0:
                         await ctx.send(f"Учетная запись пользователя не создана, ее можно создать командой =balance")
                     else:
-                        await ctx.send("5")
-                        balanceauthor = collection.find_one({"_id": allnum4})["balance"]
-                        await ctx.send("55")
-                        balancemember = collection.find_one({"_id": allnum})["balance"]
-                        await ctx.send("6")
+
+                        balanceauthor = collection.find_one({"_id": allnum})["balance"]
+                        balancemember = collection.find_one({"_id": allnummem})["balance"]
+
                         if balanceauthor >= amount:
-                            await ctx.send("7")
+
                             balanceauthor = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - amount}})
                             balancemember = collection.update_one({"_id": allnummem}, {"$set": {"balance": balancee + amount}})
 
                         else:
-                            await ctx.send("7")
                             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** на вашем счету недостаточно средств"""))
                         
                             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя увеличен на {amount} :dollar:"""))
