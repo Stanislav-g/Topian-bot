@@ -65,7 +65,6 @@ class user(commands.Cog):
                     await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")            
 
     @commands.command()           
-    @commands.has_permissions(administrator = True) 
     async def perevod(self, ctx, member: discord.Member = None, amount:int = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
@@ -144,7 +143,7 @@ class user(commands.Cog):
                         balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - amount}})
                         balanceee = collection.find_one({"_id": allnum})["balance"]
                         
-                        await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя увеличен на {amount} :dollar:"""))
+                        await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя уменьшен на {amount} :dollar:"""))
                 else:
                     await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")            
 
