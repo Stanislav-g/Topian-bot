@@ -105,11 +105,12 @@ class user(commands.Cog):
 
                             balanceauthor = collection.update_one({"_id": allnum}, {"$set": {"balance": balanceauthor - amount}})
                             balancemember = collection.update_one({"_id": allnummem}, {"$set": {"balance": balancemember + amount}})
+                            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя увеличен на {amount} :dollar:"""))
 
                         else:
                             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** на вашем счету недостаточно средств"""))
                         
-                            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя увеличен на {amount} :dollar:"""))
+                            
                 else:
                     await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
 
