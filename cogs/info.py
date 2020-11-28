@@ -55,6 +55,11 @@ class user(commands.Cog):
             while True:
                 client = commands.Bot( command_prefix = '=')
 
+                a = collection.find().count()
+                b = collectionmodules.find().count()
+                c = collectionticket.find().count()
+                d = collectionshop.find().count()
+                e = collectionroles.find().count()
                 mem = len(set(self.client.get_all_members()))
                 #mem = len(self.client.guilds.member_count)
                 gui = len(self.client.guilds)
@@ -71,6 +76,7 @@ class user(commands.Cog):
                 ) 
                 await asyncio.sleep(1)
                 await msg.edit(content= None, embed=embed)
+
 
 
 
