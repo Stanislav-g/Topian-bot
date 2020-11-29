@@ -112,7 +112,7 @@ class user(commands.Cog):
         else:
             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** вы не написали что хотите сделать, включить или выключить модуль!``=module_logs on`` ``=module_logs off`` """))
                 
-
+    @commands.has_permissions(administrator = True) 
     @commands.command()
     async def log_channel(self, ctx, arg:int = None):
         client = commands.Bot( command_prefix = '=')
