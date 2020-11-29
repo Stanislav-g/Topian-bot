@@ -118,7 +118,7 @@ class user(commands.Cog):
                     await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
     @commands.command()           
     @commands.has_permissions(administrator = True) 
-    async def removemoney(self, ctx, member: discord.Member = None, amount:int = None):
+    async def removemoney(self, ctx, member: discord.Member = None, amount = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
