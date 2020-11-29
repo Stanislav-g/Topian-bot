@@ -77,6 +77,10 @@ class user(commands.Cog):
             await ctx.send("Укажите пользователя.")
         elif amount == None:
             await ctx.send("Укажите сумму.")
+        elif amount < 0:
+            await ctx.send("Укажите сумму больше 0.")
+        elif member.id == ctx.author.id:
+            await ctx.send("Вы не можете перевести деньги самому себе.")
         else:
 
             num1 = ctx.author.guild.id
@@ -102,8 +106,8 @@ class user(commands.Cog):
 
                         if balanceauthor >= amount:
 
-                            balanceauthor = collection.update_one({"_id": allnum}, {"$set": {"balance": balanceauthor - amount}})
-                            balancemember = collection.update_one({"_id": allnummem}, {"$set": {"balance": balancemember + amount}})
+                            collection.update_one({"_id": allnum}, {"$set": {"balance": balanceauthor - amount}})
+                            collection.update_one({"_id": allnummem}, {"$set": {"balance": balancemember + amount}})
                             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя увеличен на {amount} :dollar:"""))
 
                         else:
@@ -112,7 +116,6 @@ class user(commands.Cog):
                             
                 else:
                     await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
-
     @commands.command()           
     @commands.has_permissions(administrator = True) 
     async def removemoney(self, ctx, member: discord.Member = None, amount:int = None):
@@ -138,15 +141,23 @@ class user(commands.Cog):
                     if collection.count_documents({"_id": allnum}) == 0:
                         await ctx.send(f"Учетная запись пользователя не создана, ее можно создать командой =balance")
                     else:
-                        balancee = collection.find_one({"_id": allnum})["balance"]
-                        
-                        balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - amount}})
-                        balanceee = collection.find_one({"_id": allnum})["balance"]
-                        
-                        await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя уменьшен на {amount} :dollar:"""))
+                        if amount == 'all':
+                            balancee = collection.find_one({"_id": allnum})["balance"]
+                            
+                            balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - balancee}})
+                            
+                            
+                            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя уменьшен на {amount} :dollar:"""))
+                            
+                        else:
+                            balancee = collection.find_one({"_id": allnum})["balance"]
+                            
+                            balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - amount}})
+                            balanceee = collection.find_one({"_id": allnum})["balance"]
+                            
+                            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя уменьшен на {amount} :dollar:"""))
                 else:
-                    await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")            
-
+                    await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")  
                     
                     
     @commands.has_permissions(administrator = True)            
