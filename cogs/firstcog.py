@@ -27,7 +27,6 @@ class user(commands.Cog):
     
        
     @commands.command(aliases = ['clear', 'c'])
-    @commands.has_permissions( administrator = True )
     @commands.has_permissions( manage_messages = True )
     async def __clear(self, ctx, member: typing.Optional[discord.Member], amount: int = None):
                 await ctx.message.delete()
@@ -50,7 +49,6 @@ class user(commands.Cog):
                                 break
     #kick
     @commands.command( pass_context = True )
-    @commands.has_permissions( administrator = True )
     @commands.has_permissions( kick_members = True )
     async def kick(self, ctx, member: discord.Member = None, *, reason = None):
         if member == None:
@@ -70,7 +68,6 @@ class user(commands.Cog):
 
     #ban
     @commands.command( pass_context = True )
-    @commands.has_permissions( administrator = True )
     @commands.has_permissions( ban_members = True )
     async def ban(self, ctx, member: discord.Member = None, *, reason = None):
         if member == None:
@@ -89,7 +86,6 @@ class user(commands.Cog):
 
     #unban
     @commands.command( pass_context = True )
-    @commands.has_permissions( administrator = True )
     @commands.has_permissions( ban_members = True )
     async def unban(self, ctx, *, member = None):
         if member == None:
@@ -130,7 +126,6 @@ class user(commands.Cog):
             await message.add_reaction(reaction)
         #tempban
     @commands.command()
-    @commands.has_permissions( administrator = True )
     @commands.has_permissions( ban_members = True )
     async def tempban(self, ctx, member : discord.Member = None, time:int = None, arg:str = None, *, reason = None):
         await ctx.channel.purge( limit = 1 )
@@ -179,7 +174,6 @@ class user(commands.Cog):
 
 
     @commands.command()
-    @commands.has_permissions(administrator = True)
     @commands.has_permissions( manage_nicknames = True )
     async def changing_name(self, ctx, member: discord.Member = None, nickname: str = None):
         await ctx.channel.purge( limit = 1 )
@@ -201,7 +195,7 @@ class user(commands.Cog):
 
     #suggest
     @commands.command( pass_context = True, aliases = [ "Предложить", "предложить", "предложка", "Предложка", "Suggest" ])
-    @commands.has_permissions( administrator = True )
+    @commands.has_permissions( manage_messages = True )
     async def suggest(self, ctx , * , arg = None):
         if arg == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -218,7 +212,7 @@ class user(commands.Cog):
 
     #text chat
     @commands.command()
-    @commands.has_permissions( administrator = True )
+    @commands.has_permissions( manage_messages = True )
     async def text_emoji(self, ctx , reaction:str = None, * , arg = None):
             await ctx.channel.purge( limit = 1 )
             if reaction == None:
@@ -246,7 +240,6 @@ class user(commands.Cog):
     
     #temp_add_role
     @commands.command()
-    @commands.has_permissions(administrator = True)
     @commands.has_permissions( manage_roles = True )
     async def temp_add_role(self, ctx, amount : int = None, member: discord.Member = None, role: discord.Role = None):
         await ctx.channel.purge( limit = 1 )
@@ -332,8 +325,7 @@ class user(commands.Cog):
             await ctx.send(embed = discord.Embed(description = f'**роль "{arg}" создана!**', color=0x0c0c0c))
 
     @commands.command()
-    @commands.has_permissions(administrator = True)
-    @commands.has_permissions( manage_roles = True )
+    @commands.has_permissions( manage_roles = True, ban_members = True )
     async def add_role(self, ctx, member: discord.Member = None, role: discord.Role = None):
         
         try:
