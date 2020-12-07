@@ -232,14 +232,12 @@ class user(commands.Cog):
                             role = guild.get_role(int(rolee)) # ID Ролей для в
                             print('5')
                             if role:
-                                m = payload.user_id
-                                memberd = self.client.get_user(payload.user_id)
+                                member = self.client.get_user(payload.user_id)
                                 print('6')
                                 print(payload)
-                                print(memberd)
-                                mmemm = memberd.id
-                                print(mmemm)
-                                await mmemm.add_roles(role)
+                                print(member)
+
+                                await member.add_roles(role)
                                 print('7')
 
 
