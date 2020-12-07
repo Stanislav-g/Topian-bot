@@ -236,7 +236,7 @@ class user(commands.Cog):
                                 memberd = self.client.get_user(payload.user_id)
                                 print('6')
                                 print(payload)
-                                print(member)
+                                print(memberd)
                                 mmemm = memberd.id
                                 print(mmemm)
                                 await mmemm.add_roles(role)
