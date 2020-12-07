@@ -235,6 +235,8 @@ class user(commands.Cog):
                                 m = payload.user_id
                                 member = guild.get_member(int(m))
                                 print('6')
+                                print(payload)
+                                print(member)
                                 await member.add_roles(role)
                                 print('7')
 
