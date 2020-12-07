@@ -237,7 +237,7 @@ class user(commands.Cog):
                                 print(payload)
                                 print(member)
 
-                                await member.add_roles(role)
+                                await payload.user.add_roles(role)
                                 print('7')
 
 
