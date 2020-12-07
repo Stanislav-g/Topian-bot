@@ -152,7 +152,7 @@ class user(commands.Cog):
                         else:
                             balancee = collection.find_one({"_id": allnum})["balance"]
                             
-                            balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - amount}})
+                            balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - int(amount)}})
                             balanceee = collection.find_one({"_id": allnum})["balance"]
                             
                             await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя уменьшен на {amount} :dollar:"""))
