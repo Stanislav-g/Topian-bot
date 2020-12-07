@@ -47,7 +47,7 @@ async def help(ctx):
     
     embed6 = discord.Embed(title = 'Поиск.', description = '``=search`` - search (запрос)\n``=youtube_search`` - youtube_search (запрос)\n``=yandex`` - yandex (запрос)\n``=wiki`` - wiki (запрос)\n``=google`` - google (запрос)')
 
-    embed7 = discord.Embed(title = 'Другое.', description = '``=wanted`` - картинка с вашей аватаркой **НОВИНКА**\n``=num`` - рандомная цифра от 1 до 100\n``=wordnum`` - посчитать количество слов в тексте.\n``=slapperson`` - ударить пользователя.\n``=emoji_random`` - рандомное эмодзи.\n``=math`` - калькулятор.\n``=covid`` - covid\n``=ball`` - шар предсказаний.\n``=link`` - link (url)\n``=kiss`` - kiss @user\n``=reverse`` - текст задом на перед.\n``=h_coder`` - инфо. о кодировщике.\n``=bug`` - отправить бог о боте.\n``=review`` - отправить отзыв о боте.')
+    embed7 = discord.Embed(title = 'Другое.', description = '``=wanted`` - картинка с вашей аватаркой **НОВИНКА**\n``=num`` - рандомная цифра от 1 до 100\n``=wordnum`` - посчитать количество слов в тексте.\n``=slapperson`` - ударить пользователя.\n``=emoji_random`` - рандомное эмодзи.\n``=math`` - калькулятор.\n``=covid`` - covid\n``=ball`` - шар предсказаний.\n``=link`` - link (url)\n``=kiss`` - kiss @user\n``=reverse`` - текст задом на перед.\n``=h_coder`` - инфо. о кодировщике.\n``=bug`` - отправить баг о боте.\n``=review`` - отправить отзыв о боте.')
     embeds = [embed1, embed2, embed3, embed4, embed5, embed6, embed7]
     message = await ctx.send(embed = embed1)
     react = ['❌']
@@ -234,7 +234,7 @@ async def on_command_error(ctx, err):
         guildf = ctx.guild.name
         userf = ctx.author.name
         channel = client.get_channel( 773461826696380426 )
-        errorall = str(err) + str("     ") + str(guildf)
+        errorall = str(err) + str("     ") + str(guildf) + str({ctx.command})
 					   
         await channel.send(errorall)
 
