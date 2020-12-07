@@ -28,6 +28,7 @@ class user(commands.Cog):
        
     @commands.command(aliases = ['clear', 'c'])
     @commands.has_permissions( administrator = True )
+    @commands.has_permissions( manage_message = True )
     async def __clear(self, ctx, member: typing.Optional[discord.Member], amount: int = None):
                 await ctx.message.delete()
                 if amount == None:
@@ -50,7 +51,7 @@ class user(commands.Cog):
     #kick
     @commands.command( pass_context = True )
     @commands.has_permissions( administrator = True )
-
+    @commands.has_permissions( kick_members = True )
     async def kick(self, ctx, member: discord.Member = None, *, reason = None):
         if member == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -70,6 +71,7 @@ class user(commands.Cog):
     #ban
     @commands.command( pass_context = True )
     @commands.has_permissions( administrator = True )
+    @commands.has_permissions( ban_members = True )
     async def ban(self, ctx, member: discord.Member = None, *, reason = None):
         if member == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -88,6 +90,7 @@ class user(commands.Cog):
     #unban
     @commands.command( pass_context = True )
     @commands.has_permissions( administrator = True )
+    @commands.has_permissions( ban_members = True )
     async def unban(self, ctx, *, member = None):
         if member == None:
             embw = discord.Embed( title = '**Info**', colour = discord.Color.green() )
@@ -128,6 +131,7 @@ class user(commands.Cog):
         #tempban
     @commands.command()
     @commands.has_permissions( administrator = True )
+    @commands.has_permissions( ban_members = True )
     async def tempban(self, ctx, member : discord.Member = None, time:int = None, arg:str = None, *, reason = None):
         await ctx.channel.purge( limit = 1 )
         if member == None:
@@ -176,6 +180,7 @@ class user(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
+    @commands.has_permissions( manage_nicknames = True )
     async def changing_name(self, ctx, member: discord.Member = None, nickname: str = None):
         await ctx.channel.purge( limit = 1 )
         
@@ -242,6 +247,7 @@ class user(commands.Cog):
     #temp_add_role
     @commands.command()
     @commands.has_permissions(administrator = True)
+    @commands.has_permissions( manage_roles = True )
     async def temp_add_role(self, ctx, amount : int = None, member: discord.Member = None, role: discord.Role = None):
         await ctx.channel.purge( limit = 1 )
         if amount == None:
@@ -283,6 +289,7 @@ class user(commands.Cog):
     #voice_create
     @commands.command()
     @commands.has_permissions(administrator = True)
+    @commands.has_permissions( manage_channels = True )
     async def voice_create(self, ctx, *, arg = None):
         await ctx.channel.purge( limit = 1 )
         if arg == None:
@@ -297,6 +304,7 @@ class user(commands.Cog):
     #voice_create
     @commands.command()
     @commands.has_permissions(administrator = True)
+    @commands.has_permissions( manage_channels = True )
     async def channel_create(self, ctx, *, arg = None):
         await ctx.channel.purge( limit = 1 )
         if arg == None:
@@ -311,6 +319,7 @@ class user(commands.Cog):
     #voice_create
     @commands.command()
     @commands.has_permissions(administrator = True)
+    @commands.has_permissions( manage_roles = True )
     async def role_create(self, ctx, *, arg = None):
         await ctx.channel.purge( limit = 1 )
         if arg == None:
@@ -324,6 +333,7 @@ class user(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
+    @commands.has_permissions( manage_roles = True )
     async def add_role(self, ctx, member: discord.Member = None, role: discord.Role = None):
         
         try:
@@ -344,6 +354,7 @@ class user(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
+    @commands.has_permissions( manage_roles = True )
     async def del_role(self, ctx, member: discord.Member = None, role: discord.Role = None):
         
         try:
