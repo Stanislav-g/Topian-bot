@@ -233,7 +233,7 @@ class user(commands.Cog):
                             print('5')
                             if role:
                                 m = payload.user_id
-                                member = self.client.get_user(payload.user_id)
+                                member = self.client.get_user.id(payload.user_id)
                                 print('6')
                                 print(payload)
                                 print(member)
