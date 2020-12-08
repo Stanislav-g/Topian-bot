@@ -196,8 +196,6 @@ class user(commands.Cog):
             else:
                 await ctx.send(f"Модуль авто выдачи ролей на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")
             
-
-
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         clu= os.environ.get('MONGODB_URI')
@@ -233,11 +231,13 @@ class user(commands.Cog):
                             print(role)
                             print('5')
                             if role:
-                                member = guild.get_member(payload.user_id)
+                                member = self.client.get_member(payload.user_id)
+                                print('6')
+                                print(payload)
                                 print(member)
-                                if member:
-                                    print("end")
-                                    await member.add_roles(role) 
+
+                                await member.add_role(role)
+                                print('7')
 
 
 
