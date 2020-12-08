@@ -228,7 +228,7 @@ class user(commands.Cog):
                             role = guild.get_role(int(rolee)) # ID Ролей для в
                             if role:
                                 memberr = payload.member
-                                if member:
+                                if memberr:
                                     await memberr.add_roles(role)
                                     
 
@@ -268,7 +268,7 @@ class user(commands.Cog):
                             
                             if role:
                                 memberr = payload.member
-                                if member:
+                                if memberr:
                                     await memberr.remove_roles(role)
 
 def setup(client):
