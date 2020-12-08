@@ -278,7 +278,6 @@ class user(commands.Cog):
                             print(role)
                             print('5')
                             if role:
-                                print(member)
                                 await payload.member.add_roles(role)
                                 print("end")
                                     
