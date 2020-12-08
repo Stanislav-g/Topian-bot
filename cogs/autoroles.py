@@ -231,13 +231,11 @@ class user(commands.Cog):
                             print(role)
                             print('5')
                             if role:
-                                member = self.client.get_member(payload.user_id)
-                                print('6')
-                                print(payload)
+                                member = get(guild.members, id=payload.user_id)
                                 print(member)
-
-                                await member.add_role(role)
-                                print('7')
+                                if member:
+                                    await payload.member.add_roles(role)
+                                    print("end")
 
 
 
