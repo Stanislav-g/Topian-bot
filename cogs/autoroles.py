@@ -278,7 +278,12 @@ class user(commands.Cog):
                             print(role)
                             print('5')
                             if role:
-                                await payload.member.add_roles(role)
+                                member = payload.member
+                                print(member)
+                                if member:
+                                    
+                                    await member.remove_roles(role)
+                                    print("end")
                                 print("end")
                                     
 def setup(client):
