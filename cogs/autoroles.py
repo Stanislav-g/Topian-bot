@@ -231,12 +231,9 @@ class user(commands.Cog):
                             print(role)
                             print('5')
                             if role:
-                                member = payload.member
-                                print(member)
+                                member = guild.get_member(payload.user_id)
                                 if member:
-                                    
-                                    await payload.member.add_roles(role)
-                                    print("end")
+                                    await member.remove_roles(role)
 
 
 
