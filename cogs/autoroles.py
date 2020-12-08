@@ -230,15 +230,15 @@ class user(commands.Cog):
                         print('4')
                         if str(payload.emoji) == reactionn: # Emoji для реакций
                             role = guild.get_role(int(rolee)) # ID Ролей для в
+                            print(role)
                             print('5')
                             if role:
-                                member = self.client.get_user(payload.user_id)
-                                print('6')
-                                print(payload)
+                                member = guild.get_member(payload.user_id)
                                 print(member)
+                                if member:
+                                    print("end")
+                                    await member.add_roles(role) 
 
-                                await member.add_role(role)
-                                print('7')
 
 
 
