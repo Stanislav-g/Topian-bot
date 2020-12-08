@@ -275,6 +275,7 @@ class user(commands.Cog):
                             if role:
                                 member = payload.member
                                 if member:
-                                    await member.remove_roles(role)
+                                    await payload.member.remove_roles(role)
+                                    
 def setup(client):
     client.add_cog(user(client))
