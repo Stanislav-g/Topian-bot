@@ -131,6 +131,8 @@ class user(commands.Cog):
             await ctx.send("Укажите пользователя.")
         elif amount == None:
             await ctx.send("Укажите сумму.")
+        elif amount > 1:
+            await ctx.send("Укажите сумму больше 0.")
         else:
             num1 = ctx.author.guild.id
             num22 = '111'
@@ -149,7 +151,7 @@ class user(commands.Cog):
                             balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - balancee}})
                             
                             
-                            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя уменьшен на {amount} :dollar:"""))
+                            await ctx.send(embed = discord.Embed(description = f"""**{ctx.author}** баланс пользователя 0 :dollar:"""))
                             
                         else:
                             balancee = collection.find_one({"_id": allnum})["balance"]
