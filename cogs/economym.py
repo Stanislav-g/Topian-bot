@@ -131,7 +131,7 @@ class user(commands.Cog):
             await ctx.send("Укажите пользователя.")
         elif amount == None:
             await ctx.send("Укажите сумму.")
-        elif amount > 1:
+        elif amount <= 0:
             await ctx.send("Укажите сумму больше 0.")
         else:
             num1 = ctx.author.guild.id
