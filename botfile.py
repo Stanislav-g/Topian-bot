@@ -219,8 +219,10 @@ async def leave(ctx):
 	
 @client.event
 async def on_command_error(ctx, err):
-
-    if isinstance(err, commands.BotMissingPermissions):
+    if isinstance(err, commands.NoPrivateMessage):
+        await ctx.author.send('This command cannot be used in private messages.')
+        
+    elif isinstance(err, commands.BotMissingPermissions):
         await ctx.send(embed=discord.Embed(description=f"У бота отсутствуют права: {' '.join(err.missing_perms)}\nВыдайте их ему для полного функционирования бота"))
 
     elif isinstance(err, commands.MissingPermissions):
@@ -229,14 +231,25 @@ async def on_command_error(ctx, err):
     elif isinstance(err, commands.CommandOnCooldown):
         await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
 	
-    else:
-        await ctx.send(embed=discord.Embed(description=f"Вы неправильно ввели команду или данной команды не существует!\n||{err}||"))
-        guildf = ctx.guild.name
-        userf = ctx.author.name
-        channel = client.get_channel( 773461826696380426 )
-        errorall = str(err) + str("     ") + str(guildf) + str({ctx.command})
-					   
-        await channel.send(errorall)
+
+    elif isinstance(err, commands.CommandInvokeError):
+        if client.dev:
+            raise error
+        else:
+            embed = discord.Embed(title=':x: Command Error', colour=0x992d22) #Dark Red
+            embed.add_field(name='Error', value=error)
+            embed.add_field(name='Guild', value=ctx.guild)
+            embed.add_field(name='Channel', value=ctx.channel)
+            embed.add_field(name='User', value=ctx.author)
+            embed.add_field(name='Message', value=ctx.message.clean_content)
+            embed.timestamp = datetime.datetime.utcnow()
+            try:
+                await client.AppInfo.owner.send(embed=embed)
+            except:
+                pass
+
+    elif isinstance(err, commands.MissingRequiredArgument):
+        await client.send('MissingRequiredArgument')
 
 @client.command()
 async def cogs(ctx):
