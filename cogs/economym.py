@@ -69,9 +69,9 @@ class user(commands.Cog):
                             await ctx.send(f"**{ctx.author}**, на вашем счету недостаточно средств.")
                         
                         else:
-                            chislo = random.randint(1,10)
+                            chislo = random.randint(1,3)
                             numlow = numg - 1
-                            numhight = num + 1
+                            numhight = numg + 1
                             if numg == chislo:
                                 stavkaitog = stavka * 2
                                 balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + stavkaitog}})
@@ -83,6 +83,7 @@ class user(commands.Cog):
                                 balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + stavkaitog}})
                                 balanceee = collection.find_one({"_id": allnum})["balance"]
                                 await ctx.send(f"**{ctx.author}**, вы ошиблись на 1, загаданное число было {chislo}. Ваш баланс увеличен на половину вашей ставки, на {stavkaitog} 💵 так как вы почти угадали. , ваш баланс составляет {balanceee} 💵")
+                            
                             elif chislo == numhight:
                                 stavkaitog = int(stavka / 2)
                                 balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + stavkaitog}})
