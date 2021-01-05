@@ -33,6 +33,12 @@ class user(commands.Cog):
     @commands.command()
     async def num_guess(self, ctx, numg: int = None, stavka: int = None):
         print("1")
+        clu= os.environ.get('MONGODB_URI')
+        cluster = MongoClient(clu)
+        db = cluster["topianbot"] 
+        collection = db["money"]
+        collectionmodules = db["modules"]
+        collectionshop = db["shop"]
         num1 = ctx.author.guild.id
         num22 = '111'
         allnum4 = str(num1) + str(num22)
