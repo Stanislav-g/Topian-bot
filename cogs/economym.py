@@ -51,21 +51,21 @@ class user(commands.Cog):
                 else:
                     if not numg:
                         embed = discord.Embed(title='Num  guess.', color=0x00ff00)
-                        embed.add_field(name='Правила игры.', value="Num guess это игра где надо угадать число в диапазоне от 1 до 15.\nЧтобы выиграть деньги вы должны поставить ставку.\nСтавка может быть любой, если вы угадаете число, вы заберете удвоенную ставку, если вы проиграете, вы отдадите вашу ставку боту.\n", inline=False)
-                        embed.add_field(name='Пример использования команды.', value="**=num_guess 14 200** | 14 это число, а 200 это ставка.", inline=True)
+                        embed.add_field(name='Правила игры.', value="Num guess это игра где надо угадать число в диапазоне от 1 до 10.\nЧтобы выиграть деньги вы должны поставить ставку.\nСтавка может быть любой, если вы угадаете число, вы заберете удвоенную ставку, если вы проиграете, вы отдадите вашу ставку боту.\n", inline=False)
+                        embed.add_field(name='Пример использования команды.', value="**=num_guess 9 200** | 9 это число, а 200 это ставка.", inline=True)
                         embed.add_field(name='Выигрыш со ставкой 200', value="Ставка умножается на 2, выигрыш будет 400.",inline=True)
                         await ctx.send(embed=embed)
                     elif not stavka:
                         await ctx.send(f"**{ctx.author}**, укажите ставку.")
                     else:
                         balancee = collection.find_one({"_id": allnum})["balance"]
-                        if numg > 15:
+                        if numg > 10:
                             await ctx.send(f"**{ctx.author}**, введите число меньше 15.")
                         elif stavka > balancee:
                             await ctx.send(f"**{ctx.author}**, на вашем счету недостаточно средств.")
                         
                         else:
-                            chislo = random.randint(1,15)
+                            chislo = random.randint(1,10)
                             if numg == chislo:
                                 stavkaitog = stavka * 2
                                 balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + stavkaitog}})
