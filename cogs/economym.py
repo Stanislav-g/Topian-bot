@@ -29,7 +29,7 @@ class user(commands.Cog):
     collectionticket = db["ticket"]
     collectionlogschannels = db["logschannels"]
 
-                
+             
     @commands.command()
     async def num_guess(self, ctx, numg: int = None, stavka: int = None):
         clu= os.environ.get('MONGODB_URI')
@@ -60,7 +60,7 @@ class user(commands.Cog):
                     else:
                         balancee = collection.find_one({"_id": allnum})["balance"]
                         if numg > 10:
-                            await ctx.send(f"**{ctx.author}**, введите число меньше 15.")
+                            await ctx.send(f"**{ctx.author}**, введите число меньше 10.")
                         elif stavka > balancee:
                             await ctx.send(f"**{ctx.author}**, на вашем счету недостаточно средств.")
                         
@@ -75,9 +75,10 @@ class user(commands.Cog):
                             else:
                                 balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - stavka}})
                                 balanceeem = collection.find_one({"_id": allnum})["balance"]
-                                await ctx.send(f"**{ctx.author}**, вы проиграли. Ваш баланс уменьшен на {stavka}, ваш баланс составляет {balanceeem} 💵")
+                                await ctx.send(f"**{ctx.author}**, вы проиграли, заганное число было {chislo}. Ваш баланс уменьшен на {stavka}, ваш баланс составляет {balanceeem} 💵")
             else:
                 await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")            
+
 
 
     @commands.command()           
