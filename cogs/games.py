@@ -27,6 +27,60 @@ class user(commands.Cog):
     start_ev = ['']    
     ev_player = [''] #игроки в розыгрыше
     
+    clu= os.environ.get('MONGODB_URI')
+    cluster = MongoClient(clu)
+    db = cluster["topianbot"]
+    collection = db["money"]
+    collectionmodules = db["modules"]
+    collectionshop = db["shop"]
+    collectionticket = db["ticket"]
+    collectionlogschannels = db["logschannels"]
+
+    
+    @commands.command()
+    async def num_guess(self, ctx, numg: int = None, stavka: int = None):
+        
+        num1 = ctx.author.guild.id
+        num22 = '111'
+        allnum4 = str(num1) + str(num22)
+        if collectionmodules.count_documents({"_id": allnum4}) == 1:
+            if collectionmodules.find_one({"_id": allnum4})["on_off"] == 'on':
+                num = ctx.author.guild.id
+                num2 = ctx.author.id
+                allnum = num + num2
+                if collection.count_documents({"_id": allnum}) == 0:
+                    await ctx.send(f"Ваша учетная запись не создана, вы можете создать ее командой -economic")
+                else:
+                    if not numg:
+                        embed = discord.Embed(title='Num  guess.', color=0x00ff00)
+                        embed.add_field(name='Правила игры.', value="Num guess это игра где надо угадать число в диапазоне от 1 до 20.\nЧтобы выиграть деньги вы должны поставить ставку.\nСтавка может быть любой, если вы угадаете число, вы заберете удвоенную ставку, если вы проиграете, вы отдадите вашу ставку боту.\n", inline=False)
+                        embed.add_field(name='Пример использования команды.', value="**=num_guess 14 200** | 14 это число, а 200 это ставка.", inline=True)
+                        embed.add_field(name='Выигрыш со ставкой 200', value="Ставка умножается на 2, выигрыш будет 400.",inline=True)
+                        await ctx.send(embed=embed)
+                    elif not stavka:
+                        await ctx.send(f"**{ctx.author}**, укажите ставку.")
+                    else:
+                        
+                        balancee = collection.find_one({"_id": allnum})["balance"]
+
+                        if stavka > balancee:
+                            await ctx.send(f"**{ctx.author}**, на вашем счету недостаточно средств.")
+                        else:
+                            chislo = random.randint(1,20)
+                            if numg == chislo:
+                                stavkaitog = stavka * 2
+                                balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + stavkaitog}})
+                                balanceee = collection.find_one({"_id": allnum})["balance"]
+                                await ctx.send(f"**{ctx.author}**, вы угадали! Ваш баланс увеличен на {stavkaitog} , ваш баланс составляет {balanceee} 💵")
+                        
+                            else:
+                                balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - stavka}})
+                                balanceeem = collection.find_one({"_id": allnum})["balance"]
+                                await ctx.send(f"**{ctx.author}**, вы проиграли. Ваш баланс уменьшен на {stavka}, ваш баланс составляет {balanceeem} 💵")
+            else:
+                await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")            
+
+
     @commands.command()
     async def color(self, ctx): 
         global fi
