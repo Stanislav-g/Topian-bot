@@ -29,8 +29,7 @@ class user(commands.Cog):
     collectionticket = db["ticket"]
     collectionlogschannels = db["logschannels"]
 
-            
-    @commands.command()
+      @commands.command()
     async def num_guess(self, ctx, numg: int = None, stavka: int = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
@@ -79,7 +78,12 @@ class user(commands.Cog):
                                 balanceee = collection.find_one({"_id": allnum})["balance"]
                                 await ctx.send(f"**{ctx.author}**, вы угадали! Ваш баланс увеличен на {stavkaitog} , ваш баланс составляет {balanceee} 💵")
 
-                            elif chislo == numlow or chislo == numhight:
+                            elif chislo == numlow:
+                                stavkaitog = int(stavka / 2)
+                                balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + stavkaitog}})
+                                balanceee = collection.find_one({"_id": allnum})["balance"]
+                                await ctx.send(f"**{ctx.author}**, вы ошиблись на 1, загаданное число было {chislo}. Ваш баланс увеличен на половину вашей ставки, на {stavkaitog} 💵 так как вы почти угадали. , ваш баланс составляет {balanceee} 💵")
+                            elif chislo == numhight:
                                 stavkaitog = int(stavka / 2)
                                 balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + stavkaitog}})
                                 balanceee = collection.find_one({"_id": allnum})["balance"]
@@ -92,8 +96,6 @@ class user(commands.Cog):
                                 await ctx.send(f"**{ctx.author}**, вы проиграли, заганное число было {chislo}. Ваш баланс уменьшен на {stavka}, ваш баланс составляет {balanceeem} 💵")
             else:
                 await ctx.send(f"Модуль экономики на этом сервере выключен, чтобы узнать подробности введите команду ``=modules`` ")            
-
-
 
 
     @commands.command()           
