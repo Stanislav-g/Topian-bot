@@ -29,7 +29,7 @@ class user(commands.Cog):
     collectionticket = db["ticket"]
     collectionlogschannels = db["logschannels"]
 
-      @commands.command()
+    @commands.command()
     async def num_guess(self, ctx, numg: int = None, stavka: int = None):
         clu= os.environ.get('MONGODB_URI')
         cluster = MongoClient(clu)
