@@ -29,9 +29,11 @@ class user(commands.Cog):
     collectionticket = db["ticket"]
     collectionlogschannels = db["logschannels"]
 
+                
     @commands.command()
     async def num_guess(self, ctx, numg: int = None, stavka: int = None):
         clu= os.environ.get('MONGODB_URI')
+        print("1")
         cluster = MongoClient(clu)
         db = cluster["topianbot"] 
         collection = db["money"]
@@ -41,9 +43,9 @@ class user(commands.Cog):
         num22 = '111'
         allnum4 = str(num1) + str(num22)
         if collectionmodules.count_documents({"_id": allnum4}) == 1:
-
+            print("2")
             if collectionmodules.find_one({"_id": allnum4})["on_off"] == 'on':
-
+                print("3")
                 num = ctx.author.guild.id
                 num2 = ctx.author.id
                 allnum = num + num2
@@ -59,6 +61,7 @@ class user(commands.Cog):
                     elif not stavka:
                         await ctx.send(f"**{ctx.author}**, укажите ставку.")
                     else:
+                        print("4")
                         balancee = collection.find_one({"_id": allnum})["balance"]
                         if numg > 15:
                             await ctx.send(f"**{ctx.author}**, введите число меньше 15.")
@@ -68,12 +71,14 @@ class user(commands.Cog):
                         else:
                             chislo = random.randint(1,15)
                             if numg == chislo:
+                                print("5")
                                 stavkaitog = stavka * 2
                                 balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee + stavkaitog}})
                                 balanceee = collection.find_one({"_id": allnum})["balance"]
                                 await ctx.send(f"**{ctx.author}**, вы угадали! Ваш баланс увеличен на {stavkaitog} , ваш баланс составляет {balanceee} 💵")
                         
                             else:
+                                print("6")
                                 balance = collection.update_one({"_id": allnum}, {"$set": {"balance": balancee - stavka}})
                                 balanceeem = collection.find_one({"_id": allnum})["balance"]
                                 await ctx.send(f"**{ctx.author}**, вы проиграли. Ваш баланс уменьшен на {stavka}, ваш баланс составляет {balanceeem} 💵")
