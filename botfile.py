@@ -232,22 +232,6 @@ async def on_command_error(ctx, err):
         await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
 	
 
-    elif isinstance(err, commands.CommandInvokeError):
-        if client.dev:
-            raise error
-        else:
-            embed = discord.Embed(title=':x: Command Error', colour=0x992d22) #Dark Red
-            embed.add_field(name='Error', value=error)
-            embed.add_field(name='Guild', value=ctx.guild)
-            embed.add_field(name='Channel', value=ctx.channel)
-            embed.add_field(name='User', value=ctx.author)
-            embed.add_field(name='Message', value=ctx.message.clean_content)
-            embed.timestamp = datetime.datetime.utcnow()
-            try:
-                await client.AppInfo.owner.send(embed=embed)
-            except:
-                pass
-
     elif isinstance(err, commands.MissingRequiredArgument):
         await client.send('MissingRequiredArgument')
 
