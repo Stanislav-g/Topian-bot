@@ -69,7 +69,7 @@ class user(commands.Cog):
                             await ctx.send(f"**{ctx.author}**, на вашем счету недостаточно средств.")
                         
                         else:
-                            chislo = random.randint(1,3)
+                            chislo = random.randint(1,10)
                             numlow = numg - 1
                             numhight = numg + 1
                             if numg == chislo:
